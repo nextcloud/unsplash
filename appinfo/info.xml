@@ -17,10 +17,4 @@
     <dependencies>
         <nextcloud min-version="11" max-version="13"/>
     </dependencies>
-    <navigations>
-        <navigation>
-            <name>Unsplash</name>
-            <route>unsplash.page.index</route>
-        </navigation>
-    </navigations>
 </info>
