@@ -1,6 +1,6 @@
 <?php
 
-OCP\Util::addscript('unsplash', 'script');
+OCP\Util::addStyle('unsplash', 'login');
 
 $manager = \OC::$server->getContentSecurityPolicyManager();
 $policy = new \OC\Security\CSP\ContentSecurityPolicy();
