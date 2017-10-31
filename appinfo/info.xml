@@ -7,7 +7,7 @@
     <description><![CDATA[Show a new random featured photo from Unsplash on the log in screen. A free culture showcase of CC0-licensed photos and example of Nextcloud theming.]]></description>
     <licence>agpl</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <types>
 		<authentication/>
 	</types>
