@@ -4,10 +4,10 @@
     <id>unsplash</id>
     <name>Unsplash</name>
     <summary>📸🔀☁️ Random log in background from Unsplash</summary>
-    <description>Show a new random featured photo from Unsplash on the log in screen. A free culture showcase of CC0-licensed photos and example of Nextcloud theming.</description>
+    <description>Show a new random featured photo from Unsplash on the log in screen.</description>
     <licence>AGPL</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <types>
 		<authentication/>
 	</types>

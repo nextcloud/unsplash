@@ -3,8 +3,8 @@
 	background-image: url('https://source.unsplash.com/random/featured') !important;
 }
 
-input.primary,
-button.primary,
-#alternative-logins li a {
+#body-login input.primary,
+#body-login button.primary,
+#body-login #alternative-logins li a {
     background-color: rgba(0, 0, 0, .5) !important;
 }
