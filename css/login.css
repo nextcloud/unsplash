@@ -7,4 +7,5 @@
 #body-login button.primary,
 #body-login #alternative-logins li a {
     background-color: rgba(0, 0, 0, .5) !important;
+    border: none;
 }
