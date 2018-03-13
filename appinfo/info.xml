@@ -7,7 +7,7 @@
     <description>Show a new random featured photo from Unsplash on the log in screen.</description>
     <licence>AGPL</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <types>
 		<authentication/>
 	</types>
@@ -15,10 +15,11 @@
     <category>customization</category>
     <category>multimedia</category>
     <category>tools</category>
+    <website>https://github.com/jancborchardt/unsplash/</website>
 	<bugs>https://github.com/jancborchardt/unsplash/issues</bugs>
 	<repository type="git">https://github.com/jancborchardt/unsplash.git</repository>
 	<screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
     <dependencies>
-        <nextcloud min-version="11" max-version="13"/>
+        <nextcloud min-version="11" max-version="14"/>
     </dependencies>
 </info>
