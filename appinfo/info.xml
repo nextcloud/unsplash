@@ -9,8 +9,9 @@
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
     <version>1.0.5</version>
     <types>
-		<authentication/>
-	</types>
+	<authentication/>
+	<prevent_group_restriction/>
+    </types>
     <namespace>Unsplash</namespace>
     <category>customization</category>
     <category>multimedia</category>
