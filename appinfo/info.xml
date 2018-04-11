@@ -8,9 +8,6 @@
     <licence>AGPL</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
     <version>1.0.6</version>
-    <types>
-		<authentication/>
-	</types>
     <namespace>Unsplash</namespace>
     <category>customization</category>
     <category>multimedia</category>
