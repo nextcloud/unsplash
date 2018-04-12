@@ -7,15 +7,16 @@
     <description>Show a new random featured nature photo from Unsplash on the log in screen and in the header.</description>
     <licence>AGPL</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <namespace>Unsplash</namespace>
     <category>customization</category>
     <category>multimedia</category>
     <category>tools</category>
     <website>https://github.com/jancborchardt/unsplash/</website>
-	<bugs>https://github.com/jancborchardt/unsplash/issues</bugs>
-	<repository type="git">https://github.com/jancborchardt/unsplash.git</repository>
-	<screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
+    <bugs>https://github.com/jancborchardt/unsplash/issues</bugs>
+    <repository type="git">https://github.com/jancborchardt/unsplash.git</repository>
+    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <nextcloud min-version="11" max-version="14"/>
     </dependencies>
