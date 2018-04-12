@@ -3,11 +3,11 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>unsplash</id>
     <name>Unsplash</name>
-    <summary>📸🔀☁️ Random log in background from Unsplash</summary>
-    <description>Show a new random featured photo from Unsplash on the log in screen.</description>
+    <summary>📸🔀☁️ Random log in & header background from Unsplash</summary>
+    <description>Show a new random featured nature photo from Unsplash on the log in screen and in the header.</description>
     <licence>AGPL</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <namespace>Unsplash</namespace>
     <category>customization</category>
     <category>multimedia</category>
