@@ -2,9 +2,24 @@
 
 header("Content-type: text/css; charset: UTF-8");
 
+list($scriptPath) = get_included_files();
+
+$scriptPath=substr($scriptPath, 0, -27);
+$scriptPath.="config/config.php";
+include $scriptPath;
+
 
 $unsplashImagePath="https://source.unsplash.com/random/featured/?nature";
 $unsplashHeaderEnabled=true;
+
+if(isset($CONFIG['unsplash']) && $CONFIG['unsplash']!=""){
+    $unsplashImagePath = $CONFIG['unsplash'];
+}
+
+if(isset($CONFIG['unsplashheader'])){
+    $unsplashHeaderEnabled = $CONFIG['unsplashheader'];
+}
+
 
 if($unsplashHeaderEnabled){
     include 'login_background_header.css';
