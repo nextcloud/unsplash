@@ -40,7 +40,8 @@ class Admin implements ISettings {
 	public function getForm() {
 
 		$parameters = [
-			'headerbackground' => $this->settingsManager->headerbackground()
+			'headerbackground' => $this->settingsManager->headerbackground(),
+            'headerbackgroundlink' => $this->settingsManager->headerbackgroundLink()
 		];
 
 		return new TemplateResponse('unsplash', 'settings-admin', $parameters, '');

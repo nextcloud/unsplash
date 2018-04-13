@@ -39,6 +39,7 @@ $config = OC::$server->getConfig();
 
 $Settingsmanager=new SettingsManager($config);
 $showHeader = $Settingsmanager->headerbackground();
+$unsplashImagePath=$Settingsmanager->headerbackgroundLink();
 
 
 
@@ -47,24 +48,11 @@ header("Content-type: text/css; charset: UTF-8");
 include $unsplashScript."config/config.php";
 
 
-
-$unsplashImagePath="https://source.unsplash.com/daily?nature";
-$unsplashHeaderEnabled=true;
-
-if(isset($CONFIG['unsplash']) && $CONFIG['unsplash']!=""){
-    $unsplashImagePath = $CONFIG['unsplash'];
-}
-
-if(isset($showHeader)){
-    $unsplashHeaderEnabled = $showHeader;
-}
-
-
-if($unsplashHeaderEnabled){
+if($showHeader){
     include 'login_header.css';
 }else{
      include 'login_background.css';
- }
+}
 
 
 

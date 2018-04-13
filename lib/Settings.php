@@ -42,6 +42,7 @@ class Settings {
 	public function announceUnsplashSettings(array $settings) {
 		$array = json_decode($settings['array']['oc_appconfig'], true);
 		$array['unsplash']['headerbackground'] = $this->settingsManager->headerbackground();
+		$array['unsplash']['headerbackgroundlink'] = $this->settingsManager->headerbackgroundLink();
 		$settings['array']['oc_appconfig'] = json_encode($array);
 	}
 }

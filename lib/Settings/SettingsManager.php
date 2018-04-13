@@ -31,6 +31,7 @@ class SettingsManager {
 	private $config;
 
 	private $headerbackgroundDefault = 'yes';
+    private $headerbackgroundLinkDefault = 'https://source.unsplash.com/daily?nature';
 
 	public function __construct(IConfig $config) {
 		$this->config = $config;
@@ -45,5 +46,21 @@ class SettingsManager {
 		$headerbackground = $this->config->getAppValue('unsplash', 'headerbackground', $this->headerbackgroundDefault);
 		return $headerbackground === 'yes';
 	}
+
+    /**
+     * Returns the URL to the custom Unsplash-path
+     *
+     * @return String
+     */
+    public function headerbackgroundLink() {
+        $headerbackgroundLink = $this->config->getAppValue('unsplash', 'headerbackgroundlink', $this->headerbackgroundLinkDefault);
+
+        if(isset($headerbackgroundLink)){
+            return $headerbackgroundLink;
+        }else{
+            return $this->headerbackgroundLinkDefault;
+        }
+
+    }
 
 }
