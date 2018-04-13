@@ -11,6 +11,8 @@
 /* Header icons get drop shadow for visibility */
 #header .logo.logo-icon,
 #appmenu svg,
+#more-apps div,
+.searchbox input[type="search"],
 .notifications .notifications-button img,
 #contactsmenu .icon-contacts,
 #expand .avatardiv-shown img,
@@ -20,8 +22,11 @@
 }
 
 /* Header icons get higher opacity for visibility */
-#appmenu li a {
-	opacity: .8;
+#appmenu li a,
+.searchbox input[type="search"],
+#header .header-right > div > .menutoggle,
+#header .header-right > form > .menutoggle {
+	opacity: .9;
 }
 
 .searchbox input[type="search"]:focus,
