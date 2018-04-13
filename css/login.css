@@ -1,7 +1,4 @@
-#body-login,
-#body-user #header,
-#body-settings #header,
-#body-public #header {
+#body-login {
 	background-color: #777 !important;
 	background-image: url('https://source.unsplash.com/random/featured/?nature') !important;
 	background-position: center;
@@ -13,27 +10,4 @@
 #body-login button.primary,
 #body-login #alternative-logins li a {
     background-color: rgba(0, 0, 0, .5) !important;
-}
-
-/* Header icons get drop shadow for visibility */
-#header .logo.logo-icon,
-#appmenu svg,
-.notifications .notifications-button img,
-#contactsmenu .icon-contacts,
-#expand .avatardiv-shown img,
-#expand .expandDisplayName {
-	 /* Modified .icon-shadow with modified $color-box-shadow */
-    filter: drop-shadow(0 0 3px rgba(50, 50, 50, .5)) !important;
-}
-
-/* Header icons get higher opacity for visibility */
-#appmenu li a {
-	opacity: .8;
-}
-
-.searchbox input[type="search"]:focus,
-.searchbox input[type="search"]:active,
-.searchbox input[type="search"]:valid {
-	background-color: rgba(0, 0, 0, .5) !important;
-	border: none !important
 }
