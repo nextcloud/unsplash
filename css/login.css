@@ -1,11 +1,14 @@
 <?php
-    header('Content-type: text/css');
-    $unsplashURL = "https://source.unsplash.com/random/featured";
-?>
 
+header("Content-type: text/css; charset: UTF-8");
+
+
+$unsplashImagePath="https://source.unsplash.com/random/featured/?nature";
+
+?>
 #body-login {
-	background-color: #777 !important;
-	background-image: url(<?=$unsplashURL?>) !important;
+    background-color: #777 !important;
+    background-image: url('<?php echo $unsplashImagePath; ?>') !important;
 }
 
 #body-login input.primary,
