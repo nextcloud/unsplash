@@ -48,7 +48,7 @@ include $unsplashScript."config/config.php";
 
 
 
-$unsplashImagePath="https://source.unsplash.com/random/featured/?nature";
+$unsplashImagePath="https://source.unsplash.com/daily?nature";
 $unsplashHeaderEnabled=true;
 
 if(isset($CONFIG['unsplash']) && $CONFIG['unsplash']!=""){
