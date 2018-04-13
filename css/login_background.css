@@ -1,0 +1,11 @@
+
+#body-login {
+    background-color: #777 !important;
+    background-image: url('<?php echo $unsplashImagePath; ?>') !important;
+}
+
+#body-login input.primary,
+#body-login button.primary,
+#body-login #alternative-logins li a {
+    background-color: rgba(0, 0, 0, .5) !important;
+}
