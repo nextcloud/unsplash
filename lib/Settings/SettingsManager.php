@@ -55,7 +55,7 @@ class SettingsManager {
     public function headerbackgroundLink() {
         $headerbackgroundLink = $this->config->getAppValue('unsplash', 'headerbackgroundlink', $this->headerbackgroundLinkDefault);
 
-        if(isset($headerbackgroundLink)){
+        if(isset($headerbackgroundLink) && $headerbackgroundLink!=""){
             return $headerbackgroundLink;
         }else{
             return $this->headerbackgroundLinkDefault;
