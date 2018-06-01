@@ -28,7 +28,7 @@ use OCA\Unsplash\Settings\SettingsManager;
 $unsplashScript = get_included_files();
 $unsplashScript = $unsplashScript[0]; //gets the current filepath
 $unsplashScript=substr($unsplashScript, 0, -27);
-
+$unsplashScript=\OC::$SERVERROOT;
 
 require_once $unsplashScript . 'lib/base.php';
 require $unsplashScript.'apps/unsplash/lib/Settings/SettingsManager.php';
