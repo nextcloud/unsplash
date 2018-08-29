@@ -1,0 +1,20 @@
+#unsplash-settings .msg.error,
+#unsplash-settings .msg.success {
+    font-size     : 0.65em;
+    opacity       : 0;
+    border-radius : 3px;
+    transition    : opacity 0.5s ease-in-out;
+    position      : absolute;
+    line-height   : 1;
+    bottom        : 2px;
+    margin-left   : 6px;
+}
+
+#unsplash-settings .msg.error.active,
+#unsplash-settings .msg.success.active {
+    opacity : 1;
+}
+
+#unsplash-settings h2 {
+    position : relative;
+}

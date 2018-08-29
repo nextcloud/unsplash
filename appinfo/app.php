@@ -1,9 +1,14 @@
 <?php
+/**
+ * This file is part of the Unsplash App
+ * and licensed under the AGPL.
+ */
 
-OCP\Util::addStyle('unsplash', 'login');
+use OCA\Unsplash\AppInfo\Application;
+use OCP\AppFramework\QueryException;
 
-$manager = \OC::$server->getContentSecurityPolicyManager();
-$policy = new \OC\Security\CSP\ContentSecurityPolicy();
-$policy->addAllowedImageDomain('https://source.unsplash.com');
-$policy->addAllowedImageDomain('https://images.unsplash.com');
-$manager->addDefaultPolicy($policy);
+try {
+    $app = new Application();
+    $app->register();
+} catch(QueryException $e) {
+}
