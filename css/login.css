@@ -1,4 +1,5 @@
-#body-login {
+/* Needs more specificity to override theming app */
+body#body-login {
     background-color    : #777 !important;
     background-image    : url('https://source.unsplash.com/random/featured/?nature') !important;
     background-position : center;
