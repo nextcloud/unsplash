@@ -7,7 +7,7 @@
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
     <description>Show a new random featured nature photo from Unsplash on the log in screen and (optionally) in the header.</description>
     <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto von Unsplash auf dem Anmeldebildschirm und (optional) in der Navigationsleiste an.</description>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <licence>agpl</licence>
     <author mail="hey@jancborchardt.net" homepage="http://jancborchardt.net">Jan-Christoph Borchardt</author>
     <namespace>Unsplash</namespace>
@@ -21,8 +21,11 @@
     <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="7.0" />
-        <nextcloud min-version="11" max-version="14"/>
+        <nextcloud min-version="14" max-version="15"/>
     </dependencies>
+    <background-jobs>
+        <job>OCA\Unsplash\Cron\FetchImages</job>
+    </background-jobs>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>
     </settings>

@@ -7,7 +7,7 @@
 namespace OCA\Unsplash\Settings;
 
 use OC_Defaults;
-use OCA\Unsplash\Services\SettingsService;
+use OCA\Unsplash\Services\UserSettingsService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
 
@@ -24,7 +24,7 @@ class PersonalSettings {
     protected $urlGenerator;
 
     /**
-     * @var SettingsService
+     * @var UserSettingsService
      */
     protected $settings;
 
@@ -36,11 +36,11 @@ class PersonalSettings {
     /**
      * AdminSection constructor.
      *
-     * @param IURLGenerator   $urlGenerator
-     * @param SettingsService $settings
-     * @param OC_Defaults     $theming
+     * @param IURLGenerator       $urlGenerator
+     * @param UserSettingsService $settings
+     * @param OC_Defaults         $theming
      */
-    public function __construct(IURLGenerator $urlGenerator, SettingsService $settings, OC_Defaults $theming) {
+    public function __construct(IURLGenerator $urlGenerator, UserSettingsService $settings, OC_Defaults $theming) {
         $this->urlGenerator = $urlGenerator;
         $this->settings     = $settings;
         $this->theming      = $theming;
@@ -55,7 +55,7 @@ class PersonalSettings {
     public function getForm() {
         return new TemplateResponse('unsplash', 'settings/personal', [
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.personal_settings.set'),
-            'styleHeader'     => $this->settings->getUserStyleHeaderEnabled(),
+            'styleHeader'     => $this->settings->isHeaderEnabled(),
             'label'           => $this->theming->getEntity()
         ], '');
     }

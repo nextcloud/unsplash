@@ -18,3 +18,8 @@
 #unsplash-settings h2 {
     position : relative;
 }
+
+#unsplash-settings label {
+    min-width: 110px;
+    display: inline-block;
+}

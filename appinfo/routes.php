@@ -12,5 +12,16 @@ $application->registerRoutes($this, [
     'routes'    => [
         ['name' => 'admin_settings#set', 'url' => '/settings/admin/set', 'verb' => 'POST'],
         ['name' => 'personal_settings#set', 'url' => '/settings/personal/set', 'verb' => 'POST'],
+
+        [
+            'name' => 'Image#background',
+            'url' => '/images/background/{uuid}',
+            'verb' => 'GET',
+        ],
+        [
+            'name' => 'Image#avatar',
+            'url' => '/images/avatar/{uuid}',
+            'verb' => 'GET',
+        ],
     ]
 ]);

@@ -6,7 +6,9 @@
 
 namespace OCA\Unsplash\Controller;
 
-use OCA\Unsplash\Services\SettingsService;
+use OCA\Unsplash\Cache\ImageCache;
+use OCA\Unsplash\Services\AppSettingsService;
+use OCA\Unsplash\Settings\AdminSettings;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -20,20 +22,26 @@ use OCP\IRequest;
 class AdminSettingsController extends Controller {
 
     /**
-     * @var SettingsService
+     * @var AppSettingsService
      */
     protected $settings;
+    /**
+     * @var ImageCache
+     */
+    private $imageCache;
 
     /**
      * PersonalSettingsController constructor.
      *
      * @param                 $appName
      * @param IRequest        $request
-     * @param SettingsService $settings
+     * @param AppSettingsService $settings
+     * @param ImageCache $imageCache
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings) {
+    public function __construct($appName, IRequest $request, AppSettingsService $settings, ImageCache $imageCache) {
         parent::__construct($appName, $request);
         $this->settings = $settings;
+        $this->imageCache = $imageCache;
     }
 
     /**
@@ -43,6 +51,7 @@ class AdminSettingsController extends Controller {
      * @param        $value
      *
      * @return JSONResponse
+     * @throws \OCP\Files\NotPermittedException
      */
     public function set(string $key, $value): JSONResponse {
 
@@ -50,9 +59,16 @@ class AdminSettingsController extends Controller {
         if($value === 'false') $value = false;
 
         if($key === 'style/header') {
-            $this->settings->setServerStyleHeaderEnabled($value);
+            $this->settings->setHeaderEnabled($value);
         } else if($key === 'style/login') {
-            $this->settings->setServerStyleLoginEnabled($value);
+            $this->settings->setLoginEnabled($value);
+        } else if($key === 'api/query') {
+            if(!in_array($value, AdminSettings::$apiQueryOptions)) $value = 'nature';
+            $this->settings->setImageSubject($value);
+            $this->imageCache->clear();
+        } else if($key === 'api/key') {
+            $this->settings->setApiKey($value);
+            $this->imageCache->clear();
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

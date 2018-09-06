@@ -6,7 +6,7 @@
 
 namespace OCA\Unsplash\Controller;
 
-use OCA\Unsplash\Services\SettingsService;
+use OCA\Unsplash\Services\UserSettingsService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -20,18 +20,18 @@ use OCP\IRequest;
 class PersonalSettingsController extends Controller {
 
     /**
-     * @var SettingsService
+     * @var UserSettingsService
      */
     protected $settings;
 
     /**
      * PersonalSettingsController constructor.
      *
-     * @param                 $appName
-     * @param IRequest        $request
-     * @param SettingsService $settings
+     * @param                     $appName
+     * @param IRequest            $request
+     * @param UserSettingsService $settings
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings) {
+    public function __construct($appName, IRequest $request, UserSettingsService $settings) {
         parent::__construct($appName, $request);
         $this->settings = $settings;
     }
@@ -53,7 +53,7 @@ class PersonalSettingsController extends Controller {
         if($value === 'false') $value = false;
 
         if($key === 'style/header') {
-            $this->settings->setUserStyleHeaderEnabled($value);
+            $this->settings->setHeaderEnabled($value);
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

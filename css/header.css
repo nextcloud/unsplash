@@ -1,32 +1,13 @@
+:root {
+    --unsplash-header-image: url(../../../custom_apps/unsplash/img/pixel.gif);
+}
+
 #body-user #header,
 #body-settings #header,
 #body-public #header {
     background-color    : #777 !important;
-    background-image    : url('https://source.unsplash.com/random/featured/?nature') !important;
+    background-image    : var(--unsplash-header-image) !important;
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;
-}
-
-/* Header icons get drop shadow for visibility */
-#header .logo.logo-icon,
-#appmenu svg,
-.notifications .notifications-button img,
-#contactsmenu .icon-contacts,
-#expand .avatardiv-shown img,
-#expand .expandDisplayName {
-    /* Modified .icon-shadow with modified $color-box-shadow */
-    filter : drop-shadow(0 0 3px rgba(50, 50, 50, .5)) !important;
-}
-
-/* Header icons get higher opacity for visibility */
-#appmenu li a {
-    opacity : .8;
-}
-
-.searchbox input[type="search"]:focus,
-.searchbox input[type="search"]:active,
-.searchbox input[type="search"]:valid {
-    background-color : rgba(0, 0, 0, .5) !important;
-    border           : none !important
 }

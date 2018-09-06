@@ -6,7 +6,7 @@
 
 namespace OCA\Unsplash\Settings;
 
-use OCA\Unsplash\Services\SettingsService;
+use OCA\Unsplash\Services\AppSettingsService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
 use OCP\Settings\ISettings;
@@ -24,17 +24,36 @@ class AdminSettings implements ISettings {
     protected $urlGenerator;
 
     /**
-     * @var SettingsService
+     * @var AppSettingsService
      */
     protected $settings;
 
     /**
+     * @var array
+     */
+    public static $apiQueryOptions
+        = [
+            'any',
+            'architecture',
+            'nature',
+            'space',
+            'drone-view',
+            'landscape',
+            'city',
+            'science',
+            'ocean',
+            'forest',
+            'mountain',
+            'wallpaper'
+        ];
+
+    /**
      * AdminSection constructor.
      *
-     * @param IURLGenerator   $urlGenerator
-     * @param SettingsService $settings
+     * @param IURLGenerator      $urlGenerator
+     * @param AppSettingsService $settings
      */
-    public function __construct(IURLGenerator $urlGenerator, SettingsService $settings) {
+    public function __construct(IURLGenerator $urlGenerator, AppSettingsService $settings) {
         $this->urlGenerator = $urlGenerator;
         $this->settings     = $settings;
     }
@@ -45,8 +64,10 @@ class AdminSettings implements ISettings {
     public function getForm(): TemplateResponse {
         return new TemplateResponse('unsplash', 'settings/admin', [
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
-            'styleLogin'      => $this->settings->getServerStyleLoginEnabled(),
-            'styleHeader'     => $this->settings->getServerStyleHeaderEnabled()
+            'styleLogin'      => $this->settings->isLoginEnabled(),
+            'styleHeader'     => $this->settings->isHeaderEnabled(),
+            'apiQuery'        => $this->settings->getImageSubject(),
+            'apiKey'          => $this->settings->getApiKey()
         ]);
     }
 
