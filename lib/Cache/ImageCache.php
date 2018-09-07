@@ -12,6 +12,7 @@ namespace OCA\Unsplash\Cache;
  * @package OCA\Unsplash\Cache
  */
 class ImageCache extends AbstractCache {
+
     const CACHE_NAME = 'images';
 
     /**

@@ -41,8 +41,8 @@ class PersonalSettingsController extends Controller {
      *
      * @NoAdminRequired
      *
-     * @param string $key
-     * @param        $value
+     * @param string  $key The key of the setting
+     * @param  string $value The new value of the setting
      *
      * @return JSONResponse
      * @throws \OCP\PreConditionNotMetException

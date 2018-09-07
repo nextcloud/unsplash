@@ -7,6 +7,7 @@
 namespace OCA\Unsplash\Settings;
 
 use OCA\Unsplash\Services\AppSettingsService;
+use OCA\Unsplash\Services\ImageFetchingService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
 use OCP\Settings\ISettings;
@@ -29,37 +30,26 @@ class AdminSettings implements ISettings {
     protected $settings;
 
     /**
-     * @var array
+     * @var ImageFetchingService
      */
-    public static $apiQueryOptions
-        = [
-            'any',
-            'architecture',
-            'nature',
-            'space',
-            'drone-view',
-            'landscape',
-            'city',
-            'science',
-            'ocean',
-            'forest',
-            'mountain',
-            'wallpaper'
-        ];
+    protected $imageFetchingService;
 
     /**
      * AdminSection constructor.
      *
-     * @param IURLGenerator      $urlGenerator
-     * @param AppSettingsService $settings
+     * @param IURLGenerator        $urlGenerator
+     * @param AppSettingsService   $settings
+     * @param ImageFetchingService $imageFetchingService
      */
-    public function __construct(IURLGenerator $urlGenerator, AppSettingsService $settings) {
-        $this->urlGenerator = $urlGenerator;
-        $this->settings     = $settings;
+    public function __construct(IURLGenerator $urlGenerator, AppSettingsService $settings, ImageFetchingService $imageFetchingService) {
+        $this->urlGenerator         = $urlGenerator;
+        $this->settings             = $settings;
+        $this->imageFetchingService = $imageFetchingService;
     }
 
     /**
      * @return TemplateResponse returns the instance with all parameters set, ready to be rendered
+     * @throws \OCP\AppFramework\QueryException
      */
     public function getForm(): TemplateResponse {
         return new TemplateResponse('unsplash', 'settings/admin', [
@@ -67,7 +57,8 @@ class AdminSettings implements ISettings {
             'styleLogin'      => $this->settings->isLoginEnabled(),
             'styleHeader'     => $this->settings->isHeaderEnabled(),
             'apiQuery'        => $this->settings->getImageSubject(),
-            'apiKey'          => $this->settings->getApiKey()
+            'apiKey'          => $this->settings->getApiKey(),
+            'subjects'        => $this->imageFetchingService->getImageProvider()->getSubjects()
         ]);
     }
 

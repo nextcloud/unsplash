@@ -6,8 +6,7 @@
 
 namespace OCA\Unsplash\ImageProvider;
 
-use OCA\Unspash\Db\ImageInfo;
-use OCA\Unsplash\Model\Image;
+use OCA\Unsplash\Db\Image;
 
 /**
  * Interface ProviderInterface
@@ -17,12 +16,19 @@ use OCA\Unsplash\Model\Image;
 interface ProviderInterface {
 
     /**
-     * Returns a set of images matching the given query
+     * Returns a set of images matching the given subject
      *
-     * @param string $query
-     * @param int    $count
+     * @param string $subject A string to use as search query
+     * @param int    $amount  The amount of results expected
      *
-     * @return ImageInfo[]
+     * @return Image[] An array of images matching the $subject
      */
-    public function fetchImages(string $query, int $count): array;
+    public function fetchImages(string $subject, int $amount): array;
+
+    /**
+     * Returns a set of possible subjects/search queries for the service.
+     *
+     * @return array An array of strings with at least one entry
+     */
+    public function getSubjects(): array;
 }

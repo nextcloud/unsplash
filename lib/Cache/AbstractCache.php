@@ -38,7 +38,6 @@ abstract class AbstractCache {
      * Returns the cache folder
      *
      * @return ISimpleFolder
-     * @throws \Exception
      * @throws \OCP\Files\NotPermittedException
      */
     public function getCache(): ISimpleFolder {
@@ -56,23 +55,6 @@ abstract class AbstractCache {
      */
     public function clear() {
         $this->getCache()->delete();
-    }
-
-    /**
-     * @return array
-     * @throws \OCP\Files\NotPermittedException
-     * @deprecated Dont't get image ids from here
-     */
-    public function list(): array {
-        $fileCache   = $this->getCache();
-        $cachedFiles = $fileCache->getDirectoryListing();
-
-        $keys = [];
-        foreach($cachedFiles as $file) {
-            $keys[] = explode('.', $file->getName(), 2)[0];
-        }
-
-        return $keys;
     }
 
     /**
@@ -102,6 +84,8 @@ abstract class AbstractCache {
 
             if($cache->fileExists($key)) return $cache->getFile($key);
         } catch(\Throwable $e) {
+            \OC::$server->getLogger()->logException($e);
+
             return null;
         }
 
@@ -139,8 +123,15 @@ abstract class AbstractCache {
      * @throws \OCP\Files\NotPermittedException
      */
     public function remove(string $key) {
-        $this->get($this->getRealKey($key))->delete();
+        $this->get($key)->delete();
     }
 
+    /**
+     * Get the file name for the given key
+     *
+     * @param $key
+     *
+     * @return mixed
+     */
     abstract function getRealKey($key);
 }

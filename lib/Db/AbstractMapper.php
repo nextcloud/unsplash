@@ -13,7 +13,7 @@ use OCP\IDBConnection;
 /**
  * Class AbstractMapper
  *
- * @package OCA\Unspash\Db
+ * @package OCA\Unsplash\Db
  */
 abstract class AbstractMapper extends Mapper {
 
@@ -31,7 +31,7 @@ abstract class AbstractMapper extends Mapper {
     /**
      * @param string $uuid
      *
-     * @return Entity
+     * @return Image
      *
      * @throws \OCP\AppFramework\Db\DoesNotExistException
      * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException
@@ -48,7 +48,7 @@ abstract class AbstractMapper extends Mapper {
     /**
      * @param string $subject
      *
-     * @return Entity[]
+     * @return Image[]
      */
     public function findAllBySubject(string $subject): array {
         list($sql, $params) = $this->getStatement();
@@ -60,7 +60,7 @@ abstract class AbstractMapper extends Mapper {
     }
 
     /**
-     * @return Entity[]
+     * @return Image[]
      */
     public function findAll(): array {
         list($sql, $params) = $this->getStatement();

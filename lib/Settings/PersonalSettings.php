@@ -12,9 +12,9 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
 
 /**
- * Class PersonalSettingsController
+ * Class PersonalSettings
  *
- * @package OCA\Unsplash\Controller\Settings
+ * @package OCA\Unsplash\Settings
  */
 class PersonalSettings {
 

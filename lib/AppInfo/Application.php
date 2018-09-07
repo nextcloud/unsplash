@@ -8,9 +8,10 @@ namespace OCA\Unsplash\AppInfo;
 
 use OC;
 use OCA\Unsplash\Services\AppSettingsService;
-use OCA\Unsplash\Services\RandomImageService;
+use OCA\Unsplash\Services\UserImageService;
 use OCA\Unsplash\Services\UserSettingsService;
 use OCP\AppFramework\App;
+use OCP\AppFramework\QueryException;
 use OCP\Util;
 
 /**
@@ -47,7 +48,7 @@ class Application extends App {
     }
 
     /**
-     * Add the stylesheets
+     * Decides which stylesheets should be added
      *
      * @throws \OCP\AppFramework\QueryException
      */
@@ -57,32 +58,37 @@ class Application extends App {
             /** @var AppSettingsService $settings */
             $settings = $this->getContainer()->query(AppSettingsService::class);
 
-            if($settings->isLoginEnabled()) $this->addMetaTags('login');
+            if($settings->isLoginEnabled()) $this->addMetaTags('login', $settings->getImageSubject());
         } else {
             /** @var UserSettingsService $settings */
             $settings = $this->getContainer()->query(UserSettingsService::class);
 
-            if($settings->isHeaderEnabled()) $this->addMetaTags('header');
+            if($settings->isHeaderEnabled()) $this->addMetaTags('header', $settings->getImageSubject());
         }
     }
 
     /**
-     * @param string $area
+     * Adds stylesheets and image data to the page
      *
-     * @throws \OCP\AppFramework\QueryException
+     * @param string $area
+     * @param string $subject
+     *
+     * @throws QueryException
      */
-    public function addMetaTags(string $area) {
+    public function addMetaTags(string $area, string $subject) {
+        /** @var UserImageService $imageService */
+        $imageService = $this->getContainer()->query(UserImageService::class);
 
-        /** @var RandomImageService $randomImageService */
-        $randomImageService = $this->getContainer()->query(RandomImageService::class);
+        try {
+            $imageInfo = $imageService->getUserImage($subject);
+            if(empty($imageInfo)) return;
+        } catch(\Throwable $e) {
+            \OC::$server->getLogger()->logException($e);
 
-        $imageInfo = $randomImageService->getRandomImage();
-        if(empty($imageInfo)) return;
+            return;
+        }
 
-        $infoArray           = $imageInfo->toArray();
-        $infoArray['url']    = OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $imageInfo->getUuid()]);
-        $infoArray['avatar'] = OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.avatar', ['uuid' => $imageInfo->getUuid()]);
-
+        $infoArray = $imageInfo->toArray();
         Util::addHeader('meta', ['name' => 'unsplash.image', 'content' => json_encode($infoArray)]);
         Util::addHeader('meta', ['name' => 'unsplash.area', 'content' => $area]);
 

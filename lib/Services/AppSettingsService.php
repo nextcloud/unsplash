@@ -15,11 +15,14 @@ use OCP\IConfig;
  */
 class AppSettingsService {
 
-    const STYLE_LOGIN  = 'unsplash/style/login';
-    const STYLE_HEADER = 'unsplash/style/header';
-    const IMAGE_TOPIC  = 'unsplash/image/subject';
-    const IMAGE_AMOUNT = 'unsplash/image/amount';
-    const API_KEY      = 'unsplash/api/key';
+    const STYLE_LOGIN       = 'unsplash/style/login';
+    const STYLE_HEADER      = 'unsplash/style/header';
+    const IMAGE_SUBJECT     = 'unsplash/image/subject';
+    const IMAGE_AMOUNT      = 'unsplash/image/amount';
+    const IMAGE_PROVIDER    = 'unsplash/image/provider';
+    const IMAGE_PERSISTENCE = 'unsplash/image/persistence';
+    const USER_SUBJECT      = 'unsplash/user/subject';
+    const API_KEY           = 'unsplash/api/key';
 
     /**
      * @var IConfig
@@ -29,26 +32,16 @@ class AppSettingsService {
     /**
      * @var string
      */
-    protected $userId;
-
-    /**
-     * @var string
-     */
     protected $appName;
 
     /**
-     * FaviconService constructor.
+     * AppSettingsService constructor.
      *
-     * @param string|null $userId
-     * @param             $appName
-     * @param IConfig     $config
+     * @param         $appName
+     * @param IConfig $config
      */
-    public function __construct($userId, $appName, IConfig $config) {
-        $this->config = $config;
-        $this->userId = $userId;
-        if($this->config->getSystemValue('maintenance', false)) {
-            $this->userId = null;
-        }
+    public function __construct($appName, IConfig $config) {
+        $this->config  = $config;
         $this->appName = $appName;
     }
 
@@ -64,10 +57,10 @@ class AppSettingsService {
     /**
      * Set if the page header should be styled by default
      *
-     * @param int $styleHeader
+     * @param bool $styleHeader
      */
-    public function setHeaderEnabled(int $styleHeader = 1) {
-        $this->config->setAppValue($this->appName, self::STYLE_HEADER, $styleHeader);
+    public function setHeaderEnabled(bool $styleHeader = true) {
+        $this->config->setAppValue($this->appName, self::STYLE_HEADER, $styleHeader ? 1:0);
     }
 
     /**
@@ -94,7 +87,7 @@ class AppSettingsService {
      * @return string
      */
     public function getImageSubject(): string {
-        return $this->config->getAppValue($this->appName, self::IMAGE_TOPIC, 'any');
+        return $this->config->getAppValue($this->appName, self::IMAGE_SUBJECT, 'any');
     }
 
     /**
@@ -103,7 +96,7 @@ class AppSettingsService {
      * @param string $subject
      */
     public function setImageSubject(string $subject) {
-        $this->config->setAppValue($this->appName, self::IMAGE_TOPIC, $subject);
+        $this->config->setAppValue($this->appName, self::IMAGE_SUBJECT, $subject);
     }
 
     /**
@@ -122,6 +115,64 @@ class AppSettingsService {
      */
     public function setImageAmount(int $amount) {
         $this->config->setAppValue($this->appName, self::IMAGE_AMOUNT, $amount);
+    }
+
+    /**
+     * Get the service to provide images
+     *
+     * @return string
+     */
+    public function getImageProvider(): string {
+        return $this->config->getAppValue($this->appName, self::IMAGE_PROVIDER, 'unsplash');
+    }
+
+    /**
+     * Set the service to provide images
+     *
+     * @param string $provider
+     */
+    public function setImageProvider(string $provider) {
+        $this->config->setAppValue($this->appName, self::IMAGE_PROVIDER, $provider);
+    }
+
+    /**
+     * If the image should be persistent throughout the whole session
+     *
+     * @return bool
+     */
+    public function imagePersistenceEnabled(): bool {
+        $styleHeader = $this->config->getAppValue($this->appName, self::IMAGE_PERSISTENCE, 1);
+
+        return $styleHeader == 1;
+    }
+
+    /**
+     * Set if the image should be persistent throughout the whole session
+     *
+     * @param bool $imagePersistence
+     *
+     * @return void
+     */
+    public function setImagePersistenceEnabled(bool $imagePersistence = true) {
+        $this->config->setAppValue($this->appName, self::IMAGE_PERSISTENCE, $imagePersistence ? 1:0);
+    }
+
+    /**
+     * If the users are allowed to set their own subject
+     *
+     * @return bool
+     */
+    public function allowUserSubjects(): bool {
+        return $this->config->getAppValue($this->appName, self::USER_SUBJECT, 0) == 1;
+    }
+
+    /**
+     * Set if the users are allowed to set their own subject
+     *
+     * @param bool $allowUserSubject
+     */
+    public function setAllowUserSubjects(bool $allowUserSubject = false) {
+        $this->config->setAppValue($this->appName, self::USER_SUBJECT, $allowUserSubject);
     }
 
     /**

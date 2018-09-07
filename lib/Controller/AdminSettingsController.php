@@ -8,7 +8,7 @@ namespace OCA\Unsplash\Controller;
 
 use OCA\Unsplash\Cache\ImageCache;
 use OCA\Unsplash\Services\AppSettingsService;
-use OCA\Unsplash\Settings\AdminSettings;
+use OCA\Unsplash\Services\ImageFetchingService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -25,33 +25,41 @@ class AdminSettingsController extends Controller {
      * @var AppSettingsService
      */
     protected $settings;
+
     /**
      * @var ImageCache
      */
-    private $imageCache;
+    protected $imageCache;
+
+    /**
+     * @var ImageFetchingService
+     */
+    protected $imageFetchingService;
 
     /**
      * PersonalSettingsController constructor.
      *
-     * @param                 $appName
-     * @param IRequest        $request
-     * @param AppSettingsService $settings
-     * @param ImageCache $imageCache
+     * @param                      $appName
+     * @param IRequest             $request
+     * @param AppSettingsService   $settings
+     * @param ImageCache           $imageCache
+     * @param ImageFetchingService $imageFetchingService
      */
-    public function __construct($appName, IRequest $request, AppSettingsService $settings, ImageCache $imageCache) {
+    public function __construct($appName, IRequest $request, AppSettingsService $settings, ImageCache $imageCache, ImageFetchingService $imageFetchingService) {
         parent::__construct($appName, $request);
-        $this->settings = $settings;
-        $this->imageCache = $imageCache;
+        $this->settings             = $settings;
+        $this->imageCache           = $imageCache;
+        $this->imageFetchingService = $imageFetchingService;
     }
 
     /**
-     * Update the app default settings
+     * Update the global app settings
      *
-     * @param string $key
-     * @param        $value
+     * @param string $key   The setting key
+     * @param string $value The new value
      *
      * @return JSONResponse
-     * @throws \OCP\Files\NotPermittedException
+     * @throws \OCP\AppFramework\QueryException
      */
     public function set(string $key, $value): JSONResponse {
 
@@ -63,12 +71,11 @@ class AdminSettingsController extends Controller {
         } else if($key === 'style/login') {
             $this->settings->setLoginEnabled($value);
         } else if($key === 'api/query') {
-            if(!in_array($value, AdminSettings::$apiQueryOptions)) $value = 'nature';
+            $subjects = $this->imageFetchingService->getImageProvider()->getSubjects();
+            if(!in_array($value, $subjects)) $value = $subjects[0];
             $this->settings->setImageSubject($value);
-            $this->imageCache->clear();
         } else if($key === 'api/key') {
             $this->settings->setApiKey($value);
-            $this->imageCache->clear();
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

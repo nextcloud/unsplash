@@ -5,7 +5,7 @@
     <overwrite>true</overwrite>
     <charset>utf8</charset>
     <table>
-        <name>*dbprefix*unspash_image_info</name>
+        <name>*dbprefix*unspash_images</name>
         <declaration>
             <field>
                 <name>id</name>
@@ -23,10 +23,24 @@
                 <notnull>true</notnull>
             </field>
             <field>
-                <name>provider</name>
-                <type>string</type>
-                <length>36</length>
-                <notnull>true</notnull>
+                <name>url</name>
+                <type>text</type>
+                <length>2048</length>
+            </field>
+            <field>
+                <name>source</name>
+                <type>text</type>
+                <length>2048</length>
+            </field>
+            <field>
+                <name>avatar_url</name>
+                <type>text</type>
+                <length>2048</length>
+            </field>
+            <field>
+                <name>avatar_source</name>
+                <type>text</type>
+                <length>2048</length>
             </field>
             <field>
                 <name>link</name>
@@ -34,12 +48,18 @@
                 <length>2048</length>
             </field>
             <field>
-                <name>subject</name>
+                <name>provider</name>
+                <type>string</type>
+                <length>36</length>
+                <notnull>true</notnull>
+            </field>
+            <field>
+                <name>creator</name>
                 <type>string</type>
                 <length>36</length>
             </field>
             <field>
-                <name>creator</name>
+                <name>subject</name>
                 <type>string</type>
                 <length>36</length>
             </field>

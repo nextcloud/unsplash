@@ -15,8 +15,9 @@ use OCP\IConfig;
  */
 class UserSettingsService {
 
-    const STYLE_HEADER  = 'unsplash/style/header';
-    const IMAGE_SUBJECT = 'unsplash/image/subject';
+    const STYLE_HEADER      = 'unsplash/style/header';
+    const IMAGE_SUBJECT     = 'unsplash/image/subject';
+    const IMAGE_PERSISTENCE = 'unsplash/image/persistence';
 
     /**
      * @var IConfig
@@ -39,9 +40,9 @@ class UserSettingsService {
     protected $appSettings;
 
     /**
-     * FaviconService constructor.
+     * UserSettingsService constructor.
      *
-     * @param string|null        $userId
+     * @param                    $userId
      * @param                    $appName
      * @param IConfig            $config
      * @param AppSettingsService $appSettings
@@ -79,14 +80,37 @@ class UserSettingsService {
     }
 
     /**
+     * If the image should be persistent throughout the whole session
+     *
+     * @return bool
+     */
+    public function imagePersistenceEnabled(): bool {
+        $styleHeader = $this->config->getUserValue($this->userId, $this->appName, self::IMAGE_PERSISTENCE, null);
+
+        if($styleHeader === null) return $this->appSettings->imagePersistenceEnabled();
+
+        return $styleHeader == 1;
+    }
+
+    /**
+     * Set if the image should be persistent throughout the whole session
+     *
+     * @param bool $imagePersistence
+     *
+     * @return void
+     * @throws \OCP\PreConditionNotMetException
+     */
+    public function setImagePersistenceEnabled(bool $imagePersistence = true) {
+        $this->config->setUserValue($this->userId, $this->appName, self::IMAGE_PERSISTENCE, $imagePersistence ? 1:0);
+    }
+
+    /**
      * Get the subject of the images to use
      *
      * @return string
-     * @deprecated
-     * @throws \OCP\PreConditionNotMetException
      */
     public function getImageSubject(): string {
-        $subject = $this->config->setUserValue($this->userId, $this->appName, self::IMAGE_SUBJECT, null);
+        $subject = $this->config->getUserValue($this->userId, $this->appName, self::IMAGE_SUBJECT, null);
 
         if($subject === null) return $this->appSettings->getImageSubject();
 

@@ -21,7 +21,7 @@
     <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="7.0" />
-        <nextcloud min-version="14" max-version="15"/>
+        <nextcloud min-version="13" max-version="15"/>
     </dependencies>
     <background-jobs>
         <job>OCA\Unsplash\Cron\FetchImages</job>

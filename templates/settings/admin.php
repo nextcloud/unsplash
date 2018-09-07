@@ -31,7 +31,7 @@ style('unsplash', 'settings');
         <div>
             <label for="unsplash-api-query"><? p($l->t('Image theme')); ?></label>&nbsp;
             <select id="unsplash-api-query" name="unsplash-api-query" data-setting="api/query">
-                <?php foreach(\OCA\Unsplash\Settings\AdminSettings::$apiQueryOptions as $option): ?>
+                <?php foreach($_['subjects'] as $option): ?>
                 <option value="<?=$option?>" <? echo $option===$_['apiQuery'] ? 'selected':''?> ><? p($l->t(ucfirst($option)))?></option>
                 <?php endforeach; ?>
             </select>

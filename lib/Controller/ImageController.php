@@ -8,11 +8,10 @@ namespace OCA\Unsplash\Controller;
 
 use OCA\Unsplash\Cache\AvatarCache;
 use OCA\Unsplash\Cache\ImageCache;
-use OCA\Unsplash\Services\ImageService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\FileDisplayResponse;
-use OCP\AppFramework\Http\JSONResponse;
+use OCP\Files\SimpleFS\ISimpleFile;
 use OCP\IRequest;
 
 /**
@@ -21,14 +20,16 @@ use OCP\IRequest;
  * @package OCA\Unsplash\Controller
  */
 class ImageController extends Controller {
+
     /**
      * @var ImageCache
      */
-    private $imageCache;
+    protected $imageCache;
+
     /**
      * @var AvatarCache
      */
-    private $avatarCache;
+    protected $avatarCache;
 
     /**
      * ImageController constructor.
@@ -40,47 +41,65 @@ class ImageController extends Controller {
      */
     public function __construct(string $appName, IRequest $request, ImageCache $imageCache, AvatarCache $avatarCache) {
         parent::__construct($appName, $request);
-        $this->imageCache = $imageCache;
+        $this->imageCache  = $imageCache;
         $this->avatarCache = $avatarCache;
     }
 
     /**
+     *
+     * Returns the image with the given uuid
+     *
      * @PublicPage
      * @NoAdminRequired
      * @NoCSRFRequired
-     * @UseSession
      *
      * @param string $uuid
      *
      * @return FileDisplayResponse
      */
-    public function background(string $uuid) {
+    public function background(string $uuid): FileDisplayResponse {
         $image = $this->imageCache->get($uuid);
 
-        return new FileDisplayResponse(
-            $image,
-            Http::STATUS_OK,
-            ['Content-Type' => $image->getMimeType()]
-        );
+        return $this->getImageResponse($image);
     }
 
     /**
+     * Returns the avatar image with the given uuid
+     *
      * @PublicPage
      * @NoAdminRequired
      * @NoCSRFRequired
-     * @UseSession
      *
      * @param string $uuid
      *
      * @return FileDisplayResponse
      */
-    public function avatar(string $uuid) {
+    public function avatar(string $uuid): FileDisplayResponse {
         $avatar = $this->avatarCache->get($uuid);
 
-        return new FileDisplayResponse(
-            $avatar,
+        return $this->getImageResponse($avatar);
+    }
+
+    /**
+     * @param ISimpleFile $file
+     *
+     * @return FileDisplayResponse
+     */
+    protected function getImageResponse(ISimpleFile $file): FileDisplayResponse {
+        $expires = new \DateTime();
+        $expires->setTimestamp(time() + 3600);
+
+        $response = new FileDisplayResponse(
+            $file,
             Http::STATUS_OK,
-            ['Content-Type' => $avatar->getMimeType()]
+            [
+                'Content-Type'  => $file->getMimeType(),
+                'Cache-Control' => 'public, immutable, max-age=3600',
+                'Expires'       => $expires->format(\DateTime::RFC2822),
+                'Pragma'        => 'cache'
+            ]
         );
+
+        return $response;
     }
 }
