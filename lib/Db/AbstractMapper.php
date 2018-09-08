@@ -17,7 +17,7 @@ use OCP\IDBConnection;
  */
 abstract class AbstractMapper extends Mapper {
 
-    const TABLE_NAME = 'unspash';
+    const TABLE_NAME = 'unsplash';
 
     /**
      * AbstractMapper constructor.

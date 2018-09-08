@@ -5,7 +5,7 @@
     <overwrite>true</overwrite>
     <charset>utf8</charset>
     <table>
-        <name>*dbprefix*unspash_images</name>
+        <name>*dbprefix*unsplash_images</name>
         <declaration>
             <field>
                 <name>id</name>

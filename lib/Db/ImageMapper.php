@@ -13,6 +13,6 @@ namespace OCA\Unsplash\Db;
  */
 class ImageMapper extends AbstractMapper {
 
-    const TABLE_NAME = 'unspash_images';
+    const TABLE_NAME = 'unsplash_images';
 
 }
