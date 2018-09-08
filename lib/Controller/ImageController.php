@@ -54,11 +54,12 @@ class ImageController extends Controller {
      * @NoCSRFRequired
      *
      * @param string $uuid
+     * @param string $resolution
      *
      * @return FileDisplayResponse
      */
-    public function background(string $uuid): FileDisplayResponse {
-        $image = $this->imageCache->get($uuid);
+    public function background(string $uuid, string $resolution): FileDisplayResponse {
+        $image = $this->imageCache->get($uuid.'-'.$resolution);
 
         return $this->getImageResponse($image);
     }
@@ -87,14 +88,14 @@ class ImageController extends Controller {
      */
     protected function getImageResponse(ISimpleFile $file): FileDisplayResponse {
         $expires = new \DateTime();
-        $expires->setTimestamp(time() + 3600);
+        $expires->setTimestamp(time() + 10800);
 
         $response = new FileDisplayResponse(
             $file,
             Http::STATUS_OK,
             [
                 'Content-Type'  => $file->getMimeType(),
-                'Cache-Control' => 'public, immutable, max-age=3600',
+                'Cache-Control' => 'public, immutable, max-age=10800',
                 'Expires'       => $expires->format(\DateTime::RFC2822),
                 'Pragma'        => 'cache'
             ]

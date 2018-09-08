@@ -77,18 +77,20 @@ class ImageFetchingService {
      * Fetches new images with the given subject from the image provider.
      *
      * @param string $subject
-     * @param int    $count
+     * @param int    $amount
      *
      * @return array|Image[]
      * @throws QueryException
      * @throws NotFoundException
      * @throws NotPermittedException
      */
-    public function fetchImages(string $subject, int $count) {
-        $images = $this->getImageProvider()->fetchImages($subject, $count);
+    public function fetchImages(string $subject, int $amount) {
+        $images = $this->getImageProvider()->fetchImages($subject, $amount);
 
         foreach($images as $image) {
-            $this->downloadImage($image->getSource(), $image->getUuid(), $this->imageCache);
+            $this->downloadImage($image->getSourceSmall(), $image->getUuid().'-small', $this->imageCache);
+            $this->downloadImage($image->getSourceMedium(), $image->getUuid().'-medium', $this->imageCache);
+            $this->downloadImage($image->getSourceLarge(), $image->getUuid().'-large', $this->imageCache);
             $this->downloadImage($image->getAvatarSource(), $image->getUuid(), $this->avatarCache);
 
             $this->imageService->save($image);
@@ -134,8 +136,9 @@ class ImageFetchingService {
      *
      * Download an image from the internet
      *
-     * @param $url
-     * @param $filename
+     * @param               $url
+     * @param               $filename
+     * @param AbstractCache $cache
      *
      * @return \OCP\Files\SimpleFS\ISimpleFile
      * @throws NotFoundException

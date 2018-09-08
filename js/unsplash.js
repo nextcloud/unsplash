@@ -7,7 +7,9 @@
         let area  = $('meta[name="unsplash.area"]').attr('content'),
             image = JSON.parse($('meta[name="unsplash.image"]').attr('content'));
 
-        document.body.style.setProperty('--unsplash-image', `url(${image.url})`);
+        document.body.style.setProperty('--unsplash-image-medium', `url(${image.image.medium.url})`);
+        document.body.style.setProperty('--unsplash-image-small', `url(${image.image.small.url})`);
+        document.body.style.setProperty('--unsplash-image-large', `url(${image.image.large.url})`);
         if(area === 'header' && $('#body-public').length === 0) {
             $('#appmenu').toggleClass('inverted', !image.isDark);
             createInforNotification(image);
@@ -39,7 +41,7 @@
     function createInforNotification(image) {
         $('.notifications-button').click(() => {
             if($('#unsplash-notification').length === 0) {
-                let $menu = $('.notification-container.menu'),
+                let $menu    = $('.notification-container.menu'),
                     $details = getDetailsMessage(image, 'unsplash-notification');
 
                 $menu.prepend($details);
@@ -56,7 +58,7 @@
      * @returns {HTMLElement}
      */
     function getDetailsMessage(image, id) {
-        let $details = $(`<a id="${id}" style="background-image:url(${image.avatar})" href="${image.link}" target="_blank" rel="noreferrer noopener"></a>`);
+        let $details = $(`<a id="${id}" style="background-image:url(${image.avatar.url})" href="${image.link}" target="_blank" rel="noreferrer noopener"></a>`);
 
         if(image.description && image.description.trim().length !== 0) $details.append(`<blockquote>&#8222;${image.description}&#8220;</blockquote>`);
         let text = OC.L10N.translate('unsplash', 'Image by {creator} from {provider}', image);

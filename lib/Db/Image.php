@@ -13,12 +13,20 @@ use OCP\AppFramework\Db\Entity;
  *
  * @method getUuid()
  * @method setUuid(string $uuid)
- * @method getUrl()
- * @method setUrl(string $url)
+ * @method getUrlSmall()
+ * @method setUrlSmall(string $urlSmall)
+ * @method getUrlMedium()
+ * @method setUrlMedium(string $urlMedium)
+ * @method getUrlLarge()
+ * @method setUrlLarge(string $urlLarge)
  * @method getAvatarUrl()
  * @method setAvatarUrl(string $avatarUrl)
- * @method getSource()
- * @method setSource(string $source)
+ * @method getSourceSmall()
+ * @method setSourceSmall(string $sourceSmall)
+ * @method getSourceMedium()
+ * @method setSourceMedium(string $sourceMedium)
+ * @method getSourceLarge()
+ * @method setSourceLarge(string $sourceLarge)
  * @method getAvatarSource()
  * @method setAvatarSource(string $avatarSource)
  * @method getProvider()
@@ -41,12 +49,32 @@ class Image extends Entity {
     /**
      * @var string
      */
-    protected $url;
+    protected $urlSmall;
 
     /**
      * @var string
      */
-    protected $source;
+    protected $sourceSmall;
+
+    /**
+     * @var string
+     */
+    protected $urlMedium;
+
+    /**
+     * @var string
+     */
+    protected $sourceMedium;
+
+    /**
+     * @var string
+     */
+    protected $urlLarge;
+
+    /**
+     * @var string
+     */
+    protected $sourceLarge;
 
     /**
      * @var string
@@ -98,9 +126,13 @@ class Image extends Entity {
      */
     public function __construct() {
         $this->addType('uuid', 'string');
-        $this->addType('url', 'string');
+        $this->addType('urlSmall', 'string');
+        $this->addType('urlMedium', 'string');
+        $this->addType('urlLarge', 'string');
+        $this->addType('sourceSmall', 'string');
+        $this->addType('sourceMedium', 'string');
+        $this->addType('sourceLarge', 'string');
         $this->addType('avatarUrl', 'string');
-        $this->addType('source', 'string');
         $this->addType('avatarSource', 'string');
         $this->addType('link', 'string');
         $this->addType('creator', 'string');
@@ -115,17 +147,31 @@ class Image extends Entity {
      */
     public function toArray(): array {
         return [
-            'uuid'         => $this->getUuid(),
-            'url'          => $this->getUrl(),
-            'source'       => $this->getSource(),
-            'avatar'       => $this->getAvatarUrl(),
-            'avatarSource' => $this->getAvatarSource(),
-            'link'         => $this->getLink(),
-            'creator'      => $this->getCreator(),
-            'subject'      => $this->getSubject(),
-            'description'  => $this->getDescription(),
-            'isDark'       => $this->getIsDark(),
-            'provider'     => $this->getProvider()
+            'uuid'        => $this->getUuid(),
+            'image'       => [
+                'small'  => [
+                    'url'    => $this->getUrlSmall(),
+                    'source' => $this->getSourceSmall()
+                ],
+                'medium' => [
+                    'url'    => $this->getUrlMedium(),
+                    'source' => $this->getSourceMedium()
+                ],
+                'large'  => [
+                    'url'    => $this->getUrlLarge(),
+                    'source' => $this->getSourceLarge()
+                ]
+            ],
+            'avatar'      => [
+                'url'    => $this->getAvatarUrl(),
+                'source' => $this->getAvatarSource()
+            ],
+            'link'        => $this->getLink(),
+            'creator'     => $this->getCreator(),
+            'subject'     => $this->getSubject(),
+            'description' => $this->getDescription(),
+            'isDark'      => $this->getIsDark(),
+            'provider'    => $this->getProvider()
         ];
     }
 }

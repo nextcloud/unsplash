@@ -23,19 +23,39 @@
                 <notnull>true</notnull>
             </field>
             <field>
-                <name>url</name>
+                <name>url_medium</name>
                 <type>text</type>
-                <length>2048</length>
+                <length>256</length>
             </field>
             <field>
-                <name>source</name>
+                <name>source_medium</name>
                 <type>text</type>
-                <length>2048</length>
+                <length>1024</length>
+            </field>
+            <field>
+                <name>url_small</name>
+                <type>text</type>
+                <length>256</length>
+            </field>
+            <field>
+                <name>source_small</name>
+                <type>text</type>
+                <length>1024</length>
+            </field>
+            <field>
+                <name>url_large</name>
+                <type>text</type>
+                <length>256</length>
+            </field>
+            <field>
+                <name>source_large</name>
+                <type>text</type>
+                <length>1024</length>
             </field>
             <field>
                 <name>avatar_url</name>
                 <type>text</type>
-                <length>2048</length>
+                <length>512</length>
             </field>
             <field>
                 <name>avatar_source</name>

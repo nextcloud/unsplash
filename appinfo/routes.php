@@ -15,8 +15,10 @@ $application->registerRoutes($this, [
 
         [
             'name' => 'Image#background',
-            'url' => '/images/background/{uuid}',
+            'url' => '/images/background/{uuid}/{resolution}',
             'verb' => 'GET',
+            'defaults' => ['resolution' => 'medium'],
+            'requirements' => ['resolution' => 'small|medium|large']
         ],
         [
             'name' => 'Image#avatar',

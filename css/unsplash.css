@@ -1,5 +1,7 @@
 :root {
-    --unsplash-image : url(../../../custom_apps/unsplash/img/pixel.gif);
+    --unsplash-image-small  : url(../../../custom_apps/unsplash/img/pixel.gif);
+    --unsplash-image-medium : url(../../../custom_apps/unsplash/img/pixel.gif);
+    --unsplash-image-large  : url(../../../custom_apps/unsplash/img/pixel.gif);
 }
 
 #body-login,
@@ -7,10 +9,28 @@
 #body-user #header,
 #body-settings #header {
     background-color    : rgba(0, 0, 0, 0) !important;
-    background-image    : var(--unsplash-image) !important;
+    background-image    : var(--unsplash-image-large) !important;
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;
+}
+
+@media all and (max-width : 640px ) {
+    #body-login,
+    #body-public,
+    #body-user #header,
+    #body-settings #header {
+        background-image : var(--unsplash-image-small) !important;
+    }
+}
+
+@media all and (max-width : 1920px ) {
+    #body-login,
+    #body-public,
+    #body-user #header,
+    #body-settings #header {
+        background-image : var(--unsplash-image-medium) !important;
+    }
 }
 
 /**
@@ -55,7 +75,7 @@
 
 #body-public footer p,
 #body-public footer a {
-    color: var(--color-primary-text) !important;
+    color : var(--color-primary-text) !important;
 }
 
 /**

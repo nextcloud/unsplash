@@ -71,7 +71,9 @@ class ImageService {
     }
 
     /**
-     * @param string $source
+     * @param string $sourceSmall
+     * @param string $sourceMedium
+     * @param string $sourceLarge
      * @param string $avatarSource
      * @param string $link
      * @param string $creator
@@ -83,7 +85,9 @@ class ImageService {
      * @return Image
      */
     public function create(
-        string $source,
+        string $sourceSmall,
+        string $sourceMedium,
+        string $sourceLarge,
         string $avatarSource,
         string $link,
         string $creator,
@@ -96,14 +100,22 @@ class ImageService {
         $uuid = $this->generateUuidV4();
 
         $url       = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid]);
+        $smallUrl  = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid, 'resolution' => 'small']);
+        $largeUrl  = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid, 'resolution' => 'large']);
         $avatarUrl = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.avatar', ['uuid' => $uuid]);
 
         $model = new Image();
         $model->setUuid($uuid);
 
-        $model->setUrl($url);
+        $model->setUrlSmall($smallUrl);
+        $model->setUrlMedium($url);
+        $model->setUrlLarge($largeUrl);
+
+        $model->setSourceSmall($sourceSmall);
+        $model->setSourceMedium($sourceMedium);
+        $model->setSourceLarge($sourceLarge);
+
         $model->setAvatarUrl($avatarUrl);
-        $model->setSource($source);
         $model->setAvatarSource($avatarSource);
 
         $model->setLink($link);
