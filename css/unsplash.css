@@ -83,7 +83,7 @@
  */
 #unsplash-notification {
     display         : block;
-    background      : #fff no-repeat 4px center;
+    background      : #0000 no-repeat 4px center;
     background-size : 40px;
     overflow        : hidden;
     box-sizing      : border-box;

@@ -4,8 +4,6 @@
  * and licensed under the AGPL.
  */
 
-namespace OCA\Unsplash\Model;
-
 namespace OCA\Unsplash\ImageProvider;
 
 use OCA\Theming\Util;
@@ -56,7 +54,7 @@ class UnsplashProvider implements ProviderInterface {
 
         $images = [];
         foreach($imageInfo as $info) {
-            $isDark = $this->util->invertTextColor($info->color);
+            $isDark = !$this->util->invertTextColor($info->color);
 
             $images[] = $this->imageService->create(
                 $info->urls->small,
@@ -67,7 +65,7 @@ class UnsplashProvider implements ProviderInterface {
                 $info->user->name,
                 $subject,
                 strval($info->description),
-                'unsplash.com',
+                $this->getName(),
                 $isDark
             );
         }
@@ -121,5 +119,33 @@ class UnsplashProvider implements ProviderInterface {
             'mountain',
             'wallpaper'
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getUrl(): string {
+        return 'https://unsplash.com/';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getLicenseUrl(): string {
+        return 'https://unsplash.com/license';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getName(): string {
+        return 'Unsplash';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getId(): string {
+        return 'unsplash';
     }
 }
