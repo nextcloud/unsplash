@@ -60,7 +60,7 @@ class UnsplashProvider implements ProviderInterface {
 
             $images[] = $this->imageService->create(
                 $info->urls->regular,
-                $info->user->profile_image->small,
+                $info->user->profile_image->medium,
                 $info->links->html,
                 $info->user->name,
                 $subject,

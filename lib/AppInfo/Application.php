@@ -92,7 +92,7 @@ class Application extends App {
         Util::addHeader('meta', ['name' => 'unsplash.image', 'content' => json_encode($infoArray)]);
         Util::addHeader('meta', ['name' => 'unsplash.area', 'content' => $area]);
 
-        Util::addStyle('unsplash', $area);
+        Util::addStyle('unsplash', 'unsplash');
         Util::addScript('unsplash', 'unsplash');
     }
 

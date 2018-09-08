@@ -1,15 +1,17 @@
 {
     "translations": {
-        "Saved": "Saved",
-        "Failed": "Failed",
-        "Unsplash": "Unsplash",
-        "Random Background Images":"Random Background Images",
-        "Set random image as login background":"Set random image as login background",
-        "Set random image as header background":"Set random image as header background",
-        "You can customize %s with random background images.":"You can customize %s with random background images.",
-        "Here you can specify where random backgrounds should be used by default.":"Here you can specify where Unsplash backgrounds should be used by default.",
-        "These images are provided %s by %s.":"These images are provided %s by %s.",
-        "under an open license free of charge":"under an open license free of charge"
+        "Saved"                                                                    : "Saved",
+        "Failed"                                                                   : "Failed",
+        "Unsplash"                                                                 : "Unsplash",
+        "Image theme"                                                              : "Image theme",
+        "Random Background Images"                                                 : "Random Background Images",
+        "Use random background image for navigation bar and public pages"          : "Use random background image for navigation bar and public pages",
+        "Use random background image for login and public pages for visitors"      : "Use random background image for login and public pages for visitors",
+        "Use random background image for navigation bar and public pages for users": "Use random background image for navigation bar and public pages for users",
+        "You can customize %s with random background images."                      : "You can customize %s with random background images.",
+        "Here you can specify where random backgrounds should be used by default." : "Here you can specify where Unsplash backgrounds should be used by default.",
+        "These images are provided %s by %s."                                      : "These images are provided %s by %s.",
+        "under an open license free of charge"                                     : "under an open license free of charge"
     },
     "pluralForm"  : "nplurals=2; plural=(n != 1);"
 }

@@ -21,11 +21,11 @@ style('unsplash', 'settings');
     <form>
         <div>
             <input id="unsplash-style-login" name="unsplash-style-login" data-setting="style/login" type="checkbox" <?=$_['styleLogin'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-login"><? p($l->t('Set random image as login background')); ?></label>
+            <label for="unsplash-style-login"><? p($l->t('Use random background image for login and public pages for visitors')); ?></label>
         </div>
         <div>
             <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-header"><? p($l->t('Set random image as header background')); ?></label>
+            <label for="unsplash-style-header"><? p($l->t('Use random background image for navigation bar and public pages for users')); ?></label>
         </div>
         <br>
         <div>

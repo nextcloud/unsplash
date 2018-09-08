@@ -1,15 +1,17 @@
 {
     "translations": {
-        "Saved": "Gespeichert",
-        "Failed": "Fehlgeschlagen",
-        "Unsplash": "Unsplash",
-        "Random Background Images":"Zufällige Hintergrundbilder",
-        "Set random image as login background":"Verwende ein zufälliges Bild als Hintergrund der Anmeldeseite",
-        "Set random image as header background":"Verwende ein zufälliges Bild als Hintergrund der Navigationsleiste",
-        "You can customize %s with random background images.":"Sie können %s mit zufälligen Hintergrundbildern anpassen.",
-        "Here you can specify where random backgrounds should be used by default.":"Hier können Sie festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
-        "These images are provided %s by %s.":"Diese Bilder werden %s von %s bereitgestellt.",
-        "under an open license free of charge":"kostenlos unter einer freien Lizenz"
+        "Saved"                                                                    : "Gespeichert",
+        "Failed"                                                                   : "Fehlgeschlagen",
+        "Unsplash"                                                                 : "Unsplash",
+        "Image theme"                                                              : "Thema des Bildes",
+        "Random Background Images"                                                 : "Zufällige Hintergrundbilder",
+        "Use random background image for navigation bar and public pages"          : "Verwende ein zufälliges Hintergrundbild in der Navigationsleiste und auf öffentlichen Seiten",
+        "Use random background image for login and public pages for visitors"      : "Verwende ein zufälliges Hintergrundbild auf der Loginseite und den öffentlichen Seiten für Besucher",
+        "Use random background image for navigation bar and public pages for users": "Verwende ein zufälliges Hintergrundbild in der Navigationsleiste und den öffentlichen Seiten für Nutzer",
+        "You can customize %s with random background images."                      : "Sie können %s mit zufälligen Hintergrundbildern anpassen.",
+        "Here you can specify where random backgrounds should be used by default." : "Hier können Sie festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
+        "These images are provided %s by %s."                                      : "Diese Bilder werden %s von %s bereitgestellt.",
+        "under an open license free of charge"                                     : "kostenlos unter einer freien Lizenz"
     },
     "pluralForm"  : "nplurals=2; plural=(n != 1);"
 }

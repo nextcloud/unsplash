@@ -105,7 +105,7 @@ class AppSettingsService {
      * @return int
      */
     public function getImageAmount(): int {
-        return $this->config->getAppValue($this->appName, self::IMAGE_AMOUNT, 20);
+        return $this->config->getAppValue($this->appName, self::IMAGE_AMOUNT, 32);
     }
 
     /**

@@ -21,7 +21,7 @@ style('unsplash', 'settings');
     <form>
         <div>
             <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
+            <label for="unsplash-style-header"><?php p($l->t('Use random background image for navigation bar and public pages')); ?></label>
         </div>
     </form>
 </div>
