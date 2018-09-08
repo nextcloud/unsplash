@@ -70,6 +70,8 @@ class AdminSettingsController extends Controller {
             $this->settings->setHeaderEnabled($value);
         } else if($key === 'style/login') {
             $this->settings->setLoginEnabled($value);
+        } else if($key === 'image/persistence') {
+            $this->settings->setImagePersistenceEnabled($value);
         } else if($key === 'api/query') {
             $subjects = $this->imageFetchingService->getImageProvider()->getSubjects();
             if(!in_array($value, $subjects)) $value = $subjects[0];

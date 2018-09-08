@@ -5,6 +5,7 @@
         "Unsplash"                                                                 : "Unsplash",
         "Image theme"                                                              : "Thema des Bildes",
         "Random Background Images"                                                 : "Zufällige Hintergrundbilder",
+        "Use the same image for the whole session"                                 : "Verwende das gleiche Bild für die ganze Sitzung",
         "Use random background image for navigation bar and public pages"          : "Verwende ein zufälliges Hintergrundbild in der Navigationsleiste und auf öffentlichen Seiten",
         "Use random background image for login and public pages for visitors"      : "Verwende ein zufälliges Hintergrundbild auf der Loginseite und den öffentlichen Seiten für Besucher",
         "Use random background image for navigation bar and public pages for users": "Verwende ein zufälliges Hintergrundbild in der Navigationsleiste und den öffentlichen Seiten für Nutzer",

@@ -56,6 +56,7 @@ class PersonalSettings {
         return new TemplateResponse('unsplash', 'settings/personal', [
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.personal_settings.set'),
             'styleHeader'     => $this->settings->isHeaderEnabled(),
+            'keepImage'       => $this->settings->imagePersistenceEnabled(),
             'label'           => $this->theming->getEntity()
         ], '');
     }

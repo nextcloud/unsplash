@@ -54,6 +54,8 @@ class PersonalSettingsController extends Controller {
 
         if($key === 'style/header') {
             $this->settings->setHeaderEnabled($value);
+        } else if($key === 'image/persistence') {
+            $this->settings->setImagePersistenceEnabled($value);
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

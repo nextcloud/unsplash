@@ -56,6 +56,7 @@ class AdminSettings implements ISettings {
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
             'styleLogin'      => $this->settings->isLoginEnabled(),
             'styleHeader'     => $this->settings->isHeaderEnabled(),
+            'keepImage'       => $this->settings->imagePersistenceEnabled(),
             'apiQuery'        => $this->settings->getImageSubject(),
             'apiKey'          => $this->settings->getApiKey(),
             'subjects'        => $this->imageFetchingService->getImageProvider()->getSubjects()

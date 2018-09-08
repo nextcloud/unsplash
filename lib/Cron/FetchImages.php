@@ -47,8 +47,7 @@ class FetchImages extends TimedJob {
         ImageFetchingService $imageFetchingService
     ) {
 
-        //$this->setInterval(60*60);
-        $this->setInterval(0);
+        $this->setInterval(3*60*60);
 
         $this->settingsService      = $settingsService;
         $this->imageFetchingService = $imageFetchingService;
