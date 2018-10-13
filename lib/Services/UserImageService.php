@@ -7,6 +7,7 @@
 namespace OCA\Unsplash\Services;
 
 use OCA\Unsplash\Db\Image;
+use OCA\Unsplash\ImageProvider\ImageProviderInterface;
 use OCP\ISession;
 
 /**
@@ -29,9 +30,9 @@ class UserImageService {
     protected $imageService;
 
     /**
-     * @var ImageFetchingService
+     * @var ImageProviderInterface
      */
-    protected $imageFetchingService;
+    protected $imageProvider;
 
     /**
      * @var UserSettingsService
@@ -41,21 +42,21 @@ class UserImageService {
     /**
      * UserImageService constructor.
      *
-     * @param ISession             $session
-     * @param ImageService         $imageService
-     * @param UserSettingsService  $settingsService
-     * @param ImageFetchingService $imageFetchingService
+     * @param ISession               $session
+     * @param ImageService           $imageService
+     * @param ImageProviderInterface $imageProvider
+     * @param UserSettingsService    $settingsService
      */
     public function __construct(
         ISession $session,
         ImageService $imageService,
-        UserSettingsService $settingsService,
-        ImageFetchingService $imageFetchingService
+        ImageProviderInterface $imageProvider,
+        UserSettingsService $settingsService
     ) {
-        $this->session              = $session;
-        $this->imageService         = $imageService;
-        $this->settingsService      = $settingsService;
-        $this->imageFetchingService = $imageFetchingService;
+        $this->session         = $session;
+        $this->imageService    = $imageService;
+        $this->imageProvider   = $imageProvider;
+        $this->settingsService = $settingsService;
     }
 
     /**
@@ -82,11 +83,7 @@ class UserImageService {
      * @return null|Image
      */
     protected function getSessionImage() {
-        if(!$this->settingsService->imagePersistenceEnabled()) {
-            return null;
-        }
-
-        if(!$this->session->exists(self::SESSION_KEY)) {
+        if(!$this->session->exists(self::SESSION_KEY) || !$this->settingsService->imagePersistenceEnabled()) {
             return null;
         }
 
@@ -129,7 +126,7 @@ class UserImageService {
      */
     protected function getNewImage(string $subject) {
         try {
-            $image = $this->imageFetchingService->fetchImages($subject, 2)[0];
+            $image = $this->imageProvider->fetchImages($subject, 2)[0];
             $this->setSessionImage($image->getUuid());
 
             return $image;

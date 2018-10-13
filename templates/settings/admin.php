@@ -41,7 +41,7 @@ style('unsplash', 'settings');
             </select>
         </div>
             <div>
-            <label for="unsplash-api-key"><? p($l->t('Unsplash Api Key')); ?></label>&nbsp;
+            <label for="unsplash-api-key"><? p($l->t('Api Key')); ?></label>&nbsp;
             <input id="unsplash-api-key" name="unsplash-api-key" data-setting="api/key" value="<?=$_['apiKey']?>" />
         </div>
     </form>

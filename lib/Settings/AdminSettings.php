@@ -6,8 +6,8 @@
 
 namespace OCA\Unsplash\Settings;
 
+use OCA\Unsplash\ImageProvider\ImageProviderInterface;
 use OCA\Unsplash\Services\AppSettingsService;
-use OCA\Unsplash\Services\ImageFetchingService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
 use OCP\Settings\ISettings;
@@ -30,26 +30,25 @@ class AdminSettings implements ISettings {
     protected $settings;
 
     /**
-     * @var ImageFetchingService
+     * @var ImageProviderInterface
      */
-    protected $imageFetchingService;
+    protected $imageProvider;
 
     /**
      * AdminSection constructor.
      *
-     * @param IURLGenerator        $urlGenerator
-     * @param AppSettingsService   $settings
-     * @param ImageFetchingService $imageFetchingService
+     * @param IURLGenerator          $urlGenerator
+     * @param AppSettingsService     $settings
+     * @param ImageProviderInterface $imageProvider
      */
-    public function __construct(IURLGenerator $urlGenerator, AppSettingsService $settings, ImageFetchingService $imageFetchingService) {
-        $this->urlGenerator         = $urlGenerator;
-        $this->settings             = $settings;
-        $this->imageFetchingService = $imageFetchingService;
+    public function __construct(IURLGenerator $urlGenerator, AppSettingsService $settings, ImageProviderInterface $imageProvider) {
+        $this->urlGenerator  = $urlGenerator;
+        $this->settings      = $settings;
+        $this->imageProvider = $imageProvider;
     }
 
     /**
      * @return TemplateResponse returns the instance with all parameters set, ready to be rendered
-     * @throws \OCP\AppFramework\QueryException
      */
     public function getForm(): TemplateResponse {
         return new TemplateResponse('unsplash', 'settings/admin', [
@@ -59,7 +58,7 @@ class AdminSettings implements ISettings {
             'keepImage'       => $this->settings->imagePersistenceEnabled(),
             'apiQuery'        => $this->settings->getImageSubject(),
             'apiKey'          => $this->settings->getApiKey(),
-            'subjects'        => $this->imageFetchingService->getImageProvider()->getSubjects()
+            'subjects'        => $this->imageProvider->getSubjects()
         ]);
     }
 

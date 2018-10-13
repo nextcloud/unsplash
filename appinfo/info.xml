@@ -20,7 +20,7 @@
     <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
     <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
-        <php min-version="7.0" />
+        <php min-version="7.1" />
         <nextcloud min-version="13" max-version="15"/>
     </dependencies>
     <background-jobs>

@@ -176,21 +176,28 @@ class AppSettingsService {
     }
 
     /**
-     * Get the api key to use for the unsplash api
+     * Get the api key to use for the api
      *
      * @return string
      */
-    public function getApiKey(): string {
-        return $this->config->getAppValue($this->appName, self::API_KEY, 'ed3b10c059c5da43fe16c34ce5467b6c472abc10d21c498a6159df9fb556930a');
+    public function getApiKey(): ?string {
+        return $this->config->getAppValue($this->appName, self::API_KEY, null);
     }
 
     /**
-     * Set the api key to use for the unsplash api
+     * Set the api key to use for the api
      *
      * @param string $apiKey
      */
     public function setApiKey(string $apiKey) {
         $this->config->setAppValue($this->appName, self::API_KEY, $apiKey);
+    }
+
+    /**
+     * Delete the api key to use for the api
+     */
+    public function deleteApiKey() {
+        $this->config->deleteAppValue($this->appName, self::API_KEY);
     }
 
 }

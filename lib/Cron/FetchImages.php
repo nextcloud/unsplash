@@ -7,10 +7,9 @@
 namespace OCA\Unsplash\Cron;
 
 use OC\BackgroundJob\TimedJob;
+use OCA\Unsplash\ImageProvider\ImageProviderInterface;
 use OCA\Unsplash\Services\AppSettingsService;
-use OCA\Unsplash\Services\ImageFetchingService;
 use OCA\Unsplash\Services\ImageService;
-use OCP\AppFramework\QueryException;
 
 /**
  * Class FetchImages
@@ -30,36 +29,34 @@ class FetchImages extends TimedJob {
     protected $settingsService;
 
     /**
-     * @var ImageFetchingService
+     * @var ImageProviderInterface
      */
-    protected $imageFetchingService;
+    protected $imageProvider;
 
     /**
      * FetchImages constructor.
      *
-     * @param ImageService         $imageService
-     * @param AppSettingsService   $settingsService
-     * @param ImageFetchingService $imageFetchingService
+     * @param ImageService           $imageService
+     * @param AppSettingsService     $settingsService
+     * @param ImageProviderInterface $imageProvider
      */
     public function __construct(
         ImageService $imageService,
         AppSettingsService $settingsService,
-        ImageFetchingService $imageFetchingService
+        ImageProviderInterface $imageProvider
     ) {
 
-        $this->setInterval(3*60*60);
+        $this->setInterval(3 * 60 * 60);
 
-        $this->settingsService      = $settingsService;
-        $this->imageFetchingService = $imageFetchingService;
-        $this->imageService         = $imageService;
+        $this->settingsService = $settingsService;
+        $this->imageProvider   = $imageProvider;
+        $this->imageService    = $imageService;
     }
 
     /**
      * Updated the entire image library
      *
      * @param $argument
-     *
-     * @throws QueryException
      */
     protected function run($argument) {
         if(!$this->settingsService->allowUserSubjects()) {
@@ -71,7 +68,7 @@ class FetchImages extends TimedJob {
                 \OC::$server->getLogger()->logException($e);
             }
         } else {
-            $subjects = $this->imageFetchingService->getImageProvider()->getSubjects();
+            $subjects = $this->imageProvider->getSubjects();
 
             foreach($subjects as $subject) {
                 try {
@@ -87,19 +84,15 @@ class FetchImages extends TimedJob {
      * Fetches new images for the given subject and removes all current ones
      *
      * @param string $subject
-     *
-     * @throws \OCP\AppFramework\QueryException
-     * @throws \OCP\Files\NotFoundException
-     * @throws \OCP\Files\NotPermittedException
      */
     protected function updateImagesBySubject(string $subject) {
         $oldImages = $this->imageService->findAllBySubject($subject);
 
         $amount = $this->settingsService->getImageAmount();
-        $this->imageFetchingService->fetchImages($subject, $amount);
+        $this->imageProvider->fetchImages($subject, $amount);
 
         foreach($oldImages as $image) {
-            $this->imageFetchingService->removeImage($image);
+            $this->imageProvider->removeImage($image);
         }
     }
 }

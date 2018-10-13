@@ -7,8 +7,8 @@
 namespace OCA\Unsplash\Controller;
 
 use OCA\Unsplash\Cache\ImageCache;
+use OCA\Unsplash\ImageProvider\ImageProviderInterface;
 use OCA\Unsplash\Services\AppSettingsService;
-use OCA\Unsplash\Services\ImageFetchingService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\JSONResponse;
@@ -32,9 +32,9 @@ class AdminSettingsController extends Controller {
     protected $imageCache;
 
     /**
-     * @var ImageFetchingService
+     * @var ImageProviderInterface
      */
-    protected $imageFetchingService;
+    protected $imageProvider;
 
     /**
      * PersonalSettingsController constructor.
@@ -43,13 +43,13 @@ class AdminSettingsController extends Controller {
      * @param IRequest             $request
      * @param AppSettingsService   $settings
      * @param ImageCache           $imageCache
-     * @param ImageFetchingService $imageFetchingService
+     * @param ImageProviderInterface $imageProvider
      */
-    public function __construct($appName, IRequest $request, AppSettingsService $settings, ImageCache $imageCache, ImageFetchingService $imageFetchingService) {
+    public function __construct($appName, IRequest $request, AppSettingsService $settings, ImageCache $imageCache, ImageProviderInterface $imageProvider) {
         parent::__construct($appName, $request);
-        $this->settings             = $settings;
-        $this->imageCache           = $imageCache;
-        $this->imageFetchingService = $imageFetchingService;
+        $this->settings      = $settings;
+        $this->imageCache    = $imageCache;
+        $this->imageProvider = $imageProvider;
     }
 
     /**
@@ -59,7 +59,7 @@ class AdminSettingsController extends Controller {
      * @param string $value The new value
      *
      * @return JSONResponse
-     * @throws \OCP\AppFramework\QueryException
+     * @throws \Exception
      */
     public function set(string $key, $value): JSONResponse {
 
@@ -73,15 +73,32 @@ class AdminSettingsController extends Controller {
         } else if($key === 'image/persistence') {
             $this->settings->setImagePersistenceEnabled($value);
         } else if($key === 'api/query') {
-            $subjects = $this->imageFetchingService->getImageProvider()->getSubjects();
+            $subjects = $this->imageProvider->getSubjects();
             if(!in_array($value, $subjects)) $value = $subjects[0];
             $this->settings->setImageSubject($value);
         } else if($key === 'api/key') {
-            $this->settings->setApiKey($value);
+            $this->setApiKey($value);
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
 
         return new JSONResponse(['status' => 'ok']);
+    }
+
+    /**
+     * @param string $apiKey
+     *
+     * @throws \Exception
+     */
+    protected function setApiKey(string $apiKey): void {
+        if(empty($apiKey)) {
+            $this->settings->deleteApiKey();
+        } else {
+            if($this->imageProvider->validateApiKey($apiKey)) {
+                $this->settings->setApiKey($apiKey);
+            } else {
+                throw new \Exception('Invalid Api Key');
+            }
+        }
     }
 }

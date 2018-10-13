@@ -7,13 +7,14 @@
 namespace OCA\Unsplash\ImageProvider;
 
 use OCA\Unsplash\Db\Image;
+use OCP\Security\IContentSecurityPolicyManager;
 
 /**
- * Interface ProviderInterface
+ * Interface ImageProviderInterface
  *
  * @package OCA\Unsplash\ImageProvider
  */
-interface ProviderInterface {
+interface ImageProviderInterface {
 
     /**
      * Get the internal id to identify the service
@@ -59,4 +60,27 @@ interface ProviderInterface {
      * @return Image[] An array of images matching the $subject
      */
     public function fetchImages(string $subject, int $amount): array;
+
+    /**
+     * Removes an image from the local storage
+     *
+     * @param Image $image The image to be removed
+     */
+    public function removeImage(Image $image): void;
+
+    /**
+     * Register a csp for the images if necessary
+     *
+     * @param IContentSecurityPolicyManager $cpsManager
+     */
+    public function registerCsp(IContentSecurityPolicyManager $cpsManager): void;
+
+    /**
+     * Checks if a given api key is valid for the service
+     *
+     * @param string $apiKey The api key
+     *
+     * @return bool
+     */
+    public function validateApiKey(string $apiKey): bool;
 }

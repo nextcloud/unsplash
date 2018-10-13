@@ -7,6 +7,8 @@
 namespace OCA\Unsplash\AppInfo;
 
 use OC;
+use OCA\Unsplash\ImageProvider\ImageProviderInterface;
+use OCA\Unsplash\ImageProvider\UnsplashImageProvider;
 use OCA\Unsplash\Services\AppSettingsService;
 use OCA\Unsplash\Services\UserImageService;
 use OCA\Unsplash\Services\UserSettingsService;
@@ -36,14 +38,32 @@ class Application extends App {
      * @throws \OCP\AppFramework\QueryException
      */
     public function register() {
+        $this->registerImageProvider();
+        $this->registerContentSecurityPolicy();
         $this->registerPersonalSettings();
         $this->registerStyleSheets();
+    }
+
+
+    /**
+     * Register the currently active image service
+     *
+     * @throws QueryException
+     */
+    protected function registerImageProvider(): void {
+        /** @var AppSettingsService $settings */
+        $settings = $this->getContainer()->query(AppSettingsService::class);
+        $provider = $settings->getImageProvider();
+
+        if($provider == 'unsplash') {
+            \OC::$server->registerAlias(ImageProviderInterface::class, UnsplashImageProvider::class);
+        }
     }
 
     /**
      * Add the personal settings page
      */
-    public function registerPersonalSettings() {
+    protected function registerPersonalSettings() {
         \OCP\App::registerPersonal('unsplash', 'templates/personal');
     }
 
@@ -52,8 +72,7 @@ class Application extends App {
      *
      * @throws \OCP\AppFramework\QueryException
      */
-    public function registerStyleSheets() {
-
+    protected function registerStyleSheets(): void {
         if(!OC::$server->getUserSession()->isLoggedIn()) {
             /** @var AppSettingsService $settings */
             $settings = $this->getContainer()->query(AppSettingsService::class);
@@ -75,7 +94,7 @@ class Application extends App {
      *
      * @throws QueryException
      */
-    public function addMetaTags(string $area, string $subject) {
+    protected function addMetaTags(string $area, string $subject): void {
         /** @var UserImageService $imageService */
         $imageService = $this->getContainer()->query(UserImageService::class);
 
@@ -94,6 +113,18 @@ class Application extends App {
 
         Util::addStyle('unsplash', 'unsplash');
         Util::addScript('unsplash', 'unsplash');
+    }
+
+    /**
+     * Register the content security policy for the image service
+     *
+     * @throws QueryException
+     */
+    protected function registerContentSecurityPolicy(): void {
+        $container     = $this->getContainer();
+        $cspManager    = $container->getServer()->getContentSecurityPolicyManager();
+        $imageProvider = $container->query(ImageProviderInterface::class);
+        $imageProvider->registerCsp($cspManager);
     }
 
 }

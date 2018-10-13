@@ -32,6 +32,7 @@ class ImageService {
 
     /**
      * @return string
+     * @throws \Exception
      */
     public function generateUuidV4(): string {
         return implode('-', [
@@ -74,7 +75,11 @@ class ImageService {
      * @param string $sourceSmall
      * @param string $sourceMedium
      * @param string $sourceLarge
-     * @param string $avatarSource
+     * @param string $sourceAvatar
+     * @param string $urlSmall
+     * @param string $urlMedium
+     * @param string $urlLarge
+     * @param string $urlAvatar
      * @param string $link
      * @param string $creator
      * @param string $subject
@@ -83,12 +88,17 @@ class ImageService {
      * @param bool   $isDark
      *
      * @return Image
+     * @throws \Exception
      */
     public function create(
         string $sourceSmall,
         string $sourceMedium,
         string $sourceLarge,
-        string $avatarSource,
+        string $sourceAvatar,
+        string $urlSmall,
+        string $urlMedium,
+        string $urlLarge,
+        string $urlAvatar,
         string $link,
         string $creator,
         string $subject,
@@ -99,24 +109,19 @@ class ImageService {
 
         $uuid = $this->generateUuidV4();
 
-        $url       = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid]);
-        $smallUrl  = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid, 'resolution' => 'small']);
-        $largeUrl  = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.background', ['uuid' => $uuid, 'resolution' => 'large']);
-        $avatarUrl = \OC::$server->getURLGenerator()->linkToRoute('unsplash.Image.avatar', ['uuid' => $uuid]);
-
         $model = new Image();
         $model->setUuid($uuid);
 
-        $model->setUrlSmall($smallUrl);
-        $model->setUrlMedium($url);
-        $model->setUrlLarge($largeUrl);
+        $model->setUrlSmall($urlSmall);
+        $model->setUrlMedium($urlMedium);
+        $model->setUrlLarge($urlLarge);
 
         $model->setSourceSmall($sourceSmall);
         $model->setSourceMedium($sourceMedium);
         $model->setSourceLarge($sourceLarge);
 
-        $model->setAvatarUrl($avatarUrl);
-        $model->setAvatarSource($avatarSource);
+        $model->setAvatarUrl($urlAvatar);
+        $model->setAvatarSource($sourceAvatar);
 
         $model->setLink($link);
         $model->setCreator($creator);
