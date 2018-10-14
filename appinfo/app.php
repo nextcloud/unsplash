@@ -11,4 +11,5 @@ try {
     $app = new Application();
     $app->register();
 } catch(QueryException $e) {
+    \OC::$server->getLogger()->logException($e);
 }

@@ -39,9 +39,17 @@ class Application extends App {
      */
     public function register() {
         $this->registerImageProvider();
-        $this->registerContentSecurityPolicy();
         $this->registerPersonalSettings();
-        $this->registerStyleSheets();
+    }
+
+    /**
+     * Load everything reqired do show the image in the frontend
+     *
+     * @throws QueryException
+     */
+    public function load() {
+        $this->registerContentSecurityPolicy();
+        $this->registerFrontendResources();
     }
 
 
@@ -57,6 +65,7 @@ class Application extends App {
 
         if($provider == 'unsplash') {
             \OC::$server->registerAlias(ImageProviderInterface::class, UnsplashImageProvider::class);
+            $this->load();
         }
     }
 
@@ -72,7 +81,7 @@ class Application extends App {
      *
      * @throws \OCP\AppFramework\QueryException
      */
-    protected function registerStyleSheets(): void {
+    protected function registerFrontendResources(): void {
         if(!OC::$server->getUserSession()->isLoggedIn()) {
             /** @var AppSettingsService $settings */
             $settings = $this->getContainer()->query(AppSettingsService::class);

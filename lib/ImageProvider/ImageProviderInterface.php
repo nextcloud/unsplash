@@ -71,9 +71,9 @@ interface ImageProviderInterface {
     /**
      * Register a csp for the images if necessary
      *
-     * @param IContentSecurityPolicyManager $cpsManager
+     * @param IContentSecurityPolicyManager $cspManager
      */
-    public function registerCsp(IContentSecurityPolicyManager $cpsManager): void;
+    public function registerCsp(IContentSecurityPolicyManager $cspManager): void;
 
     /**
      * Checks if a given api key is valid for the service
