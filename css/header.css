@@ -29,6 +29,20 @@
 	opacity: .9;
 }
 
+/* Remove primary color background of header bar app titles */
+/* But get drop shadow for visibility */
+#appmenu li:hover a + span,
+#appmenu li a:focus + span,
+#appmenu li:hover span,
+#appmenu li:focus span,
+#appmenu li a:focus span {
+    opacity: .9;
+    background: transparent;
+    /* Modified .icon-shadow with modified $color-box-shadow */
+    text-shadow: 0 0 3px rgba(50, 50, 50, .5) !important;
+}
+
+/* Nicer search box background */
 .searchbox input[type="search"]:focus,
 .searchbox input[type="search"]:active,
 .searchbox input[type="search"]:valid {
