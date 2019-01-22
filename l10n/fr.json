@@ -1,0 +1,16 @@
+
+{
+    "translations": {
+        "Saved": "Sauvegardé",
+        "Failed": "Échoué",
+        "Unsplash": "Unsplash",
+        "Random Background Images":"Images de fond aléatoires",
+        "Set random image as login background":"Définir l'image aléatoire comme fond d'écran de connexion",
+        "Set random image as header background":"Définir l'image aléatoire comme arrière-plan de l'en-tête",
+        "You can customize %s with random background images.":"Vous pouvez personnaliser %s avec des images de fond aléatoires.",
+        "Here you can specify where random backgrounds should be used by default.":"Ici, vous pouvez spécifier où les fonds aléatoires doivent être utilisés par défaut.",
+        "These images are provided %s by %s.":"Ces images sont fournies %s par %s.",
+        "under an open license free of charge":"sous licence ouverte gratuite"
+    },
+    "pluralForm"  : "nplurals=2; plural=(n != 1);"
+}
