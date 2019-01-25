@@ -2,7 +2,7 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>unsplash</id>
-    <name>Unsplash</name>
+    <name>Splash</name>
     <summary>📸🔀☁️ Random background from Unsplash</summary>
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
     <description>Show a new random featured nature photo from Unsplash on the log in screen and (optionally) in the header.</description>
