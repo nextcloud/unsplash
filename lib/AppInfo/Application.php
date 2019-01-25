@@ -58,8 +58,18 @@ class Application extends App {
             Util::addStyle('unsplash', 'header');
         }
         if($settings->getServerStyleLoginEnabled()) {
-            Util::addStyle('unsplash', 'login');
+           // Util::addStyle('unsplash', 'login');
         }
+
+		$unsplashScript = \OC::$WEBROOT;
+		\OCP\Util::addHeader(
+			'link',
+			[
+				'rel'  => "stylesheet",
+				'type' =>"text/css",
+				'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/login.php",
+			]
+		);
     }
 
     /**

@@ -27,5 +27,26 @@ style('unsplash', 'settings');
             <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
         </div>
+		<div>
+			<input id="unsplash-style-tinting" name="unsplash-style-grayscale" data-setting="style/tint" type="checkbox" <?=$_['styleTint'] ? 'checked':''?> class="checkbox">
+			<label for="unsplash-style-tinting"><?php p($l->t('Enable Tint')); ?></label>
+		</div>
+		<div>
+			<input
+					id="unsplash-style-color-strenght"
+					type="range"
+					name="unsplash-style-color-strenght"
+					data-setting="style/strength/color"
+					min="0"
+					max="100"
+					value="<?=$_['styleStrengthColor'] ? $_['styleStrengthColor']:30?>"
+					<?=$_['styleTint'] ? '':'disabled'?>
+			>
+			<label for="unsplash-style-color-strenght"><?php p($l->t('Set the vibrancy of the color')); ?></label>
+		</div>
+		<div>
+			<input type="range" name="unsplash-style-blur" data-setting="style/strength/blur" min="0" max="25" value="<?=$_['styleStrengthBlur'] ? $_['styleStrengthBlur']:0?>">
+			<label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
+		</div>
     </form>
 </div>
