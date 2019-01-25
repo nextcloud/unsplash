@@ -1,12 +1,47 @@
-#body-user #header,
-#body-settings #header,
-#body-public #header {
+#body-user #header::before,
+#body-settings #header::before,
+#body-public #header::before {
     background-color    : #777 !important;
-    background-image    : url('https://source.unsplash.com/random/featured/?nature') !important;
+    background-image: url('<?php echo $unsplashImagePath; ?>')<?php if ($enableTint>0 ): ?>,
+        linear-gradient(
+            rgba(<?php echo $mainColorR; ?>, <?php echo $mainColorG; ?>, <?php echo $mainColorB; ?>, <?php echo $colorStrenght; ?>),
+            rgba(<?php echo $mainColorR; ?>, <?php echo $mainColorG; ?>, <?php echo $mainColorB; ?>, <?php echo $colorStrenght; ?>)
+        )<?php endif; ?>!important;
+
+    <?php if ($enableTint>0 ): ?>
+        background-blend-mode: luminosity, normal;
+    <?php endif; ?>
+
+    /*This is nessessary because ::before needs content to show up*/
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;
+
+    <?php if ($blurEnabled ): ?>
+        -webkit-filter: blur(<?php echo $blurStrenght.'px';?>);
+        -moz-filter: blur(<?php echo $blurStrenght.'px';?>);
+        -o-filter: blur(<?php echo $blurStrenght.'px';?>);
+        -ms-filter: blur(<?php echo $blurStrenght.'px';?>);
+        filter: blur(<?php echo $blurStrenght.'px';?>);
+    <?php endif; ?>
+
 }
+
+#body-user #header,
+#body-settings #header,
+#body-public #header{
+    background-color: #000;
+}
+
 
 /* Header icons get drop shadow for visibility */
 #header .logo.logo-icon,

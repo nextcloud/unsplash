@@ -29,7 +29,7 @@ use OCA\Theming;
 
 $unsplashScript = get_included_files();
 $unsplashScript = $unsplashScript[0]; //gets the current filepath
-$unsplashScript = substr($unsplashScript, 0, -24);
+$unsplashScript = substr($unsplashScript, 0, -25);
 
 $baseDir = substr($unsplashScript, 0, -14);
 
@@ -67,6 +67,6 @@ if($blurStrenght>0){
 
 
 header("Content-type: text/css; charset: UTF-8");
-include $unsplashScript.'css/login.css';
+include $unsplashScript.'css/header.css';
 
 ?>

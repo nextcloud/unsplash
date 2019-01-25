@@ -54,22 +54,25 @@ class Application extends App {
         /** @var SettingsService $settings */
         $settings = $this->getContainer()->query(SettingsService::class);
 
+		$unsplashScript = \OC::$WEBROOT;
+
         if($settings->getUserStyleHeaderEnabled()) {
-            Util::addStyle('unsplash', 'header');
+            //Util::addStyle('unsplash', 'header');
+			\OCP\Util::addHeader(
+				'link',
+				[
+					'rel'  => "stylesheet",
+					'type' =>"text/css",
+					'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/header.php",
+				]
+			);
         }
         if($settings->getServerStyleLoginEnabled()) {
            // Util::addStyle('unsplash', 'login');
         }
 
-		$unsplashScript = \OC::$WEBROOT;
-		\OCP\Util::addHeader(
-			'link',
-			[
-				'rel'  => "stylesheet",
-				'type' =>"text/css",
-				'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/login.php",
-			]
-		);
+
+
     }
 
     /**
