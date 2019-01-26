@@ -41,7 +41,7 @@ class Unsplash extends Provider{
 		return $this->getURL();
 	}
 
-	public function getRandomImageUrlBySearchTerm(string $termarray)
+	public function getRandomImageUrlBySearchTerm($termarray)
 	{
 		$url =  "https://source.unsplash.com/random/featured/?";
 		foreach ($termarray as &$value) {

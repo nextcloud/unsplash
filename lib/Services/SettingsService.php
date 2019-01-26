@@ -156,7 +156,7 @@ class SettingsService {
 		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
 
-		return $provider->getUrl();
+		return $provider->getRandomImageUrl();
 	}
 
 	/**

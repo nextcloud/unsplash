@@ -102,6 +102,6 @@ abstract class Provider{
 	/*
 	 * This should return a url to a random image filtered by searchterms
 	 */
-	public abstract function getRandomImageUrlBySearchTerm(string $termarray);
+	public abstract function getRandomImageUrlBySearchTerm($termarray);
 
 }
