@@ -84,8 +84,11 @@ class Application extends App {
         if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
             $manager = $this->getContainer()->getServer()->getContentSecurityPolicyManager();
             $policy  = new ContentSecurityPolicy();
-            $policy->addAllowedImageDomain('https://source.unsplash.com');
-            $policy->addAllowedImageDomain('https://images.unsplash.com');
+
+			$urls = $settings->getWhitelistingUrls();
+			foreach ($urls as &$value) {
+				$policy->addAllowedImageDomain($value);
+			}
             $manager->addDefaultPolicy($policy);
         }
     }

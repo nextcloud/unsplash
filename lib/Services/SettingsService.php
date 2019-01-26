@@ -159,4 +159,12 @@ class SettingsService {
 		return $provider->getUrl();
 	}
 
+	/**
+	 * Get all URLs for whitelisting
+	 */
+	public function getWhitelistingUrls() {
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$provider = $this->providerDefinitions->getProviderByName($providerName);
+		return $provider->getWhitelistResourceUrls();
+	}
 }
