@@ -53,7 +53,9 @@ class AdminSettingsController extends Controller {
             $this->settings->setServerStyleHeaderEnabled($value);
         } else if($key === 'style/login') {
             $this->settings->setServerStyleLoginEnabled($value);
-        } else {
+        } else if($key === 'provider/provider') {
+			$this->settings->setImageProvider($value);
+		} else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
 

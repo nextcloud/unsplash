@@ -30,11 +30,10 @@ style('unsplash', 'settings');
 			<label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
 		</div>
 		<div>
-
-			<select id="splash-provider-selection">
+			<select id="splash-provider-selection" data-setting="provider/provider" type="select">
 				<?php foreach ($_['availableProvider'] as &$value) {
 					echo "<option value='" . $value . "'";
-					if (strcmp($_['availableProvider'], $_['selectedProvider'])) {
+					if ($value==$_['selectedProvider']) {
 						echo "selected";
 					}
 					echo ">";

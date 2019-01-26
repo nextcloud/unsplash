@@ -62,6 +62,9 @@ class ProviderDefinitions{
 		//add all provider to this array. The logic takes care of the rest.
 		array_push($tmp,new Unsplash($this->appName, $this->config,"testUnsplash2"));
 		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash"));
+		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash2"));
+		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash3"));
+		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash4"));
 
 		foreach ($tmp as &$value) {
 			//$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
