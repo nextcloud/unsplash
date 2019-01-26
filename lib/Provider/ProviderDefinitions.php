@@ -69,10 +69,20 @@ class ProviderDefinitions{
 		}
 	}
 
+	/**
+	 * This returns the selected Provider
+	 *
+	 * @return Name of the Provider
+	 */
 	function getProviderByName($name){
 		return $this->definitions[$name];
 	}
 
+	/**
+	 * This returns all defined Provider
+	 *
+	 * @return Array with Names of Provider
+	 */
 	function getAllProviderNames(){
 		$i=0;
 		$tmp=[];

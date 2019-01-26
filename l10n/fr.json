@@ -10,7 +10,9 @@
         "You can customize %s with random background images.":"Vous pouvez personnaliser %s avec des images de fond aléatoires.",
         "Here you can specify where random backgrounds should be used by default.":"Ici, vous pouvez spécifier où les fonds aléatoires doivent être utilisés par défaut.",
         "These images are provided %s by %s.":"Ces images sont fournies %s par %s.",
-        "under an open license free of charge":"sous licence ouverte gratuite"
+        "under an open license free of charge":"sous licence ouverte gratuite",
+        "NextcloudImage":"Image d'arrière-plan de l'application Theming"
+
     },
     "pluralForm"  : "nplurals=2; plural=(n != 1);"
 }

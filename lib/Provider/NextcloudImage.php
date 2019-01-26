@@ -26,6 +26,7 @@ use OCA\Unsplash\Provider\Provider;
 class NextcloudImage extends Provider{
 
 	/**
+	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
 	 * @var string
 	 */
 	public $DEFAULT_URL="/index.php/apps/theming/image/background";

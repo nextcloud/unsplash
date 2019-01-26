@@ -49,28 +49,59 @@ abstract class Provider{
 	const ALLOW_URL_CUSTOMIZING = true;
 
 
+	/**
+	 * Provider constructor.
+	 *
+	 * @param $appName
+	 * @param IConfig $config
+	 * @param $pName
+	 */
 	public function __construct( $appName, IConfig $config, $pName) {
 		$this->config = $config;
 		$this->appName = $appName;
 		$this->providerName = $pName;
 	}
 
+	/**
+	 * This sets a custom url if the provider allows this.
+	 *
+	 * @param string $url
+	 */
 	public function setCustomURL(string $url){
 		$this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $url);
 	}
 
+	/**
+	 *
+	 * This either returns the default url, or the custom one, if one is set
+	 * @return mixed
+	 */
 	public function getURL(){
 		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $this->DEFAULT_URL);
 	}
 
+	/**
+	 * Returns the providername
+	 * @return string
+	 */
 	public function getName(){
 		return $this->providerName;
 	}
 
+	/*
+	 * This should return all URLS which need to be whitelisted for csrf
+	 */
 	public abstract function getWhitelistResourceUrls();
 
+
+	/*
+	 * This should return a url to a random image
+	 */
 	public abstract function getRandomImageUrl();
 
+	/*
+	 * This should return a url to a random image filtered by searchterms
+	 */
 	public abstract function getRandomImageUrlBySearchTerm(string $termarray);
 
 }
