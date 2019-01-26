@@ -20,33 +20,28 @@
  *
  */
 
-namespace OCA\Unsplash\Provider;
-use OCA\Unsplash\Provider\Provider;
 
-class Unsplash extends Provider{
+namespace OCA\Unsplash\CssBuilder;
 
-	/**
-	 * @var string
-	 */
-	public $DEFAULT_URL="https://source.unsplash.com/random/featured/";
-	const ALLOW_URL_CUSTOMIZING = true;
+use OCA\Unsplash\Services\SettingsService;
+use OCA\Theming;
 
-	public function getWhitelistResourceUrls()
-	{
-		return ['https://source.unsplash.com','https://images.unsplash.com'];
-	}
 
-	public function getRandomImageUrl()
-	{
-		return $this->getURL();
-	}
+$unsplashScript = get_included_files();
+$unsplashScript = $unsplashScript[0]; //gets the current filepath
+$unsplashScript = substr($unsplashScript, 0, -24);
 
-	public function getRandomImageUrlBySearchTerm(string $termarray)
-	{
-		$url =  "https://source.unsplash.com/random/featured/?";
-		foreach ($termarray as &$value) {
-			$url .= $value.',';
-		}
-		return $url;
-	}
-}
+$baseDir = substr($unsplashScript, 0, -14);
+
+
+require_once $baseDir . 'lib/base.php';
+//require $baseDir . 'apps/unsplash/lib/Settings/SettingsManager.php';
+
+$app = new \OCA\Unsplash\AppInfo\Application();
+$settings = $app->getContainer()->query(SettingsService::class);
+$unsplashImagePath = $settings->headerbackgroundLink();
+
+header("Content-type: text/css; charset: UTF-8");
+include $unsplashScript.'css/login.css';
+
+?>

@@ -1,7 +1,7 @@
 /* Needs more specificity to override theming app */
 body#body-login {
     background-color    : #777 !important;
-    background-image    : url('https://source.unsplash.com/random/featured/?nature') !important;
+    background-image    : url('<?php echo $unsplashImagePath; ?>') !important;
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;

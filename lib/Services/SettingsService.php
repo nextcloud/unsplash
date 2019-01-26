@@ -36,6 +36,11 @@ class SettingsService {
      */
     protected $appName;
 
+	/**
+	 * @var ProviderDefinitions
+	 */
+	protected $providerDefinitions;
+
     /**
      * FaviconService constructor.
      *
@@ -50,6 +55,8 @@ class SettingsService {
             $this->userId = null;
         }
         $this->appName = $appName;
+
+        $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
     }
 
     /**
@@ -126,14 +133,30 @@ class SettingsService {
 	 * Get the selected imageprovider
 	 *
 	 * @param string $providername
+	 * @return string current provider
 	 */
 	public function getImageProvider() {
 		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
 	}
 
+	/**
+	 * Get all defined imageprovider
+	 */
 	public function getAllImageProvider() {
-		$t = new ProviderDefinitions($this->appName,$this->config);
-		return $t->getAllProviderNames();
+		return $this->providerDefinitions->getAllProviderNames();
+	}
+
+
+	/**
+	 * Returns the URL to the custom Unsplash-path
+	 *
+	 * @return String
+	 */
+	public function headerbackgroundLink() {
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$provider = $this->providerDefinitions->getProviderByName($providerName);
+
+		return $provider->getUrl();
 	}
 
 }

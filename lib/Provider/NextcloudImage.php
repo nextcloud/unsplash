@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Copyright (c) 2019 Felix Nüsse <felix.nuesse@t-online.de>
  *
@@ -19,58 +20,29 @@
  *
  */
 
-
 namespace OCA\Unsplash\Provider;
+use OCA\Unsplash\Provider\Provider;
 
-use OCP\IConfig;
-
-abstract class Provider{
-
-	/**
-	 * @var IConfig
-	 */
-	protected $config;
+class NextcloudImage extends Provider{
 
 	/**
 	 * @var string
 	 */
-	protected $appName;
-
-	/**
-	 * @var string
-	 */
-	private $providerName;
-
-	/**
-	 * @var string
-	 */
-	public $DEFAULT_URL="redefine this value";
-
+	public $DEFAULT_URL="/index.php/apps/theming/image/background";
 	const ALLOW_URL_CUSTOMIZING = true;
 
-
-	public function __construct( $appName, IConfig $config, $pName) {
-		$this->config = $config;
-		$this->appName = $appName;
-		$this->providerName = $pName;
+	public function getWhitelistResourceUrls()
+	{
+		return [];
 	}
 
-	public function setCustomURL(string $url){
-		$this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $url);
+	public function getRandomImageUrl()
+	{
+		return $this->getURL();
 	}
 
-	public function getURL(){
-		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $this->DEFAULT_URL);
+	public function getRandomImageUrlBySearchTerm(string $termarray)
+	{
+		return $this->getURL();
 	}
-
-	public function getName(){
-		return $this->providerName;
-	}
-
-	public abstract function getWhitelistResourceUrls();
-
-	public abstract function getRandomImageUrl();
-
-	public abstract function getRandomImageUrlBySearchTerm(string $termarray);
-
 }
