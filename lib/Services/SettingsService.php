@@ -7,6 +7,7 @@
 namespace OCA\Unsplash\Services;
 
 use OCP\IConfig;
+use OCA\Unsplash\Provider\ProviderDefinitions;
 
 /**
  * Class SettingsService
@@ -15,6 +16,7 @@ use OCP\IConfig;
  */
 class SettingsService {
 
+    const PROVIDER_SELECTED       = 'unsplash/provider/selected';
     const STYLE_LOGIN       = 'unsplash/style/login';
     const STYLE_HEADER      = 'unsplash/style/header';
     const USER_STYLE_HEADER = 'unsplash/style/header';
@@ -110,5 +112,28 @@ class SettingsService {
     public function setServerStyleLoginEnabled(int $styleLogin = 1) {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN, $styleLogin);
     }
+
+	/**
+	 * Set the selected imageprovider
+	 *
+	 * @param string $providername
+	 */
+	public function setImageProvider(string $providername) {
+		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
+	}
+
+	/**
+	 * Get the selected imageprovider
+	 *
+	 * @param string $providername
+	 */
+	public function getImageProvider() {
+		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+	}
+
+	public function getAllImageProvider() {
+		$t = new ProviderDefinitions($this->appName,$this->config);
+		return $t->getAllProviderNames();
+	}
 
 }

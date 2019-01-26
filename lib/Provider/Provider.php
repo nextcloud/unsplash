@@ -19,6 +19,11 @@
  *
  */
 
+
+namespace OCA\Unsplash\Provider;
+
+use OCP\IConfig;
+
 abstract class Provider{
 
 	/**
@@ -41,9 +46,10 @@ abstract class Provider{
 	const ALLOW_URL_CUSTOMIZING = true;
 
 
-	public function __construct( $appName, IConfig $config) {
+	public function __construct( $appName, IConfig $config, $pName) {
 		$this->config = $config;
 		$this->appName = $appName;
+		$this->providerName = $pName;
 	}
 
 	public function setCustomURL(string $url){
@@ -52,6 +58,10 @@ abstract class Provider{
 
 	public function getURL(){
 		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', self::DEFAULT_URL);
+	}
+
+	public function getName(){
+		return $this->providerName;
 	}
 
 	public abstract function getWhitelistResourceUrls();

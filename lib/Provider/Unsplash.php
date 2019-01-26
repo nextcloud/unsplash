@@ -20,10 +20,11 @@
  *
  */
 
+namespace OCA\Unsplash\Provider;
+use OCA\Unsplash\Provider\Provider;
+
 class Unsplash extends Provider{
 
-
-	private $providerName = 'Unsplash';
 	const DEFAULT_URL = "https://source.unsplash.com/random/featured/?nature";
 	const ALLOW_URL_CUSTOMIZING = true;
 
