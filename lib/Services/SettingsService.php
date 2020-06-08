@@ -7,6 +7,7 @@
 namespace OCA\Unsplash\Services;
 
 use OCP\IConfig;
+use OCA\Unsplash\Provider\ProviderDefinitions;
 
 /**
  * Class SettingsService
@@ -15,6 +16,7 @@ use OCP\IConfig;
  */
 class SettingsService {
 
+    const PROVIDER_SELECTED       = 'unsplash/provider/selected';
     const STYLE_LOGIN       = 'unsplash/style/login';
     const STYLE_HEADER      = 'unsplash/style/header';
     const USER_STYLE_HEADER = 'unsplash/style/header';
@@ -34,6 +36,11 @@ class SettingsService {
      */
     protected $appName;
 
+	/**
+	 * @var ProviderDefinitions
+	 */
+	protected $providerDefinitions;
+
     /**
      * FaviconService constructor.
      *
@@ -48,6 +55,8 @@ class SettingsService {
             $this->userId = null;
         }
         $this->appName = $appName;
+
+        $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
     }
 
     /**
@@ -111,4 +120,51 @@ class SettingsService {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN, $styleLogin);
     }
 
+	/**
+	 * Set the selected imageprovider
+	 *
+	 * @param string $providername
+	 */
+	public function setImageProvider(string $providername) {
+		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
+	}
+
+	/**
+	 * Get the selected imageprovider
+	 *
+	 * @param string $providername
+	 * @return string current provider
+	 */
+	public function getImageProvider() {
+		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+	}
+
+	/**
+	 * Get all defined imageprovider
+	 */
+	public function getAllImageProvider() {
+		return $this->providerDefinitions->getAllProviderNames();
+	}
+
+
+	/**
+	 * Returns the URL to the custom Unsplash-path
+	 *
+	 * @return String
+	 */
+	public function headerbackgroundLink() {
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$provider = $this->providerDefinitions->getProviderByName($providerName);
+
+		return $provider->getRandomImageUrl();
+	}
+
+	/**
+	 * Get all URLs for whitelisting
+	 */
+	public function getWhitelistingUrls() {
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$provider = $this->providerDefinitions->getProviderByName($providerName);
+		return $provider->getWhitelistResourceUrls();
+	}
 }

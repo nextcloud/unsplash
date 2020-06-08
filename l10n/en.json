@@ -9,7 +9,8 @@
         "You can customize %s with random background images.":"You can customize %s with random background images.",
         "Here you can specify where random backgrounds should be used by default.":"Here you can specify where Unsplash backgrounds should be used by default.",
         "These images are provided %s by %s.":"These images are provided %s by %s.",
-        "under an open license free of charge":"under an open license free of charge"
+        "under an open license free of charge":"under an open license free of charge",
+        "NextcloudImage":"Nextcloud Theming App Background Image"
     },
     "pluralForm"  : "nplurals=2; plural=(n != 1);"
 }

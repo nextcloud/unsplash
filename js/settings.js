@@ -14,6 +14,10 @@
                     value = $target[0].checked ? 'true':'false';
                 }
 
+				if($target.attr('type') === 'select') {
+					value = $target.val();
+				}
+
                 _setValue(key, value);
             }
         );
