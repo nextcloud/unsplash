@@ -62,7 +62,7 @@ class ProviderDefinitions{
 		//add all provider to this array. The logic takes care of the rest.
 		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash"));
 		array_push($tmp,new NextcloudImage($this->appName, $this->config,"NextcloudImage"));
-		array_push($tmp,new WikimediaCommons($this->appName, $this->config,"WikimediaCommons"));
+		array_push($tmp,new WikimediaCommons($this->appName, $this->config,"WikimediaCommonsDogs"));
 
 		foreach ($tmp as &$value) {
 			//$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
