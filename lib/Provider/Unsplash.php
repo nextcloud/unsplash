@@ -28,7 +28,7 @@ class Unsplash extends Provider{
 	/**
 	 * @var string
 	 */
-	public $DEFAULT_URL="https://source.unsplash.com/random/featured/";
+	public $DEFAULT_URL="https://source.unsplash.com/featured/?nature";
 	const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
@@ -43,7 +43,7 @@ class Unsplash extends Provider{
 
 	public function getRandomImageUrlBySearchTerm($termarray)
 	{
-		$url =  "https://source.unsplash.com/random/featured/?";
+		$url =  "https://source.unsplash.com/featured/?";
 		foreach ($termarray as &$value) {
 			$url .= $value.',';
 		}
