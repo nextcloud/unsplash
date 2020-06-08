@@ -21,6 +21,16 @@ class SettingsService {
     const STYLE_HEADER      = 'unsplash/style/header';
     const USER_STYLE_HEADER = 'unsplash/style/header';
 
+    const STYLE_TINT_ALLOWED = 'unsplash/style/tint';
+    const STYLE_STRENGHT_COLOR = 'unsplash/style/strength/color';
+    const STYLE_STRENGHT_BLUR = 'unsplash/style/strength/blur';
+
+    const STYLE_TINT_ALLOWED_DEFAULT = 0; //equals 30%
+    const STYLE_STRENGHT_COLOR_DEFAULT = 30; //equals 30%
+    const STYLE_STRENGHT_BLUR_DEFAULT = 0;
+
+	private $headerbackgroundLinkDefault = 'https://source.unsplash.com/random/featured/';
+
     /**
      * @var IConfig
      */
@@ -41,14 +51,20 @@ class SettingsService {
 	 */
 	protected $providerDefinitions;
 
+	/**
+	 * @var \OC_Defaults
+	 */
+	private $defaults;
+
     /**
      * FaviconService constructor.
      *
      * @param string|null $userId
      * @param             $appName
      * @param IConfig     $config
+     * @param Defaults     $defaults
      */
-    public function __construct($userId, $appName, IConfig $config) {
+    public function __construct($userId, $appName, IConfig $config, \OC_Defaults $defaults) {
         $this->config = $config;
         $this->userId = $userId;
         if($this->config->getSystemValue('maintenance', false)) {
@@ -57,6 +73,7 @@ class SettingsService {
         $this->appName = $appName;
 
         $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
+		$this->defaults = $defaults;
     }
 
     /**
@@ -167,4 +184,75 @@ class SettingsService {
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
 		return $provider->getWhitelistResourceUrls();
 	}
+	/**
+	 * nextcloud theming main color
+	 *
+	 * @param String $styleUrl
+	 */
+	public function getInstanceColor() {
+		return $this->config->getAppValue('theming', 'color', $this->defaults->getColorPrimary());
+	}
+
+	/**
+	 * If the login page should be styled by default
+	 *
+	 * @return bool
+	 */
+	public function isTintAllowed(): bool {
+		return $this->config->getAppValue($this->appName, self::STYLE_TINT_ALLOWED, self::STYLE_TINT_ALLOWED_DEFAULT);
+	}
+
+	public function setTintAllowed(int $tinting) {
+		$this->config->setAppValue($this->appName, self::STYLE_TINT_ALLOWED, $tinting);
+	}
+
+
+	/**
+	 * color strength
+	 *
+	 * @param String $styleUrl
+	 */
+	public function getColorStrength() {
+		return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_COLOR, self::STYLE_STRENGHT_COLOR_DEFAULT);
+	}
+
+	/**
+	 * set color strength
+	 *
+	 * @param String $styleUrl
+	 */
+	public function setColorStrength(int $strength) {
+		if($strength>100){
+			$strength=100;
+		}
+		if($strength<0){
+			$strength=0;
+		}
+		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_COLOR, $strength);
+	}
+
+
+	/**
+	 * blur strength
+	 *
+	 * @param String $styleUrl
+	 */
+	public function getBlurStrength() {
+		return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_BLUR, self::STYLE_STRENGHT_BLUR_DEFAULT);
+	}
+	/**
+	 * set blur strength
+	 *
+	 * @param String $styleUrl
+	 */
+	public function setBlurStrength(int $strength) {
+		if($strength>25){
+			$strength=25;
+		}
+		if($strength<0){
+			$strength=0;
+		}
+		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_BLUR, $strength);
+	}
+
 }

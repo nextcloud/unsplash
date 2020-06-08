@@ -39,7 +39,32 @@ require_once $baseDir . 'lib/base.php';
 
 $app = new \OCA\Unsplash\AppInfo\Application();
 $settings = $app->getContainer()->query(SettingsService::class);
+$color = $settings->getInstanceColor();
+
+
+$maincolor = str_split(str_replace("#", "", $color), 2);
+$mainColorR = hexdec($maincolor[0]);
+$mainColorG = hexdec($maincolor[1]);
+$mainColorB = hexdec($maincolor[2]);
+
+$greyscale=false;
+
+if($greyscale){
+	$mainColorR = hexdec(0);
+	$mainColorG = hexdec(0);
+	$mainColorB = hexdec(0);
+}
+
+$enableTint =  $settings->isTintAllowed();
+$colorStrenght =  $settings->getColorStrength()/100;
+$blurStrenght =  $settings->getBlurStrength();
 $unsplashImagePath = $settings->headerbackgroundLink();
+
+$blurEnabled = false;
+if($blurStrenght>0){
+	$blurEnabled = true;
+}
+
 
 header("Content-type: text/css; charset: UTF-8");
 include $unsplashScript.'css/login.css';

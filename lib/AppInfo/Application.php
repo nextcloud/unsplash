@@ -66,6 +66,15 @@ class Application extends App {
 					'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/header.php",
 				]
 			);
+            //Util::addStyle('unsplash', 'header');
+			\OCP\Util::addHeader(
+				'link',
+				[
+					'rel'  => "stylesheet",
+					'type' =>"text/css",
+					'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/header.php",
+				]
+			);
         }
 
         if($settings->getServerStyleLoginEnabled()) {
