@@ -29,7 +29,10 @@ style('unsplash', 'settings');
 				   type="checkbox" <?= $_['styleHeader'] ? 'checked' : '' ?> class="checkbox">
 			<label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
 		</div>
+        <br>
 		<div>
+            <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
+            <br>
 			<select id="splash-provider-selection" data-setting="provider/provider" type="select">
 				<?php foreach ($_['availableProvider'] as &$value) {
 					echo "<option value='" . $value . "'";
@@ -43,7 +46,6 @@ style('unsplash', 'settings');
 
 				?>
 			</select>
-			<label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
 		</div>
 	</form>
 </div>
