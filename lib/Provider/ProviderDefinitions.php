@@ -76,7 +76,11 @@ class ProviderDefinitions{
 	 * @return Name of the Provider
 	 */
 	function getProviderByName($name){
-		return $this->definitions[$name];
+	    $provider = $this->definitions["Unsplash"];
+        if (array_key_exists($name, $this->definitions)) {
+            $provider = $this->definitions[$name];
+        }
+		return $provider;
 	}
 
 	/**
