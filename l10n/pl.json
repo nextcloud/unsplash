@@ -7,7 +7,7 @@
         "Set random image as header background":"Ustaw losowy obraz jako tło nagłówka",
         "You can customize %s with random background images.":"Możesz dostosować %s losowymi obrazami tła.",
         "Here you can specify where random backgrounds should be used by default.":"Tutaj możesz określić, gdzie domyślnie mają być używane losowe tła.",
-        "These images are provided %s by %s.":"Te obrazy są dostarczane %s przez %s.",
+        "These images are provided %s by %s.":"Obrazy te są dostarczane %s przez %s.",
         "under an open license free of charge":"bezpłatnie na podstawie otwartej licencji"
 },"pluralForm"  : "nplurals=2; plural=(n != 1);"
 }
