@@ -1,22 +1,24 @@
 (function() {
     function initialize() {
         this._timer = [];
-        this.saveUrl = $('#unsplash-settings').data().save;
+        this.saveUrl = document.getElementById('unsplash-settings').dataset.save;
 
-        $('[data-setting]').on(
-            'change',
-            (e) => {
-                let $target = $(e.target),
-                    key     = $target.data('setting'),
-                    value   = $target.val();
+        let settings = document.querySelectorAll('[data-setting]');
+        for(let setting of settings) {
+            setting.addEventListener(
+                'change',
+                (e) => {
+                    let key   = e.target.dataset.setting,
+                        value = e.target.value;
 
-                if($target.attr('type') === 'checkbox') {
-                    value = $target[0].checked ? 'true':'false';
+                    if(e.target.getAttribute('type') === 'checkbox') {
+                        value = e.target.checked ? 'true':'false';
+                    }
+
+                    _setValue(key, value);
                 }
-
-                _setValue(key, value);
-            }
-        );
+            );
+        }
     }
 
     /**
@@ -27,9 +29,23 @@
      * @private
      */
     function _setValue(key, value) {
-        $.post(this.saveUrl, {key, value})
-         .success(() => {_showMessage('success');})
-         .fail(() => {_showMessage('error');});
+        let headers = new Headers();
+        headers.append('requesttoken', OC.requestToken);
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        let body    = JSON.stringify({key, value}),
+            options = {headers, body, method: 'POST', redirect: 'error'},
+            request = new Request(this.saveUrl, options);
+
+        fetch(request)
+            .then(() => {
+                _showMessage('success');
+            })
+            .catch((e) => {
+                console.error(e);
+                _showMessage('error');
+            });
     }
 
     /**
@@ -39,11 +55,13 @@
      * @private
      */
     function _showMessage(type) {
-        let $el = $('#unsplash-settings').find(`.msg.${type}`);
-        $el.removeClass('active').addClass('active');
+        let element = document.querySelector(`#unsplash-settings .msg.${type}`);
+
+        element.classList.remove('active');
+        element.classList.add('active');
 
         clearTimeout(this._timer[type]);
-        this._timer[type] = setTimeout(() => { $el.removeClass('active'); }, 1000);
+        this._timer[type] = setTimeout(() => { element.classList.remove('active'); }, 1000);
     }
 
     initialize();
