@@ -10,13 +10,14 @@ use OC_Defaults;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IURLGenerator;
+use OCP\Settings\ISettings;
 
 /**
  * Class PersonalSettingsController
  *
  * @package OCA\Unsplash\Controller\Settings
  */
-class PersonalSettings {
+class PersonalSettings implements ISettings {
 
     /**
      * @var IURLGenerator
@@ -58,5 +59,13 @@ class PersonalSettings {
             'styleHeader'     => $this->settings->getUserStyleHeaderEnabled(),
             'label'           => $this->theming->getEntity()
         ], '');
+    }
+
+    public function getSection() {
+        return 'additional';
+    }
+
+    public function getPriority(): int {
+        return 75;
     }
 }
