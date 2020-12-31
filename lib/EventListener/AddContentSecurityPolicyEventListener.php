@@ -35,7 +35,7 @@ class AddContentSecurityPolicyEventListener implements IEventListener {
             return;
         }
 
-        if($this->settingsService->getUserStyleHeaderEnabled() || $this->settingsService->getServerStyleLoginEnabled()) {
+        if($this->settingsService->getUserStyleHeaderEnabled() || $this->settingsService->getServerStyleLoginEnabled() || $this->settingsService->getUserStyleDashboardEnabled()) {
             $policy = new ContentSecurityPolicy();
             $policy->addAllowedImageDomain('https://source.unsplash.com');
             $policy->addAllowedImageDomain('https://images.unsplash.com');
