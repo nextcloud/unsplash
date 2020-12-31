@@ -47,6 +47,10 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
             if($this->settingsService->getUserStyleHeaderEnabled() && $this->request->getParam('_route') !== 'dashboard.dashboard.index') {
                 Util::addStyle('unsplash', 'header');
             }
+
+            if($this->settingsService->getUserStyleDashboardEnabled() && $this->request->getParam('_route') === 'dashboard.dashboard.index') {
+                Util::addStyle('unsplash', 'dashboard');
+            }
         }
 
         if(!$event->isLoggedIn() && $this->settingsService->getServerStyleLoginEnabled()) {
