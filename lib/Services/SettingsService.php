@@ -15,9 +15,11 @@ use OCP\IConfig;
  */
 class SettingsService {
 
-    const STYLE_LOGIN       = 'unsplash/style/login';
-    const STYLE_HEADER      = 'unsplash/style/header';
-    const USER_STYLE_HEADER = 'unsplash/style/header';
+    const STYLE_LOGIN          = 'unsplash/style/login';
+    const STYLE_HEADER         = 'unsplash/style/header';
+    const STYLE_DASHBORAD      = 'unsplash/style/dashborad';
+    const USER_STYLE_HEADER    = 'unsplash/style/header';
+    const USER_STYLE_DASHBORAD = 'unsplash/style/dashborad';
 
     /**
      * @var IConfig
@@ -76,6 +78,31 @@ class SettingsService {
     }
 
     /**
+     * If the dashboard should be styled for this user
+     *
+     * @return bool
+     */
+    public function getUserStyleDashboardEnabled(): bool {
+        $styleHeader = $this->config->getUserValue($this->userId, $this->appName, self::USER_STYLE_DASHBORAD, null);
+
+        if($styleHeader === null) return $this->getServerStyleDashboardEnabled();
+
+        return $styleHeader == 1;
+    }
+
+    /**
+     * Set if the dashboard should be styled for this user
+     *
+     * @param int $styleDashboard
+     *
+     * @return void
+     * @throws \OCP\PreConditionNotMetException
+     */
+    public function setUserStyleDashboardEnabled(int $styleDashboard = 1) {
+        $this->config->setUserValue($this->userId, $this->appName, self::USER_STYLE_DASHBORAD, $styleDashboard);
+    }
+
+    /**
      * If the page header should be styled by default
      *
      * @return bool
@@ -91,6 +118,24 @@ class SettingsService {
      */
     public function setServerStyleHeaderEnabled(int $styleHeader = 1) {
         $this->config->setAppValue($this->appName, self::STYLE_HEADER, $styleHeader);
+    }
+
+    /**
+     * If the page dashboard be styled by default
+     *
+     * @return bool
+     */
+    public function getServerStyleDashboardEnabled(): bool {
+        return $this->config->getAppValue($this->appName, self::STYLE_DASHBORAD, 0) == 1;
+    }
+
+    /**
+     * Set if the dashboard should be styled by default
+     *
+     * @param int $styleDashboard
+     */
+    public function setServerStyleDashboardEnabled(int $styleDashboard = 1) {
+        $this->config->setAppValue($this->appName, self::STYLE_DASHBORAD, $styleDashboard);
     }
 
     /**

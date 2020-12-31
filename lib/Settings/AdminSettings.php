@@ -46,7 +46,8 @@ class AdminSettings implements ISettings {
         return new TemplateResponse('unsplash', 'settings/admin', [
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
             'styleLogin'      => $this->settings->getServerStyleLoginEnabled(),
-            'styleHeader'     => $this->settings->getServerStyleHeaderEnabled()
+            'styleHeader'     => $this->settings->getServerStyleHeaderEnabled(),
+            'styleDashboard'  => $this->settings->getServerStyleDashboardEnabled()
         ]);
     }
 
