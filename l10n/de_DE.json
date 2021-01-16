@@ -6,6 +6,7 @@
         "Random Background Images":"Zufällige Hintergrundbilder",
         "Set random image as login background":"Verwende ein zufälliges Bild als Hintergrund der Anmeldeseite",
         "Set random image as header background":"Verwende ein zufälliges Bild als Hintergrund der Navigationsleiste",
+        "Set random image as dashboard background":"Verwende ein zufälliges Bild als Hintergrund des Dashboards",
         "You can customize %s with random background images.":"Sie können %s mit zufälligen Hintergrundbildern anpassen.",
         "Here you can specify where random backgrounds should be used by default.":"Hier können Sie festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
         "These images are provided %s by %s.":"Diese Bilder werden %s von %s bereitgestellt.",

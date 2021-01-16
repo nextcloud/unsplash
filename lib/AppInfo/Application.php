@@ -6,10 +6,12 @@
 
 namespace OCA\Unsplash\AppInfo;
 
-use OC\Security\CSP\ContentSecurityPolicy;
-use OCA\Unsplash\Services\SettingsService;
+use OCA\Unsplash\EventListener\AddContentSecurityPolicyEventListener;
+use OCA\Unsplash\EventListener\BeforeTemplateRenderedEventListener;
 use OCP\AppFramework\App;
-use OCP\Util;
+use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
+use OCP\EventDispatcher\IEventDispatcher;
+use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 
 /**
  * Class Application
@@ -25,17 +27,24 @@ class Application extends App {
      */
     public function __construct(array $urlParams = []) {
         parent::__construct('unsplash', $urlParams);
+        $this->registerSystemEvents();
     }
 
     /**
-     * Register all app functionality
-     *
-     * @throws \OCP\AppFramework\QueryException
+     * Register app functionality
      */
     public function register() {
         $this->registerPersonalSettings();
-        $this->registerStyleSheets();
-        $this->registerCsp();
+    }
+
+    /**
+     *
+     */
+    protected function registerSystemEvents() {
+        /* @var IEventDispatcher $eventDispatcher */
+        $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
+        $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
+        $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
     }
 
     /**
@@ -44,40 +53,4 @@ class Application extends App {
     public function registerPersonalSettings() {
         \OCP\App::registerPersonal('unsplash', 'templates/personal');
     }
-
-    /**
-     * Add the stylesheets
-     *
-     * @throws \OCP\AppFramework\QueryException
-     */
-    public function registerStyleSheets() {
-        /** @var SettingsService $settings */
-        $settings = $this->getContainer()->query(SettingsService::class);
-
-        if($settings->getUserStyleHeaderEnabled()) {
-            Util::addStyle('unsplash', 'header');
-        }
-        if($settings->getServerStyleLoginEnabled()) {
-            Util::addStyle('unsplash', 'login');
-        }
-    }
-
-    /**
-     * Allow Unsplash hosts in the csp
-     *
-     * @throws \OCP\AppFramework\QueryException
-     */
-    public function registerCsp() {
-        /** @var SettingsService $settings */
-        $settings = $this->getContainer()->query(SettingsService::class);
-
-        if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
-            $manager = $this->getContainer()->getServer()->getContentSecurityPolicyManager();
-            $policy  = new ContentSecurityPolicy();
-            $policy->addAllowedImageDomain('https://source.unsplash.com');
-            $policy->addAllowedImageDomain('https://images.unsplash.com');
-            $manager->addDefaultPolicy($policy);
-        }
-    }
-
 }
