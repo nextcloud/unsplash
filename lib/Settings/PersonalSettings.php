@@ -35,16 +35,23 @@ class PersonalSettings implements ISettings {
     protected $theming;
 
     /**
+     * @var string
+     */
+    protected $appName;
+
+    /**
      * AdminSection constructor.
      *
      * @param IURLGenerator   $urlGenerator
      * @param SettingsService $settings
      * @param OC_Defaults     $theming
+     * @param                 $appName
      */
-    public function __construct(IURLGenerator $urlGenerator, SettingsService $settings, OC_Defaults $theming) {
+    public function __construct(IURLGenerator $urlGenerator, SettingsService $settings, OC_Defaults $theming, $appName) {
         $this->urlGenerator = $urlGenerator;
         $this->settings     = $settings;
         $this->theming      = $theming;
+        $this->appName      = $appName;
     }
 
     /**
@@ -58,14 +65,21 @@ class PersonalSettings implements ISettings {
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.personal_settings.set'),
             'styleHeader'     => $this->settings->getUserStyleHeaderEnabled(),
             'styleDashboard'  => $this->settings->getUserStyleDashboardEnabled(),
+            'hasDashboard'    => $this->settings->getNextcloudVersion() > 19,
             'label'           => $this->theming->getEntity()
         ], '');
     }
 
+    /**
+     * @return string
+     */
     public function getSection() {
-        return 'additional';
+        return $this->appName;
     }
 
+    /**
+     * @return int
+     */
     public function getPriority(): int {
         return 75;
     }

@@ -47,7 +47,8 @@ class AdminSettings implements ISettings {
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
             'styleLogin'      => $this->settings->getServerStyleLoginEnabled(),
             'styleHeader'     => $this->settings->getServerStyleHeaderEnabled(),
-            'styleDashboard'  => $this->settings->getServerStyleDashboardEnabled()
+            'styleDashboard'  => $this->settings->getServerStyleDashboardEnabled(),
+            'hasDashboard'    => $this->settings->getNextcloudVersion() > 19
         ]);
     }
 
