@@ -23,9 +23,11 @@ style('unsplash', 'settings');
             <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
         </div>
+        <?php if($_['hasDashboard']): ?>
         <div>
             <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
         </div>
+        <?php endif; ?>
     </form>
 </div>

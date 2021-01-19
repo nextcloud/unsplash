@@ -156,4 +156,13 @@ class SettingsService {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN, $styleLogin);
     }
 
+    /**
+     * @return int
+     */
+    public function getNextcloudVersion(): int {
+        $version = $this->config->getSystemValue('version', '0.0.0');
+        $parts = explode('.', $version, 2);
+
+        return intval($parts[0]);
+    }
 }

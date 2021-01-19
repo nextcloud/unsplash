@@ -8,6 +8,7 @@ namespace OCA\Unsplash\AppInfo;
 
 use OCA\Unsplash\EventListener\AddContentSecurityPolicyEventListener;
 use OCA\Unsplash\EventListener\BeforeTemplateRenderedEventListener;
+use OCA\Unsplash\Services\LegacyInitialisationService;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\IEventDispatcher;
@@ -31,26 +32,19 @@ class Application extends App {
     }
 
     /**
-     * Register app functionality
-     */
-    public function register() {
-        $this->registerPersonalSettings();
-    }
-
-    /**
      *
      */
     protected function registerSystemEvents() {
-        /* @var IEventDispatcher $eventDispatcher */
-        $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
-        $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
-        $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
-    }
-
-    /**
-     * Add the personal settings page
-     */
-    public function registerPersonalSettings() {
-        \OCP\App::registerPersonal('unsplash', 'templates/personal');
+        $container = $this->getContainer();
+        if(method_exists($container, 'get')) {
+            /* @var IEventDispatcher $eventDispatcher */
+            $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
+            $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
+            $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
+        } else {
+            /** @var LegacyInitialisationService $service */
+            $service = $this->getContainer()->query(LegacyInitialisationService::class);
+            $service->initialize();
+        }
     }
 }
