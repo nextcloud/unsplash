@@ -53,31 +53,12 @@ class Application extends App {
     public function registerStyleSheets() {
         /** @var SettingsService $settings */
         $settings = $this->getContainer()->query(SettingsService::class);
-
-		$unsplashScript = \OC::$WEBROOT;
-
         if($settings->getUserStyleHeaderEnabled()) {
-            //Util::addStyle('unsplash', 'header');
-			Util::addHeader(
-				'link',
-				[
-					'rel'  => "stylesheet",
-					'type' =>"text/css",
-					'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/header.php",
-				]
-			);
+            Util::addStyle('unsplash', 'header');
         }
 
         if($settings->getServerStyleLoginEnabled()) {
-            //Util::addStyle('unsplash', 'login');
-			Util::addHeader(
-				'link',
-				[
-					'rel'  => "stylesheet",
-					'type' =>"text/css",
-					'href' => $unsplashScript."/apps/unsplash/lib/CssBuilder/login.php",
-				]
-			);
+            Util::addStyle('unsplash', 'login');
         }
     }
 
