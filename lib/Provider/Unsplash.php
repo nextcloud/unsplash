@@ -28,7 +28,7 @@ class Unsplash extends Provider{
 	/**
 	 * @var string
 	 */
-	public $DEFAULT_URL="https://source.unsplash.com/random/featured/";
+	public $DEFAULT_URL="https://source.unsplash.com/featured/?nature,nature";
 	const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()

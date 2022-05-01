@@ -11,18 +11,18 @@ use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\IRequest;
+use OCP\IConfig;
+use OCP\IURLGenerator;
 use OCP\Util;
 
 class BeforeTemplateRenderedEventListener implements IEventListener {
-    /**
-     * @var SettingsService
-     */
+    /** @var SettingsService */
     protected $settingsService;
-
-    /**
-     * @var IRequest
-     */
+    /** @var IRequest */
     protected $request;
+
+    /** @var IURLGenerator */
+    private $urlGenerator;
 
     /**
      * BeforeTemplateRenderedEventListener constructor.
@@ -30,9 +30,10 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
      * @param SettingsService $settingsService
      * @param IRequest        $request
      */
-    public function __construct(SettingsService $settingsService, IRequest $request) {
+    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator) {
         $this->settingsService = $settingsService;
         $this->request = $request;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -45,16 +46,33 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
 
         if($event->isLoggedIn()) {
             if($this->settingsService->getUserStyleHeaderEnabled() && $this->request->getParam('_route') !== 'dashboard.dashboard.index') {
-                Util::addStyle('unsplash', 'header');
+                $this->addHeaderFor('header');
             }
 
             if($this->settingsService->getUserStyleDashboardEnabled() && $this->request->getParam('_route') === 'dashboard.dashboard.index') {
-                Util::addStyle('unsplash', 'dashboard');
+                $this->addHeaderFor('dashboard');
             }
         }
 
         if(!$event->isLoggedIn() && $this->settingsService->getServerStyleLoginEnabled()) {
-            Util::addStyle('unsplash', 'login');
+            $this->addHeaderFor('login');
         }
     }
+
+    /**
+     * Create both links, for static and dynamic css.
+     * @param String $target
+     * @return void
+     */
+    private function addHeaderFor(String $target) {
+        $linkToCSS = $this->urlGenerator->linkToRoute('unsplash.css.' . $target);
+
+        Util::addHeader('link', [
+            'rel' => 'stylesheet',
+            'href' => $linkToCSS,
+        ]);
+
+        Util::addStyle('unsplash', $target.'_static');
+    }
+
 }

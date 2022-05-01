@@ -1,7 +1,6 @@
 /* Needs more specificity to override theming app */
 body#body-login {
     background-color    : #777 !important;
-    background-image    : url('/apps/unsplash/image') !important;
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;

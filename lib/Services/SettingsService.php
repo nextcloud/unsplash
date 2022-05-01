@@ -8,6 +8,8 @@ namespace OCA\Unsplash\Services;
 
 use OCP\IConfig;
 use OCA\Unsplash\Provider\ProviderDefinitions;
+use Psr\Log\LoggerInterface;
+
 
 /**
  * Class SettingsService
@@ -21,7 +23,8 @@ class SettingsService {
     const STYLE_DASHBORAD      = 'unsplash/style/dashborad';
     const USER_STYLE_HEADER    = 'unsplash/style/header';
     const USER_STYLE_DASHBORAD = 'unsplash/style/dashborad';
-    const PROVIDER_SELECTED       = 'unsplash/provider/selected';
+    const PROVIDER_SELECTED    = 'unsplash/provider/selected';
+    const PROVIDER_DEFAULT     = 'Unsplash';
 
     /**
      * @var IConfig
@@ -43,14 +46,20 @@ class SettingsService {
 	 */
 	protected $providerDefinitions;
 
+
+
+    private $logger;
+
+
     /**
      * FaviconService constructor.
      *
      * @param string|null $userId
      * @param             $appName
      * @param IConfig     $config
+     * @param LoggerInterface $logger
      */
-    public function __construct($userId, $appName, IConfig $config) {
+    public function __construct($userId, $appName, IConfig $config, LoggerInterface $logger) {
         $this->config = $config;
         $this->userId = $userId;
         if($this->config->getSystemValue('maintenance', false)) {
@@ -59,6 +68,8 @@ class SettingsService {
         $this->appName = $appName;
 
         $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
+        $this->logger = $logger;
+        $this->logger->error("Debug: run __construct");
     }
 
     /**
@@ -71,7 +82,8 @@ class SettingsService {
 
         if($styleHeader === null) return $this->getServerStyleHeaderEnabled();
 
-        return $styleHeader == 1;
+        //return $styleHeader == 1;
+        return true;
     }
 
     /**
@@ -96,7 +108,8 @@ class SettingsService {
 
         if($styleHeader === null) return $this->getServerStyleDashboardEnabled();
 
-        return $styleHeader == 1;
+        //return $styleHeader == 1;
+        return true;
     }
 
     /**
@@ -181,6 +194,7 @@ class SettingsService {
 	 * @param string $providername
 	 */
 	public function setImageProvider(string $providername) {
+        $this->logger->error("Debug: run setImageProvider", ['provider' => $providername]);
 		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
 	}
 
@@ -191,7 +205,7 @@ class SettingsService {
 	 * @return string current provider
 	 */
 	public function getImageProvider() {
-		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 	}
 
 	/**
@@ -208,7 +222,7 @@ class SettingsService {
 	 * @return String
 	 */
 	public function headerbackgroundLink() {
-		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
 
 		return $provider->getRandomImageUrl();
@@ -218,7 +232,7 @@ class SettingsService {
 	 * Get all URLs for whitelisting
 	 */
 	public function getWhitelistingUrls() {
-		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, "Unsplash");
+		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
 		return $provider->getWhitelistResourceUrls();
 	}

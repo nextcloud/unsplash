@@ -62,11 +62,18 @@ class LegacyInitialisationService {
      * Allow Unsplash hosts in the csp
      */
     protected function registerCsp() {
-        if($this->settingsService->getUserStyleHeaderEnabled() || $this->settingsService->getServerStyleLoginEnabled()) {
+        $settings = $this->settingsService;
+
+        if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
+            $manager = $this->getContainer()->getServer()->getContentSecurityPolicyManager();
             $policy  = new ContentSecurityPolicy();
-            $policy->addAllowedImageDomain('https://source.unsplash.com');
-            $policy->addAllowedImageDomain('https://images.unsplash.com');
-            $this->contentSecurityPolicyManager->addDefaultPolicy($policy);
+
+            // todo: check if only appropriate urls are beeing whitelisted
+            $urls = $settings->getWhitelistingUrls();
+            foreach ($urls as &$value) {
+                $policy->addAllowedImageDomain($value);
+            }
+            $manager->addDefaultPolicy($policy);
         }
     }
 }

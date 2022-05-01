@@ -15,13 +15,14 @@
                         value = e.target.checked ? 'true':'false';
                     }
 
-				if($target.attr('type') === 'select') {
-					value = $target.val();
-				}
+                    if(e.target.getAttribute('type') === 'select') {
+                        value = e.target.value;
+                    }
 
-                _setValue(key, value);
-            }
-        );
+                    _setValue(key, value);
+                }
+            );
+        }
     }
 
     /**
