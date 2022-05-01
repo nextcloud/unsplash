@@ -1,5 +1,5 @@
 #app-dashboard::before {
-    background-color    : #777 !important;
+    background-color: #777 !important;
 
     /*This is nessessary because ::before needs content to show up*/
     content: "";
@@ -14,4 +14,7 @@
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;
+}
+#app-dashboard {
+    background-color: #777 !important;
 }

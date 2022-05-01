@@ -142,7 +142,7 @@ class CssController extends Controller {
             $css .= "), ";
             $css .= "url('$imagePath')";
             $css .= "!important;";
-            $css .= "background-blend-mode: hard-light;\n";
+            $css .= "background-blend-mode: normal, multiply;";
         }
         return $css;
     }
