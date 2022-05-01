@@ -48,18 +48,14 @@ class SettingsService {
 
 
 
-    private $logger;
-
-
     /**
      * FaviconService constructor.
      *
      * @param string|null $userId
      * @param             $appName
      * @param IConfig     $config
-     * @param LoggerInterface $logger
      */
-    public function __construct($userId, $appName, IConfig $config, LoggerInterface $logger) {
+    public function __construct($userId, $appName, IConfig $config) {
         $this->config = $config;
         $this->userId = $userId;
         if($this->config->getSystemValue('maintenance', false)) {
@@ -68,8 +64,6 @@ class SettingsService {
         $this->appName = $appName;
 
         $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
-        $this->logger = $logger;
-        $this->logger->error("Debug: run __construct");
     }
 
     /**
@@ -82,8 +76,7 @@ class SettingsService {
 
         if($styleHeader === null) return $this->getServerStyleHeaderEnabled();
 
-        //return $styleHeader == 1;
-        return true;
+        return $styleHeader == 1;
     }
 
     /**
@@ -108,8 +101,7 @@ class SettingsService {
 
         if($styleHeader === null) return $this->getServerStyleDashboardEnabled();
 
-        //return $styleHeader == 1;
-        return true;
+        return $styleHeader == 1;
     }
 
     /**
@@ -194,7 +186,6 @@ class SettingsService {
 	 * @param string $providername
 	 */
 	public function setImageProvider(string $providername) {
-        $this->logger->error("Debug: run setImageProvider", ['provider' => $providername]);
 		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
 	}
 
@@ -231,7 +222,7 @@ class SettingsService {
 	/**
 	 * Get all URLs for whitelisting
 	 */
-	public function getWhitelistingUrls() {
+	public function getWhitelistingUrlsForSelectedProvider() {
 		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
 		return $provider->getWhitelistResourceUrls();

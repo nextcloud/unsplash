@@ -6,8 +6,6 @@
 
 namespace OCA\Unsplash\AppInfo;
 
-
-
 use OCA\Unsplash\EventListener\AddContentSecurityPolicyEventListener;
 use OCA\Unsplash\EventListener\BeforeTemplateRenderedEventListener;
 use OCA\Unsplash\Services\LegacyInitialisationService;
@@ -16,8 +14,6 @@ use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 
-
-use OCA\Unsplash\Services\SettingsService;
 use OCP\Util;
 
 /**
@@ -48,6 +44,7 @@ class Application extends App {
             $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
             $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
         } else {
+            // todo: check when this will finally be deprecated, and set min-version accordingly (and remove it then)
             /** @var LegacyInitialisationService $service */
             $service = $this->getContainer()->query(LegacyInitialisationService::class);
             $service->initialize();

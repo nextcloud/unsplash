@@ -16,11 +16,11 @@ use OCP\IURLGenerator;
 use OCP\Util;
 
 class BeforeTemplateRenderedEventListener implements IEventListener {
+
     /** @var SettingsService */
     protected $settingsService;
     /** @var IRequest */
     protected $request;
-
     /** @var IURLGenerator */
     private $urlGenerator;
 

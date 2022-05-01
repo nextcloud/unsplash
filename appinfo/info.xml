@@ -16,14 +16,14 @@
     <category>customization</category>
     <category>multimedia</category>
     <category>tools</category>
-    <website>https://github.com/jancborchardt/unsplash/</website>
-    <bugs>https://github.com/jancborchardt/unsplash/issues</bugs>
-    <repository type="git">https://github.com/jancborchardt/unsplash.git</repository>
-    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
-    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
+    <website>https://github.com/nextcloud/unsplash/</website>
+    <bugs>https://github.com/nextcloud/unsplash/issues</bugs>
+    <repository type="git">https://github.com/nextcloud/unsplash.git</repository>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="7.0" />
-        <nextcloud min-version="14" max-version="23"/>
+        <nextcloud min-version="20" max-version="23"/>
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>

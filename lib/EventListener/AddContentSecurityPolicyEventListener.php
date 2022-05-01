@@ -40,8 +40,7 @@ class AddContentSecurityPolicyEventListener implements IEventListener {
         if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
             $policy  = new ContentSecurityPolicy();
 
-            // todo: check if only appropriate urls are beeing whitelisted
-            $urls = $settings->getWhitelistingUrls();
+            $urls = $settings->getWhitelistingUrlsForSelectedProvider();
             foreach ($urls as &$value) {
                 $policy->addAllowedImageDomain($value);
             }

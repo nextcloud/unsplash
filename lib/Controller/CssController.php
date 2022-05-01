@@ -65,7 +65,7 @@ class CssController extends Controller {
     public function header(): DataDisplayResponse {
         $unsplashImagePath =  $this->settings->headerbackgroundLink();
 
-        return $this->prepareResponse("#body-public #header {background-image: url('" . $unsplashImagePath . "') !important;}");
+        return $this->prepareResponse("#header {background-image: url('" . $unsplashImagePath . "') !important;}");
     }
 
     /**
@@ -73,6 +73,7 @@ class CssController extends Controller {
      *
      * @NoAdminRequired
      * @NoCSRFRequired
+     * @PublicPage
      *
      * @return DataDisplayResponse
      */
@@ -81,8 +82,15 @@ class CssController extends Controller {
         return $this->prepareResponse("body#body-login {background-image: url('" . $unsplashImagePath . "') !important;}");
     }
 
-    private function prepareResponse(String $css) {
-        // see https://github.com/juliushaertl/theming_customcss/blob/master/lib/Controller/ThemingController.php
+    /**
+     * Creates the appropriate css response for the client.
+     * Also:
+     * see https://github.com/juliushaertl/theming_customcss/blob/master/lib/Controller/ThemingController.php
+     *
+     * @param String $css
+     * @return DataDisplayResponse
+     */
+    private function prepareResponse(String $css): DataDisplayResponse {
         $response = new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
         $response->cacheFor(86400);
         $expires = new \DateTime();
