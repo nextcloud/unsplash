@@ -68,7 +68,6 @@ class LegacyInitialisationService {
             $manager = $this->getContainer()->getServer()->getContentSecurityPolicyManager();
             $policy  = new ContentSecurityPolicy();
 
-            // todo: check if only appropriate urls are beeing whitelisted
             $urls = $settings->getWhitelistingUrlsForSelectedProvider();
             foreach ($urls as &$value) {
                 $policy->addAllowedImageDomain($value);
