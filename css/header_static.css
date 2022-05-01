@@ -1,11 +1,18 @@
-#body-user #header,
-#body-settings #header,
-#body-public #header {
+#body-user #header::before,
+#body-settings #header::before,
+#body-public #header::before {
     background-color    : #777 !important;
     background-position : center;
     background-repeat   : no-repeat;
     background-size     : cover;
 }
+
+#body-user #header,
+#body-settings #header,
+#body-public #header{
+    background-color: #000;
+}
+
 
 /* Header icons get drop shadow for visibility */
 #header .logo.logo-icon,

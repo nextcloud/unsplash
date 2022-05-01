@@ -6,6 +6,11 @@ body#body-login {
     background-size     : cover;
 }
 
+#body-login {
+	background-color: #000;
+}
+
+
 #body-login input.primary,
 #body-login button.primary,
 #body-login #alternative-logins li a {

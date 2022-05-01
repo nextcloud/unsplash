@@ -10,6 +10,25 @@
                 (e) => {
                     let key   = e.target.dataset.setting,
                         value = e.target.value;
+		$('#unsplash-style-tinting').on(
+			'change',
+			(e) => {
+				let $target = $(e.target)
+                if($target[0].checked){
+					$('#unsplash-style-color-strenght').prop('disabled', false);
+                }else{
+					$('#unsplash-style-color-strenght').prop('disabled', true);
+				}
+			}
+		);
+
+
+        $('[data-setting]').on(
+            'change',
+            (e) => {
+                let $target = $(e.target),
+                    key     = $target.data('setting'),
+                    value   = $target.val();
 
                     if(e.target.getAttribute('type') === 'checkbox') {
                         value = e.target.checked ? 'true':'false';

@@ -57,7 +57,13 @@ class AdminSettingsController extends Controller {
             $this->settings->setServerStyleDashboardEnabled($value);
         } else if($key === 'provider/provider') {
             $this->settings->setImageProvider($value);
-        } else {
+        }else if($key === 'style/tint') {
+			$this->settings->setTintAllowed($value);
+		}else if($key === 'style/strength/color') {
+			$this->settings->setColorStrength($value);
+		}else if($key === 'style/strength/blur') {
+			$this->settings->setBlurStrength($value);
+		} else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
 
