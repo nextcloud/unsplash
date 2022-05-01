@@ -10,7 +10,7 @@ style('unsplash', 'settings');
 ?>
 <div class="section" id="unsplash-settings" data-save="<?=$_['saveSettingsUrl']?>">
     <h2>
-        <?php p($l->t('Random Background Images')); ?>
+        <?php p($l->t('Splash: Random Background Images')); ?>
         <span class="msg success"><?php p($l->t('Saved')); ?></span>
         <span class="msg error"><?php p($l->t('Failed')); ?></span>
     </h2>
@@ -49,6 +49,14 @@ style('unsplash', 'settings');
             </select>
             <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
         </div>
+        <br>
+        <h2>
+            <?php p($l->t('Splash: Advanced Theming')); ?>
+        </h2>
+        <p class="settings-hint">
+            <?php p($l->t('You can apply effects to your background images.')); ?>
+        </p>
+
 		<div>
 			<input id="unsplash-style-tinting" name="unsplash-style-grayscale" data-setting="style/tint" type="checkbox" <?=$_['styleTint'] ? 'checked':''?> class="checkbox">
 			<label for="unsplash-style-tinting"><?php p($l->t('Enable Tint')); ?></label>
