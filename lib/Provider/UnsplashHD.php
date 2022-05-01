@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (c) 2019 Felix Nüsse <felix.nuesse@t-online.de>
+ * @copyright Copyright (c) 2022 Felix Nüsse <felix.nuesse@t-online.de>
  *
  * @license GNU AGPL version 3 or any later version
  *
