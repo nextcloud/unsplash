@@ -56,13 +56,14 @@ class AdminSettingsController extends Controller {
         } else if($key === 'style/dashboard') {
             $this->settings->setServerStyleDashboardEnabled($value);
         } else if($key === 'provider/provider') {
-            $this->settings->setImageProvider($value);
+            //todo: do NOT store this value. Sanitize it! (check against available provider, and store one of them)
+            $this->settings->setImageProvider(filter_var($value, FILTER_SANITIZE_STRING));
         }else if($key === 'style/tint') {
-			$this->settings->setTint($value);
+			$this->settings->setTint(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 		}else if($key === 'style/strength/color') {
-			$this->settings->setColorStrength($value);
+			$this->settings->setColorStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 		}else if($key === 'style/strength/blur') {
-			$this->settings->setBlurStrength($value);
+			$this->settings->setBlurStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 		} else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
