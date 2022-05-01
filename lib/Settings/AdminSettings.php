@@ -51,7 +51,7 @@ class AdminSettings implements ISettings {
             'hasDashboard'      => $this->settings->getNextcloudVersion() > 19,
             'availableProvider' => $this->settings->getAllImageProvider(),
             'selectedProvider'  => $this->settings->getImageProvider(),
-            'styleTint'     => $this->settings->isTintAllowed(),
+            'styleTint'     => $this->settings->isTintEnabled(),
             'styleStrengthColor'     => $this->settings->getColorStrength(),
             'styleStrengthBlur'     => $this->settings->getBlurStrength()
         ]);

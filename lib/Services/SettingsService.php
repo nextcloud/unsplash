@@ -256,11 +256,11 @@ class SettingsService {
 	 *
 	 * @return bool
 	 */
-	public function isTintAllowed(): bool {
+	public function isTintEnabled(): bool {
 		return $this->config->getAppValue($this->appName, self::STYLE_TINT_ALLOWED, self::STYLE_TINT_ALLOWED_DEFAULT);
 	}
 
-	public function setTintAllowed(int $tinting) {
+	public function setTint(int $tinting): void {
 		$this->config->setAppValue($this->appName, self::STYLE_TINT_ALLOWED, $tinting);
 	}
 
@@ -311,22 +311,6 @@ class SettingsService {
 			$strength=0;
 		}
 		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_BLUR, $strength);
-	}
-
-	/**
-	 * Returns the URL to the custom Unsplash-path
-	 *
-	 * @return String
-	 */
-	public function headerbackgroundLink() {
-		$headerbackgroundLink = $this->config->getAppValue($this->appName, 'headerbackgroundlink', $this->headerbackgroundLinkDefault);
-
-		if(isset($headerbackgroundLink) && $headerbackgroundLink!=""){
-			return $headerbackgroundLink;
-		}else{
-			return $this->headerbackgroundLinkDefault;
-		}
-
 	}
 
 }

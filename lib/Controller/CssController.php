@@ -50,8 +50,13 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function dashboard(): DataDisplayResponse {
-        $unsplashImagePath =  $this->settings->headerbackgroundLink();
-        return $this->prepareResponse("#app-dashboard {background-image: url('" . $unsplashImagePath . "') !important;}");
+        $imagePath =  $this->settings->headerbackgroundLink();
+
+        $css = "#app-dashboard { background-image: url('$imagePath') !important;";
+        $css.= $this->getTintStyle($imagePath);
+        $css.= $this->getBlurStyle();
+        $css .= "}";
+        return $this->prepareResponse($css);
     }
 
     /**
@@ -63,9 +68,13 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function header(): DataDisplayResponse {
-        $unsplashImagePath =  $this->settings->headerbackgroundLink();
+        $imagePath =  $this->settings->headerbackgroundLink();
 
-        return $this->prepareResponse("#header {background-image: url('" . $unsplashImagePath . "') !important;}");
+        $css = "#header {background-image: url('" . $imagePath . "') !important;";
+        $css.= $this->getTintStyle($imagePath);
+        $css.= $this->getBlurStyle();
+        $css .= "}";
+        return $this->prepareResponse($css);
     }
 
     /**
@@ -78,8 +87,13 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function login(): DataDisplayResponse {
-        $unsplashImagePath =  $this->settings->headerbackgroundLink();
-        return $this->prepareResponse("body#body-login {background-image: url('" . $unsplashImagePath . "') !important;}");
+        $imagePath =  $this->settings->headerbackgroundLink();
+
+        $css = "body#body-login {background-image: url('" . $imagePath . "') !important;";
+        $css.= $this->getTintStyle($imagePath);
+        $css.= $this->getBlurStyle();
+        $css .= "}";
+        return $this->prepareResponse($css);
     }
 
     /**
@@ -92,12 +106,44 @@ class CssController extends Controller {
      */
     private function prepareResponse(String $css): DataDisplayResponse {
         $response = new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
-        $response->cacheFor(86400);
+        // $response->cacheFor(86400);
         $expires = new \DateTime();
         $expires->setTimestamp($this->timeFactory->getTime());
         $expires->add(new \DateInterval('PT24H'));
-        $response->addHeader('Expires', $expires->format(\DateTime::RFC1123));
-        $response->addHeader('Pragma', 'cache');
+        //$response->addHeader('Expires', $expires->format(\DateTime::RFC1123));
+        //$response->addHeader('Pragma', 'cache');
         return $response;
+    }
+
+
+    private function getBlurStyle(): string {
+        $css = "";
+        $blurStrenght =  $this->settings->getBlurStrength();
+        $blurStrenghtpx =  $this->settings->getBlurStrength()."px";
+        $blurEnabled =  $blurStrenght > 0;
+
+        if($blurEnabled == 1){
+            $css .= "backdrop-filter: blur($blurStrenghtpx);";
+        }
+        return $css;
+    }
+
+    private function getTintStyle(string $imagePath): string {
+        $css = "";
+        $tintEnabled =  $this->settings->isTintEnabled();
+        if($tintEnabled == 1){
+            $tintColor =  $this->settings->getInstanceColor();
+            list($r, $g, $b) = sscanf($tintColor, "#%02x%02x%02x");
+            $colorStrenght =  $this->settings->getColorStrength()/100;
+            $css .= "background-image: ";
+            $css .= "linear-gradient(";
+            $css .= "rgba($r, $g, $b, $colorStrenght),";
+            $css .= "rgba($r, $g, $b, $colorStrenght)";
+            $css .= "), ";
+            $css .= "url('$imagePath')";
+            $css .= "!important;";
+            $css .= "background-blend-mode: hard-light;\n";
+        }
+        return $css;
     }
 }

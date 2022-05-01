@@ -58,7 +58,7 @@ class AdminSettingsController extends Controller {
         } else if($key === 'provider/provider') {
             $this->settings->setImageProvider($value);
         }else if($key === 'style/tint') {
-			$this->settings->setTintAllowed($value);
+			$this->settings->setTint($value);
 		}else if($key === 'style/strength/color') {
 			$this->settings->setColorStrength($value);
 		}else if($key === 'style/strength/blur') {

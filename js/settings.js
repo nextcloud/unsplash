@@ -10,25 +10,6 @@
                 (e) => {
                     let key   = e.target.dataset.setting,
                         value = e.target.value;
-		$('#unsplash-style-tinting').on(
-			'change',
-			(e) => {
-				let $target = $(e.target)
-                if($target[0].checked){
-					$('#unsplash-style-color-strenght').prop('disabled', false);
-                }else{
-					$('#unsplash-style-color-strenght').prop('disabled', true);
-				}
-			}
-		);
-
-
-        $('[data-setting]').on(
-            'change',
-            (e) => {
-                let $target = $(e.target),
-                    key     = $target.data('setting'),
-                    value   = $target.val();
 
                     if(e.target.getAttribute('type') === 'checkbox') {
                         value = e.target.checked ? 'true':'false';
@@ -36,6 +17,15 @@
 
                     if(e.target.getAttribute('type') === 'select') {
                         value = e.target.value;
+                    }
+
+                    if(key === 'style/tint') {
+                        console.log("change"+value)
+                        let enable = false
+                        if(value === "true"){
+                            enable = true
+                        }
+                        document.getElementById('unsplash-style-color-strenght').disabled = !enable;
                     }
 
                     _setValue(key, value);
