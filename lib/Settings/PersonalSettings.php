@@ -67,7 +67,7 @@ class PersonalSettings implements ISettings {
             'styleDashboard'  => $this->settings->getUserStyleDashboardEnabled(),
             'hasDashboard'    => $this->settings->getNextcloudVersion() > 19,
             'enableNavbar'    => $this->settings->getServerStyleHeaderEnabled(),
-            'enableDashboard'    => $this->settings->getServerStyleDashboardEnabled(),
+            'enableDashboard' => $this->settings->getServerStyleDashboardEnabled(),
             'label'           => $this->theming->getEntity()
         ], '');
     }

@@ -186,6 +186,8 @@ class SettingsService {
     }
 
     /**
+     * Todo: refactor this function to a "has dash" function that also checks wether the dashboard is actually enabled.
+     *       and then dont show the entries.
      * @return int
      */
     public function getNextcloudVersion(): int {
