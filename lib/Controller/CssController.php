@@ -52,7 +52,11 @@ class CssController extends Controller {
     public function dashboard(): DataDisplayResponse {
         $imagePath =  $this->settings->headerbackgroundLink();
 
-        $css = "#app-dashboard { background-image: url('$imagePath') !important;";
+        // we use the data-dasboard-background attribute to select the dashboard only when the user selected the default
+        // one. This allows us to fully remove the dashboard setting, because the "standard" selection should
+        // be identical to the login screen.
+
+        $css = "body[data-dashboard-background=\"default\"] { background-image: url('$imagePath') !important;";
         $css.= $this->getTintStyle($imagePath);
         $css.= $this->getBlurStyle();
         $css .= "}";

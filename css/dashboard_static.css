@@ -1,4 +1,4 @@
-#app-dashboard::before {
+body[data-dashboard-background="default"] {
     background-color: #777 !important;
 
     /*This is nessessary because ::before needs content to show up*/
@@ -15,6 +15,7 @@
     background-repeat   : no-repeat;
     background-size     : cover;
 }
-#app-dashboard {
-    background-color: #777 !important;
+
+body[data-dashboard-background="default"] div[id=app-dashboard] {
+    background: none !important;
 }
