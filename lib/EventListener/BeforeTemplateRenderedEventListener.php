@@ -44,23 +44,42 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
             return;
         }
 
-        if($event->isLoggedIn()) {
-            $route = $this->request->getParam('_route');
-            $userstyleHeader = $this->settingsService->getUserStyleHeaderEnabled();
-            $serverstyleHeader = $this->settingsService->getServerStyleHeaderEnabled();
-            $serverstyleDash = $this->settingsService->getServerStyleDashboardEnabled();
+        $route = $this->request->getParam('_route');
+        $serverstyleHeader = $this->settingsService->getServerStyleHeaderEnabled();
+        $serverstyleDash = $this->settingsService->getServerStyleDashboardEnabled();
+        $serverstyleLogin = $this->settingsService->getServerStyleLoginEnabled();
+        $userstyleHeader = $this->settingsService->getUserStyleHeaderEnabled();
 
-            if($serverstyleHeader && $userstyleHeader && $route !== 'dashboard.dashboard.index') {
-                $this->addHeaderFor('header');
-            }
+        $this->addHeaderFor($route);
 
-            if($serverstyleDash && $route === 'dashboard.dashboard.index') {
-                $this->addHeaderFor('dashboard');
-            }
-        }
-
-        if(!$event->isLoggedIn() && $this->settingsService->getServerStyleLoginEnabled()) {
-            $this->addHeaderFor('login');
+        switch ($route) {
+            case 'files_sharing.Share.authenticate':
+            case 'files_sharing.Share.showAuthenticate':
+                if($serverstyleLogin){
+                    $this->addHeaderFor('login');
+                }
+                break;
+            case 'files_sharing.Share.showShare':
+                if($serverstyleHeader) {
+                    $this->addHeaderFor('header');
+                }
+                break;
+            case 'dashboard.dashboard.index':
+                if($event->isLoggedIn() && $serverstyleDash) {
+                    $this->addHeaderFor('dashboard');
+                }
+                break;
+            default:
+                if($event->isLoggedIn()) {
+                    if($serverstyleHeader && $userstyleHeader) {
+                        $this->addHeaderFor('header');
+                    }
+                } else {
+                    if($serverstyleLogin) {
+                        $this->addHeaderFor('login');
+                    }
+                }
+                break;
         }
     }
 
