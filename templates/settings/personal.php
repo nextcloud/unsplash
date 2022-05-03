@@ -25,13 +25,5 @@ style('unsplash', 'settings');
             <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
         </div>
         <?php endif; ?>
-        <?php if($_['enableDashboard']): ?>
-        <?php if($_['hasDashboard']): ?>
-        <div>
-            <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
-        </div>
-        <?php endif; ?>
-        <?php endif; ?>
     </form>
 </div>

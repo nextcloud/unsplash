@@ -47,7 +47,6 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
         if($event->isLoggedIn()) {
             $route = $this->request->getParam('_route');
             $userstyleHeader = $this->settingsService->getUserStyleHeaderEnabled();
-            $userstyleDash = $this->settingsService->getUserStyleDashboardEnabled();
             $serverstyleHeader = $this->settingsService->getServerStyleHeaderEnabled();
             $serverstyleDash = $this->settingsService->getServerStyleDashboardEnabled();
 
@@ -55,7 +54,7 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
                 $this->addHeaderFor('header');
             }
 
-            if($serverstyleDash && $userstyleDash && $route === 'dashboard.dashboard.index') {
+            if($serverstyleDash && $route === 'dashboard.dashboard.index') {
                 $this->addHeaderFor('dashboard');
             }
         }
