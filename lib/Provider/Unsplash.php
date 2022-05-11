@@ -28,7 +28,7 @@ class Unsplash extends Provider{
 	/**
 	 * @var string
 	 */
-	public $DEFAULT_URL="https://source.unsplash.com/featured/?nature,nature";
+	public $DEFAULT_SEARCH="nature,nature";
 	const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
@@ -36,17 +36,13 @@ class Unsplash extends Provider{
 		return ['https://source.unsplash.com','https://images.unsplash.com'];
 	}
 
-	public function getRandomImageUrl()
-	{
-		return $this->getURL();
+	public function getRandomImageUrl(): string
+    {
+		return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($termarray)
-	{
-		$url =  "https://source.unsplash.com/random/featured/?";
-		foreach ($termarray as &$value) {
-			$url .= $value.',';
-		}
-		return $url;
+	public function getRandomImageUrlBySearchTerm($search): string
+    {
+        return "https://source.unsplash.com/random/featured/?".$search;
 	}
 }

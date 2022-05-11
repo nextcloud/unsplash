@@ -30,7 +30,7 @@ class WikimediaCommons extends Provider{
 	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
 	 * @var string
 	 */
-	public $DEFAULT_URL="damn";
+	public $DEFAULT_SEARCH="landscape,dog,cat";
 	const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
@@ -40,16 +40,11 @@ class WikimediaCommons extends Provider{
 
 	public function getRandomImageUrl()
 	{
-		return $this->getRandomImageUrlBySearchTerm(['landscape', 'dog', 'cat']);
+		return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($termarray)
+	public function getRandomImageUrlBySearchTerm($search)
 	{
-        shuffle($termarray);
-        $search = strtolower($termarray[0]);
-        // only allow letters as searchterm
-        $search = preg_replace('/[^a-z]/i','', $search);
-
         $curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles='.$search.'&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);

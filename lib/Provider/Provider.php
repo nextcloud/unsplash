@@ -42,9 +42,10 @@ abstract class Provider{
 	private $providerName;
 
 	/**
+     * // Please override this value for your own provider.
 	 * @var string
 	 */
-	public $DEFAULT_URL="redefine this value";
+	public $DEFAULT_SEARCH="nature";
 
 	const ALLOW_URL_CUSTOMIZING = true;
 
@@ -63,28 +64,47 @@ abstract class Provider{
 	}
 
 	/**
-	 * This sets a custom url if the provider allows this.
+	 * This sets a custom search query if the provider supports this.
 	 *
-	 * @param string $url
+	 * @param string $term
 	 */
-	public function setCustomURL(string $url){
-		$this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $url);
+	public function setCustomSearchTerms(string $term): void
+    {
+		$this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $term);
 	}
 
 	/**
 	 *
-	 * This either returns the default url, or the custom one, if one is set
-	 * @return mixed
+	 * This returns the custom searchterm
+     * It is not filtered!
+	 * @return string
 	 */
-	public function getURL(){
-		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/url', $this->DEFAULT_URL);
+	public function getCustomSearchterms(): string {
+		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $this->DEFAULT_SEARCH);
 	}
+
+    /**
+     *
+     * This returns a single searchterm. It will be restricted to letters, and lowercase.
+     * This filtering i s there to prevent url hijacking or malforming due to searchterms
+     * @return string
+     */
+    public function getRandomSearchTerm(): string {
+        $termarray = explode(",", $this->getCustomSearchterms());
+        shuffle($termarray);
+
+        $term = strtolower($termarray[0]);
+        // only allow letters as searchterm
+        $term = preg_replace('/[^a-z]/i','', $term);
+        return $term;
+    }
 
 	/**
 	 * Returns the providername
 	 * @return string
 	 */
-	public function getName(){
+	public function getName(): string
+    {
 		return $this->providerName;
 	}
 
@@ -100,8 +120,8 @@ abstract class Provider{
 	public abstract function getRandomImageUrl();
 
 	/*
-	 * This should return a url to a random image filtered by searchterms
+	 * This should return a url to a random image filtered by $search
 	 */
-	public abstract function getRandomImageUrlBySearchTerm($termarray);
+	public abstract function getRandomImageUrlBySearchTerm($search);
 
 }

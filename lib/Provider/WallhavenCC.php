@@ -30,7 +30,7 @@ class WallhavenCC extends Provider{
 	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
 	 * @var string
 	 */
-	public $DEFAULT_URL="damn";
+    public $DEFAULT_SEARCH="nature,supercar";
 	const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls(): array
@@ -40,16 +40,11 @@ class WallhavenCC extends Provider{
 
 	public function getRandomImageUrl()
 	{
-		return $this->getRandomImageUrlBySearchTerm(['nature', 'supercar']);
+        return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($termarray)
+	public function getRandomImageUrlBySearchTerm($search)
 	{
-        shuffle($termarray);
-        $search = strtolower($termarray[0]);
-        // only allow letters as searchterm
-        $search = preg_replace('/[^a-z]/i','', $search);
-
         $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&q='.$search);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);

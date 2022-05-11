@@ -25,25 +25,21 @@ use OCA\Unsplash\Provider\Provider;
 
 class NextcloudImage extends Provider{
 
-	/**
-	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
-	 * @var string
-	 */
-	public $DEFAULT_URL="/index.php/apps/theming/image/background";
-	const ALLOW_URL_CUSTOMIZING = true;
+	private $THEMING_URL="/index.php/apps/theming/image/background";
+	const ALLOW_URL_CUSTOMIZING = false;
 
-	public function getWhitelistResourceUrls()
-	{
+	public function getWhitelistResourceUrls(): array
+    {
 		return [];
 	}
 
-	public function getRandomImageUrl()
-	{
-		return $this->getURL();
+	public function getRandomImageUrl(): string
+    {
+		return $this->THEMING_URL;
 	}
 
-	public function getRandomImageUrlBySearchTerm($termarray)
-	{
-		return $this->getURL();
+	public function getRandomImageUrlBySearchTerm($search): string
+    {
+		return $this->THEMING_URL;
 	}
 }

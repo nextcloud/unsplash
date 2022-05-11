@@ -28,8 +28,8 @@ class UnsplashHD extends Provider{
 	/**
 	 * @var string
 	 */
-	public $DEFAULT_URL="https://source.unsplash.com/featured/3840x2160?nature,nature";
-	const ALLOW_URL_CUSTOMIZING = true;
+    public $DEFAULT_SEARCH="nature,nature";
+    const ALLOW_URL_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
 	{
@@ -38,15 +38,11 @@ class UnsplashHD extends Provider{
 
 	public function getRandomImageUrl()
 	{
-		return $this->getURL();
+        return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($termarray)
+	public function getRandomImageUrlBySearchTerm($search)
 	{
-		$url =  "https://source.unsplash.com/random/featured/3840x2160?";
-		foreach ($termarray as &$value) {
-			$url .= $value.',';
-		}
-		return $url;
+        return "https://source.unsplash.com/random/featured/3840x2160?".$search;
 	}
 }
