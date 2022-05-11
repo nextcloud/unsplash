@@ -40,12 +40,17 @@ class WikimediaCommons extends Provider{
 
 	public function getRandomImageUrl()
 	{
-		return $this->getRandomImageUrlBySearchTerm(['nature']);
+		return $this->getRandomImageUrlBySearchTerm(['landscape', 'dog', 'cat']);
 	}
 
 	public function getRandomImageUrlBySearchTerm($termarray)
 	{
-		$curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles=Dog&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
+        shuffle($termarray);
+        $search = strtolower($termarray[0]);
+        // only allow letters as searchterm
+        $search = preg_replace('/[^a-z]/i','', $search);
+
+        $curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles='.$search.'&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		$json = json_decode($response, true);
