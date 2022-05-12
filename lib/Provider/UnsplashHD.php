@@ -28,8 +28,8 @@ class UnsplashHD extends Provider{
 	/**
 	 * @var string
 	 */
-    public $DEFAULT_SEARCH="nature,nature";
-    const ALLOW_URL_CUSTOMIZING = true;
+    public string $DEFAULT_SEARCH="nature,nature";
+    public bool $ALLOW_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
 	{

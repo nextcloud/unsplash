@@ -60,11 +60,11 @@ class ProviderDefinitions{
 
 		$tmp=[];
 		//add all provider to this array. The logic takes care of the rest.
-		array_push($tmp,new Unsplash($this->appName, $this->config,"Unsplash"));
-		array_push($tmp,new UnsplashHD($this->appName, $this->config,"UnsplashHD"));
-		array_push($tmp,new NextcloudImage($this->appName, $this->config,"Nextcloud Image"));
-		array_push($tmp,new WikimediaCommons($this->appName, $this->config,"WikimediaCommons"));
-		array_push($tmp,new WallhavenCC($this->appName, $this->config,"WallhavenCC"));
+		array_push($tmp, new Unsplash($this->appName, $this->config,"Unsplash"));
+		array_push($tmp, new UnsplashHD($this->appName, $this->config,"UnsplashHD"));
+		array_push($tmp, new NextcloudImage($this->appName, $this->config,"Nextcloud Image"));
+		array_push($tmp, new WikimediaCommons($this->appName, $this->config,"WikimediaCommons"));
+		array_push($tmp, new WallhavenCC($this->appName, $this->config,"WallhavenCC"));
 
 		foreach ($tmp as &$value) {
 			//$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
@@ -77,7 +77,7 @@ class ProviderDefinitions{
 	 *
 	 * @return Name of the Provider
 	 */
-	function getProviderByName($name){
+	function getProviderByName($name): Provider{
 		return $this->definitions[$name];
 	}
 

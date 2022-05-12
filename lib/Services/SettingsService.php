@@ -6,6 +6,7 @@
 
 namespace OCA\Unsplash\Services;
 
+use OCA\Unsplash\Provider\Provider;
 use OCP\IConfig;
 use OCA\Unsplash\Provider\ProviderDefinitions;
 use Psr\Log\LoggerInterface;
@@ -207,14 +208,47 @@ class SettingsService {
 	}
 
 	/**
-	 * Get the selected imageprovider
+	 * Get the selected imageprovider's name
 	 *
-	 * @param string $providername
-	 * @return string current provider
+	 * @return string current provider name
 	 */
-	public function getImageProvider() {
+	public function getImageProviderName(): string {
 		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 	}
+
+
+    /**
+     * Get the selected imageprovider
+     *
+     * @return string name of the provider
+     * @return string current provider
+     */
+    public function getImageProvider($name): Provider {
+        return $this->providerDefinitions->getProviderByName($name);
+    }
+
+
+    /**
+     * Get the selected imageprovider customization
+     *
+     * @return string current provider customization
+     */
+    public function getImageProviderCustomization() {
+        $providername = $this->getImageProviderName();
+        $provider = $this->providerDefinitions->getProviderByName($providername);
+        return $provider->getCustomSearchterms();
+    }
+
+    /**
+     * Set the selected imageprovider customization
+     *
+     * @param string $customization
+     */
+    public function setImageProviderCustomization($customization) {
+        $providername = $this->getImageProviderName();
+        $provider = $this->providerDefinitions->getProviderByName($providername);
+        $provider->setCustomSearchTerms($customization);
+    }
 
 	/**
 	 * Get all defined imageprovider
@@ -222,6 +256,21 @@ class SettingsService {
 	public function getAllImageProvider() {
 		return $this->providerDefinitions->getAllProviderNames();
 	}
+
+    /**
+     * Get all defined imageprovider that allow customization
+     */
+    public function getAllCustomizableImageProvider()
+    {
+        $all = [];
+        foreach ($this->providerDefinitions->getAllProviderNames() as $value) {
+            $provider = $this->providerDefinitions->getProviderByName($value);
+            if($provider->isCustomizable()){
+                $all = array_push($all, $value);
+            }
+        }
+        return $this->providerDefinitions->getAllProviderNames();
+    }
 
 
 	/**

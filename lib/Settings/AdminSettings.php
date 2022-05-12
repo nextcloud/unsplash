@@ -44,16 +44,23 @@ class AdminSettings implements ISettings {
      */
     public function getForm(): TemplateResponse {
         return new TemplateResponse('unsplash', 'settings/admin', [
-            'saveSettingsUrl'   => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
-            'styleLogin'        => $this->settings->getServerStyleLoginEnabled(),
-            'styleHeader'       => $this->settings->getServerStyleHeaderEnabled(),
-            'styleDashboard'    => $this->settings->getServerStyleDashboardEnabled(),
-            'hasDashboard'      => $this->settings->getNextcloudVersion() > 19,
-            'availableProvider' => $this->settings->getAllImageProvider(),
-            'selectedProvider'  => $this->settings->getImageProvider(),
-            'styleTint'     => $this->settings->isTintEnabled(),
-            'styleStrengthColor'     => $this->settings->getColorStrength(),
-            'styleStrengthBlur'     => $this->settings->getBlurStrength()
+            'saveSettingsUrl'           => $this->urlGenerator->linkToRouteAbsolute('unsplash.admin_settings.set'),
+            'requestCustomizationUrl'   =>
+                $this->urlGenerator->linkToRouteAbsolute(
+                    'unsplash.admin_settings.getCustomization',
+                    array('providername' => $this->settings->getImageProviderName())
+                ),
+            'styleLogin'                => $this->settings->getServerStyleLoginEnabled(),
+            'styleHeader'               => $this->settings->getServerStyleHeaderEnabled(),
+            'styleDashboard'            => $this->settings->getServerStyleDashboardEnabled(),
+            'hasDashboard'              => $this->settings->getNextcloudVersion() > 19,
+            'availableProvider'         => $this->settings->getAllImageProvider(),
+            'selectedProvider'          => $this->settings->getImageProviderName(),
+            'availableCustomizations'   => $this->settings->getAllCustomizableImageProvider(),
+            'selectionCustomization'    => $this->settings->getImageProviderCustomization(),
+            'styleTint'                 => $this->settings->isTintEnabled(),
+            'styleStrengthColor'        => $this->settings->getColorStrength(),
+            'styleStrengthBlur'         => $this->settings->getBlurStrength()
         ]);
     }
 

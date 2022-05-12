@@ -9,13 +9,14 @@
                 'change',
                 (e) => {
                     let key   = e.target.dataset.setting,
-                        value = e.target.value;
+                        value = e.target.value,
+                        type  = e.target.getAttribute('type');
 
-                    if(e.target.getAttribute('type') === 'checkbox') {
+                    if(type === 'checkbox') {
                         value = e.target.checked ? 'true':'false';
                     }
 
-                    if(e.target.getAttribute('type') === 'select') {
+                    if(type === 'select') {
                         value = e.target.value;
                     }
 
@@ -28,7 +29,7 @@
                         document.getElementById('unsplash-style-color-strenght').disabled = !enable;
                     }
 
-                    _setValue(key, value);
+                    _setValue(key, value, type);
                 }
             );
         }
@@ -41,7 +42,7 @@
      * @param value
      * @private
      */
-    function _setValue(key, value) {
+    function _setValue(key, value, type) {
         let headers = new Headers();
         headers.append('requesttoken', OC.requestToken);
         headers.append('Accept', 'application/json');
@@ -52,6 +53,44 @@
             request = new Request(this.saveUrl, options);
 
         fetch(request)
+            .then(() => {
+                _showMessage('success');
+                if(type === 'select') {
+                    getCustomization(value)
+                }
+            })
+            .catch((e) => {
+                console.error(e);
+                _showMessage('error');
+            });
+    }
+
+    /**
+     * Update configuration value
+     *
+     * @param key
+     * @param value
+     * @private
+     */
+    function getCustomization(providername) {
+        let headers = new Headers();
+        headers.append('requesttoken', OC.requestToken);
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        let updateCustomizationUrl = document.getElementById('unsplash-settings').dataset.requestupdate
+
+        //todo: build this url better.
+        var apiUrl = updateCustomizationUrl.substr(0,updateCustomizationUrl.lastIndexOf("/")+1);
+        let options = {headers, method: 'GET', redirect: 'error'},
+            request = new Request(apiUrl+providername, options);
+
+        fetch(request)
+            .then(res =>
+                res.json())
+            .then(data => {
+                document.getElementById('splash-provider-customization').value = data['customization'];
+            })
             .then(() => {
                 _showMessage('success');
             })

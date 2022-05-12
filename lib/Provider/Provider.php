@@ -45,12 +45,12 @@ abstract class Provider{
      * // Please override this value for your own provider.
 	 * @var string
 	 */
-	public $DEFAULT_SEARCH="nature";
+	public string $DEFAULT_SEARCH="nature";
 
-	const ALLOW_URL_CUSTOMIZING = true;
+    public bool $ALLOW_CUSTOMIZING = true;
 
 
-	/**
+    /**
 	 * Provider constructor.
 	 *
 	 * @param $appName
@@ -70,7 +70,9 @@ abstract class Provider{
 	 */
 	public function setCustomSearchTerms(string $term): void
     {
-		$this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $term);
+        if($this->ALLOW_CUSTOMIZING) {
+            $this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $term);
+        }
 	}
 
 	/**
@@ -80,7 +82,14 @@ abstract class Provider{
 	 * @return string
 	 */
 	public function getCustomSearchterms(): string {
-		return $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $this->DEFAULT_SEARCH);
+        if(!$this->ALLOW_CUSTOMIZING) {
+            return "";
+        }
+        $term = $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $this->DEFAULT_SEARCH);
+        if($term == "") {
+            return $this->DEFAULT_SEARCH;
+        }
+		return $term;
 	}
 
     /**
@@ -107,6 +116,15 @@ abstract class Provider{
     {
 		return $this->providerName;
 	}
+
+    /**
+     * Returns if the provider is customizable
+     * @return string
+     */
+    public function isCustomizable(): bool
+    {
+        return $this->ALLOW_CUSTOMIZING;
+    }
 
 	/*
 	 * This should return all URLS which need to be whitelisted for csrf

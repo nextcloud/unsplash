@@ -30,8 +30,8 @@ class WikimediaCommons extends Provider{
 	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
 	 * @var string
 	 */
-	public $DEFAULT_SEARCH="landscape,dog,cat";
-	const ALLOW_URL_CUSTOMIZING = true;
+	public string $DEFAULT_SEARCH="landscape,dog,cat";
+    public bool $ALLOW_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls()
 	{

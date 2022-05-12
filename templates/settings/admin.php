@@ -8,7 +8,7 @@ script('unsplash', 'settings');
 style('unsplash', 'settings');
 
 ?>
-<div class="section" id="unsplash-settings" data-save="<?=$_['saveSettingsUrl']?>">
+<div class="section" id="unsplash-settings" data-save="<?=$_['saveSettingsUrl']?>" data-requestUpdate="<?=$_['requestCustomizationUrl']?>">
     <h2>
         <?php p($l->t('Splash: Random Background Images')); ?>
         <span class="msg success"><?php p($l->t('Saved')); ?></span>
@@ -44,10 +44,16 @@ style('unsplash', 'settings');
                     p($l->t($value));
                     echo "</option>";
                 }
-
                 ?>
             </select>
             <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
+        </div>
+        <div>
+            <input type="text" id="splash-provider-customization" data-setting="provider/customization"
+            <?php
+                echo " value='".$_['selectionCustomization']."'>";
+            ?>
+            <label for="splash-provider-customization"><?php p($l->t('Set custom searchterms. Seperate multiple terms by comma.')); ?></label>
         </div>
         <br>
         <h2>
@@ -77,7 +83,7 @@ style('unsplash', 'settings');
 		<div>
 			<input type="range" name="unsplash-style-blur" data-setting="style/strength/blur" min="0" max="25" value="<?=$_['styleStrengthBlur'] ? $_['styleStrengthBlur']:0?>">
 			<label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
-			<p><?php p($l->t('This is only supported in Chromium Browsers')); ?></p>
+			<p><?php p($l->t('Blur is currently only supported in Chrome Browsers.')); ?></p>
 		</div>
     </form>
 </div>
