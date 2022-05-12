@@ -38,16 +38,11 @@ class Application extends App {
      */
     protected function registerSystemEvents() {
         $container = $this->getContainer();
-        if(method_exists($container, 'get')) {
-            /* @var IEventDispatcher $eventDispatcher */
-            $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
-            $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
-            $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
-        } else {
-            // todo: check when this will finally be deprecated, and set min-version accordingly (and remove it then)
-            /** @var LegacyInitialisationService $service */
-            $service = $this->getContainer()->query(LegacyInitialisationService::class);
-            $service->initialize();
-        }
+
+        /* @var IEventDispatcher $eventDispatcher */
+        $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
+        $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
+        $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
+
     }
 }
