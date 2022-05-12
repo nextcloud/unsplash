@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚀 Feature request
+    url: https://github.com/nextcloud/unsplash/discussions/95
+    about: If you have suggestions or improvements, look at this discussion!
+  - name: 🎨 Image Source
+    url: https://github.com/nextcloud/unsplash/discussions/94
+    about: You found a great source for images? Add it here!
