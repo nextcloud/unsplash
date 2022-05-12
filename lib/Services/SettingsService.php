@@ -203,7 +203,7 @@ class SettingsService {
 	 *
 	 * @param string $providername
 	 */
-	public function setImageProvider(string $providername) {
+	public function setImageProvider(string $providername): void {
 		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
 	}
 

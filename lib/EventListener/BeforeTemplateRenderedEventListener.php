@@ -50,8 +50,6 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
         $serverstyleLogin = $this->settingsService->getServerStyleLoginEnabled();
         $userstyleHeader = $this->settingsService->getUserStyleHeaderEnabled();
 
-        $this->addHeaderFor($route);
-
         switch ($route) {
             case 'files_sharing.Share.authenticate':
             case 'files_sharing.Share.showAuthenticate':
@@ -89,7 +87,7 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
      * @return void
      */
     private function addHeaderFor(String $target) {
-        $linkToCSS = $this->urlGenerator->linkToRoute('unsplash.css.' . $target);
+        $linkToCSS = $this->urlGenerator->linkToRouteAbsolute('unsplash.css.' . $target);
 
         Util::addHeader('link', [
             'rel' => 'stylesheet',
