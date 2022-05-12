@@ -21,8 +21,14 @@
  *
  */
 
-namespace OCA\Unsplash\Provider;
+namespace OCA\Unsplash\ProviderHandler;
 
+use OCA\Unsplash\ProviderHandler\Provider;
+use OCA\Unsplash\Provider\NextcloudImage;
+use OCA\Unsplash\Provider\Unsplash;
+use OCA\Unsplash\Provider\UnsplashHD;
+use OCA\Unsplash\Provider\WallhavenCC;
+use OCA\Unsplash\Provider\WikimediaCommons;
 use OCP\IConfig;
 
 class ProviderDefinitions{

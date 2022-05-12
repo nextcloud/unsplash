@@ -21,7 +21,7 @@
  */
 
 namespace OCA\Unsplash\Provider;
-use OCA\Unsplash\Provider\Provider;
+use OCA\Unsplash\ProviderHandler\Provider;
 
 class NextcloudImage extends Provider{
 

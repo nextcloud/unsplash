@@ -6,7 +6,7 @@
 
 namespace OCA\Unsplash\Controller;
 
-use OCA\Unsplash\Provider\ProviderDefinitions;
+use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;

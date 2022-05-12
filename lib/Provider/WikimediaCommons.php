@@ -21,8 +21,8 @@
  */
 
 namespace OCA\Unsplash\Provider;
-use OCA\Unsplash\Provider\Provider;
 use OC\AppFramework\Http\Request;
+use OCA\Unsplash\ProviderHandler\Provider;
 
 class WikimediaCommons extends Provider{
 

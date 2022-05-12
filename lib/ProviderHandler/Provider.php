@@ -20,11 +20,11 @@
  */
 
 
-namespace OCA\Unsplash\Provider;
+namespace OCA\Unsplash\ProviderHandler;
 
 use OCP\IConfig;
 
-abstract class Provider{
+abstract class Provider {
 
 	/**
 	 * @var IConfig

@@ -6,11 +6,10 @@
 
 namespace OCA\Unsplash\Services;
 
-use OCA\Unsplash\Provider\Provider;
 use OCP\IConfig;
-use OCA\Unsplash\Provider\ProviderDefinitions;
 use Psr\Log\LoggerInterface;
-
+use OCA\Unsplash\ProviderHandler\Provider;
+use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 
 /**
  * Class SettingsService
