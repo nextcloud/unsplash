@@ -3,6 +3,19 @@
         this._timer = [];
         this.saveUrl = document.getElementById('unsplash-settings').dataset.save;
 
+        let customizationInputText = document.getElementById('splash-provider-customization');
+        customizationInputText.onkeydown = function(e){
+            if (e.keyCode === 13) {
+                let key   = e.target.dataset.setting,
+                    value = e.target.value,
+                    type  = e.target.getAttribute('type');
+                _setValue(key, value, type);
+                e.preventDefault();
+            }
+            return true;
+        };
+
+
         let settings = document.querySelectorAll('[data-setting]');
         for(let setting of settings) {
             setting.addEventListener(
