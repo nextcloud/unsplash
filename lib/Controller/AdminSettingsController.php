@@ -62,7 +62,11 @@ class AdminSettingsController extends Controller {
         } else if($key === 'provider/customization') {
             $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
         } else if($key === 'style/tint') {
-			$this->settings->setTint(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
+            if($value) {
+                $this->settings->setTint(1);
+            } else {
+                $this->settings->setTint(0);
+            }
 		} else if($key === 'style/strength/color') {
 			$this->settings->setColorStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 		} else if($key === 'style/strength/blur') {
@@ -71,7 +75,7 @@ class AdminSettingsController extends Controller {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
 
-        return new JSONResponse(['status' => 'ok']);
+        return new JSONResponse(['status' => $value]);
     }
     /**
      * Get the customizationstring for the requested providername
