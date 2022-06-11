@@ -34,12 +34,12 @@ class NextcloudImage extends Provider{
 		return [];
 	}
 
-	public function getRandomImageUrl(): string
+	public function getRandomImageUrl($size = Provider::SIZE_DEFAULT): string
     {
 		return $this->THEMING_URL;
 	}
 
-	public function getRandomImageUrlBySearchTerm($search): string
+	public function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT): string
     {
 		return $this->THEMING_URL;
 	}

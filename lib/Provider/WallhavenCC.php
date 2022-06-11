@@ -38,12 +38,12 @@ class WallhavenCC extends Provider{
 		return ["https://w.wallhaven.cc"];
 	}
 
-	public function getRandomImageUrl()
+	public function getRandomImageUrl($size = Provider::SIZE_DEFAULT)
 	{
         return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($search)
+	public function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT)
 	{
         $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&q='.$search);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

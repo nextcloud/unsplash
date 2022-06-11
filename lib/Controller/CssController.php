@@ -6,6 +6,7 @@
 
 namespace OCA\Unsplash\Controller;
 
+use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
@@ -50,17 +51,36 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function dashboard(): DataDisplayResponse {
-        $imagePath =  $this->settings->headerbackgroundLink();
 
+        $css_small = $this->dashboardInnerCSS(Provider::SIZE_SMALL);
+        $css_normal = $this->dashboardInnerCSS(Provider::SIZE_NORMAL);
+        $css_high = $this->dashboardInnerCSS(Provider::SIZE_HIGH);
+
+        $text = <<<EOT
+            @media only screen and (max-width: 1920px) {
+                $css_small
+            }
+            @media only screen and (min-width: 1921px) and (max-width: 2560px) {
+                $css_normal
+            }
+            @media only screen and (min-width: 2561px) {
+                $css_high
+            }
+        EOT;
+
+        return $this->prepareResponse($text);
+    }
+
+    private function dashboardInnerCSS($size) {
         // we use the data-dasboard-background attribute to select the dashboard only when the user selected the default
         // one. This allows us to fully remove the dashboard setting, because the "standard" selection should
         // be identical to the login screen.
-
+        $imagePath =  $this->settings->headerbackgroundLink($size);
         $css = "body[data-dashboard-background=\"default\"] { background-image: url('$imagePath') !important;";
         $css.= $this->getTintStyle($imagePath);
         $css.= $this->getBlurStyle();
         $css .= "}";
-        return $this->prepareResponse($css);
+        return $css;
     }
 
     /**

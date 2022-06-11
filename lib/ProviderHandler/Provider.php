@@ -26,6 +26,12 @@ use OCP\IConfig;
 
 abstract class Provider {
 
+    const SIZE_SMALL = 0;
+    const SIZE_NORMAL = 1;
+    const SIZE_HIGH = 2;
+    const SIZE_ULTRA = 3;
+    const SIZE_DEFAULT = Provider::SIZE_NORMAL;
+
 	/**
 	 * @var IConfig
 	 */
@@ -135,11 +141,11 @@ abstract class Provider {
 	/*
 	 * This should return a url to a random image
 	 */
-	public abstract function getRandomImageUrl();
+	public abstract function getRandomImageUrl($size = Provider::SIZE_DEFAULT);
 
 	/*
 	 * This should return a url to a random image filtered by $search
 	 */
-	public abstract function getRandomImageUrlBySearchTerm($search);
+	public abstract function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT);
 
 }

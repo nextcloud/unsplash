@@ -67,7 +67,6 @@ class ProviderDefinitions{
 		$tmp=[];
 		//add all provider to this array. The logic takes care of the rest.
 		array_push($tmp, new Unsplash($this->appName, $this->config,"Unsplash"));
-		array_push($tmp, new UnsplashHD($this->appName, $this->config,"UnsplashHD"));
 		array_push($tmp, new NextcloudImage($this->appName, $this->config,"Nextcloud Image"));
 		array_push($tmp, new WikimediaCommons($this->appName, $this->config,"WikimediaCommons"));
 		array_push($tmp, new WallhavenCC($this->appName, $this->config,"WallhavenCC"));

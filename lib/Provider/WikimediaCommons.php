@@ -38,12 +38,12 @@ class WikimediaCommons extends Provider{
 		return ["https://upload.wikimedia.org"];
 	}
 
-	public function getRandomImageUrl()
+	public function getRandomImageUrl($size = Provider::SIZE_DEFAULT)
 	{
 		return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm());
 	}
 
-	public function getRandomImageUrlBySearchTerm($search)
+	public function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT)
 	{
         $curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles='.$search.'&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
