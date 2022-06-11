@@ -16,7 +16,8 @@ style('unsplash', 'settings');
     </h2>
     <p class="settings-hint">
         <?php p($l->t('You can customize %s with random background images.', [$_['label']])); ?>
-        <?php print_unescaped($this->inc('partials/license')); ?>
+        <br>
+        <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
     </p>
     <form>
         <?php if($_['enableNavbar']): ?>

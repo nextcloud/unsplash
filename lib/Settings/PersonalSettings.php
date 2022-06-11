@@ -65,6 +65,7 @@ class PersonalSettings implements ISettings {
             'saveSettingsUrl' => $this->urlGenerator->linkToRouteAbsolute('unsplash.personal_settings.set'),
             'styleHeader'     => $this->settings->getUserStyleHeaderEnabled(),
             'hasDashboard'    => $this->settings->getNextcloudVersion() > 19,
+            'selectedProvider'=> str_replace(' ', '', $this->settings->getImageProviderName()),
             'enableNavbar'    => $this->settings->getServerStyleHeaderEnabled(),
             'label'           => $this->theming->getEntity()
         ], '');
