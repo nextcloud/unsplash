@@ -51,36 +51,10 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function dashboard(): DataDisplayResponse {
-
-        $css_small = $this->dashboardInnerCSS(Provider::SIZE_SMALL);
-        $css_normal = $this->dashboardInnerCSS(Provider::SIZE_NORMAL);
-        $css_high = $this->dashboardInnerCSS(Provider::SIZE_HIGH);
-
-        $text = <<<EOT
-            @media only screen and (max-width: 1920px) {
-                $css_small
-            }
-            @media only screen and (min-width: 1921px) and (max-width: 2560px) {
-                $css_normal
-            }
-            @media only screen and (min-width: 2561px) {
-                $css_high
-            }
-        EOT;
-
-        return $this->prepareResponse($text);
-    }
-
-    private function dashboardInnerCSS($size) {
         // we use the data-dasboard-background attribute to select the dashboard only when the user selected the default
         // one. This allows us to fully remove the dashboard setting, because the "standard" selection should
         // be identical to the login screen.
-        $imagePath =  $this->settings->headerbackgroundLink($size);
-        $css = "body[data-dashboard-background=\"default\"] { background-image: url('$imagePath') !important;";
-        $css.= $this->getTintStyle($imagePath);
-        $css.= $this->getBlurStyle();
-        $css .= "}";
-        return $css;
+        return $this->prepareResponse($this->mediaQuery("body[data-dashboard-background=\"default\"]"));
     }
 
     /**
@@ -92,13 +66,7 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function header(): DataDisplayResponse {
-        $imagePath =  $this->settings->headerbackgroundLink();
-
-        $css = "#header {background-image: url('" . $imagePath . "') !important;";
-        $css.= $this->getTintStyle($imagePath);
-        $css.= $this->getBlurStyle();
-        $css .= "}";
-        return $this->prepareResponse($css);
+        return $this->prepareResponse($this->mediaQuery("#header"));
     }
 
     /**
@@ -111,13 +79,47 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function login(): DataDisplayResponse {
-        $imagePath =  $this->settings->headerbackgroundLink();
+        return $this->prepareResponse($this->mediaQuery("body#body-login"));
+    }
 
-        $css = "body#body-login {background-image: url('" . $imagePath . "') !important;";
+    /**
+     * Create the full css media query with the appropriate inner css-tags.
+     * @param $prefix
+     * @return string
+     */
+    private function mediaQuery($prefix) {
+
+        $css_small = $this->innerCSS($prefix, Provider::SIZE_SMALL);
+        $css_normal = $this->innerCSS($prefix, Provider::SIZE_NORMAL);
+        $css_high = $this->innerCSS($prefix, Provider::SIZE_HIGH);
+
+        $css = <<<EOT
+            @media only screen and (max-width: 1920px) {
+                $css_small
+            }
+            @media only screen and (min-width: 1921px) and (max-width: 2560px) {
+                $css_normal
+            }
+            @media only screen and (min-width: 2561px) {
+                $css_high
+            }
+        EOT;
+        return $css;
+    }
+
+    /**
+     * Create css for inner media queries, prefixed with the proper tags.
+     * @param $prefix
+     * @param $size
+     * @return string
+     */
+    private function innerCSS($prefix, $size) {
+        $imagePath =  $this->settings->headerbackgroundLink($size);
+        $css = $prefix." { background-image: url('$imagePath') !important;";
         $css.= $this->getTintStyle($imagePath);
         $css.= $this->getBlurStyle();
         $css .= "}";
-        return $this->prepareResponse($css);
+        return $css;
     }
 
     /**

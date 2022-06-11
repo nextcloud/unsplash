@@ -277,10 +277,9 @@ class SettingsService {
 	 *
 	 * @return String
 	 */
-	public function headerbackgroundLink($size=null) {
+	public function headerbackgroundLink($size) {
 		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
-
 		return $provider->getRandomImageUrl($size);
 	}
 

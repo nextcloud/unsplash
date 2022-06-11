@@ -30,7 +30,6 @@ abstract class Provider {
     const SIZE_NORMAL = 1;
     const SIZE_HIGH = 2;
     const SIZE_ULTRA = 3;
-    const SIZE_DEFAULT = Provider::SIZE_NORMAL;
 
 	/**
 	 * @var IConfig
@@ -141,11 +140,11 @@ abstract class Provider {
 	/*
 	 * This should return a url to a random image
 	 */
-	public abstract function getRandomImageUrl($size = Provider::SIZE_DEFAULT);
+	public abstract function getRandomImageUrl($size);
 
 	/*
 	 * This should return a url to a random image filtered by $search
 	 */
-	public abstract function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT);
+	public abstract function getRandomImageUrlBySearchTerm($search, $size);
 
 }

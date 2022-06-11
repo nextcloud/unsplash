@@ -36,22 +36,26 @@ class Unsplash extends Provider{
 		return ['https://source.unsplash.com','https://images.unsplash.com'];
 	}
 
-	public function getRandomImageUrl($size = Provider::SIZE_DEFAULT): string
+	public function getRandomImageUrl($size): string
     {
         return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
 	}
 
-	public function getRandomImageUrlBySearchTerm($search, $size = Provider::SIZE_DEFAULT): string
+	public function getRandomImageUrlBySearchTerm($search, $size): string
     {
+        $url = "https://source.unsplash.com/featured/";
         switch ($size) {
-            case Provider::SIZE_DEFAULT:
             case Provider::SIZE_SMALL:
-                return "https://source.unsplash.com/featured/?".$search;
+                $url .= "1920x1080";
+                break;
             case Provider::SIZE_NORMAL:
-                return "https://source.unsplash.com/featured/2560x1440?".$search;
+                $url .= "2560x1440";
+                break;
             case Provider::SIZE_HIGH:
             case Provider::SIZE_ULTRA:
-                return "https://source.unsplash.com/featured/3840x2160?".$search;
+                $url .= "3840x2160";
+                break;
         }
+        return $url."?".$search;
 	}
 }
