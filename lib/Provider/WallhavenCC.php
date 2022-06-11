@@ -45,7 +45,22 @@ class WallhavenCC extends Provider{
 
 	public function getRandomImageUrlBySearchTerm($search, $size)
 	{
-        $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&q='.$search);
+        $resolution = "1920x1080";
+        switch ($size) {
+            case Provider::SIZE_SMALL:
+                $resolution = "1920x1080";
+                break;
+            case Provider::SIZE_NORMAL:
+                $resolution = "2560x1440";
+                break;
+            case Provider::SIZE_HIGH:
+            case Provider::SIZE_ULTRA:
+                $resolution = "3840x2160";
+                break;
+        }
+
+
+        $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&resolutions='.$resolution.'&q='.$search);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		$json = json_decode($response, true);
