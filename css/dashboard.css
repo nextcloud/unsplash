@@ -1,3 +1,16 @@
 #app-dashboard {
     background-image : url("https://source.unsplash.com/featured/?nature,nature") !important;
 }
+
+/* Load more fitting image sizes based on screen resolution */
+@media only screen and (min-width: 1921px) and (max-width: 2560px) {
+    #app-dashboard {
+        background-image: url('https://source.unsplash.com/featured/2560x1440?nature,nature') !important;
+    }
+}
+
+@media only screen and (min-width: 2561px) {
+    #app-dashboard {
+        background-image: url('https://source.unsplash.com/featured/3840x2160?nature,nature') !important;
+    }
+}
