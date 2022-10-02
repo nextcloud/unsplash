@@ -83,6 +83,11 @@ class ProviderDefinitions{
 	 * @return Name of the Provider
 	 */
 	function getProviderByName($name): Provider {
+
+        $provider = $this->definitions[$name];
+        if($provider == null) {
+            return new Unsplash($this->appName, $this->config, "Unsplash");
+        }
 		return $this->definitions[$name];
 	}
 
@@ -91,7 +96,7 @@ class ProviderDefinitions{
 	 *
 	 * @return Array with Names of Provider
 	 */
-	function getAllProviderNames(){
+	function getAllProviderNames() {
 		$i=0;
 		$tmp=[];
 		foreach ($this->definitions as &$value) {
