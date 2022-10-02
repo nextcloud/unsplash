@@ -96,7 +96,7 @@ class ProviderDefinitions{
 		$tmp=[];
 		foreach ($this->definitions as &$value) {
 			//array_push($tmp,$value->getName());
-			array_push($tmp,$value->getName());
+			$tmp[] = $value->getName();
 			$i++;
 		}
 		return $tmp;
