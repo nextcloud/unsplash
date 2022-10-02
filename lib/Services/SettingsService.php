@@ -265,7 +265,7 @@ class SettingsService {
         foreach ($this->providerDefinitions->getAllProviderNames() as $value) {
             $provider = $this->providerDefinitions->getProviderByName($value);
             if($provider->isCustomizable()){
-                $all = array_push($all, $value);
+                $all[] = $value;
             }
         }
         return $this->providerDefinitions->getAllProviderNames();
