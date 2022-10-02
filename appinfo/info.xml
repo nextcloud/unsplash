@@ -5,9 +5,9 @@
     <name>Splash</name>
     <summary>📸🔀☁️ Random background from Unsplash</summary>
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
-    <description>Show a new random featured nature photo from Unsplash in your nextcloud.</description>
-    <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto von Unsplash in ihrer Nextcloud.</description>
-    <version>1.2.6</version>
+    <description>Show a new random featured nature photo in your nextcloud. Now with choosable motives!</description>
+    <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto in ihrer Nextcloud. Jetzt auch mit selbstwählbaren Motiven!</description>
+    <version>2.0.0</version>
     <licence>agpl</licence>
     <author mail="hey@jancborchardt.net" homepage="https://jancborchardt.net">Jan-Christoph Borchardt</author>
     <author homepage="https://github.com/marius-wieschollek">Marius Wieschollek</author>
@@ -16,14 +16,14 @@
     <category>customization</category>
     <category>multimedia</category>
     <category>tools</category>
-    <website>https://github.com/jancborchardt/unsplash/</website>
-    <bugs>https://github.com/jancborchardt/unsplash/issues</bugs>
-    <repository type="git">https://github.com/jancborchardt/unsplash.git</repository>
-    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash.jpg</screenshot>
-    <screenshot>https://raw.githubusercontent.com/jancborchardt/unsplash/master/unsplash-header.jpg</screenshot>
+    <website>https://github.com/nextcloud/unsplash/</website>
+    <bugs>https://github.com/nextcloud/unsplash/issues</bugs>
+    <repository type="git">https://github.com/nextcloud/unsplash.git</repository>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="7.0" />
-        <nextcloud min-version="14" max-version="24"/>
+        <nextcloud min-version="20" max-version="24"/>
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>

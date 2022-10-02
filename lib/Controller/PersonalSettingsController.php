@@ -54,8 +54,6 @@ class PersonalSettingsController extends Controller {
 
         if($key === 'style/header') {
             $this->settings->setUserStyleHeaderEnabled($value);
-        } else if($key === 'style/dashboard') {
-            $this->settings->setUserStyleDashboardEnabled($value);
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

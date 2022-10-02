@@ -11,6 +11,10 @@ $application = new Application();
 $application->registerRoutes($this, [
     'routes'    => [
         ['name' => 'admin_settings#set', 'url' => '/settings/admin/set', 'verb' => 'POST'],
+        ['name' => 'admin_settings#getCustomization', 'url' => '/settings/admin/getCustomization/{providername}', 'verb' => 'GET'],
         ['name' => 'personal_settings#set', 'url' => '/settings/personal/set', 'verb' => 'POST'],
+        ['name' => 'css#login', 'url' => '/api/login', 'verb' => 'GET'],
+        ['name' => 'css#header', 'url' => '/api/header', 'verb' => 'GET'],
+        ['name' => 'css#dashboard', 'url' => '/api/dashboard', 'verb' => 'GET']
     ]
 ]);

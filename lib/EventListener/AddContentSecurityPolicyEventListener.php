@@ -35,10 +35,15 @@ class AddContentSecurityPolicyEventListener implements IEventListener {
             return;
         }
 
-        if($this->settingsService->getUserStyleHeaderEnabled() || $this->settingsService->getServerStyleLoginEnabled() || $this->settingsService->getUserStyleDashboardEnabled()) {
-            $policy = new ContentSecurityPolicy();
-            $policy->addAllowedImageDomain('https://source.unsplash.com');
-            $policy->addAllowedImageDomain('https://images.unsplash.com');
+        $settings = $this->settingsService;
+
+        if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
+            $policy  = new ContentSecurityPolicy();
+
+            $urls = $settings->getWhitelistingUrlsForSelectedProvider();
+            foreach ($urls as &$value) {
+                $policy->addAllowedImageDomain($value);
+            }
             $event->addPolicy($policy);
         }
     }

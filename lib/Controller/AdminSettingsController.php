@@ -6,6 +6,7 @@
 
 namespace OCA\Unsplash\Controller;
 
+use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
@@ -46,8 +47,8 @@ class AdminSettingsController extends Controller {
      */
     public function set(string $key, $value): JSONResponse {
 
-        if($value === 'true') $value = true;
-        if($value === 'false') $value = false;
+        if(strtolower($value) === 'true') $value = true;
+        if(strtolower($value) === 'false') $value = false;
 
         if($key === 'style/header') {
             $this->settings->setServerStyleHeaderEnabled($value);
@@ -55,10 +56,36 @@ class AdminSettingsController extends Controller {
             $this->settings->setServerStyleLoginEnabled($value);
         } else if($key === 'style/dashboard') {
             $this->settings->setServerStyleDashboardEnabled($value);
-        } else {
+        } else if($key === 'provider/provider') {
+            //todo: do NOT store this value. Sanitize it! (check against available provider, and store one of them)
+            $this->settings->setImageProvider(filter_var($value, FILTER_SANITIZE_STRING));
+        } else if($key === 'provider/customization') {
+            $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
+        } else if($key === 'style/tint') {
+            if($value) {
+                $this->settings->setTint(1);
+            } else {
+                $this->settings->setTint(0);
+            }
+		} else if($key === 'style/strength/color') {
+			$this->settings->setColorStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
+		} else if($key === 'style/strength/blur') {
+			$this->settings->setBlurStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
+		} else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
 
-        return new JSONResponse(['status' => 'ok']);
+        return new JSONResponse(['status' => $value]);
+    }
+    /**
+     * Get the customizationstring for the requested providername
+     *
+     * @param string $providername
+     *
+     * @return JSONResponse
+     */
+    public function getCustomization(string $providername): JSONResponse {
+        $provider = $this->settings->getImageProvider(filter_var($providername, FILTER_SANITIZE_STRING));
+        return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
     }
 }

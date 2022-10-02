@@ -16,17 +16,14 @@ style('unsplash', 'settings');
     </h2>
     <p class="settings-hint">
         <?php p($l->t('You can customize %s with random background images.', [$_['label']])); ?>
-        <?php print_unescaped($this->inc('partials/license')); ?>
+        <br>
+        <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
     </p>
     <form>
+        <?php if($_['enableNavbar']): ?>
         <div>
             <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
-        </div>
-        <?php if($_['hasDashboard']): ?>
-        <div>
-            <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
         </div>
         <?php endif; ?>
     </form>

@@ -1,0 +1,16 @@
+#body-user #header::before,
+#body-settings #header::before,
+#body-public #header::before {
+    background-color    : #777 !important;
+    background-position : center;
+    background-repeat   : no-repeat;
+    background-size     : cover;
+}
+
+#body-user #header,
+#body-settings #header,
+#body-public #header{
+    background-color: #777 !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,21 @@
+body[data-dashboard-background="default"] {
+    background-color: #777 !important;
+
+    /*This is nessessary because ::before needs content to show up*/
+    content: "";
+
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body[data-dashboard-background="default"] div[id=app-dashboard] {
+    background: none !important;
+}
