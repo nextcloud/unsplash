@@ -1,0 +1,16 @@
+{
+    "translations": {
+        "Saved": "Uloženo",
+        "Failed": "Nezdařilo se",
+        "Splash": "Splash",
+        "Random Background Images":"Náhodné obrázky na pozadí",
+        "Set random image as login background":"Nastavit náhdoný obrázek jako pozadí přihlašovací obrazovky",
+        "Set random image as header background":"Nastavit náhodný obrázek jako pozadí záhlaví",
+        "Set random image as dashboard background":"Nastavit náhodný obrázek jako pozadí nástěnky",
+        "You can customize %s with random background images.":"%s si můžete přizpůsobit náhodnými obrázky na pozadí.",
+        "Here you can specify where random backgrounds should be used by default.":"Zde je možné určit kde všude ve výchozím stavu používat náhodná pozadí.",
+        "These images are provided %s by %s.":"Tyto obrázky jsou poskytovány %s od %s.",
+        "under an open license free of charge":"pod otevřenou licencí a zdarma"
+    },
+    "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
+}
