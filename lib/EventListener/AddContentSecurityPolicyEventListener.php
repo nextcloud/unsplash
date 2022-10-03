@@ -37,7 +37,7 @@ class AddContentSecurityPolicyEventListener implements IEventListener {
 
         $settings = $this->settingsService;
 
-        if($settings->getUserStyleHeaderEnabled() || $settings->getServerStyleLoginEnabled()) {
+        if($settings->getUserStyleDashboardEnabled() || $settings->getServerStyleLoginEnabled()) {
             $policy  = new ContentSecurityPolicy();
 
             $urls = $settings->getWhitelistingUrlsForSelectedProvider();

@@ -23,10 +23,6 @@ style('unsplash', 'settings');
             <input id="unsplash-style-login" name="unsplash-style-login" data-setting="style/login" type="checkbox" <?=$_['styleLogin'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-login"><?php p($l->t('Set random image as login background')); ?></label>
         </div>
-        <div>
-            <input id="unsplash-style-header" name="unsplash-style-header" data-setting="style/header" type="checkbox" <?=$_['styleHeader'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-header"><?php p($l->t('Set random image as header background')); ?></label>
-        </div>
         <?php if($_['hasDashboard']): ?>
         <div>
             <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
@@ -48,6 +44,11 @@ style('unsplash', 'settings');
             </select>
             <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
         </div>
+        <p class="settings-hint">
+            <?php p($l->t('You can customize %s with random background images.', [$_['label']])); ?>
+            <br>
+            <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
+        </p>
         <div>
             <input type="text" id="splash-provider-customization" data-setting="provider/customization"
             <?php

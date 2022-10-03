@@ -54,7 +54,7 @@ class CssController extends Controller {
         // we use the data-dasboard-background attribute to select the dashboard only when the user selected the default
         // one. This allows us to fully remove the dashboard setting, because the "standard" selection should
         // be identical to the login screen.
-        return $this->prepareResponse($this->mediaQuery("body[data-dashboard-background=\"default\"]"));
+        return $this->prepareResponse($this->mediaQuery("body"));
     }
 
     /**
@@ -66,7 +66,7 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function header(): DataDisplayResponse {
-        return $this->prepareResponse($this->mediaQuery("#header"));
+        return $this->prepareResponse($this->mediaQuery("body"));
     }
 
     /**

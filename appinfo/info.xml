@@ -27,8 +27,6 @@
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>
-        <personal>OCA\Unsplash\Settings\PersonalSettings</personal>
-        <personal-section>OCA\Unsplash\Settings\PersonalSection</personal-section>
     </settings>
 </info>
 

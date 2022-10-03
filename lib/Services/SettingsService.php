@@ -19,9 +19,7 @@ use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 class SettingsService {
 
     const STYLE_LOGIN          = 'unsplash/style/login';
-    const STYLE_HEADER         = 'unsplash/style/header';
     const STYLE_DASHBORAD      = 'unsplash/style/dashborad';
-    const USER_STYLE_HEADER    = 'unsplash/style/header';
     const USER_STYLE_DASHBORAD = 'unsplash/style/dashborad';
     const PROVIDER_SELECTED    = 'unsplash/provider/selected';
     const PROVIDER_DEFAULT     = 'Unsplash';
@@ -33,8 +31,6 @@ class SettingsService {
     const STYLE_TINT_ALLOWED_DEFAULT = 0; //equals 30%
     const STYLE_STRENGHT_COLOR_DEFAULT = 30; //equals 30%
     const STYLE_STRENGHT_BLUR_DEFAULT = 0;
-
-	private $headerbackgroundLinkDefault = 'https://source.unsplash.com/random/featured/';
 
     /**
      * @var IConfig
@@ -82,71 +78,18 @@ class SettingsService {
     }
 
     /**
-     * If the page header should be styled for this user
-     *
-     * @return bool
-     */
-    public function getUserStyleHeaderEnabled(): bool {
-        $styleHeader = $this->config->getUserValue($this->userId, $this->appName, self::USER_STYLE_HEADER, null);
-
-        if($styleHeader === null) return $this->getServerStyleHeaderEnabled();
-
-        return $styleHeader == 1;
-    }
-
-    /**
-     * Set if the page header should be styled for this user
-     *
-     * @param int $styleHeader
-     *
-     * @return void
-     * @throws \OCP\PreConditionNotMetException
-     */
-    public function setUserStyleHeaderEnabled(int $styleHeader = 1) {
-        $this->config->setUserValue($this->userId, $this->appName, self::USER_STYLE_HEADER, $styleHeader);
-    }
-
-    /**
      * If the dashboard should be styled for this user
      *
      * @return bool
      */
     public function getUserStyleDashboardEnabled(): bool {
-        $styleHeader = $this->config->getUserValue($this->userId, $this->appName, self::USER_STYLE_DASHBORAD, null);
+        $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", 'background', 'default');
 
-        if($styleHeader === null) return $this->getServerStyleDashboardEnabled();
-
-        return $styleHeader == 1;
-    }
-
-    /**
-     * Set if the dashboard should be styled for this user
-     *
-     * @param int $styleDashboard
-     *
-     * @return void
-     * @throws \OCP\PreConditionNotMetException
-     */
-    public function setUserStyleDashboardEnabled(int $styleDashboard = 1) {
-        $this->config->setUserValue($this->userId, $this->appName, self::USER_STYLE_DASHBORAD, $styleDashboard);
-    }
-
-    /**
-     * If the page header should be styled by default
-     *
-     * @return bool
-     */
-    public function getServerStyleHeaderEnabled(): bool {
-        return $this->config->getAppValue($this->appName, self::STYLE_HEADER, 1) == 1;
-    }
-
-    /**
-     * Set if the page header should be styled by default
-     *
-     * @param int $styleHeader
-     */
-    public function setServerStyleHeaderEnabled(int $styleHeader = 1) {
-        $this->config->setAppValue($this->appName, self::STYLE_HEADER, $styleHeader);
+        // dont add custom css when custom image was selected
+        if($themingAppDashboard == 'default') {
+            return $this->getServerStyleDashboardEnabled();
+        }
+        return false;
     }
 
     /**

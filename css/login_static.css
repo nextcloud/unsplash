@@ -1,20 +1,30 @@
 /* Needs more specificity to override theming app */
+
+
+html {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: unset !important;
+	background-image: unset !important;
+}
+
 body#body-login {
-    background-color    : #777 !important;
-    background-position : center;
-    background-repeat   : no-repeat;
-    background-size     : cover;
+background-color    : var(--color-primary) !important;
+background-position : center;
+background-repeat   : no-repeat;
+background-size     : cover;
 }
 
 #body-login {
-	background-color: #000;
+background-color: #000;
 }
 
 
 #body-login input.primary,
 #body-login button.primary,
 #body-login #alternative-logins li a {
-    background-color : rgba(0, 0, 0, .5) !important;
+background-color : rgba(0, 0, 0, .5) !important;
 }
 
 /* Load more fitting image sizes based on screen resolution */

@@ -50,9 +50,7 @@ class AdminSettingsController extends Controller {
         if(strtolower($value) === 'true') $value = true;
         if(strtolower($value) === 'false') $value = false;
 
-        if($key === 'style/header') {
-            $this->settings->setServerStyleHeaderEnabled($value);
-        } else if($key === 'style/login') {
+       if($key === 'style/login') {
             $this->settings->setServerStyleLoginEnabled($value);
         } else if($key === 'style/dashboard') {
             $this->settings->setServerStyleDashboardEnabled($value);

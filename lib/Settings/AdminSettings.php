@@ -51,7 +51,6 @@ class AdminSettings implements ISettings {
                     array('providername' => $this->settings->getImageProviderName())
                 ),
             'styleLogin'                => $this->settings->getServerStyleLoginEnabled(),
-            'styleHeader'               => $this->settings->getServerStyleHeaderEnabled(),
             'styleDashboard'            => $this->settings->getServerStyleDashboardEnabled(),
             'hasDashboard'              => $this->settings->getNextcloudVersion() > 19,
             'availableProvider'         => $this->settings->getAllImageProvider(),

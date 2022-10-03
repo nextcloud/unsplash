@@ -45,12 +45,11 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
         }
 
         $route = $this->request->getParam('_route');
-        $serverstyleHeader = $this->settingsService->getServerStyleHeaderEnabled();
-        $serverstyleDash = $this->settingsService->getServerStyleDashboardEnabled();
+        $serverstyleDash = $this->settingsService->getUserStyleDashboardEnabled();
         $serverstyleLogin = $this->settingsService->getServerStyleLoginEnabled();
-        $userstyleHeader = $this->settingsService->getUserStyleHeaderEnabled();
 
         switch ($route) {
+            case 'core.TwoFactorChallenge.showChallenge':
             case 'files_sharing.Share.authenticate':
             case 'files_sharing.Share.showAuthenticate':
                 if($serverstyleLogin){
@@ -58,8 +57,8 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
                 }
                 break;
             case 'files_sharing.Share.showShare':
-                if($serverstyleHeader) {
-                    $this->addHeaderFor('header');
+                if($serverstyleDash) {
+                    $this->addHeaderFor('dashboard');
                 }
                 break;
             case 'dashboard.dashboard.index':
@@ -69,8 +68,8 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
                 break;
             default:
                 if($event->isLoggedIn()) {
-                    if($serverstyleHeader && $userstyleHeader) {
-                        $this->addHeaderFor('header');
+                    if($serverstyleDash) {
+                        $this->addHeaderFor('dashboard');
                     }
                 } else {
                     if($serverstyleLogin) {

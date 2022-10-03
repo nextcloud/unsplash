@@ -1,5 +1,5 @@
-body[data-dashboard-background="default"] {
-    background-color: #777 !important;
+body {
+    background-color: var(--color-primary) !important;
 
     /*This is nessessary because ::before needs content to show up*/
     content: "";
@@ -14,8 +14,4 @@ body[data-dashboard-background="default"] {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-}
-
-body[data-dashboard-background="default"] div[id=app-dashboard] {
-    background: none !important;
 }
