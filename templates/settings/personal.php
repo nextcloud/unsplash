@@ -4,7 +4,7 @@
  * and licensed under the AGPL.
  */
 
-script('unsplash', 'settings');
+script('unsplash', 'user');
 style('unsplash', 'settings');
 
 ?>
