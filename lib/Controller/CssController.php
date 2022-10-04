@@ -43,8 +43,6 @@ class CssController extends Controller {
     }
 
     /**
-     * Todo: check the flags below
-     *
      * @NoAdminRequired
      * @NoCSRFRequired
      *
@@ -58,8 +56,6 @@ class CssController extends Controller {
     }
 
     /**
-     * Todo: check the flags below
-     *
      * @NoAdminRequired
      * @NoCSRFRequired
      *
@@ -70,11 +66,10 @@ class CssController extends Controller {
     }
 
     /**
-     * Todo: check the flags below
-     *
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     * @PublicPage
+	 * @NoCSRFRequired
+	 * @PublicPage
+	 * @NoSameSiteCookieRequired
+	 * @NoTwoFactorRequired
      *
      * @return DataDisplayResponse
      */
@@ -88,7 +83,6 @@ class CssController extends Controller {
      * @return string
      */
     private function mediaQuery($prefix) {
-
         $css_small = $this->innerCSS($prefix, Provider::SIZE_SMALL);
         $css_normal = $this->innerCSS($prefix, Provider::SIZE_NORMAL);
         $css_high = $this->innerCSS($prefix, Provider::SIZE_HIGH);
