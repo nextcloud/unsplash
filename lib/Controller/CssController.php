@@ -72,9 +72,10 @@ class CssController extends Controller {
     /**
      * Todo: check the flags below
      *
-     * @NoAdminRequired
      * @NoCSRFRequired
      * @PublicPage
+     * @NoSameSiteCookieRequired
+     * @NoTwoFactorRequired
      *
      * @return DataDisplayResponse
      */

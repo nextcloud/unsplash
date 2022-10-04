@@ -24,6 +24,12 @@ body#body-login {
 	}
 }
 
+@media only screen and (max-width: 1920px) {
+	body#body-login {
+		background-image: url('https://source.unsplash.com/featured/1920x1080?nature,nature') !important;
+	}
+}
+
 @media only screen and (min-width: 2561px) {
 	body#body-login {
 		background-image: url('https://source.unsplash.com/featured/3840x2160?nature,nature') !important;
