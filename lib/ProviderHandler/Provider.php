@@ -50,9 +50,9 @@ abstract class Provider {
      * // Please override this value for your own provider.
 	 * @var string
 	 */
-	public string $DEFAULT_SEARCH="nature";
+	public $DEFAULT_SEARCH="nature";
 
-    public bool $ALLOW_CUSTOMIZING = true;
+    public $ALLOW_CUSTOMIZING = true;
 
 
     /**

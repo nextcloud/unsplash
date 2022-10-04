@@ -30,8 +30,8 @@ class WallhavenCC extends Provider{
 	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
 	 * @var string
 	 */
-    public string $DEFAULT_SEARCH="nature,supercar";
-    public bool $ALLOW_CUSTOMIZING = true;
+    public $DEFAULT_SEARCH="nature,supercar";
+    public $ALLOW_CUSTOMIZING = true;
 
 	public function getWhitelistResourceUrls(): array
     {
