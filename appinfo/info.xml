@@ -22,7 +22,7 @@
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash.jpg</screenshot>
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
-        <php min-version="7.0" />
+        <php min-version="7.4" />
         <nextcloud min-version="20" max-version="24"/>
     </dependencies>
     <settings>
