@@ -84,7 +84,6 @@ style('unsplash', 'settings');
 		<div>
 			<input type="range" name="unsplash-style-blur" data-setting="style/strength/blur" min="0" max="25" value="<?=$_['styleStrengthBlur'] ? $_['styleStrengthBlur']:0?>">
 			<label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
-			<p><?php p($l->t('Blur is currently only supported in Chrome Browsers.')); ?></p>
 		</div>
     </form>
 </div>
