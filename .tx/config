@@ -2,7 +2,7 @@
 host     = https://www.transifex.com
 lang_map = th_TH: th, ja_JP: ja, bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk
 
-[nextcloud.unsplash]
+[o:nextcloud:p:nextcloud:r:unsplash]
 file_filter = translationfiles/<lang>/unsplash.po
 source_file = translationfiles/templates/unsplash.pot
 source_lang = en
