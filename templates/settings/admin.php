@@ -54,7 +54,7 @@ style('unsplash', 'settings');
             <?php
                 echo " value='".$_['selectionCustomization']."'>";
             ?>
-            <label for="splash-provider-customization"><?php p($l->t('Set custom searchterms. Seperate multiple terms by comma.')); ?></label>
+            <label for="splash-provider-customization"><?php p($l->t('Set custom search terms. Seperate multiple terms by comma.')); ?></label>
         </div>
         <br>
         <h2>
