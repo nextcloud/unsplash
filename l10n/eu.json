@@ -1,4 +1,5 @@
 { "translations": {
-    "Saved" : "Lagra"
+    "Saved" : "Gordeta",
+    "Failed" : "Huts egin du"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

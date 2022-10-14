@@ -1,4 +1,5 @@
 { "translations": {
+    "Saved" : "Mentve",
     "Failed" : "Sikertelen"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

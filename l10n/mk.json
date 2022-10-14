@@ -1,0 +1,5 @@
+{ "translations": {
+    "Saved" : "Зачувано",
+    "Failed" : "Неуспешно"
+},"pluralForm" :"nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;"
+}
