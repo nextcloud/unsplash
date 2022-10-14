@@ -42,7 +42,7 @@ style('unsplash', 'settings');
                 }
                 ?>
             </select>
-            <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
+            <label for="splash-provider-selection"><?php p($l->t('Set the image provider')); ?></label>
         </div>
         <p class="settings-hint">
             <?php p($l->t('You can customize %s with random background images.', [$_['label']])); ?>
