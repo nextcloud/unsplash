@@ -14,7 +14,6 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Nastavit náhodný obrázek jako pozadí nástěnky",
     "Set the imageprovider" : "Nastavit poskytovatele obrázků",
     "You can customize %s with random background images." : "%s si můžete přizpůsobit pomocí náhodných obrázků na pozadí.",
-    "Set custom searchterms. Seperate multiple terms by comma." : "Nastavte si uživatelsky určené vzory vyhledávání. Vícero pojmů oddělujte čárkou.",
     "Splash: Advanced Theming" : "Splash: pokročilé opatřování motivem vzhledu",
     "You can apply effects to your background images." : "Na obrázky na pozadí je možné použít různé efekty.",
     "Enable Tint" : "Zapnout změnu odstínu",

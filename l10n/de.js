@@ -14,7 +14,6 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
     "Set the imageprovider" : "Setze die Bildquelle",
     "You can customize %s with random background images." : "Sie können %s mit zufälligen Hintergrundbildern anpassen.",
-    "Set custom searchterms. Seperate multiple terms by comma." : "Setze Suchbegriffe. Verschiedene Begriffe werden mit Kommata getrennt.",
     "Splash: Advanced Theming" : "Splash: Erweitertes Design",
     "You can apply effects to your background images." : "Du kannst Effekte auf das Hintergrund anwenden.",
     "Enable Tint" : "Aktiviere Tönung",
