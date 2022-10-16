@@ -14,6 +14,7 @@ OC.L10N.register(
     "Set random image as dashboard background" : "將隨機圖像設定為儀表板背景",
     "Set the imageprovider" : "設定圖像提供者",
     "You can customize %s with random background images." : "您可以使用隨機背景圖像自定義 %s。",
+    "Set custom search terms. Seperate multiple terms by comma." : "設定自訂搜尋詞。用逗號分隔多個詞。",
     "Splash: Advanced Theming" : "Splash：進階佈景主題",
     "You can apply effects to your background images." : "您可以將效果套用於您的背景圖像。",
     "Enable Tint" : "啟用 Tint",
