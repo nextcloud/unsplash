@@ -14,9 +14,12 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Habilitar imagem aleatória como plano de fundo do dashboard",
     "Set the imageprovider" : "Configurar provedor de imagens",
     "You can customize %s with random background images." : "Você pode customizar %scom imagens de fundo aleatórias.",
+    "Set custom search terms. Seperate multiple terms by comma." : "Defina termos de pesquisa personalizados. Separe vários termos por vírgula.",
     "Splash: Advanced Theming" : "Splash: Configurações avançadas de tema",
     "You can apply effects to your background images." : "Você pode aplicar efeitos para as imagens de fundo.",
+    "Enable Tint" : "Ativar Matiz",
     "Set the vibrancy of the color" : "Configurar vibração da cor",
+    "Set the blur of the image" : "Defina o desfoque da imagem",
     "Random Background Images" : "Imagens aleatórias para plano de fundo",
     "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo",
     "The images will be displayed as the background if you choose 'Default Image' as your background." : "As imagens serão utilizadas como plano de fundo se você selecionar 'Imagem Padrão' como seu plano de fundo."
