@@ -34,7 +34,6 @@
                     }
 
                     if(key === 'style/tint') {
-                        console.log("change"+value)
                         let enable = false
                         if(value === "true"){
                             enable = true
