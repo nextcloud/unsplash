@@ -39,7 +39,7 @@
                         if(value === "true"){
                             enable = true
                         }
-                        document.getElementById('unsplash-style-color-strenght').disabled = !enable;
+                        document.getElementById('unsplash-style-color-strength').disabled = !enable;
                     }
 
                     _setValue(key, value, type);

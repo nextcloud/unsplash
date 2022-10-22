@@ -25,11 +25,16 @@
 
 
 .unsplash-providerselect, .unsplash-providerselect > p{
-    margin-top: 1.5em;
+    margin-top: 0.5em;
 }
 
 .unsplash-checkboxes {
-    margin-bottom: 3em;
+    display: flex;
+    align-items: center;
+}
+
+.unsplash-checkboxes input{
+    margin: 0 10px !important;
 }
 
 .unsplash-label {
@@ -45,7 +50,6 @@
 .unsplash-slider {
     display: flex;
     align-items: center;
-
 }
 
 .unsplash-slider label {

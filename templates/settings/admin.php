@@ -15,20 +15,22 @@ style('unsplash', 'settings');
         <span class="msg error"><?php p($l->t('Failed')); ?></span>
     </h2>
     <p class="settings-hint">
+        <?php p($l->t('You can customize your instance with random background images.')); ?>
+        <br>
         <?php p($l->t('Here you can specify where random backgrounds should be used by default.')); ?>
         <?php print_unescaped($this->inc('partials/license')); ?>
     </p>
     <form>
         <div class="unsplash-checkboxes">
-            <input id="unsplash-style-login" name="unsplash-style-login" data-setting="style/login" type="checkbox" <?=$_['styleLogin'] ? 'checked':''?> class="checkbox">
+            <input id="unsplash-style-login" name="unsplash-style-login" data-setting="style/login" type="checkbox" <?=$_['styleLogin'] ? 'checked':''?>>
             <label for="unsplash-style-login"><?php p($l->t('Set random image as login background')); ?></label>
-
-            <?php if($_['hasDashboard']): ?>
-            <br>
-            <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
-            <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
-            <?php endif; ?>
         </div>
+        <?php if($_['hasDashboard']): ?>
+        <div class="unsplash-checkboxes">
+            <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?>>
+            <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
+        </div>
+        <?php endif; ?>
         <div class="unsplash-providerselect">
             <label class="unsplash-label" for="splash-provider-selection"><?php p($l->t('Set the imageprovider:')); ?></label>
             <select class="unsplash-input" id="splash-provider-selection" data-setting="provider/provider" type="select">
@@ -44,8 +46,6 @@ style('unsplash', 'settings');
                 ?>
             </select>
             <p class="settings-hint">
-                <?php p($l->t('You can customize your instance with random background images.')); ?>
-                <br>
                 <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
             </p>
         </div>
@@ -67,16 +67,16 @@ style('unsplash', 'settings');
             <?php p($l->t('You can apply effects to your background images.')); ?>
         </p>
 
-		<div>
-			<input id="unsplash-style-tinting" name="unsplash-style-grayscale" data-setting="style/tint" type="checkbox" <?=$_['styleTint'] ? 'checked':''?> class="checkbox">
+		<div class="unsplash-checkboxes">
+			<input id="unsplash-style-tinting" name="unsplash-style-tinting" data-setting="style/tint" type="checkbox" <?=$_['styleTint'] ? 'checked':''?>>
             <label for="unsplash-style-tinting"><?php p($l->t('Enable Tint')); ?></label>
 		</div>
 		<div class="unsplash-slider">
-            <label for="unsplash-style-color-strenght"><?php p($l->t('Set the vibrancy of the color')); ?></label>
+            <label for="unsplash-style-color-strength"><?php p($l->t('Set the vibrancy of the color')); ?></label>
 			<input
-					id="unsplash-style-color-strenght"
+					id="unsplash-style-color-strength"
 					type="range"
-					name="unsplash-style-color-strenght"
+					name="unsplash-style-color-strength"
 					data-setting="style/strength/color"
 					min="0"
 					max="100"
