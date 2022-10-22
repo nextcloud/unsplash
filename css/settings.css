@@ -18,3 +18,40 @@
 #unsplash-settings h2 {
     position : relative;
 }
+
+.settings-hint {
+    margin-bottom: 3em;
+}
+
+
+.unsplash-providerselect, .unsplash-providerselect > p{
+    margin-top: 1.5em;
+}
+
+.unsplash-checkboxes {
+    margin-bottom: 3em;
+}
+
+.unsplash-label {
+    display: inline-block;
+    min-width: 175px;
+}
+
+.unsplash-input {
+    display: inline-block;
+    min-width: 250px;
+}
+
+.unsplash-slider {
+    display: flex;
+    align-items: center;
+
+}
+
+.unsplash-slider label {
+    min-width: 250px;
+}
+
+.unsplash-slider input {
+    min-width: 250px;
+}

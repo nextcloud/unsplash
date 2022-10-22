@@ -19,18 +19,19 @@ style('unsplash', 'settings');
         <?php print_unescaped($this->inc('partials/license')); ?>
     </p>
     <form>
-        <div>
+        <div class="unsplash-checkboxes">
             <input id="unsplash-style-login" name="unsplash-style-login" data-setting="style/login" type="checkbox" <?=$_['styleLogin'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-login"><?php p($l->t('Set random image as login background')); ?></label>
-        </div>
-        <?php if($_['hasDashboard']): ?>
-        <div>
+
+            <?php if($_['hasDashboard']): ?>
+            <br>
             <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard" type="checkbox" <?=$_['styleDashboard'] ? 'checked':''?> class="checkbox">
             <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
+            <?php endif; ?>
         </div>
-        <?php endif; ?>
-        <div>
-            <select id="splash-provider-selection" data-setting="provider/provider" type="select">
+        <div class="unsplash-providerselect">
+            <label class="unsplash-label" for="splash-provider-selection"><?php p($l->t('Set the imageprovider:')); ?></label>
+            <select class="unsplash-input" id="splash-provider-selection" data-setting="provider/provider" type="select">
                 <?php foreach ($_['availableProvider'] as &$value) {
                     echo "<option value='" . $value . "'";
                     if ($value==$_['selectedProvider']) {
@@ -42,19 +43,21 @@ style('unsplash', 'settings');
                 }
                 ?>
             </select>
-            <label for="splash-provider-selection"><?php p($l->t('Set the imageprovider')); ?></label>
+            <p class="settings-hint">
+                <?php p($l->t('You can customize your instance with random background images.')); ?>
+                <br>
+                <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
+            </p>
         </div>
-        <p class="settings-hint">
-            <?php p($l->t('You can customize %s with random background images.', [$_['label']])); ?>
-            <br>
-            <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
-        </p>
-        <div>
-            <input type="text" id="splash-provider-customization" data-setting="provider/customization"
+        <div class="unsplash-providerselect">
+            <label class="unsplash-label" for="splash-provider-customization"><?php p($l->t('Keywords:')); ?></label>
+            <input class="unsplash-input" type="text" id="splash-provider-customization" data-setting="provider/customization"
             <?php
                 echo " value='".$_['selectionCustomization']."'>";
             ?>
-            <label for="splash-provider-customization"><?php p($l->t('Set custom search terms. Seperate multiple terms by comma.')); ?></label>
+            <p class="settings-hint">
+                <?php p($l->t('Set custom search terms. Seperate multiple terms by comma.')); ?>
+            </p>
         </div>
         <br>
         <h2>
@@ -66,9 +69,10 @@ style('unsplash', 'settings');
 
 		<div>
 			<input id="unsplash-style-tinting" name="unsplash-style-grayscale" data-setting="style/tint" type="checkbox" <?=$_['styleTint'] ? 'checked':''?> class="checkbox">
-			<label for="unsplash-style-tinting"><?php p($l->t('Enable Tint')); ?></label>
+            <label for="unsplash-style-tinting"><?php p($l->t('Enable Tint')); ?></label>
 		</div>
-		<div>
+		<div class="unsplash-slider">
+            <label for="unsplash-style-color-strenght"><?php p($l->t('Set the vibrancy of the color')); ?></label>
 			<input
 					id="unsplash-style-color-strenght"
 					type="range"
@@ -79,11 +83,10 @@ style('unsplash', 'settings');
 					value="<?=$_['styleStrengthColor'] ? $_['styleStrengthColor']:30?>"
 					<?=$_['styleTint'] ? '':'disabled'?>
 			>
-			<label for="unsplash-style-color-strenght"><?php p($l->t('Set the vibrancy of the color')); ?></label>
 		</div>
-		<div>
+		<div class="unsplash-slider">
+            <label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
 			<input type="range" name="unsplash-style-blur" data-setting="style/strength/blur" min="0" max="25" value="<?=$_['styleStrengthBlur'] ? $_['styleStrengthBlur']:0?>">
-			<label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
 		</div>
     </form>
 </div>
