@@ -12,8 +12,6 @@ OC.L10N.register(
     "Here you can specify where random backgrounds should be used by default." : "Hier können Sie festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
     "Set random image as login background" : "Verwende ein zufälliges Bild als Hintergrund der Anmeldeseite",
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
-    "Set the imageprovider" : "Setze die Bildquelle",
-    "You can customize %s with random background images." : "Sie können %s mit zufälligen Hintergrundbildern anpassen.",
     "Splash: Advanced Theming" : "Splash: Erweitertes Design",
     "You can apply effects to your background images." : "Du kannst Effekte auf das Hintergrund anwenden.",
     "Enable Tint" : "Aktiviere Tönung",

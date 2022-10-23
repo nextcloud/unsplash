@@ -10,8 +10,6 @@
     "Here you can specify where random backgrounds should be used by default." : "Тук можете да посочите къде да се използват случайните фонови изображения по подразбиране.",
     "Set random image as login background" : "Задаване на произволно изображение като фон за вход",
     "Set random image as dashboard background" : "Задаване на случайно изображение като фон на таблото за управление",
-    "Set the imageprovider" : "Задаване на доставчика на изображения",
-    "You can customize %s with random background images." : "Можете да персонализирате %s със случайни фонови изображения.",
     "Set custom search terms. Seperate multiple terms by comma." : "Задаване на персонализирани термини за търсене. Разделяне на няколко термина със запетая.",
     "Splash: Advanced Theming" : "Splash: Разширени теми",
     "You can apply effects to your background images." : "Можете да прилагате ефекти към фоновите си изображения.",

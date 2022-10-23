@@ -1,5 +1,6 @@
 { "translations": {
     "Saved" : "Mentve",
-    "Failed" : "Sikertelen"
+    "Failed" : "Sikertelen",
+    "Keywords:" : "Kulcsszavak:"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -5,8 +5,7 @@ OC.L10N.register(
     "Saved" : "Enregistré",
     "Failed" : "Echec",
     "Set random image as dashboard background" : "Choisir une image aléatoire comme arrière plan du tableau de bord",
-    "Set the imageprovider" : "Choisir le fournisseur d'images",
-    "You can customize %s with random background images." : "Vous pouvez personnaliser %s avec des images d'arrière-plan aléatoires",
+    "Keywords:" : "Mots-clés : ",
     "Set the blur of the image" : "Définir le flou de l'image",
     "Random Background Images" : "Images d'arrière-plan aléatoires"
 },

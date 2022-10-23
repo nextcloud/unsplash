@@ -10,8 +10,6 @@
     "Here you can specify where random backgrounds should be used by default." : "Zde je možné určit kde všude mají být ve výchozím stavu náhodná pozadí používána.",
     "Set random image as login background" : "Nastavit náhodný obrázek jako pozadí přihlašovací obrazovky",
     "Set random image as dashboard background" : "Nastavit náhodný obrázek jako pozadí nástěnky",
-    "Set the imageprovider" : "Nastavit poskytovatele obrázků",
-    "You can customize %s with random background images." : "%s si můžete přizpůsobit pomocí náhodných obrázků na pozadí.",
     "Set custom search terms. Seperate multiple terms by comma." : "Nastavte si uživatelsky určené vzory vyhledávání. Vícero pojmů oddělujte čárkou.",
     "Splash: Advanced Theming" : "Splash: pokročilé opatřování motivem vzhledu",
     "You can apply effects to your background images." : "Na obrázky na pozadí je možné použít různé efekty.",
