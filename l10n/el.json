@@ -1,5 +1,6 @@
 { "translations": {
     "Saved" : "Αποθηκεύτηκε",
-    "Failed" : "Απέτυχε"
+    "Failed" : "Απέτυχε",
+    "Keywords:" : "Λέξεις κλειδιά:"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
