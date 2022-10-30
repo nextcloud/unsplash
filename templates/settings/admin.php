@@ -56,7 +56,7 @@ style('unsplash', 'settings');
                 echo " value='".$_['selectionCustomization']."'>";
             ?>
             <p class="settings-hint">
-                <?php p($l->t('Set custom search terms. Seperate multiple terms by comma.')); ?>
+                <?php p($l->t('Set custom search terms. Separate multiple terms by comma.')); ?>
             </p>
         </div>
         <br>
