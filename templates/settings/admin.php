@@ -32,7 +32,7 @@ style('unsplash', 'settings');
         </div>
         <?php endif; ?>
         <div class="unsplash-providerselect">
-            <label class="unsplash-label" for="splash-provider-selection"><?php p($l->t('Set the imageprovider:')); ?></label>
+            <label class="unsplash-label" for="splash-provider-selection"><?php p($l->t('Set the image provider:')); ?></label>
             <select class="unsplash-input" id="splash-provider-selection" data-setting="provider/provider" type="select">
                 <?php foreach ($_['availableProvider'] as &$value) {
                     echo "<option value='" . $value . "'";
