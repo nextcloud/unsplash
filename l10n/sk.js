@@ -19,7 +19,6 @@ OC.L10N.register(
     "Set the vibrancy of the color" : "Nastavte živosť farieb",
     "Set the blur of the image" : "Nastavte rozostrenie obrázku",
     "Random Background Images" : "Náhodné obrázky na pozadí",
-    "%s is customized with random background images." : "%s je prispôsobené náhodnými obrázkami na pozadí.",
-    "The images will be displayed as the background if you choose 'Default Image' as your background." : "Obrázky sa zobrazia ako pozadie, ak ako pozadie vyberiete „Predvolený obrázok“."
+    "%s is customized with random background images." : "%s je prispôsobené náhodnými obrázkami na pozadí."
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

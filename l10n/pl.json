@@ -1,6 +1,23 @@
 { "translations": {
+    "Splash" : "Splash",
+    "under an open license free of charge" : "na otwartej licencji bezpłatnej",
+    "These images are provided %s by %s." : "Te obrazy są dostarczane %s przez %s.",
+    "under the terms of service" : "zgodnie z warunkami korzystania z usługi",
+    "These images are provided by %s. Each image has it's own license." : "Te obrazy są dostarczane przez %s. Każdy obraz posiada własną licencję.",
+    "Splash: Random Background Images" : "Splash: Losowe obrazy tła",
     "Saved" : "Zapisano",
     "Failed" : "Nie powiodło się",
-    "Keywords:" : "Słowa kluczowe:"
+    "You can customize your instance with random background images." : "Możesz dostosować swoją instancję za pomocą losowych obrazów tła.",
+    "Here you can specify where random backgrounds should be used by default." : "Tutaj możesz określić, gdzie domyślnie mają być używane losowe tła.",
+    "Set random image as login background" : "Ustaw losowy obraz jako tło logowania",
+    "Set random image as dashboard background" : "Ustaw losowy obraz jako tło pulpitu",
+    "Keywords:" : "Słowa kluczowe:",
+    "Splash: Advanced Theming" : "Splash: Motyw zaawansowany",
+    "You can apply effects to your background images." : "Możesz zastosować efekty do obrazów tła.",
+    "Enable Tint" : "Włącz odcień",
+    "Set the vibrancy of the color" : "Ustaw intensywność koloru",
+    "Set the blur of the image" : "Ustaw rozmycie obrazu",
+    "Random Background Images" : "Losowe obrazy tła",
+    "%s is customized with random background images." : "%s jest dostosowywane za pomocą losowych obrazów tła."
 },"pluralForm" :"nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);"
 }

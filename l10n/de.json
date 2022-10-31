@@ -18,7 +18,6 @@
     "Set the vibrancy of the color" : "Setze die Leuchtkraft der Tönung",
     "Set the blur of the image" : "Setze die Bildunschärfe",
     "Random Background Images" : "Zufällige Hintergrundbilder",
-    "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert.",
-    "The images will be displayed as the background if you choose 'Default Image' as your background." : "Die Bilder werden angezeigt wenn \"Standardbild\" als Hintergrund ausgewählt worden ist."
+    "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
