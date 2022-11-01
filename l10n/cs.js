@@ -13,13 +13,16 @@ OC.L10N.register(
     "Here you can specify where random backgrounds should be used by default." : "Zde je možné určit kde všude mají být ve výchozím stavu náhodná pozadí používána.",
     "Set random image as login background" : "Nastavit náhodný obrázek jako pozadí přihlašovací obrazovky",
     "Set random image as dashboard background" : "Nastavit náhodný obrázek jako pozadí nástěnky",
+    "Set the image provider:" : "Nastavit poskytovatele obrázků:",
     "Keywords:" : "Klíčová slova:",
+    "Set custom search terms. Separate multiple terms by comma." : "Nastavte si uživatelsky určené vzory vyhledávání. Vícero pojmů oddělujte čárkou.",
     "Splash: Advanced Theming" : "Splash: pokročilé opatřování motivem vzhledu",
     "You can apply effects to your background images." : "Na obrázky na pozadí je možné použít různé efekty.",
     "Enable Tint" : "Zapnout změnu odstínu",
     "Set the vibrancy of the color" : "Nastavte živost barev",
     "Set the blur of the image" : "Nastavte rozmazání obrázku",
     "Random Background Images" : "Náhodné obrázky na pozadí",
-    "%s is customized with random background images." : "%s je přizpůsobené náhodnými obrázky na pozadí."
+    "%s is customized with random background images." : "%s je přizpůsobené náhodnými obrázky na pozadí.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Obrázek bude zobrazen jako pozadí pokud zvolíte jako pozadí „Výchozí obrázek“."
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");
