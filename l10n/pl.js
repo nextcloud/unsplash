@@ -13,13 +13,16 @@ OC.L10N.register(
     "Here you can specify where random backgrounds should be used by default." : "Tutaj możesz określić, gdzie domyślnie mają być używane losowe tła.",
     "Set random image as login background" : "Ustaw losowy obraz jako tło logowania",
     "Set random image as dashboard background" : "Ustaw losowy obraz jako tło pulpitu",
+    "Set the image provider:" : "Ustaw dostawcę obrazu:",
     "Keywords:" : "Słowa kluczowe:",
+    "Set custom search terms. Separate multiple terms by comma." : "Ustaw niestandardowe wyszukiwanie warunków. Poszczególne warunki oddziel przecinkami.",
     "Splash: Advanced Theming" : "Splash: Motyw zaawansowany",
     "You can apply effects to your background images." : "Możesz zastosować efekty do obrazów tła.",
     "Enable Tint" : "Włącz odcień",
     "Set the vibrancy of the color" : "Ustaw intensywność koloru",
     "Set the blur of the image" : "Ustaw rozmycie obrazu",
     "Random Background Images" : "Losowe obrazy tła",
-    "%s is customized with random background images." : "%s jest dostosowywane za pomocą losowych obrazów tła."
+    "%s is customized with random background images." : "%s jest dostosowywane za pomocą losowych obrazów tła.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Obrazy będą wyświetlane jako tło, jeśli wybierzesz \"Domyślny obraz\" jako tło."
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");
