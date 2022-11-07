@@ -155,6 +155,7 @@ class CssController extends Controller {
             $tintColor =  $this->settings->getInstanceColor();
             list($r, $g, $b) = sscanf($tintColor, "#%02x%02x%02x");
             $colorStrenght =  $this->settings->getColorStrength()/100;
+            $css .= "background-color: #fff !important;";
             $css .= "background-image: ";
             $css .= "linear-gradient(";
             $css .= "rgba($r, $g, $b, $colorStrenght),";
