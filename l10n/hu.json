@@ -1,6 +1,26 @@
 { "translations": {
+    "Splash" : "Színfolt",
+    "under an open license free of charge" : "nyílt licenc alatt, ingyenesen",
+    "These images are provided %s by %s." : "Ezek a képek %s érhetők el, és az %s biztosítja őket.",
+    "under the terms of service" : "a szolgáltatás feltételei alatt",
+    "These images are provided by %s. Each image has it's own license." : "Ezeket a képeket az %s biztosítja. Minden képnek saját licence van.",
+    "Splash: Random Background Images" : "Színfolt: véletlenszerű háttérképek",
     "Saved" : "Mentve",
     "Failed" : "Sikertelen",
-    "Keywords:" : "Kulcsszavak:"
+    "You can customize your instance with random background images." : "Véletlenszerű háttérképekkel szabhatja testre a példányát .",
+    "Here you can specify where random backgrounds should be used by default." : "Itt megadhatja, hogy hol legyenek a véletlenszerű háttérképek alapértelmezetten használva.",
+    "Set random image as login background" : "Véletlenszerű kép beállítása a bejelentkezés háttérképeként",
+    "Set random image as dashboard background" : "Véletlenszerű kép beállítása az irányítópult háttérképeként",
+    "Set the image provider:" : "Képszolgáltató beállítása:",
+    "Keywords:" : "Kulcsszavak:",
+    "Set custom search terms. Separate multiple terms by comma." : "Egyéni keresőkifejezések beállítása. Az egyes kifejezéseket vesszőkkel válassza el.",
+    "Splash: Advanced Theming" : "Színfolt: speciális témázás",
+    "You can apply effects to your background images." : "Hatásokat alkalmazhat a háttérképeire.",
+    "Enable Tint" : "Színezés használata",
+    "Set the vibrancy of the color" : "A szín élénkségének beállítása",
+    "Set the blur of the image" : "A kép elmosásának beállítása",
+    "Random Background Images" : "Véletlenszerű háttérképek",
+    "%s is customized with random background images." : "A %s véletlenszerű háttérképekkel van testreszabva.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "A képek a háttérként lesznek megjelenítve, ha az „Alapértelmezett kép” lehetőséget választja háttérképként."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
