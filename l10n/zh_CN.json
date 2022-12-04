@@ -1,6 +1,7 @@
 { "translations": {
     "Saved" : "已保存",
     "Failed" : "失败了",
-    "Keywords:" : "关键词："
+    "Keywords:" : "关键词：",
+    "Random Background Images" : "随机背景图片"
 },"pluralForm" :"nplurals=1; plural=0;"
 }
