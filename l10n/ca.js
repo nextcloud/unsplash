@@ -1,0 +1,28 @@
+OC.L10N.register(
+    "unsplash",
+    {
+    "Splash" : "Esquitxades",
+    "under an open license free of charge" : "sota una llicència oberta gratuïta",
+    "These images are provided %s by %s." : "Aquestes imatges les proporciona %s per %s.",
+    "under the terms of service" : "sota les condicions del servei",
+    "These images are provided by %s. Each image has it's own license." : "Aquestes imatges les proporciona %s. Cada imatge té la seva pròpia llicència.",
+    "Splash: Random Background Images" : "Esquitxades: imatges de fons aleatòries",
+    "Saved" : "S'ha desat",
+    "Failed" : "Ha fallat",
+    "You can customize your instance with random background images." : "Podeu personalitzar la vostra instància amb imatges de fons aleatòries.",
+    "Here you can specify where random backgrounds should be used by default." : "Aquí podeu especificar on s'han d'utilitzar els fons aleatoris de manera predeterminada.",
+    "Set random image as login background" : "Estableix una imatge aleatòria com a fons d'inici de sessió",
+    "Set random image as dashboard background" : "Estableix una imatge aleatòria com a fons del tauler",
+    "Set the image provider:" : "Estableix el proveïdor d'imatge:",
+    "Keywords:" : "Paraules clau:",
+    "Set custom search terms. Separate multiple terms by comma." : "Estableix termes de cerca personalitzats. Separa diversos termes per comes.",
+    "Splash: Advanced Theming" : "Esquitxades: Tematització avançada",
+    "You can apply effects to your background images." : "Podeu aplicar efectes a les vostres imatges de fons.",
+    "Enable Tint" : "Activa Tint",
+    "Set the vibrancy of the color" : "Estableix la vivacitat del color",
+    "Set the blur of the image" : "Estableix el desenfocament de la imatge",
+    "Random Background Images" : "Imatges de fons aleatòries",
+    "%s is customized with random background images." : "%s està personalitzat amb imatges de fons aleatòries.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Les imatges es mostraran com a fons si trieu \"Imatge per defecte\" com a fons."
+},
+"nplurals=2; plural=(n != 1);");

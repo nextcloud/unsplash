@@ -1,0 +1,28 @@
+OC.L10N.register(
+    "unsplash",
+    {
+    "Splash" : "Splash",
+    "under an open license free of charge" : "under an open license free of charge",
+    "These images are provided %s by %s." : "These images are provided %s by %s.",
+    "under the terms of service" : "under the terms of service",
+    "These images are provided by %s. Each image has it's own license." : "These images are provided by %s. Each image has it's own license.",
+    "Splash: Random Background Images" : "Splash: Random Background Images",
+    "Saved" : "Saved",
+    "Failed" : "Failed",
+    "You can customize your instance with random background images." : "You can customize your instance with random background images.",
+    "Here you can specify where random backgrounds should be used by default." : "Here you can specify where random backgrounds should be used by default.",
+    "Set random image as login background" : "Set random image as login background",
+    "Set random image as dashboard background" : "Set random image as dashboard background",
+    "Set the image provider:" : "Set the image provider:",
+    "Keywords:" : "Keywords:",
+    "Set custom search terms. Separate multiple terms by comma." : "Set custom search terms. Separate multiple terms by comma.",
+    "Splash: Advanced Theming" : "Splash: Advanced Theming",
+    "You can apply effects to your background images." : "You can apply effects to your background images.",
+    "Enable Tint" : "Enable Tint",
+    "Set the vibrancy of the color" : "Set the vibrancy of the colour",
+    "Set the blur of the image" : "Set the blur of the image",
+    "Random Background Images" : "Random Background Images",
+    "%s is customized with random background images." : "%s is customized with random background images.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "The images will be displayed as the background if you choose \"Default Image\" as your background."
+},
+"nplurals=2; plural=(n != 1);");

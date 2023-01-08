@@ -15,12 +15,14 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
     "Set the image provider:" : "Bildanbieter auswählen:",
     "Keywords:" : "Schlüsselwörter:",
+    "Set custom search terms. Separate multiple terms by comma." : "Lege benutzerdefinierte Suchbegriffe fest. Trenne mehrere Begriffe jeweils durch Komma.",
     "Splash: Advanced Theming" : "Splash: Erweitertes Design",
     "You can apply effects to your background images." : "Du kannst Effekte auf das Hintergrund anwenden.",
     "Enable Tint" : "Aktiviere Tönung",
     "Set the vibrancy of the color" : "Setze die Leuchtkraft der Tönung",
     "Set the blur of the image" : "Setze die Bildunschärfe",
     "Random Background Images" : "Zufällige Hintergrundbilder",
-    "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert."
+    "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Die Bilder werden als Hintergrund angezeigt wenn \"Standardbild\" als Hintergrund ausgewählt worden ist."
 },
 "nplurals=2; plural=(n != 1);");

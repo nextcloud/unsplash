@@ -13,13 +13,16 @@ OC.L10N.register(
     "Here you can specify where random backgrounds should be used by default." : "Aqui você pode especificar onde planos de fundo aleatórios podem ser usados por padrão.",
     "Set random image as login background" : "Habilitar imagem aleatória como plano de fundo do login",
     "Set random image as dashboard background" : "Habilitar imagem aleatória como plano de fundo do dashboard",
+    "Set the image provider:" : "Defina o provedor de imagem:",
     "Keywords:" : "Palavras chave:",
+    "Set custom search terms. Separate multiple terms by comma." : "Defina termos de pesquisa personalizados. Separe vários termos por vírgula.",
     "Splash: Advanced Theming" : "Splash: Configurações avançadas de tema",
     "You can apply effects to your background images." : "Você pode aplicar efeitos para as imagens de fundo.",
     "Enable Tint" : "Ativar Matiz",
     "Set the vibrancy of the color" : "Configurar vibração da cor",
     "Set the blur of the image" : "Defina o desfoque da imagem",
     "Random Background Images" : "Imagens aleatórias para plano de fundo",
-    "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo"
+    "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imagens serão exibidas como plano de fundo se você escolher \"Imagem padrão\" como plano de fundo."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
