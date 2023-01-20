@@ -10,7 +10,7 @@ OC.L10N.register(
     "Saved" : "Gespeichert",
     "Failed" : "Fehlgeschlagen",
     "You can customize your instance with random background images." : "Du kannst deine Instanz mit zufälligen Hintergrundbildern anpassen.",
-    "Here you can specify where random backgrounds should be used by default." : "Hier können Sie festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
+    "Here you can specify where random backgrounds should be used by default." : "Hier kannst du festlegen wo zufällige Hintergrundbilder standardmäßig verwendet werden sollen.",
     "Set random image as login background" : "Verwende ein zufälliges Bild als Hintergrund der Anmeldeseite",
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
     "Set the image provider:" : "Bildanbieter auswählen:",
