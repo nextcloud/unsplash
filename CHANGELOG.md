@@ -1,12 +1,28 @@
 # Changelog
 
-
-## 1.2.6 - To be released
-### Added
-- Added Changelog to app
-- Added github-issue templates
+## 2.1.1 - 2022-11-07
 ### Fixed
-- Use mediaqueries to always serve good looking images on HD-screens (Thanks @skjnldsv!)(#103)
+- Fixed Image beeing to dark when tinting was applied
+
+## 2.1.0 - 2022-11-07
+### Added
+- Added Transifex-Translations - Thanks @p-bo, @rakekniven, @nickvergessen and everyone who added translations!
+### Removed
+- Removed specific Settings for users. They are now automatically integrated into the new Backgrounds!
+- Removed Support for PHP 7.4
+
+
+## 2.0.1 - 2022-10-04
+### Fixed
+- Fixed incompatibility with Php 7.3 and below
+- Fixed missing theming for totp - Thanks @skjnldsv !
+
+## 2.0.0 - 2022-10-03
+### Added
+- Support for Wallhaven and Wikimedia
+- Blurring
+- Tinting
+- Added Czech Translation (Thanks @p-bo!)
 
 
 ## 1.2.5 - 2022-05-08
