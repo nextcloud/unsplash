@@ -74,7 +74,13 @@ class CssController extends Controller {
      * @return DataDisplayResponse
      */
     public function login(): DataDisplayResponse {
-        return $this->prepareResponse($this->mediaQuery("body#body-login"));
+        $css = $this->mediaQuery("body#body-login");
+
+        $highVisibilityEnabled =  $this->settings->isHighVisibilityLogin();
+        if($highVisibilityEnabled == 1) {
+            $css .= $this->getHighVisibilityStyleLogin();
+        }
+        return $this->prepareResponse($css);
     }
 
     /**
@@ -165,6 +171,21 @@ class CssController extends Controller {
             $css .= "!important;";
             $css .= "background-blend-mode: normal, multiply;";
         }
+        return $css;
+    }
+
+    private function getHighVisibilityStyleLogin(): string {
+        $css = "footer { min-height: 120px !important;}";
+        $css .= ".legal {";
+        //$css .= "top: 20px;";
+        //$css .= "position: relative;";
+        $css .= "background-color: var(--color-primary-element);";
+        $css .= "color: var(--color-primary-text) !important;";
+        $css .= "cursor: pointer;";
+        $css .= "border-radius: 22px;";
+        $css .= "padding: 15px;";
+        $css .= "}";
+        $css .= "p.info {padding: 15px;height: 80px;line-height: 3;}";
         return $css;
     }
 }

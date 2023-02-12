@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0 - 2023-02-12
+### Added
+- Allow an admin to highlight privacy and data protection links on login-screen for better visibility
+
 ## 2.1.1 - 2022-11-07
 ### Fixed
 - Fixed Image beeing to dark when tinting was applied

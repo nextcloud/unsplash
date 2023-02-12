@@ -69,6 +69,12 @@ class AdminSettingsController extends Controller {
 			$this->settings->setColorStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
 		} else if($key === 'style/strength/blur') {
 			$this->settings->setBlurStrength(filter_var($value, FILTER_SANITIZE_NUMBER_INT));
+       } else if($key === 'style/login/highvisibility') {
+           if($value) {
+               $this->settings->setHighVisibilityLogin(1);
+           } else {
+               $this->settings->setHighVisibilityLogin(0);
+           }
 		} else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

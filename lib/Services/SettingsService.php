@@ -19,6 +19,7 @@ use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 class SettingsService {
 
     const STYLE_LOGIN          = 'unsplash/style/login';
+    const STYLE_LOGIN_HIGH_VISIBILITY = 'unsplash/style/login/highvisibility';
     const STYLE_DASHBORAD      = 'unsplash/style/dashborad';
     const USER_STYLE_DASHBORAD = 'unsplash/style/dashborad';
     const PROVIDER_SELECTED    = 'unsplash/provider/selected';
@@ -31,6 +32,8 @@ class SettingsService {
     const STYLE_TINT_ALLOWED_DEFAULT = 0; //equals 30%
     const STYLE_STRENGHT_COLOR_DEFAULT = 30; //equals 30%
     const STYLE_STRENGHT_BLUR_DEFAULT = 0;
+
+    const STYLE_LOGIN_HIGH_VISIBILITY_DEFAULT = 0;
 
     /**
      * @var IConfig
@@ -304,5 +307,18 @@ class SettingsService {
 		}
 		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_BLUR, $strength);
 	}
+
+    /**
+     * If the login page should be styled as High Visibility for Legal reasons
+     *
+     * @return bool
+     */
+    public function isHighVisibilityLogin(): bool {
+        return $this->config->getAppValue($this->appName, self::STYLE_LOGIN_HIGH_VISIBILITY, self::STYLE_LOGIN_HIGH_VISIBILITY_DEFAULT);
+    }
+
+    public function setHighVisibilityLogin(int $highVisibility): void {
+        $this->config->setAppValue($this->appName, self::STYLE_LOGIN_HIGH_VISIBILITY, $highVisibility);
+    }
 
 }

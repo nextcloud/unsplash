@@ -59,7 +59,8 @@ class AdminSettings implements ISettings {
             'selectionCustomization'    => $this->settings->getImageProviderCustomization(),
             'styleTint'                 => $this->settings->isTintEnabled(),
             'styleStrengthColor'        => $this->settings->getColorStrength(),
-            'styleStrengthBlur'         => $this->settings->getBlurStrength()
+            'styleStrengthBlur'         => $this->settings->getBlurStrength(),
+            'styleHighVisibility'       => $this->settings->isHighVisibilityLogin()
         ]);
     }
 

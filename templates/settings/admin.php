@@ -88,5 +88,17 @@ style('unsplash', 'settings');
             <label for="unsplash-style-blur"><?php p($l->t('Set the blur of the image')); ?></label>
 			<input type="range" name="unsplash-style-blur" data-setting="style/strength/blur" min="0" max="25" value="<?=$_['styleStrengthBlur'] ? $_['styleStrengthBlur']:0?>">
 		</div>
+
+        <br>
+        <h2>
+            <?php p($l->t('Splash: High Visibility')); ?>
+        </h2>
+        <p class="settings-hint">
+            <?php p($l->t('You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen.')); ?>
+        </p>
+        <div class="unsplash-checkboxes">
+            <input id="unsplash-style-highvisibility" name="unsplash-style-highvisibility" data-setting="style/login/highvisibility" type="checkbox" <?=$_['styleHighVisibility'] ? 'checked':''?>>
+            <label for="unsplash-style-highvisibility"><?php p($l->t('Enable High-Visibility Mode')); ?></label>
+        </div>
     </form>
 </div>
