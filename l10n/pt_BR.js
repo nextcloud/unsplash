@@ -21,6 +21,9 @@ OC.L10N.register(
     "Enable Tint" : "Ativar Matiz",
     "Set the vibrancy of the color" : "Configurar vibração da cor",
     "Set the blur of the image" : "Defina o desfoque da imagem",
+    "Splash: High Visibility" : "Destaque: alta visibilidade",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen." : "Você pode ativar um modo de alta visibilidade por motivos legais. Isso destacará os links de privacidade e proteção de dados na tela de login.",
+    "Enable High-Visibility Mode" : "Ativar modo de Alta Visibilidade",
     "Random Background Images" : "Imagens aleatórias para plano de fundo",
     "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imagens serão exibidas como plano de fundo se você escolher \"Imagem padrão\" como plano de fundo."

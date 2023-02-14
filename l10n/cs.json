@@ -19,6 +19,9 @@
     "Enable Tint" : "Zapnout změnu odstínu",
     "Set the vibrancy of the color" : "Nastavte živost barev",
     "Set the blur of the image" : "Nastavte rozmazání obrázku",
+    "Splash: High Visibility" : "Splash: vysoká viditelnost",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen." : "Z právních důvodů je možné zapnout režim vysoké viditelnosti. Toto na přihlašovací obrazovce zvýrazní odkazy na zásady ochrany soukromí a dat.",
+    "Enable High-Visibility Mode" : "Zapnout režim vysoké viditelnosti",
     "Random Background Images" : "Náhodné obrázky na pozadí",
     "%s is customized with random background images." : "%s je přizpůsobené náhodnými obrázky na pozadí.",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Obrázek bude zobrazen jako pozadí pokud zvolíte jako pozadí „Výchozí obrázek“."

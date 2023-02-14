@@ -21,6 +21,9 @@ OC.L10N.register(
     "Enable Tint" : "啟用 Tint",
     "Set the vibrancy of the color" : "設定色彩的鮮艷程度",
     "Set the blur of the image" : "設定圖片模糊",
+    "Splash: High Visibility" : "Splash：高能見度",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen." : "您可以出於法律原因啟用能見度模式。這會突顯登入畫面上的隱私與資料保護連結。",
+    "Enable High-Visibility Mode" : "啟用高能見度模式",
     "Random Background Images" : "隨機背景圖片",
     "%s is customized with random background images." : "%s 使用隨機背景圖片自訂。",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "若您將「預設圖片」設定為背景，圖片將顯示為背景。"
