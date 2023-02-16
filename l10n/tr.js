@@ -21,6 +21,9 @@ OC.L10N.register(
     "Enable Tint" : "Ton kullanılsın",
     "Set the vibrancy of the color" : "Rengin canlılığını ayarlayın",
     "Set the blur of the image" : "Rengin bulanıklığını ayarlayın",
+    "Splash: High Visibility" : " Splash: Yüksek görünürlük",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen." : "Yasal nedenlerle yüksek görünürlük kipini kullanabilirsiniz. Bu seçenek etkinleştirildiğinde, oturum açma ekranındaki gizlilik ve veri koruma bağlantıları vurgulanır.",
+    "Enable High-Visibility Mode" : "Yüksek görünürlük kipi kullanılsın",
     "Random Background Images" : "Rastgele arka plan görselleri",
     "%s is customized with random background images." : "%s rastgele arka plan görselleri ile özelleştiriliyor",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Arka planınız olarak \"Varsayılan görsel\" seçerseniz, görseller arka plan olarak görüntülenecektir."
