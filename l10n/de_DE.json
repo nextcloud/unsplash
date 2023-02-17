@@ -19,6 +19,9 @@
     "Enable Tint" : "Tönung aktivieren",
     "Set the vibrancy of the color" : "Leuchtkraft der Tönung einstellen",
     "Set the blur of the image" : "Bildunschärfe einstellen",
+    "Splash: High Visibility" : "Splash: Hohe Sichtbarkeit",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen." : "Sie können aus rechtlichen Gründen einen Modus mit hoher Sichtbarkeit aktivieren. Dadurch werden die Links zum Schutz der Privatsphäre und zum Datenschutz auf dem Anmeldebildschirm hervorgehoben.",
+    "Enable High-Visibility Mode" : "Hochsichtbarkeitsmodus aktivieren",
     "Random Background Images" : "Zufällige Hintergrundbilder",
     "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert.",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Die Bilder werden als Hintergrund angezeigt wenn \"Standardbild\" als Hintergrund ausgewählt worden ist."
