@@ -94,7 +94,7 @@ style('unsplash', 'settings');
             <?php p($l->t('Splash: High Visibility')); ?>
         </h2>
         <p class="settings-hint">
-            <?php p($l->t('You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection Links on the Loginscreen.')); ?>
+            <?php p($l->t('You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen.')); ?>
         </p>
         <div class="unsplash-checkboxes">
             <input id="unsplash-style-highvisibility" name="unsplash-style-highvisibility" data-setting="style/login/highvisibility" type="checkbox" <?=$_['styleHighVisibility'] ? 'checked':''?>>
