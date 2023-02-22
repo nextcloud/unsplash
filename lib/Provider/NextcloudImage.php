@@ -26,7 +26,7 @@ use OCA\Unsplash\ProviderHandler\Provider;
 class NextcloudImage extends Provider{
 
     // Todo: Use URLGenerator. See AdminSettingsController
-	private string $THEMING_URL="/index.php/apps/theming/image/background";
+	private string $THEMING_URL="/index.php/apps/theming/img/background";
 	public bool $ALLOW_CUSTOMIZING = false;
 
 	public function getWhitelistResourceUrls(): array
