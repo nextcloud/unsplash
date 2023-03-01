@@ -1,6 +1,6 @@
 { "translations": {
     "Splash" : "Splash",
-    "under an open license free of charge" : "kostenlos unter einer freien Lizenz",
+    "under an open license free of charge" : "Kostenlos unter einer freien Lizenz",
     "These images are provided %s by %s." : "Diese Bilder werden %s von %s bereitgestellt.",
     "under the terms of service" : "unter den Nutzungsbedingungen",
     "These images are provided by %s. Each image has it's own license." : "Diese Bilder werden von %s zur Verfügung gestellt. Jedes Bild hat seine eigene Lizenz.",
@@ -13,7 +13,7 @@
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
     "Set the image provider:" : "Den Bildanbieter einstellen:",
     "Keywords:" : "Schlüsselwörter:",
-    "Set custom search terms. Separate multiple terms by comma." : "Legen Sie benutzerdefinierte Suchbegriffe fest. Trennen Sie mehrere Begriffe durch Komma.",
+    "Set custom search terms. Separate multiple terms by comma." : "Legen Sie benutzerdefinierte Suchbegriffe fest. Trennen Sie mehrere Begriffe durch Kommata.",
     "Splash: Advanced Theming" : "Splash: Erweitertes Design",
     "You can apply effects to your background images." : "Sie können Effekte auf Ihre Hintergrundbilder anwenden.",
     "Enable Tint" : "Tönung aktivieren",
@@ -24,6 +24,6 @@
     "Enable High-Visibility Mode" : "Hochsichtbarkeitsmodus aktivieren",
     "Random Background Images" : "Zufällige Hintergrundbilder",
     "%s is customized with random background images." : "%s ist mit zufälligen Hintergrundbildern individualisiert.",
-    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Die Bilder werden als Hintergrund angezeigt wenn \"Standardbild\" als Hintergrund ausgewählt worden ist."
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Die Bilder werden als Hintergrund angezeigt, wenn \"Standardbild\" als Hintergrund ausgewählt worden ist."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
