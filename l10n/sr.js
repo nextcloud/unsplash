@@ -1,7 +1,31 @@
 OC.L10N.register(
     "unsplash",
     {
+    "Splash" : "Пљус",
+    "under an open license free of charge" : "под слободном лиценцом, бесплатно",
+    "These images are provided %s by %s." : "Ове слике обезбеђује %s према %s.",
+    "under the terms of service" : "под условима коришћења",
+    "These images are provided by %s. Each image has it's own license." : "Ове слике обезбеђује %s. Свака слика има своју лиценцу.",
+    "Splash: Random Background Images" : "Пљус: насумичне позадинске слике",
     "Saved" : "Сачувано",
-    "Keywords:" : "Кључне речи:"
+    "Failed" : "Није успело",
+    "You can customize your instance with random background images." : "Можете да прилагодите своју инстанцу насумичним позадинским сликама.",
+    "Here you can specify where random backgrounds should be used by default." : "Овде можете да наведете где би насумичне слике подразумевано требало да се користе.",
+    "Set random image as login background" : "Постави насумичну слику као позадину током пријављивања",
+    "Set random image as dashboard background" : "Постави насумичну слику као позадину контролне табле",
+    "Set the image provider:" : "Постави провајдера слике:",
+    "Keywords:" : "Кључне речи:",
+    "Set custom search terms. Separate multiple terms by comma." : "Поставите жељене термине за претрагу. Више термина раздвојте запетама.",
+    "Splash: Advanced Theming" : "Пљус: Напредна употреба тема",
+    "You can apply effects to your background images." : "На своје позадинске слике можете да примените ефекте.",
+    "Enable Tint" : "Укључи нијансирање",
+    "Set the vibrancy of the color" : "Подеси живахност боје",
+    "Set the blur of the image" : "Подеси замућење слике",
+    "Splash: High Visibility" : "Пљус: Висока видљивост",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Из правних разлога можете да укључите режим Високе видљивости. Ово ће да истакне линкове за приватност и заштиту података на екрану за пријављивање.",
+    "Enable High-Visibility Mode" : "Укључи режим Високе видљивости",
+    "Random Background Images" : "Насумичне позадинске слике",
+    "%s is customized with random background images." : "%s је прилагођена са насумичним позадинским сликама.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Слике ће се приказати као позадина ако као вашу позадину изаберете „Подразумевана слика”."
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

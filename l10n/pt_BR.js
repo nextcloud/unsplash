@@ -22,6 +22,7 @@ OC.L10N.register(
     "Set the vibrancy of the color" : "Configurar vibração da cor",
     "Set the blur of the image" : "Defina o desfoque da imagem",
     "Splash: High Visibility" : "Destaque: alta visibilidade",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen.",
     "Enable High-Visibility Mode" : "Ativar modo de Alta Visibilidade",
     "Random Background Images" : "Imagens aleatórias para plano de fundo",
     "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo",
