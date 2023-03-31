@@ -21,6 +21,9 @@ OC.L10N.register(
     "Enable Tint" : "Színezés használata",
     "Set the vibrancy of the color" : "A szín élénkségének beállítása",
     "Set the blur of the image" : "A kép elmosásának beállítása",
+    "Splash: High Visibility" : "Színfolt: magas láthatóság",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Jogi okokból engedélyezheti a magas láthatóságú módot. Ez kiemeli az adatvédelmi hivatkozásokat a bejelentkezési képernyőn.",
+    "Enable High-Visibility Mode" : "Magas láthatóságú mód",
     "Random Background Images" : "Véletlenszerű háttérképek",
     "%s is customized with random background images." : "A %s véletlenszerű háttérképekkel van testreszabva.",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "A képek a háttérként lesznek megjelenítve, ha az „Alapértelmezett kép” lehetőséget választja háttérképként."
