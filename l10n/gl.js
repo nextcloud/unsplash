@@ -26,6 +26,6 @@ OC.L10N.register(
     "Enable High-Visibility Mode" : "Activa o Modo de Alta Visibilidade",
     "Random Background Images" : "Imaxes de Fondo Aleatorias",
     "%s is customized with random background images." : "%s está personalizado con imaxes de fondo aleatorias.",
-    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imaxes mostraranse como fondo se escolles \"Imaxe Predeterminada\" como fondo."
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imaxes amósanse como fondo se escolle «Imaxe predeterminada» como fondo."
 },
 "nplurals=2; plural=(n != 1);");
