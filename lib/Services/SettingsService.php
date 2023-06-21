@@ -86,7 +86,12 @@ class SettingsService {
      * @return bool
      */
     public function getUserStyleDashboardEnabled(): bool {
-        $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", 'background', 'default');
+        // for magic value see: https://github.com/nextcloud/server/blame/master/apps/theming/lib/Service/BackgroundService.php
+        $themingSettingsKey = "background";
+        if($this->getNextcloudVersion() > 26) {
+            $themingSettingsKey = "background_image";
+        }
+        $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", $themingSettingsKey, 'default');
 
         // dont add custom css when custom image was selected
         if($themingAppDashboard == 'default') {
