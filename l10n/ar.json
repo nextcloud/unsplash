@@ -19,6 +19,9 @@
     "Enable Tint" : "فَعِّل الصبغة tint",
     "Set the vibrancy of the color" : "إضبِط حيوية اللون vibrancy",
     "Set the blur of the image" : "إضبِط ضبابية الصورة blur",
+    "Splash: High Visibility" : "البَخَّاخ Splash: وضوحٌ عالٍ",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "يمكنك تمكين وضع الرؤية العالية High Visibility Mode لأسباب قانونية. سيؤدي هذا إلى تمييز روابط الخصوصية وحماية البيانات على شاشة تسجيل الدخول.",
+    "Enable High-Visibility Mode" : "تمكين وضعية \"الوضوح العالي\"",
     "Random Background Images" : "صور عشوائية للخلفية",
     "%s is customized with random background images." : "%sمُخصّصة بصور عشوائية للخلفية.",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "يتم عرض الصور كخلفية إذا اخترت \"الصورة الافتراضية\" كخلفية لك."
