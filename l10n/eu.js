@@ -1,11 +1,31 @@
 OC.L10N.register(
     "unsplash",
     {
+    "Splash" : "Splash",
+    "under an open license free of charge" : "doako lizentzia irekipean",
+    "These images are provided %s by %s." : "Irudi hauek %s(e)k hornitzen ditu %s bidez.",
+    "under the terms of service" : "erabilera arauen mende",
+    "These images are provided by %s. Each image has it's own license." : "Irudi hauek %s(e)k hornitu ditu. Irudi bakoitzak bere lizentzia dauka.",
+    "Splash: Random Background Images" : "Splash: ausazko atzeko planoko irudiak",
     "Saved" : "Gordeta",
     "Failed" : "Huts egin du",
+    "You can customize your instance with random background images." : "Zure instantzia pertsonaliza dezakezu atzeko planorako ausazko irudiekin.",
+    "Here you can specify where random backgrounds should be used by default." : "Hemen zehaztu dezakezu ausazko atzeko planoak non erabili behar liratekeen, modu lehenetsian.",
     "Set random image as login background" : "Ezarri ausazko irudia saio hasierako atzeko plano gisa",
     "Set random image as dashboard background" : "Ezarri ausazko irudia paneleko atzeko plano gisa",
+    "Set the image provider:" : "Ezarri irudi hornitzailea:",
     "Keywords:" : "Hitz gakoak:",
-    "Enable Tint" : "Gaitu ñabardura"
+    "Set custom search terms. Separate multiple terms by comma." : "Ezarri bilaketa hitz pertsonalizatuak. Bereizi hitzak koma bidez.",
+    "Splash: Advanced Theming" : "Splash: apaintze aurreratua",
+    "You can apply effects to your background images." : "Efektuak aplikatu ahal dizkiezu zure atzeko planoko irudiei.",
+    "Enable Tint" : "Gaitu ñabardura",
+    "Set the vibrancy of the color" : "Ezarri koloreen bizitasuna",
+    "Set the blur of the image" : "Ezarri irudien lausotasuna",
+    "Splash: High Visibility" : "Splash: ikusgarritasun altua",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Ikusgarritasun altuko modua gaitu dezakezu arrazoi legalengatik. Horrek nabarmendu egingo ditu Pribatutasun eta Datu Babesari buruzko estekak, saio hasierako orrian.",
+    "Enable High-Visibility Mode" : "Gaitu ikusgarritasun altuko modua",
+    "Random Background Images" : "Ausazko atzeko planoko irudiak",
+    "%s is customized with random background images." : "%s pertsonalizatu egin da ausazko atzeko planoko irudiekin.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Irudiak atzeko planoan erakutsiko dira \"Irudi lehenetsia\" aukera ezartzen baduzu zure atzeko planorako."
 },
 "nplurals=2; plural=(n != 1);");
