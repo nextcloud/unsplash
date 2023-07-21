@@ -1,5 +1,29 @@
 { "translations": {
+    "Splash" : "Splash",
+    "under an open license free of charge" : "bajo una licencia abierta de forma gratuita",
+    "These images are provided %s by %s." : "Estas imágenes son proporcionadas %s por %s.",
+    "under the terms of service" : "bajo los términos del servicio",
+    "These images are provided by %s. Each image has it's own license." : "Estas imágenes son proporcionadas por %s. Cada imagen tiene su propia licencia.",
+    "Splash: Random Background Images" : "Splash: Imágenes de Fondo Aleatorias",
     "Saved" : "Guardado",
-    "Failed" : "Error"
+    "Failed" : "Error",
+    "You can customize your instance with random background images." : "Puedes personalizar tu instancia con imágenes de fondo aleatorias.",
+    "Here you can specify where random backgrounds should be used by default." : "Aquí puedes especificar dónde se deben usar imágenes de fondo aleatorias de forma predeterminada.",
+    "Set random image as login background" : "Establecer imagen aleatoria como fondo de inicio de sesión",
+    "Set random image as dashboard background" : "Establecer imagen aleatoria como fondo del tablero (dashboard)",
+    "Set the image provider:" : "Establecer el proveedor de imágenes:",
+    "Keywords:" : "Palabras clave:",
+    "Set custom search terms. Separate multiple terms by comma." : "Establecer términos de búsqueda personalizados. Separa múltiples términos con comas.",
+    "Splash: Advanced Theming" : "Splash: Temas Avanzados",
+    "You can apply effects to your background images." : "Puedes aplicar efectos a tus imágenes de fondo.",
+    "Enable Tint" : "Habilitar Tinte",
+    "Set the vibrancy of the color" : "Establecer la intensidad del color",
+    "Set the blur of the image" : "Establecer el desenfoque de la imagen",
+    "Splash: High Visibility" : "Splash: Modo de Alta Visibilidad",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Puedes activar un Modo de Alta Visibilidad por razones legales. Esto destacará los enlaces de Privacidad y Protección de Datos en la pantalla de inicio de sesión.",
+    "Enable High-Visibility Mode" : "Habilitar el Modo de Alta Visibilidad",
+    "Random Background Images" : "Imágenes de Fondo Aleatorias",
+    "%s is customized with random background images." : "%s está personalizado con imágenes de fondo aleatorias.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Las imágenes se mostrarán como fondo si eliges \"Imagen Predeterminada\" como tu fondo."
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
