@@ -1,7 +1,31 @@
 OC.L10N.register(
     "unsplash",
     {
+    "Splash" : "Sprut",
+    "under an open license free of charge" : "under åpen lisens gratis",
+    "These images are provided %s by %s." : "Disse bildene er levert %s av %s.",
+    "under the terms of service" : "under tjenestevilkårene",
+    "These images are provided by %s. Each image has it's own license." : "Disse bildene er levert av %s. Hvert bilde har sin egen lisens.",
+    "Splash: Random Background Images" : "Splash: Tilfeldige bakgrunnsbilder",
     "Saved" : "Lagret",
-    "Set the blur of the image" : "Still inn uskarphet i bildet"
+    "Failed" : "Mislyktes",
+    "You can customize your instance with random background images." : "Du kan tilpasse forekomsten din med tilfeldige bakgrunnsbilder.",
+    "Here you can specify where random backgrounds should be used by default." : "Her kan du spesifisere hvor tilfeldige bakgrunner skal brukes som standard.",
+    "Set random image as login background" : "Sett tilfeldig bilde som påloggingsbakgrunn",
+    "Set random image as dashboard background" : "Sett tilfeldig bilde som dashbordbakgrunn",
+    "Set the image provider:" : "Still inn bildeleverandøren:",
+    "Keywords:" : "Nøkkelord:",
+    "Set custom search terms. Separate multiple terms by comma." : "Angi egendefinerte søkeord. Skill flere termer med komma.",
+    "Splash: Advanced Theming" : "Splash: Advanced Theming",
+    "You can apply effects to your background images." : "Du kan bruke effekter på bakgrunnsbildene dine.",
+    "Enable Tint" : "Aktiver Tint",
+    "Set the vibrancy of the color" : "Still inn fargens livlighet",
+    "Set the blur of the image" : "Still inn uskarphet i bildet",
+    "Splash: High Visibility" : "Splash: Høy synlighet",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Du kan aktivere en høysynlighetsmodus av juridiske årsaker. Dette vil fremheve koblingene for personvern og databeskyttelse på påloggingsskjermen.",
+    "Enable High-Visibility Mode" : "Aktiver høysynsmodus",
+    "Random Background Images" : "Tilfeldige bakgrunnsbilder",
+    "%s is customized with random background images." : "%s er tilpasset med tilfeldige bakgrunnsbilder.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "Bildene vil vises som bakgrunn hvis du velger \"Standardbilde\" som bakgrunn."
 },
 "nplurals=2; plural=(n != 1);");
