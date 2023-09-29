@@ -23,10 +23,9 @@
 
 namespace OCA\Unsplash\ProviderHandler;
 
-use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\Provider\NextcloudImage;
 use OCA\Unsplash\Provider\Unsplash;
-use OCA\Unsplash\Provider\UnsplashHD;
+use OCA\Unsplash\Provider\UnsplashAPI;
 use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
 use OCP\IConfig;
@@ -67,6 +66,7 @@ class ProviderDefinitions{
 		$tmp=[];
 		//add all provider to this array. The logic takes care of the rest.
 		$tmp[] = new Unsplash($this->appName, $this->config, "Unsplash");
+		//$tmp[] = new UnsplashAPI($this->appName, $this->config, "UnsplashAPI");
 		$tmp[] = new NextcloudImage($this->appName, $this->config, "Nextcloud Image");
 		$tmp[] = new WikimediaCommons($this->appName, $this->config, "WikimediaCommons");
 		$tmp[] = new WallhavenCC($this->appName, $this->config, "WallhavenCC");

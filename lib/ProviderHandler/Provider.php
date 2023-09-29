@@ -54,6 +54,10 @@ abstract class Provider {
 
     public bool $ALLOW_CUSTOMIZING = true;
 
+	public bool $REQUIRES_TOKEN = false;
+
+	public string $DEFAULT_TOKEN="";
+
 
     /**
 	 * Provider constructor.
@@ -130,6 +134,31 @@ abstract class Provider {
     {
         return $this->ALLOW_CUSTOMIZING;
     }
+
+	/**
+	 * Returns if the provider requires an api token
+	 * @return string
+	 */
+	public function requiresToken(): bool
+	{
+		return $this->REQUIRES_TOKEN;
+	}
+
+	/**
+	 *
+	 * This returns the token.
+	 * It either returns the default or the stored token.
+	 *
+	 * @return string
+	 */
+	public function getToken(): string {
+		if(!$this->REQUIRES_TOKEN) {
+			return "";
+		}
+		$token = $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/token', $this->DEFAULT_TOKEN);
+		return $token;
+	}
+
 
 	/*
 	 * This should return all URLS which need to be whitelisted for csrf

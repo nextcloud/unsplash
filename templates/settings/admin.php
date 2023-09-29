@@ -59,6 +59,16 @@ style('unsplash', 'settings');
                 <?php p($l->t('Set custom search terms. Separate multiple terms by comma.')); ?>
             </p>
         </div>
+		<!--<div class="unsplash-providertoken">
+			<label class="unsplash-label" for="splash-provider-token"><?php p($l->t('Token:')); ?></label>
+			<input class="unsplash-input" type="text" id="splash-provider-token" data-setting="provider/token"
+			<?php
+			echo " value='****'>";
+			?>
+			<p class="settings-hint">
+				<?php p($l->t('Set the reqired token.')); ?>
+			</p>
+		</div>-->
         <br>
         <h2>
             <?php p($l->t('Splash: Advanced Theming')); ?>
