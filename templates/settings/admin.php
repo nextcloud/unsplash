@@ -66,7 +66,7 @@ style('unsplash', 'settings');
 			echo " value='****'>";
 			?>
 			<p class="settings-hint">
-				<?php p($l->t('Set the reqired token.')); ?>
+				<?php p($l->t('Set the required token.')); ?>
 			</p>
 		</div>-->
         <br>
