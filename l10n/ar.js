@@ -16,6 +16,7 @@ OC.L10N.register(
     "Set the image provider:" : "تعيين مزود الصورة:",
     "Keywords:" : "الكلمات الدلالية:",
     "Set custom search terms. Separate multiple terms by comma." : "تعيين مصطلحات البحث المخصصة. الفصل بين المصطلحات المتعددة بفاصلة.",
+    "Token:" : "أَمَارَة Token:",
     "Splash: Advanced Theming" : "البخّاخ Splash: الثيمات المتقدمة",
     "You can apply effects to your background images." : "يمكنك تطبيق تأثيرات على صور الخلفية عندك.",
     "Enable Tint" : "فَعِّل الصبغة tint",

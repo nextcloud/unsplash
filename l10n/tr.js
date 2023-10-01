@@ -16,6 +16,7 @@ OC.L10N.register(
     "Set the image provider:" : "Görsel hizmeti sağlayıcısını ayarlayın:",
     "Keywords:" : "Anahtar sözcükler:",
     "Set custom search terms. Separate multiple terms by comma." : "Özel arama terimlerini ayarlayın. Virgül ile ayırarak bir kaç terim yazabilirsiniz.",
+    "Token:" : "Kod:",
     "Splash: Advanced Theming" : "Splash: Gelişmiş tema",
     "You can apply effects to your background images." : "Arka plan görsellerinize etkiler uygulayabilirsiniz.",
     "Enable Tint" : "Ton kullanılsın",
