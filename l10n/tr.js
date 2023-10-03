@@ -17,6 +17,7 @@ OC.L10N.register(
     "Keywords:" : "Anahtar sözcükler:",
     "Set custom search terms. Separate multiple terms by comma." : "Özel arama terimlerini ayarlayın. Virgül ile ayırarak bir kaç terim yazabilirsiniz.",
     "Token:" : "Kod:",
+    "Set the required token." : "İstenilen kodu ayarlayın.",
     "Splash: Advanced Theming" : "Splash: Gelişmiş tema",
     "You can apply effects to your background images." : "Arka plan görsellerinize etkiler uygulayabilirsiniz.",
     "Enable Tint" : "Ton kullanılsın",
