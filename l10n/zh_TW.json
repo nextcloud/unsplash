@@ -14,6 +14,8 @@
     "Set the image provider:" : "設定圖片提供者：",
     "Keywords:" : "關鍵字：",
     "Set custom search terms. Separate multiple terms by comma." : "設定自訂搜尋詞。用逗號分隔多個詞。",
+    "Token:" : "權杖：",
+    "Set the required token." : "設定必要的權杖。",
     "Splash: Advanced Theming" : "Splash：進階佈景主題",
     "You can apply effects to your background images." : "您可以將效果套用於您的背景圖片。",
     "Enable Tint" : "啟用 Tint",
