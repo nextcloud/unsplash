@@ -113,7 +113,7 @@ abstract class Provider {
 
         $term = strtolower($termarray[0]);
         // only allow letters as searchterm
-        $term = preg_replace('/[^a-z]/i','', $term);
+        $term = preg_replace('/[^a-z-]/i','', $term);
         return $term;
     }
 
