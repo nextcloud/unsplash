@@ -16,6 +16,8 @@ OC.L10N.register(
     "Set the image provider:" : "Képszolgáltató beállítása:",
     "Keywords:" : "Kulcsszavak:",
     "Set custom search terms. Separate multiple terms by comma." : "Egyéni keresőkifejezések beállítása. Az egyes kifejezéseket vesszőkkel válassza el.",
+    "Token:" : "Token:",
+    "Set the required token." : "Állítsa be a szükséges tokent.",
     "Splash: Advanced Theming" : "Színfolt: speciális témázás",
     "You can apply effects to your background images." : "Hatásokat alkalmazhat a háttérképeire.",
     "Enable Tint" : "Színezés használata",
