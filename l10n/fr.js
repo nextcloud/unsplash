@@ -8,7 +8,7 @@ OC.L10N.register(
     "These images are provided by %s. Each image has it's own license." : "Ces images sont fournies par %s. Chaque image est soumise à sa propre licence.",
     "Splash: Random Background Images" : "Splash : images d'arrière-plan aléatoires",
     "Saved" : "Enregistré",
-    "Failed" : "Echec",
+    "Failed" : "Échec",
     "You can customize your instance with random background images." : "Vous pouvez personnaliser votre instance avec des images d'arrière-plan aléatoires.",
     "Here you can specify where random backgrounds should be used by default." : "Vous pouvez ici préciser où les images d'arrière-plan aléatoires devraient être utilisées par défaut.",
     "Set random image as login background" : "Utiliser une image aléatoire comme arrière-plan de connexion",
