@@ -55,16 +55,21 @@
      * @private
      */
     function _setValue(key, value, type) {
-        let headers = new Headers();
-        headers.append('requesttoken', OC.requestToken);
-        headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'application/json');
 
-        let body    = JSON.stringify({key, value}),
-            options = {headers, body, method: 'POST', redirect: 'error'},
-            request = new Request(this.saveUrl, options);
+        let headers= {
+            method: 'POST',
+            headers: {
+                'requesttoken': OC.requestToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }
 
-        fetch(request)
+        let body    = JSON.stringify({key, value})
+        let options = {headers, body, method: 'POST', redirect: 'error'}
+        let request = new Request(this.saveUrl, options);
+
+        fetch(request, headers)
             .then(() => {
                 _showMessage('success');
                 if(type === 'select') {
@@ -85,19 +90,23 @@
      * @private
      */
     function getCustomization(providername) {
-        let headers = new Headers();
-        headers.append('requesttoken', OC.requestToken);
-        headers.append('Accept', 'application/json');
-        headers.append('Content-Type', 'application/json');
+        let headers= {
+            method: 'GET',
+            headers: {
+                'requesttoken': OC.requestToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        }
 
         let updateCustomizationUrl = document.getElementById('unsplash-settings').dataset.requestupdate
 
         //todo: build this url better.
-        var apiUrl = updateCustomizationUrl.substr(0,updateCustomizationUrl.lastIndexOf("/")+1);
-        let options = {headers, method: 'GET', redirect: 'error'},
-            request = new Request(apiUrl+providername, options);
+        let apiUrl = updateCustomizationUrl.substr(0,updateCustomizationUrl.lastIndexOf("/")+1);
+        let options = {headers, method: 'GET', redirect: 'error'}
+        let request = new Request(apiUrl+providername, options);
 
-        fetch(request)
+        fetch(request, headers)
             .then(res =>
                 res.json())
             .then(data => {
