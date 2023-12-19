@@ -7,7 +7,7 @@
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
     <description>Show a new random featured nature photo in your nextcloud. Now with choosable motives!</description>
     <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto in ihrer Nextcloud. Jetzt auch mit selbstwählbaren Motiven!</description>
-    <version>2.2.1</version>
+    <version>2.2.2</version>
     <licence>agpl</licence>
     <author mail="hey@jancborchardt.net" homepage="https://jancborchardt.net">Jan-Christoph Borchardt</author>
     <author homepage="https://github.com/marius-wieschollek">Marius Wieschollek</author>
