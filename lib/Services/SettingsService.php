@@ -7,9 +7,11 @@
 namespace OCA\Unsplash\Services;
 
 use OCP\IConfig;
+use OCP\Files\IAppData;
 use Psr\Log\LoggerInterface;
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
+use OCA\Unsplash\ProviderHandler\CachedProvider;
 
 /**
  * Class SettingsService
@@ -66,9 +68,10 @@ class SettingsService {
      * @param string|null $userId
      * @param             $appName
      * @param IConfig     $config
+     * @param IAppData     $config
      * @param Defaults     $defaults
      */
-    public function __construct($userId, $appName, IConfig $config, \OC_Defaults $defaults) {
+    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults) {
         $this->config = $config;
         $this->userId = $userId;
         if($this->config->getSystemValue('maintenance', false)) {
@@ -76,7 +79,7 @@ class SettingsService {
         }
         $this->appName = $appName;
 
-        $this->providerDefinitions = new ProviderDefinitions($this->appName,$this->config);
+        $this->providerDefinitions = new ProviderDefinitions($this->appName, $this->config, $appData);
 		$this->defaults = $defaults;
     }
 
@@ -179,6 +182,17 @@ class SettingsService {
 
 
     /**
+     * Get the selected imageprovider
+     *
+     * @return string current provider
+     */
+    public function getSelectedImageProvider(): Provider {
+        $name = $this->getImageProviderName();
+        return $this->providerDefinitions->getProviderByName($name);
+    }
+
+
+    /**
      * Get the selected imageprovider customization
      *
      * @return string current provider customization
@@ -231,6 +245,10 @@ class SettingsService {
 	public function headerbackgroundLink($size) {
 		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
 		$provider = $this->providerDefinitions->getProviderByName($providerName);
+
+        if($provider->isCached()) {
+            return $provider->getCachedImageURL();
+        }
 		return $provider->getRandomImageUrl($size);
 	}
 
@@ -324,6 +342,16 @@ class SettingsService {
 
     public function setHighVisibilityLogin(int $highVisibility): void {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN_HIGH_VISIBILITY, $highVisibility);
+    }
+
+    /**
+     * Store the authentication token for the current provider
+     * @param string $token
+     * @return
+     */
+    public function setCurrentProviderToken(string $token) {
+        $provider = $this->getImageProviderName();
+        $this->config->setAppValue($this->appName, 'splash/provider/'.$provider.'/token', $token);
     }
 
 }

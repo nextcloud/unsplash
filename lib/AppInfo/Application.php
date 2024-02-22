@@ -10,6 +10,7 @@ use OCA\Unsplash\EventListener\AddContentSecurityPolicyEventListener;
 use OCA\Unsplash\EventListener\BeforeTemplateRenderedEventListener;
 use OCA\Unsplash\Services\LegacyInitialisationService;
 use OCP\AppFramework\App;
+use OCP\AppFramework\Http\Events\BeforeLoginTemplateRenderedEvent;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Security\CSP\AddContentSecurityPolicyEvent;
@@ -42,7 +43,7 @@ class Application extends App {
         /* @var IEventDispatcher $eventDispatcher */
         $dispatcher = $this->getContainer()->get(IEventDispatcher::class);
         $dispatcher->addServiceListener(BeforeTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
+        $dispatcher->addServiceListener(BeforeLoginTemplateRenderedEvent::class, BeforeTemplateRenderedEventListener::class);
         $dispatcher->addServiceListener(AddContentSecurityPolicyEvent::class, AddContentSecurityPolicyEventListener::class);
-
     }
 }

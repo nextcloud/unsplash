@@ -23,6 +23,7 @@
 namespace OCA\Unsplash\ProviderHandler;
 
 use OCP\IConfig;
+use OCP\Files\IAppData;
 
 abstract class Provider {
 
@@ -35,6 +36,10 @@ abstract class Provider {
 	 * @var IConfig
 	 */
 	protected $config;
+
+
+    /** @var IAppData */
+    protected $appData;
 
 	/**
 	 * @var string
@@ -54,9 +59,12 @@ abstract class Provider {
 
     public bool $ALLOW_CUSTOMIZING = true;
 
-	public bool $REQUIRES_TOKEN = false;
+	public bool $REQUIRES_AUTH = false;
 
 	public string $DEFAULT_TOKEN="";
+
+    public bool $IS_CACHED = false;
+    public string $CACHED_URL = "/index.php/apps/unsplash/api/image";
 
 
     /**
@@ -66,10 +74,11 @@ abstract class Provider {
 	 * @param IConfig $config
 	 * @param $pName
 	 */
-	public function __construct( $appName, IConfig $config, $pName) {
+	public function __construct( $appName, IConfig $config, IAppData $appData, $pName) {
 		$this->config = $config;
 		$this->appName = $appName;
 		$this->providerName = $pName;
+        $this->appData = $appData;
 	}
 
 	/**
@@ -139,9 +148,9 @@ abstract class Provider {
 	 * Returns if the provider requires an api token
 	 * @return string
 	 */
-	public function requiresToken(): bool
+	public function requiresAuth(): bool
 	{
-		return $this->REQUIRES_TOKEN;
+		return $this->REQUIRES_AUTH;
 	}
 
 	/**
@@ -152,13 +161,36 @@ abstract class Provider {
 	 * @return string
 	 */
 	public function getToken(): string {
-		if(!$this->REQUIRES_TOKEN) {
+		if(!$this->REQUIRES_AUTH) {
 			return "";
 		}
 		$token = $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/token', $this->DEFAULT_TOKEN);
 		return $token;
 	}
 
+    public function isCached(): bool {
+        return $this->IS_CACHED;
+    }
+
+    /**
+     */
+    public function getCachedImageURL(): string
+    {
+        return $this->CACHED_URL;
+    }
+
+    /**
+     */
+    public function getMetadata(): ProviderMetadata
+    {
+        return new ProviderMetadata("", "", "", "", $this->providerName);
+    }
+
+    /**
+     */
+    public function fetchCached() {
+
+    }
 
 	/*
 	 * This should return all URLS which need to be whitelisted for csrf
@@ -175,5 +207,39 @@ abstract class Provider {
 	 * This should return a url to a random image filtered by $search
 	 */
 	public abstract function getRandomImageUrlBySearchTerm($search, $size);
+
+
+    /**
+     *
+     * This doesnt really belong here. I should create a utils class or something like it
+     * @param $host
+     * @return bool|string
+     */
+    protected function getData($host) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $host);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
+
+
+    /**
+     * This doesnt really belong here. I should create a utils class or something like it
+     * @throws NotPermittedException
+     */
+    protected function getImageFolder() {
+        try {
+            $rootFolder = $this->appData->getFolder($this->providerName);
+        } catch (NotFoundException $e) {
+            $rootFolder = $this->appData->newFolder($this->providerName);
+        }
+        return $rootFolder;
+    }
 
 }

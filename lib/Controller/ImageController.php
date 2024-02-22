@@ -1,0 +1,108 @@
+<?php
+/**
+ * This file is part of the Unsplash App
+ * and licensed under the AGPL.
+ */
+
+namespace OCA\Unsplash\Controller;
+
+use OCA\Unsplash\Cron\ImageProviderBackgroundFetch;
+use OCA\Unsplash\Services\FetchService;
+use OCA\Unsplash\Services\SettingsService;
+use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\DataDisplayResponse;
+use OCP\AppFramework\Http\JSONResponse;
+use OCP\IRequest;
+use OCP\Files\IAppData;
+use OCP\AppFramework\Utility\ITimeFactory;
+use OCP\AppFramework\Http\FileDisplayResponse;
+use OCP\BackgroundJob\IJobList;
+
+/**
+ * Class ProxyController
+ *
+ * @package OCA\Unsplash\Controller
+ */
+class ImageController extends Controller {
+
+    private $settings;
+
+    /** @var ITimeFactory */
+    private $timeFactory;
+
+    /** @var IAppData */
+    private $appData;
+    private FetchService $fetchService;
+
+
+    /**
+     * ProxyController constructor.
+     *
+     * @param                 $appName
+     * @param IRequest        $request
+     * @param SettingsService $settings
+     * @param ITimeFactory $timeFactory
+     */
+    public function __construct($appName, IRequest $request, SettingsService $settings, ITimeFactory $timeFactory, IAppData $appData, FetchService $service) {
+        parent::__construct($appName, $request);
+        $this->settings = $settings;
+        $this->timeFactory = $timeFactory;
+        $this->appData = $appData;
+        $this->fetchService = $service;
+    }
+
+    /**
+	 * @NoCSRFRequired
+	 * @PublicPage
+	 * @NoSameSiteCookieRequired
+	 * @NoTwoFactorRequired
+     *
+     * @return FileDisplayResponse
+     */
+    public function get(): FileDisplayResponse {
+        $this->fetchService->fetch();
+
+       // $this->appData->newFolder("test");
+        $appdataFolder = $this->appData->getFolder("UnsplashAPI");
+        $file = $appdataFolder->getFile("test.jpeg");
+
+        //$response = new DataDisplayResponse(base64_encode($file), Http::STATUS_OK, ['Content-Type' => 'image/jpeg']);
+        return new FileDisplayResponse($file, Http::STATUS_OK, ['Content-Type' => 'image/jpeg']);
+    }
+
+    /**
+     * @NoCSRFRequired
+     * @PublicPage
+     * @NoSameSiteCookieRequired
+     * @NoTwoFactorRequired
+     *
+     * @return JSONResponse
+     */
+    public function getMetadata(): JSONResponse {
+        $provider = $this->settings->getSelectedImageProvider();
+        $metadata = $provider->getMetadata();
+
+        return new JSONResponse(['url' => $metadata->getImageUrl(), 'author' => $metadata->getImageAuthor(), 'attribution' => $metadata->getAttributionUrl(), 'description' => $metadata->getImageDescription(), 'source' => $metadata->getSource()]);
+    }
+
+    /**
+     * Creates the appropriate css response for the client.
+     * Also:
+     * see https://github.com/juliushaertl/theming_customcss/blob/master/lib/Controller/ThemingController.php
+     *
+     * @param String $css
+     * @return DataDisplayResponse
+     */
+    private function prepareResponse(String $css): DataDisplayResponse {
+        $response = new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
+        // $response->cacheFor(86400);
+        $expires = new \DateTime();
+        $expires->setTimestamp($this->timeFactory->getTime());
+        $expires->add(new \DateInterval('PT24H'));
+        //$response->addHeader('Expires', $expires->format(\DateTime::RFC1123));
+        //$response->addHeader('Pragma', 'cache');
+        return $response;
+    }
+
+}

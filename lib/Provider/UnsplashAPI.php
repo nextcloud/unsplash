@@ -22,19 +22,21 @@
 
 namespace OCA\Unsplash\Provider;
 use OCA\Unsplash\ProviderHandler\Provider;
+use OCA\Unsplash\ProviderHandler\ProviderMetadata;
 
-class UnsplashAPI extends Provider{
+class UnsplashAPI extends Provider {
 
 	/**
 	 * @var string
 	 */
 	public string $DEFAULT_SEARCH="nature,nature";
     public bool $ALLOW_CUSTOMIZING = true;
-    public bool $REQUIRES_TOKEN = true;
+    public bool $REQUIRES_AUTH = true;
+    public bool $IS_CACHED = true;
 
 	public function getWhitelistResourceUrls()
 	{
-		return [];
+        return ['https://images.unsplash.com'];
 	}
 
 	public function getRandomImageUrl($size): string
@@ -44,8 +46,8 @@ class UnsplashAPI extends Provider{
 
 	public function getRandomImageUrlBySearchTerm($search, $size): string
     {
-        $url = "https://api.unsplash.com/photos/?client_id=".$this->getToken();
-        switch ($size) {
+        $url = "https://api.unsplash.com//photos/random?client_id=".$this->getToken()."&count=1&query=".$search;
+        /*switch ($size) {
             case Provider::SIZE_SMALL:
                 $url .= "1920x1080";
                 break;
@@ -56,7 +58,45 @@ class UnsplashAPI extends Provider{
             case Provider::SIZE_ULTRA:
                 $url .= "3840x2160";
                 break;
-        }
-        return $url."?".$search;
+        }*/
+        return $url;
 	}
+
+    public function getCachedImageURL(): string
+    {
+        return $this->getMetadata()->getImageUrl();
+    }
+
+
+    public function getMetadata(): ProviderMetadata
+    {
+        $appdataFolder = $this->getImageFolder($this->appData);
+        $data = json_decode($appdataFolder->getFile("source.json")->getContent());
+        $url = $data[0]->urls->raw;
+        $urlAttribution = $data[0]->links->html;
+        $description = $data[0]->description;
+        $author = $data[0]->user->name;
+        return new ProviderMetadata($url, $urlAttribution, $description, $author, "Unsplash");
+    }
+
+    /**
+     */
+    public function fetchCached()
+    {
+        $appdataFolder = $this->getImageFolder($this->appData);
+        $host = $this->getRandomImageUrl(Provider::SIZE_SMALL);
+        $result = $this->getData($host);
+
+
+        //todo: this currently only supports unsplash.
+        $metadata = $appdataFolder->newFile("source.json");
+        $metadata->putContent($result);
+
+
+        $metadata = $this->getMetadata($appData);
+        $image = $this->getData($metadata->getImageUrl());
+
+        $file = $appdataFolder->newFile("test.jpeg");
+        $file->putContent($image);
+    }
 }

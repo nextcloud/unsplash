@@ -29,18 +29,18 @@ use OCA\Unsplash\Provider\UnsplashAPI;
 use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
 use OCP\IConfig;
+use OCP\Files\IAppData;
 
 class ProviderDefinitions{
 
-	/**
-	 * @var SettingsService
-	 */
+	/** @var SettingsService */
 	protected $settings;
 
-	/**
-	 * @var IConfig
-	 */
+	/** @var IConfig */
 	protected $config;
+
+    /** @var IAppData */
+    private $appData;
 
 	/**
 	 * @var string
@@ -58,18 +58,19 @@ class ProviderDefinitions{
 	 *
 	 * @param SettingsService $settings
 	 */
-	function __construct($appName, IConfig $config) {
+	function __construct($appName, IConfig $config, IAppData $appData) {
 
 		$this->appName = $appName;
 		$this->config = $config;
+		$this->appData = $appData;
 
 		$tmp=[];
 		//add all provider to this array. The logic takes care of the rest.
-		$tmp[] = new Unsplash($this->appName, $this->config, "Unsplash");
-		//$tmp[] = new UnsplashAPI($this->appName, $this->config, "UnsplashAPI");
-		$tmp[] = new NextcloudImage($this->appName, $this->config, "Nextcloud Image");
-		$tmp[] = new WikimediaCommons($this->appName, $this->config, "WikimediaCommons");
-		$tmp[] = new WallhavenCC($this->appName, $this->config, "WallhavenCC");
+		$tmp[] = new Unsplash($this->appName, $this->config, $appData, "Unsplash");
+		$tmp[] = new UnsplashAPI($this->appName, $this->config, $appData, "UnsplashAPI");
+		$tmp[] = new NextcloudImage($this->appName, $this->config, $appData, "Nextcloud Image");
+		$tmp[] = new WikimediaCommons($this->appName, $this->config, $appData, "WikimediaCommons");
+		$tmp[] = new WallhavenCC($this->appName, $this->config, $appData, "WallhavenCC");
 
 		foreach ($tmp as &$value) {
 			//$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
@@ -86,7 +87,7 @@ class ProviderDefinitions{
 
         $provider = $this->definitions[$name];
         if($provider == null) {
-            return new Unsplash($this->appName, $this->config, "Unsplash");
+            return new Unsplash($this->appName, $this->config, $this->appData, "Unsplash");
         }
 		return $this->definitions[$name];
 	}

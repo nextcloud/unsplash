@@ -7,6 +7,7 @@
 namespace OCA\Unsplash\EventListener;
 
 use OCA\Unsplash\Services\SettingsService;
+use OCP\AppFramework\Http\Events\BeforeLoginTemplateRenderedEvent;
 use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
@@ -14,6 +15,9 @@ use OCP\IRequest;
 use OCP\IConfig;
 use OCP\IURLGenerator;
 use OCP\Util;
+
+use \OCP\ILogger;
+
 
 class BeforeTemplateRenderedEventListener implements IEventListener {
 
@@ -24,23 +28,26 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
     /** @var IURLGenerator */
     private $urlGenerator;
 
+    private $logger;
+
     /**
      * BeforeTemplateRenderedEventListener constructor.
      *
      * @param SettingsService $settingsService
      * @param IRequest        $request
      */
-    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator) {
+    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator, ILogger $logger) {
         $this->settingsService = $settingsService;
         $this->request = $request;
         $this->urlGenerator = $urlGenerator;
+        $this->logger = $logger;
     }
 
     /**
      * @param Event $event
      */
     public function handle(Event $event): void {
-        if(!($event instanceof BeforeTemplateRenderedEvent)) {
+        if (!$event instanceof BeforeTemplateRenderedEvent && !$event instanceof BeforeLoginTemplateRenderedEvent) {
             return;
         }
 
@@ -51,9 +58,11 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
         switch ($route) {
             case 'core.TwoFactorChallenge.showChallenge':
             case 'files_sharing.Share.authenticate':
+            case 'core.login.showLoginForm':
             case 'files_sharing.Share.showAuthenticate':
                 if($serverstyleLogin){
                     $this->addHeaderFor('login');
+                    $this->addMetadata();
                 }
                 break;
             case 'files_sharing.Share.showShare':
@@ -64,16 +73,13 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
             case 'dashboard.dashboard.index':
                 if($event->isLoggedIn() && $serverstyleDash) {
                     $this->addHeaderFor('dashboard');
+                    $this->addMetadata();
                 }
                 break;
             default:
                 if($event->isLoggedIn()) {
                     if($serverstyleDash) {
                         $this->addHeaderFor('dashboard');
-                    }
-                } else {
-                    if($serverstyleLogin) {
-                        $this->addHeaderFor('login');
                     }
                 }
                 break;
@@ -94,6 +100,15 @@ class BeforeTemplateRenderedEventListener implements IEventListener {
         ]);
 
         Util::addStyle('unsplash', $target.'_static');
+    }
+
+    /**
+     * Insert links to metadata scripts and styles
+     * @return void
+     */
+    private function addMetadata() {
+        Util::addScript('unsplash', "metadata");
+        Util::addStyle('unsplash', "metadata");
     }
 
 }
