@@ -372,7 +372,6 @@ class SettingsService
     /**
      * Store the authentication token for the current provider
      * @param string $token
-     * @return
      */
     public function setCurrentProviderToken(string $token)
     {
