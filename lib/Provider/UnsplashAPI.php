@@ -85,19 +85,8 @@ class UnsplashAPI extends Provider
 
     public function getRandomImageUrlBySearchTerm($search, $size): string
     {
-        $url = "https://api.unsplash.com//photos/random?client_id=" . $this->getToken() . "&count=1&query=" . $search;
-        /*switch ($size) {
-            case Provider::SIZE_SMALL:
-                $url .= "1920x1080";
-                break;
-            case Provider::SIZE_NORMAL:
-                $url .= "2560x1440";
-                break;
-            case Provider::SIZE_HIGH:
-            case Provider::SIZE_ULTRA:
-                $url .= "3840x2160";
-                break;
-        }*/
+        $url = "https://api.unsplash.com/photos/random?client_id=" . $this->getToken() . "&count=1&query=" . $search;
+        // Todo: Figure out if we can reintroduce sizes.
         return $url;
     }
 }
