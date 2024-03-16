@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>unsplash</id>
     <name>Splash</name>
@@ -7,7 +7,7 @@
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
     <description>Show a new random featured nature photo in your nextcloud. Now with choosable motives!</description>
     <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto in ihrer Nextcloud. Jetzt auch mit selbstwählbaren Motiven!</description>
-    <version>2.2.2</version>
+    <version>3.0.0</version>
     <licence>agpl</licence>
     <author mail="hey@jancborchardt.net" homepage="https://jancborchardt.net">Jan-Christoph Borchardt</author>
     <author homepage="https://github.com/marius-wieschollek">Marius Wieschollek</author>
@@ -22,12 +22,15 @@
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash.jpg</screenshot>
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
-        <php min-version="7.4" />
-        <nextcloud min-version="25" max-version="27"/>
+        <php min-version="8.0" max-version="8.3"/>
+        <nextcloud min-version="26" max-version="28"/>
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>
         <personal>OCA\Unsplash\Settings\PersonalSettings</personal>
     </settings>
+    <background-jobs>
+        <job>OCA\Unsplash\Cron\ImageProviderBackgroundFetch</job>
+    </background-jobs>
 </info>
 

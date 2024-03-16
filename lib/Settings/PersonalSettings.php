@@ -16,7 +16,8 @@ use OCP\Settings\ISettings;
  *
  * @package OCA\Unsplash\Controller\Settings
  */
-class PersonalSettings implements ISettings {
+class PersonalSettings implements ISettings
+{
 
     /**
      * @var SettingsService
@@ -33,11 +34,12 @@ class PersonalSettings implements ISettings {
      * AdminSection constructor.
      *
      * @param SettingsService $settings
-     * @param OC_Defaults     $theming
+     * @param OC_Defaults $theming
      */
-    public function __construct(SettingsService $settings, OC_Defaults $theming) {
-        $this->settings     = $settings;
-        $this->theming      = $theming;
+    public function __construct(SettingsService $settings, OC_Defaults $theming)
+    {
+        $this->settings = $settings;
+        $this->theming = $theming;
     }
 
     /**
@@ -46,35 +48,38 @@ class PersonalSettings implements ISettings {
      *
      * @return TemplateResponse
      */
-    public function getForm() {
+    public function getForm()
+    {
 
         $dashboard = $this->settings->getServerStyleDashboardEnabled();
         $login = $this->settings->getServerStyleLoginEnabled();
 
-        if($this->settings->getImageProviderName() == "Nextcloud Image") {
+        if ($this->settings->getImageProviderName() == "Nextcloud Image") {
             $dashboard = false;
             $login = false;
         }
 
         return new TemplateResponse('unsplash', 'settings/personal', [
-            'selectedProvider'=> str_replace(' ', '', $this->settings->getImageProviderName()),
-            'label'           => $this->theming->getEntity(),
-            'dashboard'         => $dashboard,
-            'login'      => $login,
+            'selectedProvider' => str_replace(' ', '', $this->settings->getImageProviderName()),
+            'label' => $this->theming->getEntity(),
+            'dashboard' => $dashboard,
+            'login' => $login,
         ], '');
     }
 
     /**
      * @return string
      */
-    public function getSection() {
+    public function getSection()
+    {
         return "theming";
     }
 
     /**
      * @return int
      */
-    public function getPriority(): int {
+    public function getPriority(): int
+    {
         return 75;
     }
 }
