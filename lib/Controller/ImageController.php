@@ -64,12 +64,9 @@ class ImageController extends Controller
     public function get(): FileDisplayResponse
     {
         $this->fetchService->fetch();
-
-        // $this->appData->newFolder("test");
         $appdataFolder = $this->appData->getFolder("UnsplashAPI");
         $file = $appdataFolder->getFile("test.jpeg");
 
-        //$response = new DataDisplayResponse(base64_encode($file), Http::STATUS_OK, ['Content-Type' => 'image/jpeg']);
         return new FileDisplayResponse($file, Http::STATUS_OK, ['Content-Type' => 'image/jpeg']);
     }
 
@@ -99,14 +96,7 @@ class ImageController extends Controller
      */
     private function prepareResponse(string $css): DataDisplayResponse
     {
-        $response = new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
-        // $response->cacheFor(86400);
-        $expires = new \DateTime();
-        $expires->setTimestamp($this->timeFactory->getTime());
-        $expires->add(new \DateInterval('PT24H'));
-        //$response->addHeader('Expires', $expires->format(\DateTime::RFC1123));
-        //$response->addHeader('Pragma', 'cache');
-        return $response;
+        return new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
     }
 
 }
