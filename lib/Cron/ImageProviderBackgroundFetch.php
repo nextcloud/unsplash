@@ -19,7 +19,7 @@ class ImageProviderBackgroundFetch extends TimedJob
         parent::__construct($time);
         $this->fetchService = $service;
         $this->logger = $logger;
-        $this->logger->error("init", array('extra_context' => 'my extra context'));
+        $logger->info("Initialize ImageProviderBackgroundFetch");
 
         // Run once a day
         $this->setInterval(24 * 3600);
@@ -27,9 +27,9 @@ class ImageProviderBackgroundFetch extends TimedJob
 
     protected function run($arguments)
     {
-        $this->logger->error("preRun", array('extra_context' => 'my extra context'));
+        $this->logger->info("ImageProviderBackgroundFetch: start fetch-service");
         $this->fetchService->fetch();
-        $this->logger->error("postRun", array('extra_context' => 'my extra context'));
+        $this->logger->info("ImageProviderBackgroundFetch: ended fetch-service");
     }
 
 }
