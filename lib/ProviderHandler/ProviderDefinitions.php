@@ -53,7 +53,9 @@ class ProviderDefinitions
     /**
      * ProviderDefinitions constructor.
      *
-     * @param SettingsService $settings
+     * @param String $appName
+     * @param IConfig $settings
+     * @param IAppData $appData
      */
     function __construct($appName, IConfig $config, IAppData $appData)
     {
@@ -71,15 +73,15 @@ class ProviderDefinitions
         $tmp[] = new WallhavenCC($this->appName, $this->config, $appData, "WallhavenCC");
 
         foreach ($tmp as &$value) {
-            //$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
             $this->definitions[$value->getName()] = $value;
         }
     }
 
-    /**
-     * This returns the selected Provider
+    /***
+     *  This returns the selected Provider
      *
-     * @return Name of the Provider
+     * @param $name String: Name of the Provider
+     * @return Provider
      */
     function getProviderByName($name): Provider
     {
@@ -94,7 +96,7 @@ class ProviderDefinitions
     /**
      * This returns all defined Provider
      *
-     * @return Array with Names of Provider
+     * @return Array with List of Providers
      */
     function getAllProviderNames()
     {

@@ -183,7 +183,7 @@ class SettingsService
     /**
      * Get the selected imageprovider
      *
-     * @return string current provider
+     * @return Provider current provider
      */
     public function getSelectedImageProvider(): Provider
     {
