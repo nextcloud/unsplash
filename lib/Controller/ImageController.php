@@ -6,25 +6,25 @@
 
 namespace OCA\Unsplash\Controller;
 
-use OCA\Unsplash\Cron\ImageProviderBackgroundFetch;
 use OCA\Unsplash\Services\FetchService;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
-use OCP\AppFramework\Http\JSONResponse;
-use OCP\IRequest;
-use OCP\Files\IAppData;
-use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\AppFramework\Http\FileDisplayResponse;
+use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\IJobList;
+use OCP\Files\IAppData;
+use OCP\IRequest;
 
 /**
  * Class ProxyController
  *
  * @package OCA\Unsplash\Controller
  */
-class ImageController extends Controller {
+class ImageController extends Controller
+{
 
     private $settings;
 
@@ -40,11 +40,12 @@ class ImageController extends Controller {
      * ProxyController constructor.
      *
      * @param                 $appName
-     * @param IRequest        $request
+     * @param IRequest $request
      * @param SettingsService $settings
      * @param ITimeFactory $timeFactory
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings, ITimeFactory $timeFactory, IAppData $appData, FetchService $service) {
+    public function __construct($appName, IRequest $request, SettingsService $settings, ITimeFactory $timeFactory, IAppData $appData, FetchService $service)
+    {
         parent::__construct($appName, $request);
         $this->settings = $settings;
         $this->timeFactory = $timeFactory;
@@ -53,17 +54,18 @@ class ImageController extends Controller {
     }
 
     /**
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 * @NoSameSiteCookieRequired
-	 * @NoTwoFactorRequired
+     * @NoCSRFRequired
+     * @PublicPage
+     * @NoSameSiteCookieRequired
+     * @NoTwoFactorRequired
      *
      * @return FileDisplayResponse
      */
-    public function get(): FileDisplayResponse {
+    public function get(): FileDisplayResponse
+    {
         $this->fetchService->fetch();
 
-       // $this->appData->newFolder("test");
+        // $this->appData->newFolder("test");
         $appdataFolder = $this->appData->getFolder("UnsplashAPI");
         $file = $appdataFolder->getFile("test.jpeg");
 
@@ -79,7 +81,8 @@ class ImageController extends Controller {
      *
      * @return JSONResponse
      */
-    public function getMetadata(): JSONResponse {
+    public function getMetadata(): JSONResponse
+    {
         $provider = $this->settings->getSelectedImageProvider();
         $metadata = $provider->getMetadata();
 
@@ -94,7 +97,8 @@ class ImageController extends Controller {
      * @param String $css
      * @return DataDisplayResponse
      */
-    private function prepareResponse(String $css): DataDisplayResponse {
+    private function prepareResponse(string $css): DataDisplayResponse
+    {
         $response = new DataDisplayResponse($css, Http::STATUS_OK, ['Content-Type' => 'text/css']);
         // $response->cacheFor(86400);
         $expires = new \DateTime();

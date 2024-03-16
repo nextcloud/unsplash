@@ -6,26 +6,27 @@
 
 namespace OCA\Unsplash\Services;
 
-use OCP\IConfig;
-use OCP\Files\IAppData;
-use Psr\Log\LoggerInterface;
+use OCA\Unsplash\ProviderHandler\CachedProvider;
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
-use OCA\Unsplash\ProviderHandler\CachedProvider;
+use OCP\Files\IAppData;
+use OCP\IConfig;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class SettingsService
  *
  * @package OCA\Unsplash\Services
  */
-class SettingsService {
+class SettingsService
+{
 
-    const STYLE_LOGIN          = 'unsplash/style/login';
+    const STYLE_LOGIN = 'unsplash/style/login';
     const STYLE_LOGIN_HIGH_VISIBILITY = 'unsplash/style/login/highvisibility';
-    const STYLE_DASHBORAD      = 'unsplash/style/dashborad';
+    const STYLE_DASHBORAD = 'unsplash/style/dashborad';
     const USER_STYLE_DASHBORAD = 'unsplash/style/dashborad';
-    const PROVIDER_SELECTED    = 'unsplash/provider/selected';
-    const PROVIDER_DEFAULT     = 'Unsplash';
+    const PROVIDER_SELECTED = 'unsplash/provider/selected';
+    const PROVIDER_DEFAULT = 'Unsplash';
 
     const STYLE_TINT_ALLOWED = 'unsplash/style/tint';
     const STYLE_STRENGHT_COLOR = 'unsplash/style/strength/color';
@@ -52,35 +53,36 @@ class SettingsService {
      */
     protected $appName;
 
-	/**
-	 * @var ProviderDefinitions
-	 */
-	protected $providerDefinitions;
+    /**
+     * @var ProviderDefinitions
+     */
+    protected $providerDefinitions;
 
-	/**
-	 * @var \OC_Defaults
-	 */
-	private $defaults;
+    /**
+     * @var \OC_Defaults
+     */
+    private $defaults;
 
     /**
      * FaviconService constructor.
      *
      * @param string|null $userId
      * @param             $appName
-     * @param IConfig     $config
-     * @param IAppData     $config
-     * @param Defaults     $defaults
+     * @param IConfig $config
+     * @param IAppData $config
+     * @param Defaults $defaults
      */
-    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults) {
+    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults)
+    {
         $this->config = $config;
         $this->userId = $userId;
-        if($this->config->getSystemValue('maintenance', false)) {
+        if ($this->config->getSystemValue('maintenance', false)) {
             $this->userId = null;
         }
         $this->appName = $appName;
 
         $this->providerDefinitions = new ProviderDefinitions($this->appName, $this->config, $appData);
-		$this->defaults = $defaults;
+        $this->defaults = $defaults;
     }
 
     /**
@@ -88,19 +90,33 @@ class SettingsService {
      *
      * @return bool
      */
-    public function getUserStyleDashboardEnabled(): bool {
+    public function getUserStyleDashboardEnabled(): bool
+    {
         // for magic value see: https://github.com/nextcloud/server/blame/master/apps/theming/lib/Service/BackgroundService.php
         $themingSettingsKey = "background";
-        if($this->getNextcloudVersion() > 26) {
+        if ($this->getNextcloudVersion() > 26) {
             $themingSettingsKey = "background_image";
         }
         $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", $themingSettingsKey, 'default');
 
         // dont add custom css when custom image was selected
-        if($themingAppDashboard == 'default') {
+        if ($themingAppDashboard == 'default') {
             return $this->getServerStyleDashboardEnabled();
         }
         return false;
+    }
+
+    /**
+     * Todo: refactor this function to a "has dash" function that also checks wether the dashboard is actually enabled.
+     *       and then dont show the entries.
+     * @return int
+     */
+    public function getNextcloudVersion(): int
+    {
+        $version = $this->config->getSystemValue('version', '0.0.0');
+        $parts = explode('.', $version, 2);
+
+        return intval($parts[0]);
     }
 
     /**
@@ -108,7 +124,8 @@ class SettingsService {
      *
      * @return bool
      */
-    public function getServerStyleDashboardEnabled(): bool {
+    public function getServerStyleDashboardEnabled(): bool
+    {
         return $this->config->getAppValue($this->appName, self::STYLE_DASHBORAD, 0) == 1;
     }
 
@@ -117,7 +134,8 @@ class SettingsService {
      *
      * @param int $styleDashboard
      */
-    public function setServerStyleDashboardEnabled(int $styleDashboard = 1) {
+    public function setServerStyleDashboardEnabled(int $styleDashboard = 1)
+    {
         $this->config->setAppValue($this->appName, self::STYLE_DASHBORAD, $styleDashboard);
     }
 
@@ -126,7 +144,8 @@ class SettingsService {
      *
      * @return bool
      */
-    public function getServerStyleLoginEnabled(): bool {
+    public function getServerStyleLoginEnabled(): bool
+    {
         return $this->config->getAppValue($this->appName, self::STYLE_LOGIN, 1) == 1;
     }
 
@@ -135,40 +154,20 @@ class SettingsService {
      *
      * @param int $styleLogin
      */
-    public function setServerStyleLoginEnabled(int $styleLogin = 1) {
+    public function setServerStyleLoginEnabled(int $styleLogin = 1)
+    {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN, $styleLogin);
     }
 
     /**
-     * Todo: refactor this function to a "has dash" function that also checks wether the dashboard is actually enabled.
-     *       and then dont show the entries.
-     * @return int
+     * Set the selected imageprovider
+     *
+     * @param string $providername
      */
-    public function getNextcloudVersion(): int {
-        $version = $this->config->getSystemValue('version', '0.0.0');
-        $parts = explode('.', $version, 2);
-
-        return intval($parts[0]);
+    public function setImageProvider(string $providername): void
+    {
+        $this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
     }
-
-	/**
-	 * Set the selected imageprovider
-	 *
-	 * @param string $providername
-	 */
-	public function setImageProvider(string $providername): void {
-		$this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
-	}
-
-	/**
-	 * Get the selected imageprovider's name
-	 *
-	 * @return string current provider name
-	 */
-	public function getImageProviderName(): string {
-		return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
-	}
-
 
     /**
      * Get the selected imageprovider
@@ -176,28 +175,39 @@ class SettingsService {
      * @return string name of the provider
      * @return string current provider
      */
-    public function getImageProvider($name): Provider {
+    public function getImageProvider($name): Provider
+    {
         return $this->providerDefinitions->getProviderByName($name);
     }
-
 
     /**
      * Get the selected imageprovider
      *
      * @return string current provider
      */
-    public function getSelectedImageProvider(): Provider {
+    public function getSelectedImageProvider(): Provider
+    {
         $name = $this->getImageProviderName();
         return $this->providerDefinitions->getProviderByName($name);
     }
 
+    /**
+     * Get the selected imageprovider's name
+     *
+     * @return string current provider name
+     */
+    public function getImageProviderName(): string
+    {
+        return $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
+    }
 
     /**
      * Get the selected imageprovider customization
      *
      * @return string current provider customization
      */
-    public function getImageProviderCustomization() {
+    public function getImageProviderCustomization()
+    {
         $providername = $this->getImageProviderName();
         $provider = $this->providerDefinitions->getProviderByName($providername);
         return $provider->getCustomSearchterms();
@@ -208,18 +218,20 @@ class SettingsService {
      *
      * @param string $customization
      */
-    public function setImageProviderCustomization($customization) {
+    public function setImageProviderCustomization($customization)
+    {
         $providername = $this->getImageProviderName();
         $provider = $this->providerDefinitions->getProviderByName($providername);
         $provider->setCustomSearchTerms($customization);
     }
 
-	/**
-	 * Get all defined imageprovider
-	 */
-	public function getAllImageProvider() {
-		return $this->providerDefinitions->getAllProviderNames();
-	}
+    /**
+     * Get all defined imageprovider
+     */
+    public function getAllImageProvider()
+    {
+        return $this->providerDefinitions->getAllProviderNames();
+    }
 
     /**
      * Get all defined imageprovider that allow customization
@@ -229,7 +241,7 @@ class SettingsService {
         $all = [];
         foreach ($this->providerDefinitions->getAllProviderNames() as $value) {
             $provider = $this->providerDefinitions->getProviderByName($value);
-            if($provider->isCustomizable()){
+            if ($provider->isCustomizable()) {
                 $all[] = $value;
             }
         }
@@ -237,110 +249,123 @@ class SettingsService {
     }
 
 
-	/**
-	 * Returns the URL to the custom Unsplash-path
-	 *
-	 * @return String
-	 */
-	public function headerbackgroundLink($size) {
-		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
-		$provider = $this->providerDefinitions->getProviderByName($providerName);
+    /**
+     * Returns the URL to the custom Unsplash-path
+     *
+     * @return String
+     */
+    public function headerbackgroundLink($size)
+    {
+        $providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
+        $provider = $this->providerDefinitions->getProviderByName($providerName);
 
-        if($provider->isCached()) {
+        if ($provider->isCached()) {
             return $provider->getCachedImageURL();
         }
-		return $provider->getRandomImageUrl($size);
-	}
+        return $provider->getRandomImageUrl($size);
+    }
 
-	/**
-	 * Get all URLs for whitelisting
-	 */
-	public function getWhitelistingUrlsForSelectedProvider() {
-		$providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
-		$provider = $this->providerDefinitions->getProviderByName($providerName);
-		return $provider->getWhitelistResourceUrls();
-	}
-	/**
-	 * nextcloud theming main color
-	 *
-	 * @param String $styleUrl
-	 */
-	public function getInstanceColor() {
-		return $this->config->getAppValue('theming', 'color', $this->defaults->getColorPrimary());
-	}
+    /**
+     * Get all URLs for whitelisting
+     */
+    public function getWhitelistingUrlsForSelectedProvider()
+    {
+        $providerName = $this->config->getAppValue($this->appName, self::PROVIDER_SELECTED, self::PROVIDER_DEFAULT);
+        $provider = $this->providerDefinitions->getProviderByName($providerName);
+        return $provider->getWhitelistResourceUrls();
+    }
 
-	/**
-	 * If the login page should be styled by default
-	 *
-	 * @return bool
-	 */
-	public function isTintEnabled(): bool {
-		return $this->config->getAppValue($this->appName, self::STYLE_TINT_ALLOWED, self::STYLE_TINT_ALLOWED_DEFAULT);
-	}
+    /**
+     * nextcloud theming main color
+     *
+     * @param String $styleUrl
+     */
+    public function getInstanceColor()
+    {
+        return $this->config->getAppValue('theming', 'color', $this->defaults->getColorPrimary());
+    }
 
-	public function setTint(int $tinting): void {
-		$this->config->setAppValue($this->appName, self::STYLE_TINT_ALLOWED, $tinting);
-	}
+    /**
+     * If the login page should be styled by default
+     *
+     * @return bool
+     */
+    public function isTintEnabled(): bool
+    {
+        return $this->config->getAppValue($this->appName, self::STYLE_TINT_ALLOWED, self::STYLE_TINT_ALLOWED_DEFAULT);
+    }
 
-
-	/**
-	 * color strength
-	 *
-	 * @param String $styleUrl
-	 */
-	public function getColorStrength() {
-		return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_COLOR, self::STYLE_STRENGHT_COLOR_DEFAULT);
-	}
-
-	/**
-	 * set color strength
-	 *
-	 * @param String $styleUrl
-	 */
-	public function setColorStrength(int $strength) {
-		if($strength>100){
-			$strength=100;
-		}
-		if($strength<0){
-			$strength=0;
-		}
-		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_COLOR, $strength);
-	}
+    public function setTint(int $tinting): void
+    {
+        $this->config->setAppValue($this->appName, self::STYLE_TINT_ALLOWED, $tinting);
+    }
 
 
-	/**
-	 * blur strength
-	 *
-	 * @param String $styleUrl
-	 */
-	public function getBlurStrength() {
-		return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_BLUR, self::STYLE_STRENGHT_BLUR_DEFAULT);
-	}
-	/**
-	 * set blur strength
-	 *
-	 * @param String $styleUrl
-	 */
-	public function setBlurStrength(int $strength) {
-		if($strength>25){
-			$strength=25;
-		}
-		if($strength<0){
-			$strength=0;
-		}
-		$this->config->setAppValue($this->appName, self::STYLE_STRENGHT_BLUR, $strength);
-	}
+    /**
+     * color strength
+     *
+     * @param String $styleUrl
+     */
+    public function getColorStrength()
+    {
+        return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_COLOR, self::STYLE_STRENGHT_COLOR_DEFAULT);
+    }
+
+    /**
+     * set color strength
+     *
+     * @param String $styleUrl
+     */
+    public function setColorStrength(int $strength)
+    {
+        if ($strength > 100) {
+            $strength = 100;
+        }
+        if ($strength < 0) {
+            $strength = 0;
+        }
+        $this->config->setAppValue($this->appName, self::STYLE_STRENGHT_COLOR, $strength);
+    }
+
+
+    /**
+     * blur strength
+     *
+     * @param String $styleUrl
+     */
+    public function getBlurStrength()
+    {
+        return $this->config->getAppValue($this->appName, self::STYLE_STRENGHT_BLUR, self::STYLE_STRENGHT_BLUR_DEFAULT);
+    }
+
+    /**
+     * set blur strength
+     *
+     * @param String $styleUrl
+     */
+    public function setBlurStrength(int $strength)
+    {
+        if ($strength > 25) {
+            $strength = 25;
+        }
+        if ($strength < 0) {
+            $strength = 0;
+        }
+        $this->config->setAppValue($this->appName, self::STYLE_STRENGHT_BLUR, $strength);
+    }
 
     /**
      * If the login page should be styled as High Visibility for Legal reasons
      *
      * @return bool
      */
-    public function isHighVisibilityLogin(): bool {
+    public function isHighVisibilityLogin(): bool
+    {
         return $this->config->getAppValue($this->appName, self::STYLE_LOGIN_HIGH_VISIBILITY, self::STYLE_LOGIN_HIGH_VISIBILITY_DEFAULT);
     }
 
-    public function setHighVisibilityLogin(int $highVisibility): void {
+    public function setHighVisibilityLogin(int $highVisibility): void
+    {
         $this->config->setAppValue($this->appName, self::STYLE_LOGIN_HIGH_VISIBILITY, $highVisibility);
     }
 
@@ -349,9 +374,10 @@ class SettingsService {
      * @param string $token
      * @return
      */
-    public function setCurrentProviderToken(string $token) {
+    public function setCurrentProviderToken(string $token)
+    {
         $provider = $this->getImageProviderName();
-        $this->config->setAppValue($this->appName, 'splash/provider/'.$provider.'/token', $token);
+        $this->config->setAppValue($this->appName, 'splash/provider/' . $provider . '/token', $token);
     }
 
 }

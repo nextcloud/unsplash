@@ -21,52 +21,30 @@
  */
 
 namespace OCA\Unsplash\Provider;
+
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderMetadata;
 
-class UnsplashAPI extends Provider {
+class UnsplashAPI extends Provider
+{
 
-	/**
-	 * @var string
-	 */
-	public string $DEFAULT_SEARCH="nature,nature";
+    /**
+     * @var string
+     */
+    public string $DEFAULT_SEARCH = "nature,nature";
     public bool $ALLOW_CUSTOMIZING = true;
     public bool $REQUIRES_AUTH = true;
     public bool $IS_CACHED = true;
 
-	public function getWhitelistResourceUrls()
-	{
+    public function getWhitelistResourceUrls()
+    {
         return ['https://images.unsplash.com'];
-	}
-
-	public function getRandomImageUrl($size): string
-    {
-        return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
-	}
-
-	public function getRandomImageUrlBySearchTerm($search, $size): string
-    {
-        $url = "https://api.unsplash.com//photos/random?client_id=".$this->getToken()."&count=1&query=".$search;
-        /*switch ($size) {
-            case Provider::SIZE_SMALL:
-                $url .= "1920x1080";
-                break;
-            case Provider::SIZE_NORMAL:
-                $url .= "2560x1440";
-                break;
-            case Provider::SIZE_HIGH:
-            case Provider::SIZE_ULTRA:
-                $url .= "3840x2160";
-                break;
-        }*/
-        return $url;
-	}
+    }
 
     public function getCachedImageURL(): string
     {
         return $this->getMetadata()->getImageUrl();
     }
-
 
     public function getMetadata(): ProviderMetadata
     {
@@ -98,5 +76,28 @@ class UnsplashAPI extends Provider {
 
         $file = $appdataFolder->newFile("test.jpeg");
         $file->putContent($image);
+    }
+
+    public function getRandomImageUrl($size): string
+    {
+        return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
+    }
+
+    public function getRandomImageUrlBySearchTerm($search, $size): string
+    {
+        $url = "https://api.unsplash.com//photos/random?client_id=" . $this->getToken() . "&count=1&query=" . $search;
+        /*switch ($size) {
+            case Provider::SIZE_SMALL:
+                $url .= "1920x1080";
+                break;
+            case Provider::SIZE_NORMAL:
+                $url .= "2560x1440";
+                break;
+            case Provider::SIZE_HIGH:
+            case Provider::SIZE_ULTRA:
+                $url .= "3840x2160";
+                break;
+        }*/
+        return $url;
     }
 }

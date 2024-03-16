@@ -1,6 +1,7 @@
 <?php
 
 namespace OCA\Unsplash\ProviderHandler;
+
 use IRequest;
 use SettingsService;
 

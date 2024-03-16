@@ -21,26 +21,28 @@
  */
 
 namespace OCA\Unsplash\Provider;
+
 use OCA\Unsplash\ProviderHandler\Provider;
 
-class NextcloudImage extends Provider{
+class NextcloudImage extends Provider
+{
 
     // Todo: Use URLGenerator. See AdminSettingsController
-	private string $THEMING_URL="/index.php/apps/theming/image/background";
-	public bool $ALLOW_CUSTOMIZING = false;
+    public bool $ALLOW_CUSTOMIZING = false;
+    private string $THEMING_URL = "/index.php/apps/theming/image/background";
 
-	public function getWhitelistResourceUrls(): array
+    public function getWhitelistResourceUrls(): array
     {
-		return [];
-	}
+        return [];
+    }
 
-	public function getRandomImageUrl($size): string
+    public function getRandomImageUrl($size): string
     {
-		return $this->THEMING_URL;
-	}
+        return $this->THEMING_URL;
+    }
 
-	public function getRandomImageUrlBySearchTerm($search, $size): string
+    public function getRandomImageUrlBySearchTerm($search, $size): string
     {
-		return $this->THEMING_URL;
-	}
+        return $this->THEMING_URL;
+    }
 }

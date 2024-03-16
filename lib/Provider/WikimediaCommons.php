@@ -21,36 +21,38 @@
  */
 
 namespace OCA\Unsplash\Provider;
+
 use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
 
-class WikimediaCommons extends Provider{
+class WikimediaCommons extends Provider
+{
 
-	/**
-	 * TODO : Properly get current nextcloud image, currently only the theming one is used.
-	 * @var string
-	 */
-	public string $DEFAULT_SEARCH="landscape,dog,cat";
+    /**
+     * TODO : Properly get current nextcloud image, currently only the theming one is used.
+     * @var string
+     */
+    public string $DEFAULT_SEARCH = "landscape,dog,cat";
     public bool $ALLOW_CUSTOMIZING = true;
 
-	public function getWhitelistResourceUrls()
-	{
-		return ["https://upload.wikimedia.org"];
-	}
+    public function getWhitelistResourceUrls()
+    {
+        return ["https://upload.wikimedia.org"];
+    }
 
-	public function getRandomImageUrl($size)
-	{
-		return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
-	}
+    public function getRandomImageUrl($size)
+    {
+        return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
+    }
 
-	public function getRandomImageUrlBySearchTerm($search, $size)
-	{
-        $curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles='.$search.'&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		$response = curl_exec($curl);
-		$json = json_decode($response, true);
-		$images = $json['query']['pages'][array_rand($json['query']['pages'])];
+    public function getRandomImageUrlBySearchTerm($search, $size)
+    {
+        $curl = curl_init('https://commons.wikimedia.org/w/api.php?action=query&generator=images&prop=imageinfo&gimlimit=500&redirects=1&titles=' . $search . '&iiprop=timestamp|user|userid|comment|canonicaltitle|url&format=json');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        $json = json_decode($response, true);
+        $images = $json['query']['pages'][array_rand($json['query']['pages'])];
 
-		return $images['imageinfo'][0]['url'];
-	}
+        return $images['imageinfo'][0]['url'];
+    }
 }

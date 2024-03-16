@@ -12,7 +12,8 @@ use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 
-class AddContentSecurityPolicyEventListener implements IEventListener {
+class AddContentSecurityPolicyEventListener implements IEventListener
+{
     /**
      * @var SettingsService
      */
@@ -23,22 +24,24 @@ class AddContentSecurityPolicyEventListener implements IEventListener {
      *
      * @param SettingsService $settingsService
      */
-    public function __construct(SettingsService $settingsService) {
+    public function __construct(SettingsService $settingsService)
+    {
         $this->settingsService = $settingsService;
     }
 
     /**
      * @param Event $event
      */
-    public function handle(Event $event): void {
-        if(!($event instanceof AddContentSecurityPolicyEvent)) {
+    public function handle(Event $event): void
+    {
+        if (!($event instanceof AddContentSecurityPolicyEvent)) {
             return;
         }
 
         $settings = $this->settingsService;
 
-        if($settings->getUserStyleDashboardEnabled() || $settings->getServerStyleLoginEnabled()) {
-            $policy  = new ContentSecurityPolicy();
+        if ($settings->getUserStyleDashboardEnabled() || $settings->getServerStyleLoginEnabled()) {
+            $policy = new ContentSecurityPolicy();
 
             $urls = $settings->getWhitelistingUrlsForSelectedProvider();
             foreach ($urls as &$value) {

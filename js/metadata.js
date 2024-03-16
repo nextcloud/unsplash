@@ -1,4 +1,4 @@
-(function() {
+(function () {
     function initialize() {
         loadMetadata()
     }
@@ -9,7 +9,7 @@
     function loadMetadata() {
 
         var metadata = OC.generateUrl('/apps/unsplash/api/metadata');
-        let headers= {
+        let headers = {
             method: 'GET',
             headers: {
                 'requesttoken': OC.requestToken,
@@ -20,8 +20,8 @@
         let request = new Request(metadata);
 
         fetch(request, headers)
-            .then( response => response.json())
-            .then( data => {
+            .then(response => response.json())
+            .then(data => {
                 console.log(data)
                 addMetadataToDOM(data)
             })
@@ -49,7 +49,7 @@
         div.classList = "dash-panel guest-box unsplash-floating-bottom-right"
 
         // Second, prepare functions
-        info.onclick = function() {
+        info.onclick = function () {
             author.classList.remove('unsplash-metadata-hidden')
             description.classList.remove('unsplash-metadata-hidden')
             source.classList.remove('unsplash-metadata-hidden')
@@ -62,21 +62,21 @@
 
         // Last: Add content to main div and body
 
-        source.textContent = data.source+":"
-        if(!data.description) {
-            if(!data.author) {
+        source.textContent = data.source + ":"
+        if (!data.description) {
+            if (!data.author) {
                 source.textContent = data.source
             }
         }
         goto.appendChild(source)
 
-        if(data.description) {
-            description.textContent = data.description.substring(0, 25)+"..." // optimally this would be done by css.
+        if (data.description) {
+            description.textContent = data.description.substring(0, 25) + "..." // optimally this would be done by css.
             goto.appendChild(description)
         }
 
-        if(data.author) {
-            author.textContent = "- "+data.author
+        if (data.author) {
+            author.textContent = "- " + data.author
             goto.appendChild(author)
         }
 

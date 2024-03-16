@@ -6,16 +6,17 @@
 
 namespace OCA\Unsplash\Services;
 
+use OCP\Files\IAppData;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
-use OCP\Files\IAppData;
 
 /**
  * Class FetchService
  *
  * @package OCA\Unsplash\Services
  */
-class FetchService {
+class FetchService
+{
 
     /**
      * @var SettingsService
@@ -29,7 +30,8 @@ class FetchService {
      * FetchService constructor.
      *
      */
-    public function __construct(SettingsService $settings, IAppData $appData) {
+    public function __construct(SettingsService $settings, IAppData $appData)
+    {
         $this->settings = $settings;
         $this->appData = $appData;
     }
@@ -40,7 +42,7 @@ class FetchService {
     public function fetch(): void
     {
         $provider = $this->settings->getSelectedImageProvider();
-        if($provider->isCached()) {
+        if ($provider->isCached()) {
             $provider->fetchCached($this->appData);
         }
     }
