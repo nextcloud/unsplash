@@ -49,7 +49,20 @@ class UnsplashAPI extends Provider
     public function getMetadata(): ProviderMetadata
     {
         $appdataFolder = $this->getImageFolder($this->appData);
-        $data = json_decode($appdataFolder->getFile("source.json")->getContent());
+        $json = $appdataFolder->getFile("source.json")->getContent();
+
+        if($json === '') {
+            $this->logger->warning("Unsplash API: could not decode source json!");
+            return new ProviderMetadata("", "", "", "", "Unsplash");
+        }
+
+        $data = json_decode($json);
+
+        if(isset($data->errors)) {
+            $this->logger->warning("Unsplash API: " . $data->errors[0]);
+            return new ProviderMetadata("", "", "", "", "Unsplash");
+        }
+
         $url = $data[0]->urls->raw;
         $urlAttribution = $data[0]->links->html;
         $description = $data[0]->description;
@@ -65,11 +78,9 @@ class UnsplashAPI extends Provider
         $host = $this->getRandomImageUrl(Provider::SIZE_SMALL);
         $result = $this->getData($host);
 
-
         //todo: this currently only supports unsplash.
         $metadata = $appdataFolder->newFile("source.json");
         $metadata->putContent($result);
-
 
         $metadata = $this->getMetadata($this->appData);
         $image = $this->getData($metadata->getImageUrl());
