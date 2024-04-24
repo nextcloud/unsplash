@@ -71,7 +71,7 @@ class UnsplashAPI extends Provider
         $metadata->putContent($result);
 
 
-        $metadata = $this->getMetadata($appData);
+        $metadata = $this->getMetadata($this->appData);
         $image = $this->getData($metadata->getImageUrl());
 
         $file = $appdataFolder->newFile("test.jpeg");
@@ -85,7 +85,7 @@ class UnsplashAPI extends Provider
 
     public function getRandomImageUrlBySearchTerm($search, $size): string
     {
-        $token = "" ;$this->getToken();
+        $token = $this->getToken();
         if($token === '' && $this->requiresAuth()) {
             // If the token is empty, return the default image.
             $this->logger->alert("Unsplash API: the provided token was blank!");
