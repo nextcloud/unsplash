@@ -379,6 +379,11 @@ class SettingsService
     {
         $provider = $this->getImageProviderName();
         $this->config->setAppValue($this->appName, 'splash/provider/' . $provider . '/token', $token);
+
+        $providerToFetch = $this->providerDefinitions->getProviderByName($provider);
+        if ($providerToFetch->isCached()) {
+            $providerToFetch->fetchCached();
+        }
     }
 
 }
