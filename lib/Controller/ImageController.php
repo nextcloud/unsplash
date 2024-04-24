@@ -63,7 +63,6 @@ class ImageController extends Controller
      */
     public function get(): FileDisplayResponse
     {
-        $this->fetchService->fetch();
         $appdataFolder = $this->appData->getFolder("UnsplashAPI");
         $file = $appdataFolder->getFile("test.jpeg");
 
