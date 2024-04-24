@@ -30,6 +30,7 @@ use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
 use OCP\Files\IAppData;
 use OCP\IConfig;
+use OCP\ILogger;
 
 class ProviderDefinitions
 {
@@ -50,6 +51,9 @@ class ProviderDefinitions
     /** @var IAppData */
     private $appData;
 
+    /** @var ILogger */
+    private $logger;
+
     /**
      * ProviderDefinitions constructor.
      *
@@ -57,20 +61,21 @@ class ProviderDefinitions
      * @param IConfig $settings
      * @param IAppData $appData
      */
-    function __construct($appName, IConfig $config, IAppData $appData)
+    function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData)
     {
 
         $this->appName = $appName;
         $this->config = $config;
         $this->appData = $appData;
+        $this->logger = $logger;
 
         $tmp = [];
         //add all provider to this array. The logic takes care of the rest.
-        $tmp[] = new Unsplash($this->appName, $this->config, $appData, "Unsplash");
-        $tmp[] = new UnsplashAPI($this->appName, $this->config, $appData, "UnsplashAPI");
-        $tmp[] = new NextcloudImage($this->appName, $this->config, $appData, "Nextcloud Image");
-        $tmp[] = new WikimediaCommons($this->appName, $this->config, $appData, "WikimediaCommons");
-        $tmp[] = new WallhavenCC($this->appName, $this->config, $appData, "WallhavenCC");
+        $tmp[] = new Unsplash($this->appName, $logger, $this->config, $appData, "Unsplash");
+        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
+        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
+        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
+        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
 
         foreach ($tmp as &$value) {
             $this->definitions[$value->getName()] = $value;
@@ -88,7 +93,7 @@ class ProviderDefinitions
 
         $provider = $this->definitions[$name];
         if ($provider == null) {
-            return new Unsplash($this->appName, $this->config, $this->appData, "Unsplash");
+            return new Unsplash($this->appName, $this->logger, $this->config, $this->appData, "Unsplash");
         }
         return $this->definitions[$name];
     }

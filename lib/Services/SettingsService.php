@@ -11,6 +11,7 @@ use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
 use OCP\Files\IAppData;
 use OCP\IConfig;
+use OCP\ILogger;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -71,8 +72,9 @@ class SettingsService
      * @param IConfig $config
      * @param IAppData $config
      * @param Defaults $defaults
+     * @param ILogger $logger
      */
-    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults)
+    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults, ILogger $logger)
     {
         $this->config = $config;
         $this->userId = $userId;
@@ -81,7 +83,7 @@ class SettingsService
         }
         $this->appName = $appName;
 
-        $this->providerDefinitions = new ProviderDefinitions($this->appName, $this->config, $appData);
+        $this->providerDefinitions = new ProviderDefinitions($this->appName, $logger, $this->config, $appData);
         $this->defaults = $defaults;
     }
 

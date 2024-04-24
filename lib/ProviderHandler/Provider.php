@@ -24,6 +24,7 @@ namespace OCA\Unsplash\ProviderHandler;
 
 use OCP\Files\IAppData;
 use OCP\IConfig;
+use OCP\ILogger;
 
 abstract class Provider
 {
@@ -48,6 +49,9 @@ abstract class Provider
     protected $config;
     /** @var IAppData */
     protected $appData;
+
+    /** @var ILogger */
+    protected $logger;
     /**
      * @var string
      */
@@ -64,12 +68,13 @@ abstract class Provider
      * @param IConfig $config
      * @param $pName
      */
-    public function __construct($appName, IConfig $config, IAppData $appData, $pName)
+    public function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData, $pName)
     {
         $this->config = $config;
         $this->appName = $appName;
         $this->providerName = $pName;
         $this->appData = $appData;
+        $this->logger = $logger;
     }
 
     /**
