@@ -225,6 +225,7 @@ class SettingsService
         $providername = $this->getImageProviderName();
         $provider = $this->providerDefinitions->getProviderByName($providername);
         $provider->setCustomSearchTerms($customization);
+        $this->fetchIfRequired();
     }
 
     /**
@@ -379,11 +380,17 @@ class SettingsService
     {
         $provider = $this->getImageProviderName();
         $this->config->setAppValue($this->appName, 'splash/provider/' . $provider . '/token', $token);
+        $this->fetchIfRequired();
+    }
 
+    private function fetchIfRequired()
+    {
+        $provider = $this->getImageProviderName();
         $providerToFetch = $this->providerDefinitions->getProviderByName($provider);
         if ($providerToFetch->isCached()) {
             $providerToFetch->fetchCached();
         }
+
     }
 
 }
