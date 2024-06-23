@@ -34,6 +34,8 @@ class WikimediaCommons extends Provider
      */
     public string $DEFAULT_SEARCH = "landscape,dog,cat";
     public bool $ALLOW_CUSTOMIZING = true;
+    public bool $IS_CACHED = false;
+    public string $DEFAULT_METADATA_URL="https://commons.wikimedia.org/wiki/Main_Page";
 
     public function getWhitelistResourceUrls()
     {

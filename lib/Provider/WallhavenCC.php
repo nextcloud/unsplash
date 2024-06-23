@@ -34,6 +34,7 @@ class WallhavenCC extends Provider
      */
     public string $DEFAULT_SEARCH = "nature,supercar";
     public bool $ALLOW_CUSTOMIZING = true;
+    public string $DEFAULT_METADATA_URL="https://wallhaven.cc/";
 
     public function getWhitelistResourceUrls(): array
     {

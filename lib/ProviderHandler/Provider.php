@@ -43,6 +43,9 @@ abstract class Provider
     public string $DEFAULT_TOKEN = "";
     public bool $IS_CACHED = false;
     public string $CACHED_URL = "/index.php/apps/unsplash/api/image";
+    public string $DEFAULT_METADATA_URL="";
+
+
     /**
      * @var IConfig
      */
@@ -183,7 +186,7 @@ abstract class Provider
      */
     public function getMetadata(): ProviderMetadata
     {
-        return new ProviderMetadata("", "", "", "", $this->providerName);
+        return new ProviderMetadata($this->DEFAULT_METADATA_URL, $this->DEFAULT_METADATA_URL, "", "", $this->providerName);
     }
 
     /**
