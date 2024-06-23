@@ -28,6 +28,7 @@ use OCA\Unsplash\Provider\Unsplash;
 use OCA\Unsplash\Provider\UnsplashAPI;
 use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
+use OCA\Unsplash\Provider\WikimediaCommonsDaily;
 use OCP\Files\IAppData;
 use OCP\IConfig;
 use OCP\ILogger;
@@ -75,6 +76,7 @@ class ProviderDefinitions
         $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
         $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
         $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
+        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day");
         $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
 
         foreach ($tmp as &$value) {
