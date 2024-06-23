@@ -1,11 +1,28 @@
 .unsplash-floating-bottom-right {
     position: fixed;
     margin: 15px;
-    bottom: 0px;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     display: flex !important;
     justify-content: left;
+
+}
+
+.unsplash-floating-bottom-right a {
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.unsplash-floating-bottom-right:hover a {
+    width: auto;
+    /* width: 400px; */
+    max-width: 400px;
+    height: auto;
+    margin-left: 10px;
+    opacity: 1;
 }
 
 .unsplash-icon-info {
@@ -15,23 +32,18 @@
     height: 1.5em;
 }
 
-
 .unsplash-metadata-text {
-    flex: 1;
-    margin-left: 10px;
-    max-width: 200px;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+     margin-left: 10px;
+     max-width: 400px;
 
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     text-align: left;
 
-    /* Align text next to icon */
-    justify-content: left;
-    display: flex;
-
-    /* Fix Font*/
-    font-weight: initial;
+     /* Fix Font*/
+     font-weight: initial;
 }
 
 
@@ -43,9 +55,6 @@
     font-weight: bold;
 }
 
-.unsplash-metadata-hidden {
-    display: none;
-}
 
 /* Generally taken from guest-box style t*/
 .dash-panel {

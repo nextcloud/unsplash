@@ -46,19 +46,12 @@
 
 
         // First, prepare all styles
-        source.classList = "unsplash-metadata-text unsplash-metadata-hidden unsplash-metadata-title"
-        author.classList = "unsplash-metadata-text unsplash-metadata-hidden"
-        description.classList = "unsplash-metadata-text unsplash-metadata-hidden"
+        source.classList = "unsplash-metadata-text unsplash-metadata-title"
+        author.classList = "unsplash-metadata-text"
+        description.classList = "unsplash-metadata-text"
         info.classList = "unsplash-icon-info"
         //dash-panel for dashboard, guest-box for login
         div.classList = "dash-panel guest-box unsplash-floating-bottom-right"
-
-        // Second, prepare functions
-        info.onclick = function () {
-            author.classList.remove('unsplash-metadata-hidden')
-            description.classList.remove('unsplash-metadata-hidden')
-            source.classList.remove('unsplash-metadata-hidden')
-        };
 
 
         // Third, add links
@@ -76,7 +69,7 @@
         goto.appendChild(source)
 
         if (data.description) {
-            description.textContent = data.description.substring(0, 25) + "..." // optimally this would be done by css.
+            description.textContent = data.description
             goto.appendChild(description)
         }
 
