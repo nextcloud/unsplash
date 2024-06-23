@@ -25,6 +25,7 @@ namespace OCA\Unsplash\ProviderHandler;
 use OCP\Files\IAppData;
 use OCP\IConfig;
 use OCP\ILogger;
+use OCP\Files\NotFoundException;
 
 abstract class Provider
 {
