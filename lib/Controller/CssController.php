@@ -75,6 +75,7 @@ class CssController extends Controller
         $expires->add(new \DateInterval('PT24H'));
         //$response->addHeader('Expires', $expires->format(\DateTime::RFC1123));
         //$response->addHeader('Pragma', 'cache');
+        $response->addHeader('Content-Type', 'text/css');
         return $response;
     }
 
