@@ -24,6 +24,7 @@ namespace OCA\Unsplash\Provider;
 
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderMetadata;
+use OCP\Files\GenericFileException;
 
 class UnsplashAPI extends Provider
 {
@@ -49,7 +50,15 @@ class UnsplashAPI extends Provider
     public function getMetadata(): ProviderMetadata
     {
         $appdataFolder = $this->getImageFolder($this->appData);
-        $json = $appdataFolder->getFile("source.json")->getContent();
+
+        try {
+            $file = $appdataFolder->getFile("source.json");
+            $json = $file->getContent();
+        } catch (GenericFileException $ex) {
+            $this->logger->warning("Metadata file was not found. Refetching Image!");
+            $this->fetchCached();
+            $json = $appdataFolder->getFile("source.json")->getContent();
+        }
 
         if($json === '') {
             $this->logger->warning("Unsplash API: could not decode source json!");
