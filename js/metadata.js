@@ -32,6 +32,11 @@
 
 
     function addMetadataToDOM(data) {
+
+        if(data.source == "Nextcloud Image") {
+            return
+        }
+
         let div = document.createElement("div");
         let info = document.createElement("div");
         let source = document.createElement("p");
