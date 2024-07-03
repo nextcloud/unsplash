@@ -4,7 +4,7 @@ OC.L10N.register(
     "Splash" : "Splash",
     "under an open license free of charge" : "baixo unha licenza aberta libre de cargos",
     "These images are provided %s by %s." : "Estas imaxes son fornecidas %s por %s.",
-    "under the terms of service" : "baixo as condicións do servizo",
+    "under the terms of service" : "baixo as condicións de servizo",
     "These images are provided by %s. Each image has it's own license." : "Estas imaxes son fornecidas por %s. Cada imaxe ten a súa propia licenza.",
     "Splash: Random Background Images" : "Splash: imaxes de fondo ao chou",
     "Saved" : "Gardado",
