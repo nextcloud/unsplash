@@ -191,8 +191,17 @@ abstract class Provider
     }
 
     /**
+     * fetches a background to be cached
      */
     public function fetchCached()
+    {
+
+    }
+
+    /**
+     * Deletes the currently cached background
+     */
+    public function deleteCached()
     {
 
     }

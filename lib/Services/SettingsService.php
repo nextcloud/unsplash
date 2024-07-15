@@ -393,4 +393,30 @@ class SettingsService
 
     }
 
+
+    /**
+     * Get new image for current provider
+     */
+    public function updateCachedBackground()
+    {
+        $provider = $this->getImageProviderName();
+        $providerToFetch = $this->providerDefinitions->getProviderByName($provider);
+        if ($providerToFetch->isCached()) {
+            $providerToFetch->deleteCached();
+            $providerToFetch->fetchCached();
+        }
+    }
+
+
+    /**
+     * Wrapper to check if current provider is cached
+     */
+    public function isCached(): bool
+    {
+        $provider = $this->getImageProviderName();
+        return $this->providerDefinitions->getProviderByName($provider)->isCached();
+
+
+    }
+
 }

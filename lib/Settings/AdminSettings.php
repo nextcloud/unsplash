@@ -63,7 +63,8 @@ class AdminSettings implements ISettings
             'styleTint' => $this->settings->isTintEnabled(),
             'styleStrengthColor' => $this->settings->getColorStrength(),
             'styleStrengthBlur' => $this->settings->getBlurStrength(),
-            'styleHighVisibility' => $this->settings->isHighVisibilityLogin()
+            'styleHighVisibility' => $this->settings->isHighVisibilityLogin(),
+            'isCached' => $this->settings->isCached()
         ]);
     }
 

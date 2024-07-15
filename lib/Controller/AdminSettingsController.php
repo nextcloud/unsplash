@@ -58,6 +58,8 @@ class AdminSettingsController extends Controller
         } else if ($key === 'provider/provider') {
             //todo: do NOT store this value. Sanitize it! (check against available provider, and store one of them)
             $this->settings->setImageProvider(filter_var($value, FILTER_SANITIZE_STRING));
+            $cached = $this->settings->isCached();
+            return new JSONResponse(['status' => $value, "isCached" => $cached]);
         } else if ($key === 'provider/customization') {
             $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
         } else if ($key === 'style/tint') {
@@ -78,6 +80,8 @@ class AdminSettingsController extends Controller
             }
         } else if ($key === 'provider/token') {
             $this->settings->setCurrentProviderToken($value);
+        } else if ($key === 'delete/cache') {
+            $this->settings->updateCachedBackground();
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }

@@ -75,6 +75,15 @@ style('unsplash', 'settings');
                 <?php p($l->t('Set the required token.')); ?>
             </p>
         </div>
+        <!-- Button Action is in javascript-->
+        <input
+            <?php
+                if (!$_['isCached']) {
+                    echo "style=\"display: none;\"";
+                }
+            ?>
+                type="button" id="splash-provider-refresh-cache" data-setting="delete/cache" value="<?php p($l->t('Refresh Cached Image')); ?>">
+        <br>
         <br>
         <h2>
             <?php p($l->t('Splash: Advanced Theming')); ?>

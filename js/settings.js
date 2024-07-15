@@ -15,6 +15,11 @@
             return true;
         };
 
+        let refreshCacheButton = document.getElementById('splash-provider-refresh-cache');
+        refreshCacheButton.onclick = function (e) {
+            _setValue(refreshCacheButton.dataset.setting)
+            return true;
+        };
 
         let settings = document.querySelectorAll('[data-setting]');
         for (let setting of settings) {
@@ -70,11 +75,20 @@
         let request = new Request(this.saveUrl, options);
 
         fetch(request, headers)
-            .then(() => {
+            .then(response=> {
                 _showMessage('success');
                 if (type === 'select') {
                     getCustomization(value)
                 }
+                response.json().then( data => {
+                    if(data.hasOwnProperty("isCached")) {
+                        if(data.isCached) {
+                            document.getElementById('splash-provider-refresh-cache').style.display = null;
+                        } else {
+                            document.getElementById('splash-provider-refresh-cache').style.display = "none";
+                        }
+                    }
+                })
             })
             .catch((e) => {
                 console.error(e);

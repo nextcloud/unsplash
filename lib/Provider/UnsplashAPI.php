@@ -80,8 +80,6 @@ class UnsplashAPI extends Provider
         return new ProviderMetadata($url, $urlAttribution, $description, $author, "Unsplash");
     }
 
-    /**
-     */
     public function fetchCached()
     {
         $appdataFolder = $this->getImageFolder();
@@ -98,6 +96,14 @@ class UnsplashAPI extends Provider
         $file = $appdataFolder->newFile("test.jpeg");
         $file->putContent($image);
     }
+
+    public function deleteCached()
+    {
+        $appdataFolder = $this->getImageFolder();
+        //$appdataFolder->getFile("source.json")->delete();
+        //$appdataFolder->getFile("test.jpeg")->delete();
+    }
+
 
     public function getRandomImageUrl($size): string
     {
