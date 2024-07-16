@@ -1,0 +1,68 @@
+.unsplash-floating-bottom-right {
+    position: fixed;
+    margin: 15px;
+    bottom: 0;
+    right: 0;
+    display: flex !important;
+    justify-content: left;
+
+}
+
+.unsplash-floating-bottom-right a {
+    margin-left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.unsplash-floating-bottom-right:hover a {
+    width: auto;
+    /* width: 400px; */
+    max-width: 400px;
+    height: auto;
+    margin-left: 10px;
+    opacity: 1;
+}
+
+.unsplash-icon-info {
+    background-image: url(../img/mdi_info.svg);
+    filter: var(--background-invert-if-dark);
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.unsplash-metadata-text {
+
+     margin-left: 10px;
+     max-width: 400px;
+
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     text-align: left;
+
+     /* Fix Font*/
+     font-weight: initial;
+}
+
+
+.unsplash-metadata-text :hover {
+    text-decoration: underline;
+}
+
+.unsplash-metadata-title {
+    font-weight: bold;
+}
+
+
+/* Generally taken from guest-box style t*/
+.dash-panel {
+    color: var(--color-main-text);
+    background-color: var(--color-main-background-blur);
+    padding: 16px;
+    border-radius: var(--border-radius-rounded);
+    display: inline-block;
+    -webkit-backdrop-filter: var(--filter-background-blur);
+    backdrop-filter: var(--filter-background-blur);
+}

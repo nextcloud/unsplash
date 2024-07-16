@@ -21,42 +21,106 @@
  */
 
 namespace OCA\Unsplash\Provider;
+
 use OCA\Unsplash\ProviderHandler\Provider;
+use OCA\Unsplash\ProviderHandler\ProviderMetadata;
+use OCP\Files\GenericFileException;
+use OCP\Files\NotFoundException;
 
-class UnsplashAPI extends Provider{
+class UnsplashAPI extends Provider
+{
 
-	/**
-	 * @var string
-	 */
-	public string $DEFAULT_SEARCH="nature,nature";
+    /**
+     * @var string
+     */
+    public string $DEFAULT_SEARCH = "nature,nature";
     public bool $ALLOW_CUSTOMIZING = true;
-    public bool $REQUIRES_TOKEN = true;
+    public bool $REQUIRES_AUTH = true;
+    public bool $IS_CACHED = true;
 
-	public function getWhitelistResourceUrls()
-	{
-		return [];
-	}
+    public function getWhitelistResourceUrls()
+    {
+        return ['https://images.unsplash.com'];
+    }
 
-	public function getRandomImageUrl($size): string
+    public function getCachedImageURL(): string
+    {
+        return $this->getMetadata()->getImageUrl();
+    }
+
+    public function getMetadata(): ProviderMetadata
+    {
+        $appdataFolder = $this->getImageFolder();
+
+        try {
+            $file = $appdataFolder->getFile("source.json");
+            $json = $file->getContent();
+        } catch (GenericFileException | NotFoundException $ex) {
+            $this->logger->warning("Metadata file was not found. Refetching Image!");
+            $this->fetchCached();
+            $json = $appdataFolder->getFile("source.json")->getContent();
+        }
+
+        if($json === '') {
+            $this->logger->warning("Unsplash API: could not decode source json!");
+            return new ProviderMetadata("", "", "", "", "Unsplash");
+        }
+
+        $data = json_decode($json);
+
+        if(isset($data->errors)) {
+            $this->logger->warning("Unsplash API: " . $data->errors[0]);
+            return new ProviderMetadata("", "", "", "", "Unsplash");
+        }
+
+        $url = $data[0]->urls->raw;
+        $urlAttribution = $data[0]->links->html;
+        $description = $data[0]->description;
+        $author = $data[0]->user->name;
+        return new ProviderMetadata($url, $urlAttribution, $description, $author, "Unsplash");
+    }
+
+    public function fetchCached()
+    {
+        $appdataFolder = $this->getImageFolder();
+        $host = $this->getRandomImageUrl(Provider::SIZE_SMALL);
+        $result = $this->getData($host);
+
+        //todo: this currently only supports unsplash.
+        $metadata = $appdataFolder->newFile("source.json");
+        $metadata->putContent($result);
+
+        $metadata = $this->getMetadata($this->appData);
+        $image = $this->getData($metadata->getImageUrl());
+
+        $file = $appdataFolder->newFile("test.jpeg");
+        $file->putContent($image);
+    }
+
+    public function deleteCached()
+    {
+        $appdataFolder = $this->getImageFolder();
+        //$appdataFolder->getFile("source.json")->delete();
+        //$appdataFolder->getFile("test.jpeg")->delete();
+    }
+
+
+    public function getRandomImageUrl($size): string
     {
         return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
-	}
+    }
 
-	public function getRandomImageUrlBySearchTerm($search, $size): string
+    public function getRandomImageUrlBySearchTerm($search, $size): string
     {
-        $url = "https://api.unsplash.com/photos/?client_id=".$this->getToken();
-        switch ($size) {
-            case Provider::SIZE_SMALL:
-                $url .= "1920x1080";
-                break;
-            case Provider::SIZE_NORMAL:
-                $url .= "2560x1440";
-                break;
-            case Provider::SIZE_HIGH:
-            case Provider::SIZE_ULTRA:
-                $url .= "3840x2160";
-                break;
+        $token = $this->getToken();
+        if($token === '' && $this->requiresAuth()) {
+            // If the token is empty, return the default image.
+            $this->logger->alert("Unsplash API: the provided token was blank!");
+            return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
         }
-        return $url."?".$search;
-	}
+
+        $url = "https://api.unsplash.com/photos/random?client_id=" . $this->getToken() . "&count=1&query=" . $search;
+        // Todo: Figure out if we can reintroduce sizes.
+        return $url;
+    }
 }

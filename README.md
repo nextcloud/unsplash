@@ -6,4 +6,6 @@ Show a new random featured nature photo from [Unsplash Source](https://source.un
 
 ![](unsplash-header.jpg)
 
-With ♥️ by [@jancborchardt](https://github.com/jancborchardt/) & [@LukasReschke](https://github.com/LukasReschke)
+With ♥️ by [@jancborchardt](https://github.com/jancborchardt/) & [@LukasReschke](https://github.com/LukasReschke) & [@Felix Nüsse](https://github.com/newhinton)
+
+Thanks to all the people wo helped out!

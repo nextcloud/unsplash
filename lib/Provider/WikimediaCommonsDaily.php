@@ -22,42 +22,47 @@
 
 namespace OCA\Unsplash\Provider;
 
+use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
 
-class Unsplash extends Provider
+class WikimediaCommonsDaily extends Provider
 {
 
     /**
+     * TODO : Properly get current nextcloud image, currently only the theming one is used.
      * @var string
      */
-    public string $DEFAULT_SEARCH = "nature,nature";
+    public string $DEFAULT_SEARCH = "";
     public bool $ALLOW_CUSTOMIZING = true;
+    public bool $IS_CACHED = false;
+    public string $DEFAULT_METADATA_URL="https://commons.wikimedia.org/wiki/Main_Page";
 
     public function getWhitelistResourceUrls()
     {
-        return ['https://source.unsplash.com', 'https://images.unsplash.com'];
+        return ["https://upload.wikimedia.org"];
     }
 
-    public function getRandomImageUrl($size): string
+    public function getRandomImageUrl($size)
     {
         return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
     }
 
-    public function getRandomImageUrlBySearchTerm($search, $size): string
+    public function getRandomImageUrlBySearchTerm($search, $size)
     {
-        $url = "https://source.unsplash.com/featured/";
-        switch ($size) {
-            case Provider::SIZE_SMALL:
-                $url .= "1920x1080";
-                break;
-            case Provider::SIZE_NORMAL:
-                $url .= "2560x1440";
-                break;
-            case Provider::SIZE_HIGH:
-            case Provider::SIZE_ULTRA:
-                $url .= "3840x2160";
-                break;
-        }
-        return $url . "?" . $search;
+        $url = 'https://commons.wikimedia.org/w/api.php';
+        $url .= '?action=query';
+        $url .= '&generator=images';
+        $url .= '&titles=Template:Potd/'.date("Y-m-d");
+        $url .= '&prop=imageinfo';
+        $url .= '&iiprop=url';
+        $url .= '&format=json';
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        $json = json_decode($response, true);
+        $images = $json['query']['pages'][array_rand($json['query']['pages'])];
+
+        return $images['imageinfo'][0]['url'];
     }
 }
