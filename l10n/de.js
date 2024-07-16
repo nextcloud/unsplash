@@ -16,6 +16,8 @@ OC.L10N.register(
     "Set the image provider:" : "Bildanbieter auswählen:",
     "Keywords:" : "Schlüsselwörter:",
     "Set custom search terms. Separate multiple terms by comma." : "Lege benutzerdefinierte Suchbegriffe fest. Trenne mehrere Begriffe jeweils durch Komma.",
+    "Token:" : "Token:",
+    "Set the required token." : "Das erforderliche Token setzen.",
     "Splash: Advanced Theming" : "Splash: Erweitertes Design",
     "You can apply effects to your background images." : "Du kannst Effekte auf das Hintergrund anwenden.",
     "Enable Tint" : "Aktiviere Tönung",

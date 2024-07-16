@@ -1,6 +1,7 @@
 <?php
 
 namespace OCA\Unsplash\ProviderHandler;
+
 use IRequest;
 use SettingsService;
 
@@ -25,12 +26,14 @@ use SettingsService;
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
-class ImageObject
+class ProviderMetadata
 {
 
     protected $url;
+    protected $attributionUrl;
     protected $description;
     protected $author;
+    protected $source;
 
     /**
      * PersonalSettingsController constructor.
@@ -39,12 +42,13 @@ class ImageObject
      * @param IRequest $description
      * @param SettingsService $author
      */
-    public function __construct($imageUrl, $imageDescription, $imageAuthor)
+    public function __construct($imageUrl, $attributionUrl, $imageDescription, $imageAuthor, $imageSource)
     {
-
         $this->url = $imageUrl;
+        $this->attributionUrl = $attributionUrl;
         $this->description = $imageDescription;
         $this->author = $imageAuthor;
+        $this->source = $imageSource;
     }
 
 
@@ -73,6 +77,24 @@ class ImageObject
     public function getImageAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Get the url to the profile of this image
+     * @return String url
+     */
+    public function getAttributionUrl()
+    {
+        return $this->attributionUrl;
+    }
+
+    /**
+     * Get the Imageprovider
+     * @return String url
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 
 }

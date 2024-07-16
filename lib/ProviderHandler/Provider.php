@@ -22,84 +22,76 @@
 
 namespace OCA\Unsplash\ProviderHandler;
 
+use OCP\Files\IAppData;
 use OCP\IConfig;
+use OCP\ILogger;
+use OCP\Files\NotFoundException;
 
-abstract class Provider {
+abstract class Provider
+{
 
     const SIZE_SMALL = 0;
     const SIZE_NORMAL = 1;
     const SIZE_HIGH = 2;
     const SIZE_ULTRA = 3;
-
-	/**
-	 * @var IConfig
-	 */
-	protected $config;
-
-	/**
-	 * @var string
-	 */
-	protected $appName;
-
-	/**
-	 * @var string
-	 */
-	private $providerName;
-
-	/**
+    /**
      * // Please override this value for your own provider.
-	 * @var string
-	 */
-	public string $DEFAULT_SEARCH="nature";
-
+     * @var string
+     */
+    public string $DEFAULT_SEARCH = "nature";
     public bool $ALLOW_CUSTOMIZING = true;
-
-	public bool $REQUIRES_TOKEN = false;
-
-	public string $DEFAULT_TOKEN="";
+    public bool $REQUIRES_AUTH = false;
+    public string $DEFAULT_TOKEN = "";
+    public bool $IS_CACHED = false;
+    public string $CACHED_URL = "/index.php/apps/unsplash/api/image";
+    public string $DEFAULT_METADATA_URL="";
 
 
     /**
-	 * Provider constructor.
-	 *
-	 * @param $appName
-	 * @param IConfig $config
-	 * @param $pName
-	 */
-	public function __construct( $appName, IConfig $config, $pName) {
-		$this->config = $config;
-		$this->appName = $appName;
-		$this->providerName = $pName;
-	}
+     * @var IConfig
+     */
+    protected $config;
+    /** @var IAppData */
+    protected $appData;
 
-	/**
-	 * This sets a custom search query if the provider supports this.
-	 *
-	 * @param string $term
-	 */
-	public function setCustomSearchTerms(string $term): void
+    /** @var ILogger */
+    protected $logger;
+    /**
+     * @var string
+     */
+    protected $appName;
+    /**
+     * @var string
+     */
+    private $providerName;
+
+    /**
+     * Provider constructor.
+     *
+     * @param $appName
+     * @param IConfig $config
+     * @param $pName
+     */
+    public function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData, $pName)
     {
-        if($this->ALLOW_CUSTOMIZING) {
-            $this->config->setAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $term);
-        }
-	}
+        $this->config = $config;
+        $this->appName = $appName;
+        $this->providerName = $pName;
+        $this->appData = $appData;
+        $this->logger = $logger;
+    }
 
-	/**
-	 *
-	 * This returns the custom searchterm
-     * It is not filtered!
-	 * @return string
-	 */
-	public function getCustomSearchterms(): string {
-        if(!$this->ALLOW_CUSTOMIZING) {
-            return "";
+    /**
+     * This sets a custom search query if the provider supports this.
+     *
+     * @param string $term
+     */
+    public function setCustomSearchTerms(string $term): void
+    {
+        if ($this->ALLOW_CUSTOMIZING) {
+            $this->config->setAppValue($this->appName, 'splash/provider/' . $this->providerName . '/searchterms', $term);
         }
-        $term = $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/searchterms', $this->DEFAULT_SEARCH);
-        if($term == "") {
-            return $this->DEFAULT_SEARCH;
-        }
-		return $term;
-	}
+    }
 
     /**
      *
@@ -107,7 +99,8 @@ abstract class Provider {
      * This filtering i s there to prevent url hijacking or malforming due to searchterms
      * @return string
      */
-    public function getRandomSearchTerm(): string {
+    public function getRandomSearchTerm(): string
+    {
         $termarray = explode(",", $this->getCustomSearchterms());
         shuffle($termarray);
 
@@ -117,14 +110,32 @@ abstract class Provider {
         return $term;
     }
 
-	/**
-	 * Returns the providername
-	 * @return string
-	 */
-	public function getName(): string
+    /**
+     *
+     * This returns the custom searchterm
+     * It is not filtered!
+     * @return string
+     */
+    public function getCustomSearchterms(): string
     {
-		return $this->providerName;
-	}
+        if (!$this->ALLOW_CUSTOMIZING) {
+            return "";
+        }
+        $term = $this->config->getAppValue($this->appName, 'splash/provider/' . $this->providerName . '/searchterms', $this->DEFAULT_SEARCH);
+        if ($term == "") {
+            return $this->DEFAULT_SEARCH;
+        }
+        return $term;
+    }
+
+    /**
+     * Returns the providername
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->providerName;
+    }
 
     /**
      * Returns if the provider is customizable
@@ -135,45 +146,116 @@ abstract class Provider {
         return $this->ALLOW_CUSTOMIZING;
     }
 
-	/**
-	 * Returns if the provider requires an api token
-	 * @return string
-	 */
-	public function requiresToken(): bool
-	{
-		return $this->REQUIRES_TOKEN;
-	}
+    /**
+     * Returns if the provider requires an api token
+     * @return string
+     */
+    public function requiresAuth(): bool
+    {
+        return $this->REQUIRES_AUTH;
+    }
 
-	/**
-	 *
-	 * This returns the token.
-	 * It either returns the default or the stored token.
-	 *
-	 * @return string
-	 */
-	public function getToken(): string {
-		if(!$this->REQUIRES_TOKEN) {
-			return "";
-		}
-		$token = $this->config->getAppValue($this->appName, 'splash/provider/'.$this->providerName.'/token', $this->DEFAULT_TOKEN);
-		return $token;
-	}
+    /**
+     *
+     * This returns the token.
+     * It either returns the default or the stored token.
+     *
+     * @return string
+     */
+    public function getToken(): string
+    {
+        if (!$this->REQUIRES_AUTH) {
+            return "";
+        }
+        $token = $this->config->getAppValue($this->appName, 'splash/provider/' . $this->providerName . '/token', $this->DEFAULT_TOKEN);
+        return $token;
+    }
+
+    public function isCached(): bool
+    {
+        return $this->IS_CACHED;
+    }
+
+    /**
+     */
+    public function getCachedImageURL(): string
+    {
+        return $this->CACHED_URL;
+    }
+
+    /**
+     */
+    public function getMetadata(): ProviderMetadata
+    {
+        return new ProviderMetadata($this->DEFAULT_METADATA_URL, $this->DEFAULT_METADATA_URL, "", "", $this->providerName);
+    }
+
+    /**
+     * fetches a background to be cached
+     */
+    public function fetchCached()
+    {
+
+    }
+
+    /**
+     * Deletes the currently cached background
+     */
+    public function deleteCached()
+    {
+
+    }
+
+    /*
+     * This should return all URLS which need to be whitelisted for csrf
+     */
+    public abstract function getWhitelistResourceUrls();
 
 
-	/*
-	 * This should return all URLS which need to be whitelisted for csrf
-	 */
-	public abstract function getWhitelistResourceUrls();
+    /*
+     * This should return a url to a random image
+     */
+    public abstract function getRandomImageUrl($size);
+
+    /*
+     * This should return a url to a random image filtered by $search
+     */
+    public abstract function getRandomImageUrlBySearchTerm($search, $size);
 
 
-	/*
-	 * This should return a url to a random image
-	 */
-	public abstract function getRandomImageUrl($size);
+    /**
+     *
+     * This doesnt really belong here. I should create a utils class or something like it
+     * @param $host
+     * @return bool|string
+     */
+    protected function getData($host)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $host);
+        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, false);
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
 
-	/*
-	 * This should return a url to a random image filtered by $search
-	 */
-	public abstract function getRandomImageUrlBySearchTerm($search, $size);
+
+    /**
+     * This doesnt really belong here. I should create a utils class or something like it
+     * @throws NotPermittedException
+     */
+    protected function getImageFolder()
+    {
+        try {
+            $rootFolder = $this->appData->getFolder($this->providerName);
+        } catch (NotFoundException $e) {
+            $rootFolder = $this->appData->newFolder($this->providerName);
+        }
+        return $rootFolder;
+    }
 
 }

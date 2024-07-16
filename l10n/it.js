@@ -1,6 +1,7 @@
 OC.L10N.register(
     "unsplash",
     {
+    "Splash" : "Spruzzo",
     "Saved" : "Salvato",
     "Failed" : "Non riuscito",
     "Keywords:" : "Parole chiave:"

@@ -16,6 +16,8 @@ OC.L10N.register(
     "Set the image provider:" : "Defina o provedor de imagem:",
     "Keywords:" : "Palavras chave:",
     "Set custom search terms. Separate multiple terms by comma." : "Defina termos de pesquisa personalizados. Separe vários termos por vírgula.",
+    "Token:" : "Token:",
+    "Set the required token." : "Defina o token necessário.",
     "Splash: Advanced Theming" : "Splash: Configurações avançadas de tema",
     "You can apply effects to your background images." : "Você pode aplicar efeitos para as imagens de fundo.",
     "Enable Tint" : "Ativar Matiz",

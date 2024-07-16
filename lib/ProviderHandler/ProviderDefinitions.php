@@ -28,83 +28,93 @@ use OCA\Unsplash\Provider\Unsplash;
 use OCA\Unsplash\Provider\UnsplashAPI;
 use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
+use OCA\Unsplash\Provider\WikimediaCommonsDaily;
+use OCP\Files\IAppData;
 use OCP\IConfig;
+use OCP\ILogger;
 
-class ProviderDefinitions{
+class ProviderDefinitions
+{
 
-	/**
-	 * @var SettingsService
-	 */
-	protected $settings;
+    /** @var SettingsService */
+    protected $settings;
 
-	/**
-	 * @var IConfig
-	 */
-	protected $config;
+    /** @var IConfig */
+    protected $config;
+    /**
+     * @var string
+     */
+    protected $appName;
+    /**
+     * @var definitions This variable contains all available provider
+     */
+    protected $definitions = [];
+    /** @var IAppData */
+    private $appData;
 
-	/**
-	 * @var string
-	 */
-	protected $appName;
+    /** @var ILogger */
+    private $logger;
 
-	/**
-	 * @var definitions This variable contains all available provider
-	 */
-	protected $definitions = [];
+    /**
+     * ProviderDefinitions constructor.
+     *
+     * @param String $appName
+     * @param IConfig $settings
+     * @param IAppData $appData
+     */
+    function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData)
+    {
 
+        $this->appName = $appName;
+        $this->config = $config;
+        $this->appData = $appData;
+        $this->logger = $logger;
 
-	/**
-	 * ProviderDefinitions constructor.
-	 *
-	 * @param SettingsService $settings
-	 */
-	function __construct($appName, IConfig $config) {
+        $tmp = [];
+        //add all provider to this array. The logic takes care of the rest.
+        $tmp[] = new Unsplash($this->appName, $logger, $this->config, $appData, "Unsplash");
+        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
+        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
+        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
+        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day");
+        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
 
-		$this->appName = $appName;
-		$this->config = $config;
+        foreach ($tmp as &$value) {
+            $this->definitions[$value->getName()] = $value;
+        }
+    }
 
-		$tmp=[];
-		//add all provider to this array. The logic takes care of the rest.
-		$tmp[] = new Unsplash($this->appName, $this->config, "Unsplash");
-		//$tmp[] = new UnsplashAPI($this->appName, $this->config, "UnsplashAPI");
-		$tmp[] = new NextcloudImage($this->appName, $this->config, "Nextcloud Image");
-		$tmp[] = new WikimediaCommons($this->appName, $this->config, "WikimediaCommons");
-		$tmp[] = new WallhavenCC($this->appName, $this->config, "WallhavenCC");
-
-		foreach ($tmp as &$value) {
-			//$this->definitions = array_merge($this->definitions, array($value->getName()=>$value->getName()));
-			$this->definitions[$value->getName()] = $value;
-		}
-	}
-
-	/**
-	 * This returns the selected Provider
-	 *
-	 * @return Name of the Provider
-	 */
-	function getProviderByName($name): Provider {
+    /***
+     *  This returns the selected Provider
+     *
+     * @param $name String: Name of the Provider
+     * @return Provider
+     */
+    function getProviderByName($name): Provider
+    {
 
         $provider = $this->definitions[$name];
-        if($provider == null) {
-            return new Unsplash($this->appName, $this->config, "Unsplash");
+        if ($provider == null) {
+            return new Unsplash($this->appName, $this->logger, $this->config, $this->appData, "Unsplash");
         }
-		return $this->definitions[$name];
-	}
+        return $this->definitions[$name];
+    }
 
-	/**
-	 * This returns all defined Provider
-	 *
-	 * @return Array with Names of Provider
-	 */
-	function getAllProviderNames() {
-		$i=0;
-		$tmp=[];
-		foreach ($this->definitions as &$value) {
-			//array_push($tmp,$value->getName());
-			$tmp[] = $value->getName();
-			$i++;
-		}
-		return $tmp;
-	}
+    /**
+     * This returns all defined Provider
+     *
+     * @return Array with List of Providers
+     */
+    function getAllProviderNames()
+    {
+        $i = 0;
+        $tmp = [];
+        foreach ($this->definitions as &$value) {
+            //array_push($tmp,$value->getName());
+            $tmp[] = $value->getName();
+            $i++;
+        }
+        return $tmp;
+    }
 
 }

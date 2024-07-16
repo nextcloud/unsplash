@@ -21,27 +21,29 @@
  */
 
 namespace OCA\Unsplash\Provider;
+
 use OCA\Unsplash\ProviderHandler\Provider;
 
-class Unsplash extends Provider{
+class Unsplash extends Provider
+{
 
-	/**
-	 * @var string
-	 */
-	public string $DEFAULT_SEARCH="nature,nature";
+    /**
+     * @var string
+     */
+    public string $DEFAULT_SEARCH = "nature,nature";
     public bool $ALLOW_CUSTOMIZING = true;
 
-	public function getWhitelistResourceUrls()
-	{
-		return ['https://source.unsplash.com','https://images.unsplash.com'];
-	}
+    public function getWhitelistResourceUrls()
+    {
+        return ['https://source.unsplash.com', 'https://images.unsplash.com'];
+    }
 
-	public function getRandomImageUrl($size): string
+    public function getRandomImageUrl($size): string
     {
         return $this->getRandomImageUrlBySearchTerm($this->getRandomSearchTerm(), $size);
-	}
+    }
 
-	public function getRandomImageUrlBySearchTerm($search, $size): string
+    public function getRandomImageUrlBySearchTerm($search, $size): string
     {
         $url = "https://source.unsplash.com/featured/";
         switch ($size) {
@@ -56,6 +58,6 @@ class Unsplash extends Provider{
                 $url .= "3840x2160";
                 break;
         }
-        return $url."?".$search;
-	}
+        return $url . "?" . $search;
+    }
 }

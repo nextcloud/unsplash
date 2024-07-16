@@ -16,6 +16,8 @@ OC.L10N.register(
     "Set the image provider:" : "Still inn bildeleverandøren:",
     "Keywords:" : "Nøkkelord:",
     "Set custom search terms. Separate multiple terms by comma." : "Angi egendefinerte søkeord. Skill flere termer med komma.",
+    "Token:" : "Token:",
+    "Set the required token." : "Angi det nødvendige tokenet.",
     "Splash: Advanced Theming" : "Splash: Advanced Theming",
     "You can apply effects to your background images." : "Du kan bruke effekter på bakgrunnsbildene dine.",
     "Enable Tint" : "Aktiver Tint",
