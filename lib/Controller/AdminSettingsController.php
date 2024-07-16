@@ -59,7 +59,8 @@ class AdminSettingsController extends Controller
             //todo: do NOT store this value. Sanitize it! (check against available provider, and store one of them)
             $this->settings->setImageProvider(filter_var($value, FILTER_SANITIZE_STRING));
             $cached = $this->settings->isCached();
-            return new JSONResponse(['status' => $value, "isCached" => $cached]);
+            $provider = $this->settings->getImageProviderName();
+            return new JSONResponse(['status' => $value, "isCached" => $cached, "provider" => $provider]);
         } else if ($key === 'provider/customization') {
             $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
         } else if ($key === 'style/tint') {

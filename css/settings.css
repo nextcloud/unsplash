@@ -59,3 +59,13 @@
 .unsplash-slider input {
     min-width: 250px;
 }
+
+.unsplash-documentation-link {
+    margin-left: 10px;
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+.unsplash-documentation-link:hover {
+    color: var(--color-primary-hover);
+}

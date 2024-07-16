@@ -88,6 +88,15 @@
                             document.getElementById('splash-provider-refresh-cache').style.display = "none";
                         }
                     }
+
+                    if(data.hasOwnProperty("provider")) {
+                        let token = document.getElementById('unsplash-providertoken')
+                        if(data.provider === "UnsplashAPI") {
+                            token.style.display = null;
+                        } else {
+                            token.style.display = "none";
+                        }
+                    }
                 })
             })
             .catch((e) => {

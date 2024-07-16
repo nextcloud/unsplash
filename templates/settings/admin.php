@@ -65,14 +65,30 @@ style('unsplash', 'settings');
                 <?php p($l->t('Set custom search terms. Separate multiple terms by comma.')); ?>
             </p>
         </div>
-        <div class="unsplash-providertoken">
+        <div
+            <?php
+            if ($_['selectedProvider'] !== "UnsplashAPI") {
+                echo "style=\"display: none;\"";
+            }
+            ?>
+                id="unsplash-providertoken" class="unsplash-providertoken">
             <label class="unsplash-label" for="splash-provider-token"><?php p($l->t('Token:')); ?></label>
             <input class="unsplash-input" type="text" id="splash-provider-token" data-setting="provider/token"
             <?php
-            echo " value='****'>";
-            ?>
+            echo " value='****'";
+            ?>>
+            <br>
+            <br>
             <p class="settings-hint">
-                <?php p($l->t('Set the required token.')); ?>
+                <?php p($l->t('Set the required token. To get a token, visit:')); ?>
+                <br>
+                <a class="unsplash-documentation-link"
+                   href="https://unsplash.com/documentation#creating-a-developer-account"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                ><?php p($l->t('Unsplash: Developer Account Instructions')); ?></a>
+                <br>
+                <?php p($l->t('and register an application. Use their token here.')); ?>
             </p>
         </div>
         <!-- Button Action is in javascript-->
