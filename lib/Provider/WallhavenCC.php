@@ -71,8 +71,8 @@ class WallhavenCC extends Provider
         try {
             $images = $json['data'][array_rand($json['data'])];
             return $images['path'];
-        } catch (\Exception $e) {
-            $this->logger->alert("Your searchterms likely did not yield results for ".$this->getName());
+        } catch (\Error $e) {
+            $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
         return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);

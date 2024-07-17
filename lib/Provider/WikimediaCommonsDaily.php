@@ -65,8 +65,8 @@ class WikimediaCommonsDaily extends Provider
         try {
             $images = $json['query']['pages'][array_rand($json['query']['pages'])];
             return $images['imageinfo'][0]['url'];
-        } catch (\Exception $e) {
-            $this->logger->alert("Your searchterms likely did not yield results for ".$this->getName());
+        } catch (\Error $e) {
+            $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
         return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
