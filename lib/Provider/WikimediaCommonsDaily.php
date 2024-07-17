@@ -61,8 +61,19 @@ class WikimediaCommonsDaily extends Provider
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         $json = json_decode($response, true);
-        $images = $json['query']['pages'][array_rand($json['query']['pages'])];
 
-        return $images['imageinfo'][0]['url'];
+        try {
+            $images = $json['query']['pages'][array_rand($json['query']['pages'])];
+            return $images['imageinfo'][0]['url'];
+        } catch (\Exception $e) {
+            $this->logger->alert("Your searchterms likely did not yield results for ".$this->getName());
+        }
+
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+    }
+
+    public function getCachedImageURL(): string
+    {
+        return $this->getRandomImageUrl("");
     }
 }

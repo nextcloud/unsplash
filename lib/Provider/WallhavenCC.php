@@ -67,8 +67,19 @@ class WallhavenCC extends Provider
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         $json = json_decode($response, true);
-        $images = $json['data'][array_rand($json['data'])];
 
-        return $images['path'];
+        try {
+            $images = $json['data'][array_rand($json['data'])];
+            return $images['path'];
+        } catch (\Exception $e) {
+            $this->logger->alert("Your searchterms likely did not yield results for ".$this->getName());
+        }
+
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+    }
+
+    public function getCachedImageURL(): string
+    {
+        return $this->getRandomImageUrl("");
     }
 }
