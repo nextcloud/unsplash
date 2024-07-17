@@ -88,7 +88,7 @@ style('unsplash', 'settings');
                    rel="noopener noreferrer"
                 ><?php p($l->t('Unsplash: Developer Account Instructions')); ?></a>
                 <br>
-                <?php p($l->t('and register an application. You should not need to apply for production. Use their token here.')); ?>
+                <?php p($l->t('On the linked instruction page, register an application. You should not need to apply for production. Use their token here.')); ?>
             </p>
         </div>
         <!-- Button Action is in javascript-->
