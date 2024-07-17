@@ -97,6 +97,13 @@
                             token.style.display = "none";
                         }
                     }
+
+                    if(data.hasOwnProperty("imageURL")) {
+                        let preview = document.getElementById("unsplash-preview")
+                        preview.src = data.imageURL
+
+                    }
+
                 })
             })
             .catch((e) => {

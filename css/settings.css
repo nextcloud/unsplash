@@ -69,3 +69,10 @@
 .unsplash-documentation-link:hover {
     color: var(--color-primary-hover);
 }
+
+#unsplash-preview {
+    width: 230px;
+    height: 140px;
+    object-fit: cover;
+    object-position: center;
+}

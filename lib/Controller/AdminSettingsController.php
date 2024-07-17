@@ -56,11 +56,8 @@ class AdminSettingsController extends Controller
         } else if ($key === 'style/dashboard') {
             $this->settings->setServerStyleDashboardEnabled($value);
         } else if ($key === 'provider/provider') {
-            //todo: do NOT store this value. Sanitize it! (check against available provider, and store one of them)
-            $this->settings->setImageProvider(filter_var($value, FILTER_SANITIZE_STRING));
-            $cached = $this->settings->isCached();
-            $provider = $this->settings->getImageProviderName();
-            return new JSONResponse(['status' => $value, "isCached" => $cached, "provider" => $provider]);
+            $this->settings->setImageProviderSanitized(filter_var($value, FILTER_SANITIZE_STRING));
+            return $this->generateProviderResponse($value);
         } else if ($key === 'provider/customization') {
             $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
         } else if ($key === 'style/tint') {
@@ -83,6 +80,7 @@ class AdminSettingsController extends Controller
             $this->settings->setCurrentProviderToken($value);
         } else if ($key === 'delete/cache') {
             $this->settings->updateCachedBackground();
+            return $this->generateProviderResponse("success");
         } else {
             return new JSONResponse(['status' => 'error'], Http::STATUS_BAD_REQUEST);
         }
@@ -101,5 +99,19 @@ class AdminSettingsController extends Controller
     {
         $provider = $this->settings->getImageProvider(filter_var($providername, FILTER_SANITIZE_STRING));
         return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
+    }
+
+    private function generateProviderResponse(string $value): JSONResponse {
+
+        $cached = $this->settings->isCached();
+        $provider = $this->settings->getSelectedImageProvider();
+        $name = $provider->getName();
+        $url = $provider->getCachedImageURL();
+        return new JSONResponse([
+            'status' => $value,
+            'isCached' => $cached,
+            'provider' => $name,
+            'imageURL' => $url
+        ]);
     }
 }

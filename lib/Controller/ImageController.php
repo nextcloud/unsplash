@@ -63,8 +63,9 @@ class ImageController extends Controller
      */
     public function get(): FileDisplayResponse
     {
-        $appdataFolder = $this->appData->getFolder("UnsplashAPI");
-        $file = $appdataFolder->getFile("test.jpeg");
+        $providername = $this->settings->getSelectedImageProvider()->getName();
+        $appdataFolder = $this->appData->getFolder($providername);
+        $file = $appdataFolder->getFile("background.jpeg");
 
         return new FileDisplayResponse($file, Http::STATUS_OK, ['Content-Type' => 'image/jpeg']);
     }

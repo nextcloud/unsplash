@@ -162,13 +162,19 @@ class SettingsService
     }
 
     /**
-     * Set the selected imageprovider
+     * Set the selected imageprovider, but does not use the provided string.
      *
      * @param string $providername
      */
-    public function setImageProvider(string $providername): void
+    public function setImageProviderSanitized(string $providername): void
     {
-        $this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $providername);
+        $allProvider = $this->getAllImageProvider();
+        foreach ($allProvider as &$value) {
+            if($value == $providername) {
+                $this->config->setAppValue($this->appName, self::PROVIDER_SELECTED, $value);
+            }
+        }
+
     }
 
     /**
@@ -230,8 +236,9 @@ class SettingsService
 
     /**
      * Get all defined imageprovider
+     * @return array[String]
      */
-    public function getAllImageProvider()
+    public function getAllImageProvider(): array
     {
         return $this->providerDefinitions->getAllProviderNames();
     }

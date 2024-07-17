@@ -64,7 +64,8 @@ class AdminSettings implements ISettings
             'styleStrengthColor' => $this->settings->getColorStrength(),
             'styleStrengthBlur' => $this->settings->getBlurStrength(),
             'styleHighVisibility' => $this->settings->isHighVisibilityLogin(),
-            'isCached' => $this->settings->isCached()
+            'isCached' => $this->settings->isCached(),
+            'imageURL' => $this->settings->getSelectedImageProvider()->getCachedImageURL()
         ]);
     }
 

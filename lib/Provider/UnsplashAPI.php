@@ -93,7 +93,7 @@ class UnsplashAPI extends Provider
         $metadata = $this->getMetadata($this->appData);
         $image = $this->getData($metadata->getImageUrl());
 
-        $file = $appdataFolder->newFile("test.jpeg");
+        $file = $appdataFolder->newFile("background.jpeg");
         $file->putContent($image);
     }
 
@@ -101,7 +101,7 @@ class UnsplashAPI extends Provider
     {
         $appdataFolder = $this->getImageFolder();
         //$appdataFolder->getFile("source.json")->delete();
-        //$appdataFolder->getFile("test.jpeg")->delete();
+        //$appdataFolder->getFile("background.jpeg")->delete();
     }
 
 

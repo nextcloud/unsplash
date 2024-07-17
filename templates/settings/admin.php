@@ -92,6 +92,10 @@ style('unsplash', 'settings');
             </p>
         </div>
         <!-- Button Action is in javascript-->
+        <p><?php p($l->t('Preview:')); ?></p>
+
+        <img src="<?php echo $_['imageURL']; ?>" id="unsplash-preview" class="unsplash-preview">
+        <br>
         <input
             <?php
                 if (!$_['isCached']) {
@@ -99,7 +103,6 @@ style('unsplash', 'settings');
                 }
             ?>
                 type="button" id="splash-provider-refresh-cache" data-setting="delete/cache" value="<?php p($l->t('Refresh Cached Image')); ?>">
-        <br>
         <br>
         <h2>
             <?php p($l->t('Splash: Advanced Theming')); ?>
