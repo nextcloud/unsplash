@@ -17,7 +17,6 @@ OC.L10N.register(
     "Keywords:" : "關鍵詞：",
     "Set custom search terms. Separate multiple terms by comma." : "設定自訂搜尋詞。用逗號分隔多個詞。",
     "Token:" : "權杖：",
-    "Set the required token." : "設定所需的權杖。",
     "Splash: Advanced Theming" : "Splash：進階佈景主題",
     "You can apply effects to your background images." : "您可以將效果套用於您的背景圖像。",
     "Enable Tint" : "啟用 Tint",
