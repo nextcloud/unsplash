@@ -17,7 +17,6 @@ OC.L10N.register(
     "Keywords:" : "Кључне речи:",
     "Set custom search terms. Separate multiple terms by comma." : "Поставите жељене термине за претрагу. Више термина раздвојте запетама.",
     "Token:" : "Жетон:",
-    "Set the required token." : "Поставља неопходни жетон.",
     "Splash: Advanced Theming" : "Пљус: Напредна употреба тема",
     "You can apply effects to your background images." : "На своје позадинске слике можете да примените ефекте.",
     "Enable Tint" : "Укључи нијансирање",

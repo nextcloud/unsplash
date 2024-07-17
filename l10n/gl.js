@@ -17,7 +17,6 @@ OC.L10N.register(
     "Keywords:" : "Palabras clave:",
     "Set custom search terms. Separate multiple terms by comma." : "Definir termos de busca personalizados. Separe varios termos con comas.",
     "Token:" : "Testemuño:",
-    "Set the required token." : "Definir o testemuño precisado.",
     "Splash: Advanced Theming" : "Splash: personalización avanzada",
     "You can apply effects to your background images." : "Pode aplicar efectos ás súas imaxes de fondo.",
     "Enable Tint" : "Activar  o tntado",
