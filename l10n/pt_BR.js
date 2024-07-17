@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "sob uma licença aberta livre de cobranças.",
-    "These images are provided %s by %s." : "Essas imagens são fornecidas%s a %s.",
+    "These images are provided %s by %s." : "Essas imagens são fornecidas %s a %s.",
     "under the terms of service" : "Sob os termos de serviço",
-    "These images are provided by %s. Each image has it's own license." : "Essas imagens são fornecidas a%s. Cada imagem tem sua própria licença.",
+    "These images are provided by %s. Each image has it's own license." : "Essas imagens são fornecidas a %s. Cada imagem tem sua própria licença.",
     "Splash: Random Background Images" : "Splash: Imagens de fundo aleatórias",
     "Saved" : "Salvo",
     "Failed" : "Falhou",
@@ -20,13 +20,13 @@ OC.L10N.register(
     "Splash: Advanced Theming" : "Splash: Configurações avançadas de tema",
     "You can apply effects to your background images." : "Você pode aplicar efeitos para as imagens de fundo.",
     "Enable Tint" : "Ativar Matiz",
-    "Set the vibrancy of the color" : "Configurar vibração da cor",
+    "Set the vibrancy of the color" : "Configurar a vivacidade da cor",
     "Set the blur of the image" : "Defina o desfoque da imagem",
     "Splash: High Visibility" : "Destaque: alta visibilidade",
-    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen.",
+    "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Você pode habilitar um modo de alta visibilidade por razões legais. Isso destacará os links Privacidade e Proteção de Dados na tela de login.",
     "Enable High-Visibility Mode" : "Ativar modo de Alta Visibilidade",
     "Random Background Images" : "Imagens aleatórias para plano de fundo",
-    "%s is customized with random background images." : "%sestá customizado com imagens aleatórias de fundo",
+    "%s is customized with random background images." : "% sestá customizado com imagens aleatórias de fundo",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imagens serão exibidas como plano de fundo se você escolher \"Imagem padrão\" como plano de fundo."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -7,7 +7,7 @@
 
 if (($_['dashboard'] || $_['login']) && ($_['selectedProvider'] != "" || $_['selectedProvider'] != "Nextcloud Image")):
 
-    script('unsplash', 'user');
+/**    script('unsplash', 'user'); */
     style('unsplash', 'settings');
 
     ?>

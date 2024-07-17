@@ -19,7 +19,7 @@ style('unsplash', 'settings');
         <?php p($l->t('You can customize your instance with random background images.')); ?>
         <br>
         <?php p($l->t('Here you can specify where random backgrounds should be used by default.')); ?>
-        <?php print_unescaped($this->inc('partials/license')); ?>
+        <?php print_unescaped($this->inc('partials/license'.$_['selectedProvider'])); ?>
     </p>
     <form>
         <div class="unsplash-checkboxes">
