@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "kostenlos unter einer freien Lizenz",
-    "These images are provided %s by %s." : "Diese Bilder werden %s von %s bereitgestellt.",
     "under the terms of service" : "unter den Nutzungsbedingungen",
     "These images are provided by %s. Each image has it's own license." : "Diese Bilder werden von %s zur Verfügung gestellt. Jedes Bild hat seine eigene Lizenz.",
     "Splash: Random Background Images" : "Splash: Zufällige Hintergrundbilder",

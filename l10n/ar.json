@@ -1,7 +1,6 @@
 { "translations": {
     "Splash" : "البخّاخ Splash",
     "under an open license free of charge" : "تحت ترخيص مفتوح و مجاني",
-    "These images are provided %s by %s." : "هذه الصور مُقدّمةٌ %s من %s.",
     "under the terms of service" : "بموجب شروط الخدمة",
     "These images are provided by %s. Each image has it's own license." : "هذه الصور مقدمة من %s. كل صورة لها رخصتها الخاصة.",
     "Splash: Random Background Images" : "البخّاخ Splash: صِوَر عشوائية للخلفية",
@@ -15,6 +14,9 @@
     "Keywords:" : "الكلمات الدلالية:",
     "Set custom search terms. Separate multiple terms by comma." : "تعيين مصطلحات البحث المخصصة. الفصل بين المصطلحات المتعددة بفاصلة.",
     "Token:" : "أَمَارَة Token:",
+    "Set the required token. To get a token, visit:" : "عيِّن الأَمَارَة token المطلوبة. للحصول على أَمَارَة، إذهب إلى: ",
+    "Unsplash: Developer Account Instructions" : "موقع أرشيف الصور unsplash: تعليمات حول حساب المُطوٍّر",
+    "Refresh Cached Image" : "إنعاش الصورة المُخبّأة ",
     "Splash: Advanced Theming" : "البخّاخ Splash: الثيمات المتقدمة",
     "You can apply effects to your background images." : "يمكنك تطبيق تأثيرات على صور الخلفية عندك.",
     "Enable Tint" : "فَعِّل الصبغة tint",

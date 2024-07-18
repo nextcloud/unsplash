@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "pod otvorenou licenciou bezplatne",
-    "These images are provided %s by %s." : "Tieto obrázky poskytuje %s od %s.",
     "under the terms of service" : "podľa podmienok služby",
     "These images are provided by %s. Each image has it's own license." : "Tieto obrázky poskytuje %s. Každý obrázok má svoju vlastnú licenciu",
     "Splash: Random Background Images" : "Splash: Náhodné obrázky na pozadí",

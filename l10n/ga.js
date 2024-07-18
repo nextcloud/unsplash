@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "Faoi cheadúnas oscailte saor in aisce",
-    "These images are provided %s by %s." : "Soláthraíonn %s na híomhánna seo le %s.",
     "under the terms of service" : "faoi ​​théarmaí seirbhíse",
     "These images are provided by %s. Each image has it's own license." : "Soláthraíonn %s na híomhánna seo. Tá a cheadúnas féin ag gach íomhá.",
     "Splash: Random Background Images" : "Splash: Íomhánna Cúlra Randamach",
@@ -17,6 +16,9 @@ OC.L10N.register(
     "Keywords:" : "Eochairfhocail:",
     "Set custom search terms. Separate multiple terms by comma." : "Socraigh téarmaí cuardaigh saincheaptha. Scar téarmaí iolracha le camóg.",
     "Token:" : "Comhartha:",
+    "Set the required token. To get a token, visit:" : "Socraigh an comhartha riachtanach. Chun chomhartha a fháil, tabhair cuairt ar:",
+    "Unsplash: Developer Account Instructions" : "Unsplash: Treoracha Cuntas Forbróra",
+    "Refresh Cached Image" : "Athnuaigh Íomhá Taisce",
     "Splash: Advanced Theming" : "Splash: Téamaí Casta",
     "You can apply effects to your background images." : "Is féidir leat éifeachtaí a chur i bhfeidhm ar d’íomhánna cúlra.",
     "Enable Tint" : "Cumasaigh Tint",

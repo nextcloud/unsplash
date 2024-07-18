@@ -1,7 +1,6 @@
 { "translations": {
     "Splash" : "Splash",
     "under an open license free of charge" : "sob uma licença aberta livre de cobranças.",
-    "These images are provided %s by %s." : "Essas imagens são fornecidas%s a %s.",
     "under the terms of service" : "Sob os termos de serviço",
     "These images are provided by %s. Each image has it's own license." : "Essas imagens são fornecidas a%s. Cada imagem tem sua própria licença.",
     "Splash: Random Background Images" : "Splash: Imagens de fundo aleatórias",
@@ -15,6 +14,9 @@
     "Keywords:" : "Palavras chave:",
     "Set custom search terms. Separate multiple terms by comma." : "Defina termos de pesquisa personalizados. Separe vários termos por vírgula.",
     "Token:" : "Token:",
+    "Set the required token. To get a token, visit:" : "Defina o token necessário. Para obter um token, visite:",
+    "Unsplash: Developer Account Instructions" : "Unsplash: instruções para conta de desenvolvedor",
+    "Refresh Cached Image" : "Atualizar Imagem em Cache",
     "Splash: Advanced Theming" : "Splash: Configurações avançadas de tema",
     "You can apply effects to your background images." : "Você pode aplicar efeitos para as imagens de fundo.",
     "Enable Tint" : "Ativar Matiz",

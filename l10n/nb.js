@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Sprut",
     "under an open license free of charge" : "under åpen lisens gratis",
-    "These images are provided %s by %s." : "Disse bildene er levert %s av %s.",
     "under the terms of service" : "under tjenestevilkårene",
     "These images are provided by %s. Each image has it's own license." : "Disse bildene er levert av %s. Hvert bilde har sin egen lisens.",
     "Splash: Random Background Images" : "Splash: Tilfeldige bakgrunnsbilder",

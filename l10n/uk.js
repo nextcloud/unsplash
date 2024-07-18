@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "за відкритою ліцензією безкоштовно",
-    "These images are provided %s by %s." : "Ці зображення %s надає %s.",
     "under the terms of service" : "за умовами обслуговування",
     "These images are provided by %s. Each image has it's own license." : "Ці зображення надає %s. Кожне зображення має власну ліцензію.",
     "Splash: Random Background Images" : "Спалах: випадкові зображення тла",

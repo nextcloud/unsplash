@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "baixo unha licenza aberta libre de cargos",
-    "These images are provided %s by %s." : "Estas imaxes son fornecidas %s por %s.",
     "under the terms of service" : "baixo as condicións de servizo",
     "These images are provided by %s. Each image has it's own license." : "Estas imaxes son fornecidas por %s. Cada imaxe ten a súa propia licenza.",
     "Splash: Random Background Images" : "Splash: imaxes de fondo ao chou",
@@ -17,6 +16,9 @@ OC.L10N.register(
     "Keywords:" : "Palabras clave:",
     "Set custom search terms. Separate multiple terms by comma." : "Definir termos de busca personalizados. Separe varios termos con comas.",
     "Token:" : "Testemuño:",
+    "Set the required token. To get a token, visit:" : "Definir o testemuño necesario. Para obter un testemuño, visite:",
+    "Unsplash: Developer Account Instructions" : "Unsplash: instrucións para a conta de desenvolvedor",
+    "Refresh Cached Image" : "Actualizar a imaxe na caché",
     "Splash: Advanced Theming" : "Splash: personalización avanzada",
     "You can apply effects to your background images." : "Pode aplicar efectos ás súas imaxes de fondo.",
     "Enable Tint" : "Activar  o tntado",

@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Пљус",
     "under an open license free of charge" : "под слободном лиценцом, бесплатно",
-    "These images are provided %s by %s." : "Ове слике обезбеђује %s према %s.",
     "under the terms of service" : "под условима коришћења",
     "These images are provided by %s. Each image has it's own license." : "Ове слике обезбеђује %s. Свака слика има своју лиценцу.",
     "Splash: Random Background Images" : "Пљус: насумичне позадинске слике",
@@ -17,6 +16,9 @@ OC.L10N.register(
     "Keywords:" : "Кључне речи:",
     "Set custom search terms. Separate multiple terms by comma." : "Поставите жељене термине за претрагу. Више термина раздвојте запетама.",
     "Token:" : "Жетон:",
+    "Set the required token. To get a token, visit:" : "Поставите неопходни жетон. Да бисте добили жетон, посетите:",
+    "Unsplash: Developer Account Instructions" : "Unsplash: упутства за налог програмера",
+    "Refresh Cached Image" : "Освежавање кеширане слике",
     "Splash: Advanced Theming" : "Пљус: Напредна употреба тема",
     "You can apply effects to your background images." : "На своје позадинске слике можете да примените ефекте.",
     "Enable Tint" : "Укључи нијансирање",
