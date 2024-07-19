@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Splash" : "Пљус",
     "under an open license free of charge" : "под слободном лиценцом, бесплатно",
+    "These images are provided %1%s by %2%s." : "Ове слике је обезбедио %1%s од %2%s.",
     "under the terms of service" : "под условима коришћења",
     "These images are provided by %s. Each image has it's own license." : "Ове слике обезбеђује %s. Свака слика има своју лиценцу.",
     "Splash: Random Background Images" : "Пљус: насумичне позадинске слике",
@@ -18,6 +19,8 @@ OC.L10N.register(
     "Token:" : "Жетон:",
     "Set the required token. To get a token, visit:" : "Поставите неопходни жетон. Да бисте добили жетон, посетите:",
     "Unsplash: Developer Account Instructions" : "Unsplash: упутства за налог програмера",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "На везаној страници са упутствима региструјте апликацију. Не би требало да се пријавите за продукцију. Употребите њихов жетон овде.",
+    "Preview:" : "Преглед:",
     "Refresh Cached Image" : "Освежавање кеширане слике",
     "Splash: Advanced Theming" : "Пљус: Напредна употреба тема",
     "You can apply effects to your background images." : "На своје позадинске слике можете да примените ефекте.",
