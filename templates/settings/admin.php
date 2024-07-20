@@ -88,7 +88,10 @@ style('unsplash', 'settings');
                    rel="noopener noreferrer"
                 ><?php p($l->t('Unsplash: Developer Account Instructions')); ?></a>
                 <br>
-                <?php p($l->t('On the linked instruction page, register an application. You should not need to apply for production. Use their token here.')); ?>
+                <?php
+                    // TRANSLATORS The linked instruction page contains a guide on how a user would create an api key. This key has a demo and a production mode, and the demo mode is limited to 50 requests per hour. That is way more than expected usage, so the demo key is fine.
+                    p($l->t('On the linked instruction page, register an application. You should not need to apply for production. Use their token here.'));
+                    ?>
             </p>
         </div>
         <!-- Button Action is in javascript-->
