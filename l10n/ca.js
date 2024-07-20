@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Splash" : "Esquitxades",
     "under an open license free of charge" : "sota una llicència oberta gratuïta",
-    "These images are provided %s by %s." : "Aquestes imatges les proporciona %s per %s.",
     "under the terms of service" : "sota les condicions del servei",
     "These images are provided by %s. Each image has it's own license." : "Aquestes imatges les proporciona %s. Cada imatge té la seva pròpia llicència.",
     "Splash: Random Background Images" : "Esquitxades: imatges de fons aleatòries",
