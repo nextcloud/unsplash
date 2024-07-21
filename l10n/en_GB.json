@@ -1,6 +1,7 @@
 { "translations": {
     "Splash" : "Splash",
     "under an open license free of charge" : "under an open license free of charge",
+    "These images are provided %1%s by %2%s." : "These images are provided %1%s by %2%s.",
     "under the terms of service" : "under the terms of service",
     "These images are provided by %s. Each image has it's own license." : "These images are provided by %s. Each image has it's own license.",
     "Splash: Random Background Images" : "Splash: Random Background Images",
@@ -16,6 +17,8 @@
     "Token:" : "Token:",
     "Set the required token. To get a token, visit:" : "Set the required token. To get a token, visit:",
     "Unsplash: Developer Account Instructions" : "Unsplash: Developer Account Instructions",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "On the linked instruction page, register an application. You should not need to apply for production. Use their token here.",
+    "Preview:" : "Preview:",
     "Refresh Cached Image" : "Refresh Cached Image",
     "Splash: Advanced Theming" : "Splash: Advanced Theming",
     "You can apply effects to your background images." : "You can apply effects to your background images.",
