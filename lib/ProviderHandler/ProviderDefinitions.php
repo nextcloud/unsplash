@@ -72,7 +72,6 @@ class ProviderDefinitions
 
         $tmp = [];
         //add all provider to this array. The logic takes care of the rest.
-        $tmp[] = new Unsplash($this->appName, $logger, $this->config, $appData, "Unsplash");
         $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
         $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
         $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
@@ -95,7 +94,7 @@ class ProviderDefinitions
 
         $provider = $this->definitions[$name];
         if ($provider == null) {
-            return new Unsplash($this->appName, $this->logger, $this->config, $this->appData, "Unsplash");
+            return new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud Image");
         }
         return $this->definitions[$name];
     }
