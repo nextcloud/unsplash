@@ -23,7 +23,7 @@
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="8.0" max-version="8.3"/>
-        <nextcloud min-version="26" max-version="28"/>
+        <nextcloud min-version="26" max-version="29"/>
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>
