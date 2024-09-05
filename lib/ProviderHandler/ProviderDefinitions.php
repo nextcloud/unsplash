@@ -94,7 +94,7 @@ class ProviderDefinitions
 
         $provider = $this->definitions[$name];
         if ($provider == null) {
-            return new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud Image");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
         }
         return $this->definitions[$name];
     }
