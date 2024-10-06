@@ -33,7 +33,7 @@ Show a new colorful image on your Loginscreen every day!
 
 
 ## Settings
-<img src=".meta/unsplash-settings.jpg" width="360vh" />
+<img src=".meta/unsplash-settings.png" width="360vh" />
 
 ## Contributing
 Anyone is welcome to contribute and help out. However, hate, discrimination and racism are decidedly unwelcome here. If you feel offended by this, you might belong to the group of people who are not welcome. I will not tolerate hate in any way.
