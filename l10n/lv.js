@@ -2,6 +2,8 @@ OC.L10N.register(
     "unsplash",
     {
     "Saved" : "Saglabāts",
-    "Failed" : "Neizdevās"
+    "Failed" : "Neizdevās",
+    "You can customize your instance with random background images." : "Savu serveri var pielāgot ar nejaušiem fona attēliem.",
+    "%s is customized with random background images." : "%s ir pielāgots ar nejaušiem fona attēliem."
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");
