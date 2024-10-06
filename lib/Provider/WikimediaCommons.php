@@ -49,6 +49,10 @@ class WikimediaCommons extends Provider
 
     public function getRandomImageUrlBySearchTerm($search, $size)
     {
+        if(empty($search)) {
+            $search = 'nature';
+        }
+
         $url = 'https://commons.wikimedia.org/w/api.php';
         $url .= '?action=query';
         $url .= '&generator=categorymembers';

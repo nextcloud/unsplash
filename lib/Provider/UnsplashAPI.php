@@ -33,7 +33,7 @@ class UnsplashAPI extends Provider
     /**
      * @var string
      */
-    public string $DEFAULT_SEARCH = "nature,nature";
+    public string $DEFAULT_SEARCH = "nature,colorful";
     public bool $ALLOW_CUSTOMIZING = true;
     public bool $REQUIRES_AUTH = true;
     public bool $IS_CACHED = true;
@@ -112,6 +112,10 @@ class UnsplashAPI extends Provider
 
     public function getRandomImageUrlBySearchTerm($search, $size): string
     {
+        if(empty($search)) {
+            $search = $this->DEFAULT_SEARCH;
+        }
+
         $token = $this->getToken();
         if($token === '' && $this->requiresAuth()) {
             // If the token is empty, return the default image.

@@ -32,7 +32,7 @@ class WallhavenCC extends Provider
      * TODO : Properly get current nextcloud image, currently only the theming one is used.
      * @var string
      */
-    public string $DEFAULT_SEARCH = "nature,supercar";
+    public string $DEFAULT_SEARCH = "nature,colorful";
     public bool $ALLOW_CUSTOMIZING = true;
     public string $DEFAULT_METADATA_URL="https://wallhaven.cc/";
 
@@ -48,6 +48,10 @@ class WallhavenCC extends Provider
 
     public function getRandomImageUrlBySearchTerm($search, $size)
     {
+        if(empty($search)) {
+            $search = $this->DEFAULT_SEARCH;
+        }
+
         $resolution = "1920x1080";
         switch ($size) {
             case Provider::SIZE_SMALL:
