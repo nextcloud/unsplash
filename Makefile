@@ -30,6 +30,7 @@ appstore: clean
 	--exclude=/l10n/.tx \
 	--exclude=/tests \
 	--exclude=/.git \
+	--exclude=/.meta \
 	--exclude=/.github \
 	--exclude=/l10n/l10n.pl \
 	--exclude=/CONTRIBUTING.md \
