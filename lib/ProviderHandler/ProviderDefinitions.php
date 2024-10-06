@@ -93,6 +93,10 @@ class ProviderDefinitions
     function getProviderByName($name): Provider
     {
 
+        if (!array_key_exists($name, $this->definitions)) {
+            $this->logger->warning("Selected provider '{$name}' could not be found. Using Default. Please select an existing provider in the settings!");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
+        }
         $provider = $this->definitions[$name];
         if ($provider == null) {
             return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
