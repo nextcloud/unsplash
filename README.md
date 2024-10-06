@@ -48,6 +48,8 @@ You should first make sure you have a nextcloud installation up and running.
 Then you can link this app into the appfolder:
 ```sh
 # Link 
+ln ./ /var/www/html/nextcloud
+# Or wherever your cloud is.
 ```
 
 ## License
