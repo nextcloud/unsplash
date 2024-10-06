@@ -12,10 +12,10 @@ use OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\IConfig;
-use OCP\ILogger;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use OCP\Util;
+use Psr\Log\LoggerInterface;
 
 
 class BeforeTemplateRenderedEventListener implements IEventListener
@@ -28,15 +28,17 @@ class BeforeTemplateRenderedEventListener implements IEventListener
     /** @var IURLGenerator */
     private $urlGenerator;
 
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * BeforeTemplateRenderedEventListener constructor.
      *
      * @param SettingsService $settingsService
      * @param IRequest $request
+     * @param IURLGenerator $urlGenerator
+     * @param LoggerInterface $logger
      */
-    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator, ILogger $logger)
+    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator, LoggerInterface $logger)
     {
         $this->settingsService = $settingsService;
         $this->request = $request;

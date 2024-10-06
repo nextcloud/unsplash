@@ -24,7 +24,7 @@ namespace OCA\Unsplash\ProviderHandler;
 
 use OCP\Files\IAppData;
 use OCP\IConfig;
-use OCP\ILogger;
+use Psr\Log\LoggerInterface;
 use OCP\Files\NotFoundException;
 
 abstract class Provider
@@ -54,7 +54,7 @@ abstract class Provider
     /** @var IAppData */
     protected $appData;
 
-    /** @var ILogger */
+    /** @var LoggerInterface */
     protected $logger;
     /**
      * @var string
@@ -69,10 +69,11 @@ abstract class Provider
      * Provider constructor.
      *
      * @param $appName
+     * @param LoggerInterface $logger
      * @param IConfig $config
      * @param $pName
      */
-    public function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData, $pName)
+    public function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData, $pName)
     {
         $this->config = $config;
         $this->appName = $appName;

@@ -5,7 +5,7 @@ namespace OCA\Unsplash\Cron;
 use OCA\Unsplash\Services\FetchService;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\TimedJob;
-use OCP\ILogger;
+use Psr\Log\LoggerInterface;
 
 
 class ImageProviderBackgroundFetch extends TimedJob
@@ -14,7 +14,7 @@ class ImageProviderBackgroundFetch extends TimedJob
     private FetchService $fetchService;
     private $logger;
 
-    public function __construct(ITimeFactory $time, FetchService $service, ILogger $logger)
+    public function __construct(ITimeFactory $time, FetchService $service, LoggerInterface $logger)
     {
         parent::__construct($time);
         $this->fetchService = $service;

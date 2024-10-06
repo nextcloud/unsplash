@@ -31,7 +31,7 @@ use OCA\Unsplash\Provider\WikimediaCommons;
 use OCA\Unsplash\Provider\WikimediaCommonsDaily;
 use OCP\Files\IAppData;
 use OCP\IConfig;
-use OCP\ILogger;
+use Psr\Log\LoggerInterface;
 
 class ProviderDefinitions
 {
@@ -52,17 +52,18 @@ class ProviderDefinitions
     /** @var IAppData */
     private $appData;
 
-    /** @var ILogger */
+    /** @var LoggerInterface */
     private $logger;
 
     /**
      * ProviderDefinitions constructor.
      *
      * @param String $appName
+     * @param LoggerInterface $logger
      * @param IConfig $settings
      * @param IAppData $appData
      */
-    function __construct($appName, ILogger $logger, IConfig $config, IAppData $appData)
+    function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData)
     {
 
         $this->appName = $appName;
