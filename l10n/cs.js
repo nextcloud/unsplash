@@ -16,6 +16,7 @@ OC.L10N.register(
     "Keywords:" : "Klíčová slova:",
     "Set custom search terms. Separate multiple terms by comma." : "Nastavte si uživatelsky určené vzory vyhledávání. Vícero pojmů oddělujte čárkou.",
     "Token:" : "Token:",
+    "Preview:" : "Náhled:",
     "Splash: Advanced Theming" : "Splash: pokročilé opatřování motivem vzhledu",
     "You can apply effects to your background images." : "Na obrázky na pozadí je možné použít různé efekty.",
     "Enable Tint" : "Zapnout změnu odstínu",
