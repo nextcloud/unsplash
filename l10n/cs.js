@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "pod svobodnou licencí a bezplatně",
+    "These images are provided %1%s by %2%s." : "Tyto obrázky jsou poskytnuty %1%s od %2%s.",
     "under the terms of service" : "za všeobecných podmínek",
     "These images are provided by %s. Each image has it's own license." : "Tyto obrázky jsou poskytovány %s. Každý obrázek má svou vlastní licenci.",
     "Splash: Random Background Images" : "Splash: Náhodné obrázky na pozadí",
@@ -16,6 +17,7 @@ OC.L10N.register(
     "Keywords:" : "Klíčová slova:",
     "Set custom search terms. Separate multiple terms by comma." : "Nastavte si uživatelsky určené vzory vyhledávání. Vícero pojmů oddělujte čárkou.",
     "Token:" : "Token:",
+    "Set the required token. To get a token, visit:" : "Nastavte potřebný token. Získáte ho navštívením:",
     "Unsplash: Developer Account Instructions" : "Unsplash: pokyny pro vývojářský účet",
     "Preview:" : "Náhled:",
     "Refresh Cached Image" : "Znovu načíst obrázek v mezipaměti",
