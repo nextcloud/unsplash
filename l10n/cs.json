@@ -17,6 +17,7 @@
     "Token:" : "Token:",
     "Set the required token. To get a token, visit:" : "Nastavte potřebný token. Získáte ho navštívením:",
     "Unsplash: Developer Account Instructions" : "Unsplash: pokyny pro vývojářský účet",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "Na odkazované stránce s pokyny zaregistrujte aplikaci. Nemělo by být potřebné uplatnit pro produkci. Zde použijte jejich token.",
     "Preview:" : "Náhled:",
     "Refresh Cached Image" : "Znovu načíst obrázek v mezipaměti",
     "Splash: Advanced Theming" : "Splash: pokročilé opatřování motivem vzhledu",
