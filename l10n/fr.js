@@ -17,6 +17,7 @@ OC.L10N.register(
     "Set custom search terms. Separate multiple terms by comma." : "Configurer des termes de recherche personnalisés, séparés par des virgules.",
     "Token:" : "Jeton :",
     "Preview:" : "Aperçu:",
+    "Refresh Cached Image" : "Actualiser l'image mise en cache",
     "Splash: Advanced Theming" : "Splash : personnalisation avancée",
     "You can apply effects to your background images." : "Vous pouvez appliquer des effets à vos images d'arrière-plan.",
     "Enable Tint" : "Activer la teinte",
