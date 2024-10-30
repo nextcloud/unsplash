@@ -17,6 +17,7 @@ OC.L10N.register(
     "Keywords:" : "Mots-clés : ",
     "Set custom search terms. Separate multiple terms by comma." : "Configurer des termes de recherche personnalisés, séparés par des virgules.",
     "Token:" : "Jeton :",
+    "Set the required token. To get a token, visit:" : "Définissez le token requis. Pour obtenir un token, visitez:",
     "Unsplash: Developer Account Instructions" : "Unsplash: instructions pour le compte développeur",
     "Preview:" : "Aperçu:",
     "Refresh Cached Image" : "Actualiser l'image mise en cache",
