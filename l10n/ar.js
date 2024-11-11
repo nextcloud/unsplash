@@ -17,7 +17,7 @@ OC.L10N.register(
     "Keywords:" : "الكلمات الدلالية:",
     "Set custom search terms. Separate multiple terms by comma." : "تعيين مصطلحات البحث المخصصة. الفصل بين المصطلحات المتعددة بفاصلة.",
     "Token:" : "أَمَارَة Token:",
-    "Set the required token. To get a token, visit:" : "عيِّن الأَمَارَة token المطلوبة. للحصول على أَمَارَة، إذهب إلى: ",
+    "Set the required token. To get a token, visit:" : "تعيين الرمز المطلوب Token. للحصول على أَمَارَة، إذهب إلى: ",
     "Unsplash: Developer Account Instructions" : "موقع أرشيف الصور unsplash: تعليمات حول حساب المُطوٍّر",
     "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "في صفحة التعليمات المرتبطة، قم بتسجيل طلب. لا يلزمك التقدم بطلب للإنتاج. استخدم أَمَارَتَهم token هنا.",
     "Preview:" : "مُعاينة:",
