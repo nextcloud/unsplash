@@ -1,0 +1,13 @@
+
+lphp:S116)"XRename this field "$DEFAULT_SEARCH" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(ªîà
+ophp:S116*"[Rename this field "$ALLOW_CUSTOMIZING" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(³Š°÷
+kphp:S116+"WRename this field "$REQUIRES_AUTH" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(‡óè
+kphp:S116,"WRename this field "$DEFAULT_TOKEN" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(¡¬Ú½
+lphp:S116-"SRename this field "$IS_CACHED" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ğå»®øÿÿÿÿ
+hphp:S116."TRename this field "$CACHED_URL" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(€òÏ½
+wphp:S116/"^Rename this field "$DEFAULT_METADATA_URL" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(á¸öˆøÿÿÿÿ
+k	php:S1192]"QDefine a constant instead of duplicating this literal "splash/provider/" 3 times.(ÒëÈ²üÿÿÿÿ
+L	php:S1124Õ"7Reorder the modifiers to comply with the PSR2 standard.(„ßÑ7
+R	php:S1124Û"7Reorder the modifiers to comply with the PSR2 standard.(ı×À„üÿÿÿÿ
+M	php:S1124à"7Reorder the modifiers to comply with the PSR2 standard.(›“ûã
+y	php:S1488«"^Immediately return this expression instead of assigning it to the temporary variable "$token".(«é£Íÿÿÿÿÿ
