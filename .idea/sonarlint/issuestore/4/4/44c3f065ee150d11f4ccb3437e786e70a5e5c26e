@@ -1,6 +1,6 @@
 
-I	php:S1135 "4Complete the task associated to this "TODO" comment.(н╣┴Ь
-qphp:S116#"XRename this field "$DEFAULT_SEARCH" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Я╦рг·    
-ophp:S116$"[Rename this field "$ALLOW_CUSTOMIZING" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(│К░ў
-lphp:S116%"SRename this field "$IS_CACHED" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(╨х╗о°    
-wphp:S116&"^Rename this field "$DEFAULT_METADATA_URL" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ж╩и╨°    
+o	php:S1135 "4Complete the task associated to this "TODO" comment.(н╣┴ЬJ$1c0a5f43-3bac-4f1a-b554-b75dae65ce69
+Чphp:S116#"XRename this field "$DEFAULT_SEARCH" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Я╦рг·    J$84abd453-e982-4f88-b76b-201b2cc71b0b
+Хphp:S116$"[Rename this field "$ALLOW_CUSTOMIZING" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(│К░ўJ$e8cae255-556f-4fba-9804-b9c902b41b63
+Тphp:S116%"SRename this field "$IS_CACHED" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(╨х╗о°    J$f7d0de68-b514-46aa-9355-f7cea73475b7
+Эphp:S116&"^Rename this field "$DEFAULT_METADATA_URL" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ж╩и╨°    J$6d79eeb4-52c9-4813-983c-faa0433b2398

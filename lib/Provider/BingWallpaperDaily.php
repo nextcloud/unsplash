@@ -24,6 +24,7 @@ namespace OCA\Unsplash\Provider;
 
 use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
+use OCA\Unsplash\ProviderHandler\ProviderMetadata;
 
 class BingWallpaperDaily extends Provider
 {
@@ -31,13 +32,14 @@ class BingWallpaperDaily extends Provider
      * Indicates whether customization is allowed.
      * @var bool
      */
-    public bool $ALLOW_CUSTOMIZING = false;
+    public bool $ALLOW_CUSTOMIZING = true;
 
     /**
      * Indicates if images are cached.
      * @var bool
      */
-    public bool $IS_CACHED = true;
+    public bool $IS_CACHED = false;
+
 
     /**
      * Default metadata URL for Bing wallpapers.
@@ -78,22 +80,14 @@ class BingWallpaperDaily extends Provider
         if ($bing_daily_image_json !== false) {
             $matches = json_decode($bing_daily_image_json);
             if (isset($matches->images[0]->url)) {
-                $bing_daily_img_url = 'https://www.bing.com' . $matches->images[0]->url;
-
-                // Fetch the image data
-                $img = file_get_contents($bing_daily_img_url);
-                if ($img !== false) {
-                    $data = 'data:image/jpg;base64,' . base64_encode($img);
-
-                    return $data;
-                }
 
                 // If unable to encode, return the image URL
-                return $bing_daily_img_url;
+                return 'https://www.bing.com' . $matches->images[0]->url;
             }
         }
 
         // Return default image if no Bing image is found
         return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
     }
+
 }

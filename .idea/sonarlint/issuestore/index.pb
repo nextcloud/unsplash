@@ -42,3 +42,11 @@ M
 lib/Services/FetchService.php,f/e/fe6e92c542d061d6aab2c90a289e46a41ee3b919
 P
  lib/Services/SettingsService.php,0/9/09932148abb3773d73c6cdae0cb2f96a319bb39e
+O
+lib/Provider/NextcloudImage.php,2/f/2f8aee42d410753a67711a512f335ee90cfeb075
+L
+lib/Provider/UnsplashAPI.php,a/a/aa7683bf5aaf165e16de70ffa91bcfd7811977ce
+Q
+!lib/Provider/WikimediaCommons.php,9/5/95fccc682dbd7926ae0f500577204698ed56f371
+L
+lib/Provider/WallhavenCC.php,9/5/9598ee4c523faf1cab5d14c904fa02c96c7c62dc
