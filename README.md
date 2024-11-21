@@ -23,13 +23,14 @@ Show a new colorful image on your Loginscreen every day!
 
 
 ## Features
-| Provider                                                                                                              |
-|:----------------------------------------------------------------------------------------------------------------------|
-| Nextcloud Background                                                                                                  |
-| [Unsplash API](https://unsplash.com/developers)                                                                       |
-| [WallhavenCC](https://wallhaven.cc)                                                                                   |
-| [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page)                                                             |
-| [Wikimedia Picture of the Day](https://commons.wikimedia.org/wiki/Commons:Picture_of_the_day)                         |
+| Provider                                                                                           |
+|:---------------------------------------------------------------------------------------------------|
+| Nextcloud Background                                                                               |
+| [Unsplash API](https://unsplash.com/developers)                                                    |
+| [WallhavenCC](https://wallhaven.cc)                                                                |
+| [Wikimedia](https://commons.wikimedia.org/wiki/Main_Page)                                          |
+| [Wikimedia Picture of the Day](https://commons.wikimedia.org/wiki/Commons:Picture_of_the_day)      |
+| [Bing Wallpaper Picture of the Day](https://bingwallpaper.microsoft.com/mac/en/bing/bing-wallpaper) |
 
 
 ## Settings
