@@ -1,0 +1,44 @@
+
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+@
+appinfo/info.xml,0/8/089600f3b92d573332db89a8bee0151405b62987
+B
+appinfo/routes.php,d/4/d4b4eb6004832e3fef4fd95974e80be131b7eeed
+^
+.templates/partials/licenseWikimediaCommons.php,e/2/e27605a8903fd67f6e387eaee5968cce1bc033a1
+[
++templates/partials/LicenceBingWallpaper.php,d/1/d173c446a206e960dba5a3ef73940b8edc1822df
+[
++templates/partials/licenceBingWallpaper.php,f/e/fefdbc6bf41ca8ec72c4cfb494e23e227aa33764
+Y
+)templates/partials/licenseUnsplashAPI.php,e/6/e63846c8adb7911215ce614a832f260166220ca6
+:
+
+l10n/br.js,1/2/12e897bf5984b197dfad140b883d5dd4ec3e32fd
+?
+l10n/en_GB.json,7/e/7e5c8096ef999fa3ee2b9419e5cbae3483b6d2ee
+R
+"lib/Controller/ImageController.php,3/5/35d1299479b05af9f9ecc42ca42dc4a3a1bb8f56
+Z
+*lib/Controller/AdminSettingsController.php,2/9/2994e6d7f37c6263875c4e13a8ee3cc17fb0629e
+Y
+)lib/Cron/ImageProviderBackgroundFetch.php,6/b/6b39fc530ec0bd13a40768008b26c323b7127b26
+k
+;lib/EventListener/AddContentSecurityPolicyEventListener.php,b/0/b0fd323c7a02237db553c318723dae3e0a6d96df
+i
+9lib/EventListener/BeforeTemplateRenderedEventListener.php,9/5/956044a3ae768a5d305ac64966a372090698915a
+S
+#lib/Provider/BingWallpaperDaily.php,9/b/9bf93729344b3778e82dab24012d24149470ece3
+V
+&lib/Provider/WikimediaCommonsDaily.php,4/4/44c3f065ee150d11f4ccb3437e786e70a5e5c26e
+P
+ lib/ProviderHandler/Provider.php,7/7/77d5f00da14d9d19762a2325307e54e0809445ea
+[
++lib/ProviderHandler/ProviderDefinitions.php,e/7/e7ab7b6c2d8e7966884e53c06d5e9fc6dcbbca55
+X
+(lib/ProviderHandler/ProviderMetadata.php,b/d/bd625fc4e0ff1f1fcb6e59198aa793f90e02017e
+M
+lib/Services/FetchService.php,f/e/fe6e92c542d061d6aab2c90a289e46a41ee3b919
+P
+ lib/Services/SettingsService.php,0/9/09932148abb3773d73c6cdae0cb2f96a319bb39e

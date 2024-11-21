@@ -1,0 +1,14 @@
+
+P	php:S11421"<This method has 4 returns, which is more than the 3 allowed.(· âr
+h	php:S37761"TRefactor this function to reduce its Cognitive Complexity from 30 to the 15 allowed.(· âr
+P	php:S17938"<Replace this "else if" keyword sequence by "elseif" keyword.(éœÈs
+Q	php:S1793:"<Replace this "else if" keyword sequence by "elseif" keyword.(×Î”Ç
+Q	php:S1793="<Replace this "else if" keyword sequence by "elseif" keyword.(ä–¡„
+V	php:S1793?"<Replace this "else if" keyword sequence by "elseif" keyword.(Í·†¾ÿÿÿÿÿ
+V	php:S1793E"<Replace this "else if" keyword sequence by "elseif" keyword.(á‚ºîüÿÿÿÿ
+V	php:S1793G"<Replace this "else if" keyword sequence by "elseif" keyword.(îô†Œÿÿÿÿÿ
+Q	php:S1793I"<Replace this "else if" keyword sequence by "elseif" keyword.(ëðóÞ
+V	php:S1793O"<Replace this "else if" keyword sequence by "elseif" keyword.(¼¹‡üÿÿÿÿ
+V	php:S1793Q"<Replace this "else if" keyword sequence by "elseif" keyword.(Õ™ÞÞüÿÿÿÿ
+Dphp:S1213"0Add curly braces around the nested statement(s).(Î¨Üï
+Dphp:S1214"0Add curly braces around the nested statement(s).(›¸ÇÁ
