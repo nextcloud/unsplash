@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Splash" : "Splash",
     "under an open license free of charge" : "ئوچۇق ئىجازەتنامىدە ھەقسىز",
-    "These images are provided %1%s by %2%s." : "بۇ رەسىملەر% 2% s تەرىپىدىن% 1% s بىلەن تەمىنلەنگەن.",
+    "These images are provided %1%s by %2%s." : "بۇ رەسىملەر%2% s تەرىپىدىن%1% s بىلەن تەمىنلەنگەن.",
     "under the terms of service" : "مۇلازىمەت شەرتى ئاستىدا",
     "These images are provided by %s. Each image has it's own license." : "بۇ رەسىملەرنى% s تەمىنلىگەن. ھەر بىر رەسىمنىڭ ئۆزىگە خاس ئىجازەتنامىسى بار.",
     "Splash: Random Background Images" : "چاقماق: ئىختىيارى تەگلىك رەسىملەر",
