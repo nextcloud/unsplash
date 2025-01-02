@@ -23,6 +23,7 @@
 
 namespace OCA\Unsplash\ProviderHandler;
 
+use OCA\Unsplash\Provider\BingWallpaperDaily;
 use OCA\Unsplash\Provider\NextcloudImage;
 use OCA\Unsplash\Provider\UnsplashAPI;
 use OCA\Unsplash\Provider\WallhavenCC;
@@ -77,6 +78,7 @@ class ProviderDefinitions
         $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
         $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day");
         $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
+        $tmp[] = new BingWallpaperDaily($this->appName, $logger, $this->config, $appData, "Bing Wallpaper - Picture of the Day");
 
         foreach ($tmp as &$value) {
             $this->definitions[$value->getName()] = $value;
