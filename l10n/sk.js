@@ -12,6 +12,7 @@ OC.L10N.register(
     "Set random image as login background" : "Nastaviť náhodný obrázok ako pozadie pri prihlásení",
     "Set random image as dashboard background" : "Nastaviť náhodný obrázok ako pozadie dashboardu",
     "Keywords:" : "Kľúčové slová:",
+    "Preview:" : "Náhľad:",
     "Splash: Advanced Theming" : "Splash: Pokročilé motívy",
     "You can apply effects to your background images." : "Na obrázky pozadia môžete použiť efekty.",
     "Enable Tint" : "Povoliť Odtieň",
