@@ -8,7 +8,7 @@ OC.L10N.register(
     "These images are provided by %s. Each image has it's own license." : "Estas imaxes son fornecidas por %s. Cada imaxe ten a súa propia licenza.",
     "Splash: Random Background Images" : "Splash: imaxes de fondo ao chou",
     "Saved" : "Gardado",
-    "Failed" : "Fallou",
+    "Failed" : "Fallado",
     "You can customize your instance with random background images." : "Pode personalizar a súa instancia con imaxes de fondo ao chou.",
     "Here you can specify where random backgrounds should be used by default." : "Aquí pode especificar onde se deben usar de xeito predeterminado os fondos ao chou",
     "Set random image as login background" : "Definir unha imaxe ao chou como fondo de acceso",
