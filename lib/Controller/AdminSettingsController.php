@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -21,21 +24,19 @@ class AdminSettingsController extends Controller
 {
 
     /**
-     * @var SettingsService
-     */
-    protected $settings;
-
-    /**
-     * PersonalSettingsController constructor.
+     * AdminSettingsController constructor.
      *
-     * @param                 $appName
-     * @param IRequest $request
-     * @param SettingsService $settings
+     * @param    $appName
+     * @param    IRequest $request
+     * @param    SettingsService $settings
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings)
+    public function __construct(
+        $appName,
+        IRequest $request,
+        private SettingsService $settings,
+    )
     {
         parent::__construct($appName, $request);
-        $this->settings = $settings;
     }
 
     /**
@@ -46,10 +47,14 @@ class AdminSettingsController extends Controller
      *
      * @return JSONResponse
      */
-    public function set(string $key, $value): JSONResponse
+    public function set(string $key, bool|string|int|array $value): JSONResponse
     {
-        if (strtolower($value) === 'true') $value = true;
-        if (strtolower($value) === 'false') $value = false;
+        if (strtolower($value) === 'true') {
+            $value = true;
+        }
+        if (strtolower($value) === 'false') {
+            $value = false;
+        }
 
         if ($key === 'style/login') {
             $this->settings->setServerStyleLoginEnabled($value);
@@ -101,7 +106,8 @@ class AdminSettingsController extends Controller
         return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
     }
 
-    private function generateProviderResponse(string $value): JSONResponse {
+    private function generateProviderResponse(string $value): JSONResponse
+    {
 
         $cached = $this->settings->isCached();
         $provider = $this->settings->getSelectedImageProvider();
