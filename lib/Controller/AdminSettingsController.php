@@ -49,17 +49,26 @@ class AdminSettingsController extends Controller
      */
     public function set(string $key, bool|string|int|array|null $value): JSONResponse
     {
-        if (isset($value) && strtolower($value) === 'true') {
+        // TODO: Refactor all the boolean handling (will need to be fixed in SettingsService at same time) and streamline all the code below
+        if (isset($value) && is_string($value) && strtolower($value) === 'true') {
             $value = true;
         }
-        if (isset($value) && strtolower($value) === 'false') {
+        if (isset($value) && is_string($value) && strtolower($value) === 'false') {
             $value = false;
         }
 
-        if ($key === 'style/login') {
-            $this->settings->setServerStyleLoginEnabled($value);
-        } else if ($key === 'style/dashboard') {
-            $this->settings->setServerStyleDashboardEnabled($value);
+        if ($key === 'style/login') { // TODO: $value should be sanity checked too
+            if ($value) {
+                $this->settings->setServerStyleLoginEnabled(1);
+            } else {
+                $this->settings->setServerStyleLoginEnabled(0);
+            }
+        } else if ($key === 'style/dashboard') { // TODO: $value should be sanity checked too
+            if ($value) {
+                $this->settings->setServerStyleDashboardEnabled(1);
+            } else {
+                $this->settings->setServerStyleDashboardEnabled(0);
+            }
         } else if ($key === 'provider/provider') {
             $this->settings->setImageProviderSanitized(filter_var($value, FILTER_SANITIZE_STRING));
             return $this->generateProviderResponse($value);
