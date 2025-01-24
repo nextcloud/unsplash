@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -19,38 +22,30 @@ use OCP\Files\IAppData;
 use OCP\IRequest;
 
 /**
- * Class ProxyController
+ * Class ImageController
  *
  * @package OCA\Unsplash\Controller
  */
 class ImageController extends Controller
 {
-
-    private $settings;
-
-    /** @var ITimeFactory */
-    private $timeFactory;
-
-    /** @var IAppData */
-    private $appData;
-    private FetchService $fetchService;
-
-
     /**
-     * ProxyController constructor.
+     * ImageController constructor.
      *
      * @param                 $appName
      * @param IRequest $request
      * @param SettingsService $settings
      * @param ITimeFactory $timeFactory
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings, ITimeFactory $timeFactory, IAppData $appData, FetchService $service)
+    public function __construct(
+        $appName,
+        IRequest $request,
+        private SettingsService $settings,
+        private ITimeFactory $timeFactory,
+        private IAppData $appData,
+        private FetchService $service,
+    )
     {
         parent::__construct($appName, $request);
-        $this->settings = $settings;
-        $this->timeFactory = $timeFactory;
-        $this->appData = $appData;
-        $this->fetchService = $service;
     }
 
     /**
@@ -83,7 +78,15 @@ class ImageController extends Controller
         $provider = $this->settings->getSelectedImageProvider();
         $metadata = $provider->getMetadata();
 
-        return new JSONResponse(['url' => $metadata->getImageUrl(), 'author' => $metadata->getImageAuthor(), 'attribution' => $metadata->getAttributionUrl(), 'description' => $metadata->getImageDescription(), 'source' => $metadata->getSource()]);
+        return new JSONResponse(
+            [
+                'url' => $metadata->getImageUrl(), 
+                'author' => $metadata->getImageAuthor(),
+                'attribution' => $metadata->getAttributionUrl(),
+                'description' => $metadata->getImageDescription(),
+                'source' => $metadata->getSource()
+            ]
+        );
     }
 
     /**

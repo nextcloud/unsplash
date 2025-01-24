@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unpslash App
  * and licensed under the AGPL.
@@ -15,21 +18,9 @@ use OCP\IConfig;
 use OCP\IRequest;
 use OCP\IURLGenerator;
 use OCP\Util;
-use Psr\Log\LoggerInterface;
-
 
 class BeforeTemplateRenderedEventListener implements IEventListener
 {
-
-    /** @var SettingsService */
-    protected $settingsService;
-    /** @var IRequest */
-    protected $request;
-    /** @var IURLGenerator */
-    private $urlGenerator;
-
-    private LoggerInterface $logger;
-
     /**
      * BeforeTemplateRenderedEventListener constructor.
      *
@@ -38,12 +29,12 @@ class BeforeTemplateRenderedEventListener implements IEventListener
      * @param IURLGenerator $urlGenerator
      * @param LoggerInterface $logger
      */
-    public function __construct(SettingsService $settingsService, IRequest $request, IURLGenerator $urlGenerator, LoggerInterface $logger)
+    public function __construct(
+        private SettingsService $settingsService,
+        private IRequest $request,
+        private IURLGenerator $urlGenerator,
+    )
     {
-        $this->settingsService = $settingsService;
-        $this->request = $request;
-        $this->urlGenerator = $urlGenerator;
-        $this->logger = $logger;
     }
 
     /**
@@ -98,7 +89,7 @@ class BeforeTemplateRenderedEventListener implements IEventListener
      * @param String $target
      * @return void
      */
-    private function addHeaderFor(string $target)
+    private function addHeaderFor(string $target): void
     {
         $linkToCSS = $this->urlGenerator->linkToRouteAbsolute('unsplash.css.' . $target);
 
@@ -114,7 +105,7 @@ class BeforeTemplateRenderedEventListener implements IEventListener
      * Insert links to metadata scripts and styles
      * @return void
      */
-    private function addMetadata()
+    private function addMetadata(): void
     {
         Util::addScript('unsplash', "metadata");
         Util::addStyle('unsplash', "metadata");

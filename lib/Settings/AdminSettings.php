@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -18,27 +21,17 @@ use OCP\Settings\ISettings;
  */
 class AdminSettings implements ISettings
 {
-
-    /**
-     * @var IURLGenerator
-     */
-    protected $urlGenerator;
-
-    /**
-     * @var SettingsService
-     */
-    protected $settings;
-
     /**
      * AdminSection constructor.
      *
      * @param IURLGenerator $urlGenerator
      * @param SettingsService $settings
      */
-    public function __construct(IURLGenerator $urlGenerator, SettingsService $settings)
+    public function __construct(
+        private IURLGenerator $urlGenerator,
+        private SettingsService $settings,
+    )
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->settings = $settings;
     }
 
     /**

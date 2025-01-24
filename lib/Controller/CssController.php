@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -16,32 +19,28 @@ use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\IRequest;
 
 /**
- * Class ProxyController
+ * Class CssController
  *
  * @package OCA\Unsplash\Controller
  */
 class CssController extends Controller
 {
-
-    private $settings;
-
-    /** @var ITimeFactory */
-    private $timeFactory;
-
-
     /**
-     * ProxyController constructor.
+     * CssController constructor.
      *
-     * @param                 $appName
-     * @param IRequest $request
-     * @param SettingsService $settings
-     * @param ITimeFactory $timeFactory
+     * @param    $appName
+     * @param    IRequest $request
+     * @param    SettingsService $settings
+     * @param    ITimeFactory $timeFactory
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings, ITimeFactory $timeFactory)
+    public function __construct(
+        $appName,
+        IRequest $request,
+        private SettingsService $settings,
+        private ITimeFactory $timeFactory,
+    )
     {
         parent::__construct($appName, $request);
-        $this->settings = $settings;
-        $this->timeFactory = $timeFactory;
     }
 
     /**
@@ -84,7 +83,7 @@ class CssController extends Controller
      * @param $prefix
      * @return string
      */
-    private function mediaQuery($prefix)
+    private function mediaQuery(string $prefix): string
     {
         $css_small = $this->innerCSS($prefix, Provider::SIZE_SMALL);
         $css_normal = $this->innerCSS($prefix, Provider::SIZE_NORMAL);
@@ -110,7 +109,7 @@ class CssController extends Controller
      * @param $size
      * @return string
      */
-    private function innerCSS($prefix, $size)
+    private function innerCSS($prefix, $size): string
     {
         $imagePath = $this->settings->headerbackgroundLink($size);
         $css = $prefix . " { background-image: url('$imagePath') !important;";

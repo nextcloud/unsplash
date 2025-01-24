@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unpslash App
  * and licensed under the AGPL.
@@ -15,18 +18,14 @@ use OCP\Security\CSP\AddContentSecurityPolicyEvent;
 class AddContentSecurityPolicyEventListener implements IEventListener
 {
     /**
-     * @var SettingsService
-     */
-    protected $settingsService;
-
-    /**
-     * BeforeTemplateRenderedEventListener constructor.
+     * AddContentSecurityPolicyEventListener constructor.
      *
      * @param SettingsService $settingsService
      */
-    public function __construct(SettingsService $settingsService)
+    public function __construct(
+        private SettingsService $settings,
+    )
     {
-        $this->settingsService = $settingsService;
     }
 
     /**
@@ -38,12 +37,10 @@ class AddContentSecurityPolicyEventListener implements IEventListener
             return;
         }
 
-        $settings = $this->settingsService;
-
-        if ($settings->getUserStyleDashboardEnabled() || $settings->getServerStyleLoginEnabled()) {
+        if ($this->settings->getUserStyleDashboardEnabled() || $this->settings->getServerStyleLoginEnabled()) {
             $policy = new ContentSecurityPolicy();
 
-            $urls = $settings->getWhitelistingUrlsForSelectedProvider();
+            $urls = $this->settings->getWhitelistingUrlsForSelectedProvider();
             foreach ($urls as &$value) {
                 $policy->addAllowedImageDomain($value);
             }
