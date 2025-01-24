@@ -47,7 +47,7 @@ class AdminSettingsController extends Controller
      *
      * @return JSONResponse
      */
-    public function set(string $key, bool|string|int|array $value): JSONResponse
+    public function set(string $key, bool|string|int|array|null $value): JSONResponse
     {
         if (strtolower($value) === 'true') {
             $value = true;
