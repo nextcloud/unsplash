@@ -4,11 +4,11 @@
  * and licensed under the AGPL.
  */
 
+use OCP\Util;
 
 if (($_['dashboard'] || $_['login']) && ($_['selectedProvider'] != "" || $_['selectedProvider'] != "Nextcloud Image")):
 
-    script('unsplash', 'user');
-    style('unsplash', 'settings');
+    Util::addStyle('unsplash', 'settings');
 
     ?>
 
