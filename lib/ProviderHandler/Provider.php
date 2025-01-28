@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @copyright Copyright (c) 2019 Felix Nüsse <felix.nuesse@t-online.de>
  *
@@ -18,7 +21,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 
 namespace OCA\Unsplash\ProviderHandler;
 
@@ -46,25 +48,6 @@ abstract class Provider
     public string $CACHED_URL = "/index.php/apps/unsplash/api/image";
     public string $DEFAULT_METADATA_URL="";
 
-
-    /**
-     * @var IConfig
-     */
-    protected $config;
-    /** @var IAppData */
-    protected $appData;
-
-    /** @var LoggerInterface */
-    protected $logger;
-    /**
-     * @var string
-     */
-    protected $appName;
-    /**
-     * @var string
-     */
-    private $providerName;
-
     /**
      * Provider constructor.
      *
@@ -73,13 +56,14 @@ abstract class Provider
      * @param IConfig $config
      * @param $pName
      */
-    public function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData, $pName)
+    public function __construct(
+        protected string $appName,
+        protected LoggerInterface $logger,
+        protected IConfig $config,
+        protected IAppData $appData,
+        protected string $providerName,
+    )
     {
-        $this->config = $config;
-        $this->appName = $appName;
-        $this->providerName = $pName;
-        $this->appData = $appData;
-        $this->logger = $logger;
     }
 
     /**
@@ -234,7 +218,9 @@ abstract class Provider
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $host);
-        curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        if ($this->config->getSystemValueBool('debug', false)) {
+            curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        }
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_AUTOREFERER, false);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
