@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -12,7 +15,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\Settings\ISettings;
 
 /**
- * Class PersonalSettingsController
+ * Class PersonalSettings
  *
  * @package OCA\Unsplash\Controller\Settings
  */
@@ -20,26 +23,16 @@ class PersonalSettings implements ISettings
 {
 
     /**
-     * @var SettingsService
-     */
-    protected $settings;
-
-    /**
-     * @var OC_Defaults
-     */
-    protected $theming;
-
-
-    /**
-     * AdminSection constructor.
+     * PersonalSection constructor.
      *
      * @param SettingsService $settings
      * @param OC_Defaults $theming
      */
-    public function __construct(SettingsService $settings, OC_Defaults $theming)
+    public function __construct(
+        private SettingsService $settings,
+        private OC_Defaults $theming,
+    )
     {
-        $this->settings = $settings;
-        $this->theming = $theming;
     }
 
     /**
@@ -48,7 +41,7 @@ class PersonalSettings implements ISettings
      *
      * @return TemplateResponse
      */
-    public function getForm()
+    public function getForm(): TemplateResponse
     {
 
         $dashboard = $this->settings->getServerStyleDashboardEnabled();
@@ -64,13 +57,13 @@ class PersonalSettings implements ISettings
             'label' => $this->theming->getEntity(),
             'dashboard' => $dashboard,
             'login' => $login,
-        ], '');
+        ], TemplateResponse::RENDER_AS_BLANK);
     }
 
     /**
      * @return string
      */
-    public function getSection()
+    public function getSection(): string
     {
         return "theming";
     }

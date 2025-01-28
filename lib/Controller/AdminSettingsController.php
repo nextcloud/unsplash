@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the Unsplash App
  * and licensed under the AGPL.
@@ -21,21 +24,19 @@ class AdminSettingsController extends Controller
 {
 
     /**
-     * @var SettingsService
-     */
-    protected $settings;
-
-    /**
-     * PersonalSettingsController constructor.
+     * AdminSettingsController constructor.
      *
-     * @param                 $appName
-     * @param IRequest $request
-     * @param SettingsService $settings
+     * @param    $appName
+     * @param    IRequest $request
+     * @param    SettingsService $settings
      */
-    public function __construct($appName, IRequest $request, SettingsService $settings)
+    public function __construct(
+        $appName,
+        IRequest $request,
+        private SettingsService $settings,
+    )
     {
         parent::__construct($appName, $request);
-        $this->settings = $settings;
     }
 
     /**
@@ -46,15 +47,28 @@ class AdminSettingsController extends Controller
      *
      * @return JSONResponse
      */
-    public function set(string $key, $value): JSONResponse
+    public function set(string $key, bool|string|int|array|null $value): JSONResponse
     {
-        if (strtolower($value) === 'true') $value = true;
-        if (strtolower($value) === 'false') $value = false;
+        // TODO: Refactor all the boolean handling (will need to be fixed in SettingsService at same time) and streamline all the code below
+        if (isset($value) && is_string($value) && strtolower($value) === 'true') {
+            $value = true;
+        }
+        if (isset($value) && is_string($value) && strtolower($value) === 'false') {
+            $value = false;
+        }
 
-        if ($key === 'style/login') {
-            $this->settings->setServerStyleLoginEnabled($value);
-        } else if ($key === 'style/dashboard') {
-            $this->settings->setServerStyleDashboardEnabled($value);
+        if ($key === 'style/login') { // TODO: $value should be sanity checked too
+            if ($value) {
+                $this->settings->setServerStyleLoginEnabled(1);
+            } else {
+                $this->settings->setServerStyleLoginEnabled(0);
+            }
+        } else if ($key === 'style/dashboard') { // TODO: $value should be sanity checked too
+            if ($value) {
+                $this->settings->setServerStyleDashboardEnabled(1);
+            } else {
+                $this->settings->setServerStyleDashboardEnabled(0);
+            }
         } else if ($key === 'provider/provider') {
             $this->settings->setImageProviderSanitized(filter_var($value, FILTER_SANITIZE_STRING));
             return $this->generateProviderResponse($value);
@@ -101,7 +115,8 @@ class AdminSettingsController extends Controller
         return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
     }
 
-    private function generateProviderResponse(string $value): JSONResponse {
+    private function generateProviderResponse(string $value): JSONResponse
+    {
 
         $cached = $this->settings->isCached();
         $provider = $this->settings->getSelectedImageProvider();
