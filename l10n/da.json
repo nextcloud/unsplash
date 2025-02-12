@@ -1,5 +1,6 @@
 { "translations": {
     "Saved" : "Gemt",
-    "Failed" : "Mislykkede"
+    "Failed" : "Mislykkede",
+    "Token:" : "Token:"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
