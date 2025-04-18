@@ -20,7 +20,7 @@ OC.L10N.register(
     "You can apply effects to your background images." : "Puede aplicar efectos a sus imágenes de fondo.",
     "Enable Tint" : "Habilitar tinte",
     "Set the vibrancy of the color" : "Establecer la vitalidad del color",
-    "Set the blur of the image" : "Establecer el difuminado de la imagen",
+    "Set the blur of the image" : "Establecer el desenfoque de la imagen",
     "Splash: High Visibility" : "Splash: Alta visibilidad",
     "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Puede habilitar un modo de alta visibilidad por razones legales. Esto resaltará los enlaces Privacidad y Protección de Datos en la página de inicio de sesión.",
     "Enable High-Visibility Mode" : "Habilitar el modo de alta visibilidad",
