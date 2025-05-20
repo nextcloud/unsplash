@@ -1,5 +1,26 @@
 # Changelog
 
+## 3.1.0 - 2025-05-20
+### What's Changed
+* Add NC 31 support by @cociweb in https://github.com/nextcloud/unsplash/pull/165
+* Add Bing Daily Wallpaper by @brucetruth in https://github.com/nextcloud/unsplash/pull/155
+
+### Fixed
+* fix(settings): swap deprecated `style()` for `addStyle()` + fix for missing `user.js` resource by @joshtrichards in https://github.com/nextcloud/unsplash/pull/158
+* fix(provider): Hide verbose curl output behind `debug` by @joshtrichards in https://github.com/nextcloud/unsplash/pull/162
+
+### Other
+* chore(routes): eliminate usage of deprecated `registerRoutes()` by @joshtrichards in https://github.com/nextcloud/unsplash/pull/157
+* refactor: Use constructor property promotion by @joshtrichards in https://github.com/nextcloud/unsplash/pull/159
+* chore: Move to IBootstrap and refactor Application.php by @joshtrichards in https://github.com/nextcloud/unsplash/pull/160
+
+### New Contributors
+* @joshtrichards made their first contribution in https://github.com/nextcloud/unsplash/pull/157
+* @cociweb made their first contribution in https://github.com/nextcloud/unsplash/pull/165
+* @brucetruth made their first contribution in https://github.com/nextcloud/unsplash/pull/155
+
+**Full Changelog**: https://github.com/nextcloud/unsplash/compare/v3.0.3...v3.1.0
+
 ## 3.0.3 - 2024-11-09
 ### What did we do this time?
 - Introduced compatibility with nextcloud 30
