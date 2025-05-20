@@ -1,7 +1,7 @@
 # Splash - Random [Nextcloud](https://nextcloud.com) backgrounds!
 
-[![license: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://github.com/nextcloud/unsplash/blob/master/LICENSE.md) [![Latest Downloads](https://img.shields.io/github/downloads/nextcloud/unsplash/latest/total
-)](https://github.com/nextcloud/unsplash/releases) [![GitHub release](https://img.shields.io/github/v/release/nextcloud/unsplash?include_prereleases)](https://github.com/nextcloud/unsplash/releases/latest)
+[![license: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://github.com/nextcloud/unsplash/blob/master/LICENSE.md) [![Latest Downloads](https://img.shields.io/github/downloads/nextcloud-releases/unsplash/latest/total
+)](https://img.shields.io/github/downloads/nextcloud-releases/unsplash) [![GitHub release](https://img.shields.io/github/v/release/nextcloud/unsplash?include_prereleases)](https://github.com/nextcloud/unsplash/releases/latest)
 ![supportive flags](https://img.shields.io/badge/support-🇺🇦_🏳️‍⚧_🏳️‍🌈-4aad4e)
 
 Show a new colorful image on your Loginscreen every day!
