@@ -1,0 +1,12 @@
+.drone
+.git
+.github
+.gitignore
+.l10nignore
+.nextcloudignore
+.scrutinizer.yml
+.travis.yml
+.tx
+krankerl.toml
+Makefile
+screenshots
