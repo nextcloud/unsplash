@@ -19,8 +19,8 @@
     <website>https://github.com/nextcloud/unsplash/</website>
     <bugs>https://github.com/nextcloud/unsplash/issues</bugs>
     <repository type="git">https://github.com/nextcloud/unsplash.git</repository>
-    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash.jpg</screenshot>
-    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/unsplash-header.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/.meta/unsplash.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/.meta/unsplash-header.jpg</screenshot>
     <dependencies>
         <php min-version="8.0" max-version="8.4"/>
         <nextcloud min-version="26" max-version="31"/>
