@@ -1,5 +1,50 @@
 # Changelog
 
+## 3.0.3 - 2024-11-09
+### What did we do this time?
+- Introduced compatibility with nextcloud 30
+- Changed default searchterms to nature and colorful
+- Improve handling of removed providers or missconfigurations
+
+### Known Issues:
+- Preview does not always work
+
+## 3.0.2 - 2024-10-06
+### What did we do this time?
+- Introduced compatibility with nextcloud 30
+- Changed default searchterms to nature and colorful
+- Improve handling of removed providers or missconfigurations
+
+### Known Issues:
+- Preview does not always work
+
+## 3.0.1 - 2024-09-07
+### What did we do this time?
+- Introduced compatibility with nextcloud 29
+- Fix Login-Route (@Bl4DEx)
+- Use Wikimedia as a default provider if the existing one is missing or none choosen
+
+### Known Issues:
+- Preview does not always work
+
+## 3.0.0 - 2024-08-31
+### What did we do this time?
+- Introduced compatibility with nextcloud 28
+- Introduced image caching and new image sources
+- Added Wikimedia
+- Added Wallhaven.cc
+- Added support for the new unsplash api (api token required)
+
+### Known Issues:
+- Preview does not always work
+
+## 2.2.1 - 2023-06-21
+### What did we do this time?
+- Fixed Broken Background-Key for Nextcloud 27 Compatibility.
+
+### Known Issues:
+- Blur is not beeing applied on dashbard
+
 ## 2.2.0 - 2023-02-12
 ### Added
 - Allow an admin to highlight privacy and data protection links on login-screen for better visibility
