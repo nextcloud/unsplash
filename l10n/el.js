@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Αυτές οι εικόνες παρέχονται από %s. Κάθε εικόνα έχει τη δική της άδεια.",
     "under an open license free of charge" : "υπό μια ανοιχτή άδεια χωρίς χρέωση",
     "These images are provided %1%s by %2%s." : "Αυτές οι εικόνες παρέχονται %1%s από %2%s.",
     "under the terms of service" : "υπό τους όρους χρήσης",
-    "These images are provided by %s. Each image has it's own license." : "Αυτές οι εικόνες παρέχονται από %s. Κάθε εικόνα έχει τη δική της άδεια.",
     "Splash: Random Background Images" : "Splash: Τυχαίες Εικόνες Φόντου",
     "Saved" : "Αποθηκεύτηκε",
     "Failed" : "Απέτυχε",

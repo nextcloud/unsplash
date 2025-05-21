@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Пљус",
+    "These images are provided by %s. Each image has it's own license." : "Ове слике обезбеђује %s. Свака слика има своју лиценцу.",
     "under an open license free of charge" : "под слободном лиценцом, бесплатно",
     "These images are provided %1%s by %2%s." : "Ове слике је обезбедио %1%s од %2%s.",
     "under the terms of service" : "под условима коришћења",
-    "These images are provided by %s. Each image has it's own license." : "Ове слике обезбеђује %s. Свака слика има своју лиценцу.",
     "Splash: Random Background Images" : "Пљус: насумичне позадинске слике",
     "Saved" : "Сачувано",
     "Failed" : "Није успело",

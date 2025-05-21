@@ -2,9 +2,9 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Ці зображення надає %s. Кожне зображення має власну ліцензію.",
     "under an open license free of charge" : "за відкритою ліцензією безкоштовно",
     "under the terms of service" : "за умовами обслуговування",
-    "These images are provided by %s. Each image has it's own license." : "Ці зображення надає %s. Кожне зображення має власну ліцензію.",
     "Splash: Random Background Images" : "Спалах: випадкові зображення тла",
     "Saved" : "ЗбереженоЗбережено",
     "Failed" : "Не вдалося",

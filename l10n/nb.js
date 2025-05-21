@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Sprut",
+    "These images are provided by %s. Each image has it's own license." : "Disse bildene er levert av %s. Hvert bilde har sin egen lisens.",
     "under an open license free of charge" : "under åpen lisens gratis",
     "These images are provided %1%s by %2%s." : "Disse bildene er levert %1%s av %2%s.",
     "under the terms of service" : "under tjenestevilkårene",
-    "These images are provided by %s. Each image has it's own license." : "Disse bildene er levert av %s. Hvert bilde har sin egen lisens.",
     "Splash: Random Background Images" : "Splash: Tilfeldige bakgrunnsbilder",
     "Saved" : "Lagret",
     "Failed" : "Mislyktes",

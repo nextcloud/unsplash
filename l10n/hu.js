@@ -2,9 +2,9 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Színfolt",
+    "These images are provided by %s. Each image has it's own license." : "Ezeket a képeket az %s biztosítja. Minden képnek saját licence van.",
     "under an open license free of charge" : "nyílt licenc alatt, ingyenesen",
     "under the terms of service" : "a szolgáltatás feltételei alatt",
-    "These images are provided by %s. Each image has it's own license." : "Ezeket a képeket az %s biztosítja. Minden képnek saját licence van.",
     "Splash: Random Background Images" : "Színfolt: véletlenszerű háttérképek",
     "Saved" : "Mentve",
     "Failed" : "Sikertelen",

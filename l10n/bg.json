@@ -1,8 +1,8 @@
 { "translations": {
     "Splash" : "Приложение за фонови изображения Splash",
+    "These images are provided by %s. Each image has it's own license." : "Тези изображения са предоставени от %s. Всяко изображение има свой собствен лиценз.",
     "under an open license free of charge" : "с отворен лиценз, безплатно",
     "under the terms of service" : "с условия за ползване",
-    "These images are provided by %s. Each image has it's own license." : "Тези изображения са предоставени от %s. Всяко изображение има свой собствен лиценз.",
     "Splash: Random Background Images" : "Splash: фонови изображения на случаен принцип",
     "Saved" : "Записано",
     "Failed" : "Неуспешно",

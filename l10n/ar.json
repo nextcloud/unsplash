@@ -1,9 +1,9 @@
 { "translations": {
     "Splash" : "البخّاخ Splash",
+    "These images are provided by %s. Each image has it's own license." : "هذه الصور مقدمة من %s. كل صورة لها رخصتها الخاصة.",
     "under an open license free of charge" : "تحت ترخيص مفتوح و مجاني",
     "These images are provided %1%s by %2%s." : "هذه الصور مُقدَّمة  %1%s من %2%s.",
     "under the terms of service" : "بموجب شروط الخدمة",
-    "These images are provided by %s. Each image has it's own license." : "هذه الصور مقدمة من %s. كل صورة لها رخصتها الخاصة.",
     "Splash: Random Background Images" : "البخّاخ Splash: صِوَر عشوائية للخلفية",
     "Saved" : "تم الحفظ",
     "Failed" : "فشل",

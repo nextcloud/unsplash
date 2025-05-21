@@ -1,9 +1,9 @@
 { "translations": {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Diese Bilder werden von %s zur Verfügung gestellt. Jedes Bild hat seine eigene Lizenz.",
     "under an open license free of charge" : "kostenlos unter einer freien Lizenz",
     "These images are provided %1%s by %2%s." : "Diese Bilder werden %1%s von %2%s bereitgestellt.",
     "under the terms of service" : "unter den Nutzungsbedingungen",
-    "These images are provided by %s. Each image has it's own license." : "Diese Bilder werden von %s zur Verfügung gestellt. Jedes Bild hat seine eigene Lizenz.",
     "Splash: Random Background Images" : "Splash: Zufällige Hintergrundbilder",
     "Saved" : "Gespeichert",
     "Failed" : "Fehlgeschlagen",

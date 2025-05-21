@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Tieto obrázky poskytuje %s. Každý obrázok má svoju vlastnú licenciu",
     "under an open license free of charge" : "pod otvorenou licenciou bezplatne",
     "These images are provided %1%s by %2%s." : "Tieto obrázky poskytuje %1%s od %2%s.",
     "under the terms of service" : "podľa podmienok služby",
-    "These images are provided by %s. Each image has it's own license." : "Tieto obrázky poskytuje %s. Každý obrázok má svoju vlastnú licenciu",
     "Splash: Random Background Images" : "Splash: Náhodné obrázky na pozadí",
     "Saved" : "Uložené",
     "Failed" : "Zlyhalo",

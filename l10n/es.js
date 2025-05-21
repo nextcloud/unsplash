@@ -2,9 +2,9 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Estas imágenes son provistas por %s. Cada imágen tiene su propia licencia.",
     "under an open license free of charge" : "bajo una licencia abierta libre de cargos",
     "under the terms of service" : "bajo los términos de servicio",
-    "These images are provided by %s. Each image has it's own license." : "Estas imágenes son provistas por %s. Cada imágen tiene su propia licencia.",
     "Splash: Random Background Images" : "Splash: Imágenes de fondo aleatorias",
     "Saved" : "Guardado",
     "Failed" : "Falló",

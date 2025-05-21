@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Soláthraíonn %s na híomhánna seo. Tá a cheadúnas féin ag gach íomhá.",
     "under an open license free of charge" : "Faoi cheadúnas oscailte saor in aisce",
     "These images are provided %1%s by %2%s." : "Cuirtear na híomhánna seo ar fáil % 1% faoi % 2%s.",
     "under the terms of service" : "faoi ​​théarmaí seirbhíse",
-    "These images are provided by %s. Each image has it's own license." : "Soláthraíonn %s na híomhánna seo. Tá a cheadúnas féin ag gach íomhá.",
     "Splash: Random Background Images" : "Splash: Íomhánna Cúlra Randamach",
     "Saved" : "Shábháil",
     "Failed" : "Theip",

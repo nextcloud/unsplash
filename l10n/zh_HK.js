@@ -2,10 +2,10 @@ OC.L10N.register(
     "unsplash",
     {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "這些圖像由 %s 提供。每張圖像都有自己的授權條款。",
     "under an open license free of charge" : "使用開放的授權條款且免費",
     "These images are provided %1%s by %2%s." : "這些圖像是由 %2%s 透過 %1%s 提供的。",
     "under the terms of service" : "根據服務條款",
-    "These images are provided by %s. Each image has it's own license." : "這些圖像由 %s 提供。每張圖像都有自己的授權條款。",
     "Splash: Random Background Images" : "Splash：隨機背景圖片",
     "Saved" : "已保存",
     "Failed" : "失敗了",

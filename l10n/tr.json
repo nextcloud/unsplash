@@ -1,9 +1,9 @@
 { "translations": {
     "Splash" : "Splash",
+    "These images are provided by %s. Each image has it's own license." : "Bu görseller %s tarafından sağlanmıştır. Her görselin kendi lisansı vardır.",
     "under an open license free of charge" : "ücretsiz açık kaynak lisanslı olarak",
     "These images are provided %1%s by %2%s." : "Bu görseller %1%s %2%s tarafından sağlanmıştır.",
     "under the terms of service" : "hizmet koşulları altında",
-    "These images are provided by %s. Each image has it's own license." : "Bu görseller %s tarafından sağlanmıştır. Her görselin kendi lisansı vardır.",
     "Splash: Random Background Images" : "Splash: Rastgele arka plan görselleri",
     "Saved" : "Kaydedildi",
     "Failed" : "Tamamlanamadı",
