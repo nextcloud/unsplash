@@ -1,5 +1,8 @@
 { "translations": {
     "Saved" : "Salvestatud",
-    "Failed" : "Ebaõnnestus"
+    "Failed" : "Ebaõnnestus",
+    "Token:" : "Tunnusluba:",
+    "Preview:" : "Eelvaade:",
+    "Refresh Cached Image" : "Laadi puhverdatud pilt uuesti"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
