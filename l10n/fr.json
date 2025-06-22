@@ -17,6 +17,7 @@
     "Token:" : "Jeton :",
     "Set the required token. To get a token, visit:" : "Définissez le token requis. Pour obtenir un token, visitez:",
     "Unsplash: Developer Account Instructions" : "Unsplash: instructions pour le compte développeur",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "Sur la page d'instructions associée, enregistrez une application. Vous n'aurez pas besoin de faire de demande pour la production. Utilisez leur jeton ici.",
     "Preview:" : "Aperçu:",
     "Refresh Cached Image" : "Actualiser l'image mise en cache",
     "Splash: Advanced Theming" : "Splash : personnalisation avancée",
