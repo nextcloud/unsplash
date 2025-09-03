@@ -64,6 +64,7 @@ class WikimediaCommons extends Provider
         $url .= '&format=json';
 
         $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_USERAGENT, $this->getUserAgent());
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         $json = json_decode($response, true);
