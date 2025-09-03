@@ -84,6 +84,6 @@ class BingWallpaperDaily extends Provider
         }
 
         // Return default image if no Bing image is found
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, $this->appManager, "Nextcloud"))->getRandomImageUrl($size);
     }
 }

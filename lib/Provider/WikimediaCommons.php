@@ -75,7 +75,7 @@ class WikimediaCommons extends Provider
             $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, $this->appManager, "Nextcloud"))->getRandomImageUrl($size);
     }
 
     public function getCachedImageURL(): string

@@ -120,7 +120,7 @@ class UnsplashAPI extends Provider
         if($token === '' && $this->requiresAuth()) {
             // If the token is empty, return the default image.
             $this->logger->alert("Unsplash API: the provided token was blank!");
-            return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+            return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, $this->appManager, "Nextcloud"))->getRandomImageUrl($size);
         }
 
         $url = "https://api.unsplash.com/photos/random?client_id=" . $this->getToken() . "&count=1&query=" . $search;

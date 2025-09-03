@@ -9,6 +9,7 @@ namespace OCA\Unsplash\Services;
 use OCA\Unsplash\ProviderHandler\CachedProvider;
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
+use OCP\App\IAppManager;
 use OCP\Files\IAppData;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
@@ -64,6 +65,11 @@ class SettingsService
     private $defaults;
 
     /**
+     * @var IAppManager
+     */
+    protected $appManager;
+
+    /**
      * FaviconService constructor.
      *
      * @param string|null $userId
@@ -73,7 +79,7 @@ class SettingsService
      * @param Defaults $defaults
      * @param LoggerInterface $logger
      */
-    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults, LoggerInterface $logger)
+    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults, LoggerInterface $logger, IAppManager $appManager)
     {
         $this->config = $config;
         $this->userId = $userId;
@@ -82,7 +88,7 @@ class SettingsService
         }
         $this->appName = $appName;
 
-        $this->providerDefinitions = new ProviderDefinitions($this->appName, $logger, $this->config, $appData);
+        $this->providerDefinitions = new ProviderDefinitions($this->appName, $logger, $this->config, $appData, $appManager);
         $this->defaults = $defaults;
     }
 

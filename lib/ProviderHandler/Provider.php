@@ -24,6 +24,7 @@ declare(strict_types=1);
 
 namespace OCA\Unsplash\ProviderHandler;
 
+use OCP\App\IAppManager;
 use OCP\Files\IAppData;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
@@ -61,6 +62,7 @@ abstract class Provider
         protected LoggerInterface $logger,
         protected IConfig $config,
         protected IAppData $appData,
+        protected IAppManager $appManager,
         protected string $providerName,
     )
     {
@@ -245,4 +247,28 @@ abstract class Provider
         return $rootFolder;
     }
 
+    /**
+     *
+     * This returns the user agent string ('unsplash/<version> (<website>; <mail>)').
+     * Some image providers require a non-empty user agent, e.g. WikiMedia
+     *
+     * @return string
+     */
+    protected function getUserAgent()
+    {
+        $info = $this->appManager->getAppInfo($this->appName);
+        $name = $this->appName;
+        $version = $this->appManager->getAppVersion($name);
+        $website = $info['website'];
+        $mail = "";
+
+        foreach ($info['author'] as $author) {
+            if(!isset($author['@attributes']['mail'])) {
+                continue;
+            }
+            $mail = "; ".$author['@attributes']['mail'];
+        }
+
+        return $name."/".$version." (".$website.$mail.")";
+    }
 }
