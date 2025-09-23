@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Saved" : "Захавана",
     "Failed" : "Не ўдалося",
+    "Token:" : "Токен:",
+    "Set the required token. To get a token, visit:" : "Задайце патрэбны токен. Каб атрымаць токен, наведайце:",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "На старонцы з інструкцыямі па спасылцы зарэгіструйце заяўку. Вам не трэба будзе падаваць заяўку на прадукцыйную версію. Выкарыстоўвайце іх токен тут.",
     "Preview:" : "Перадпрагляд:",
     "Set the blur of the image" : "Задайце размытасць відарыса"
 },

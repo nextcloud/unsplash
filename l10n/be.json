@@ -1,6 +1,9 @@
 { "translations": {
     "Saved" : "Захавана",
     "Failed" : "Не ўдалося",
+    "Token:" : "Токен:",
+    "Set the required token. To get a token, visit:" : "Задайце патрэбны токен. Каб атрымаць токен, наведайце:",
+    "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "На старонцы з інструкцыямі па спасылцы зарэгіструйце заяўку. Вам не трэба будзе падаваць заяўку на прадукцыйную версію. Выкарыстоўвайце іх токен тут.",
     "Preview:" : "Перадпрагляд:",
     "Set the blur of the image" : "Задайце размытасць відарыса"
 },"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
