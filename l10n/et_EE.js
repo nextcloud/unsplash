@@ -1,10 +1,17 @@
 OC.L10N.register(
     "unsplash",
     {
+    "These images are provided by %s. Each image has it's own license." : "Nende piltide allikaks on %s. Igal pildil on oma litsentsitingimused.",
+    "Splash: Random Background Images" : "Splash: juhuslikud taustapildid",
     "Saved" : "Salvestatud",
     "Failed" : "Ebaõnnestus",
+    "Set random image as login background" : "Näita juhuslikku pilti sisselogimisvaate taustana",
+    "Set random image as dashboard background" : "Näita juhuslikku pilti töölaua taustana",
+    "Keywords:" : "Märksõnad:",
     "Token:" : "Tunnusluba:",
     "Preview:" : "Eelvaade:",
-    "Refresh Cached Image" : "Laadi puhverdatud pilt uuesti"
+    "Refresh Cached Image" : "Laadi puhverdatud pilt uuesti",
+    "Random Background Images" : "Juhuslikud taustapildid",
+    "%s is customized with random background images." : "%s on kohandatud kasutama juhuslikke taustapilte."
 },
 "nplurals=2; plural=(n != 1);");
