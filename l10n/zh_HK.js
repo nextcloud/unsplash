@@ -9,7 +9,7 @@ OC.L10N.register(
     "Splash: Random Background Images" : "Splash：隨機背景圖片",
     "Saved" : "已保存",
     "Failed" : "失敗了",
-    "You can customize your instance with random background images." : "您可以使用隨機背景圖像自定義您的實例。",
+    "You can customize your instance with random background images." : "您可以使用隨機背景圖像自訂您的實例。",
     "Here you can specify where random backgrounds should be used by default." : "您可以在此處指定預設情況下應在何處使用隨機背景。",
     "Set random image as login background" : "將隨機圖片設定為登入背景",
     "Set random image as dashboard background" : "將隨機圖像設定為儀表板背景",
