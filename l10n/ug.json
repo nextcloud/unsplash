@@ -1,6 +1,6 @@
 { "translations": {
     "Splash" : "Splash",
-    "These images are provided by %s. Each image has it's own license." : "بۇ رەسىملەرنى% s تەمىنلىگەن. ھەر بىر رەسىمنىڭ ئۆزىگە خاس ئىجازەتنامىسى بار.",
+    "These images are provided by %s. Each image has it's own license." : "بۇ رەسىملەرنى %s تەمىنلىگەن. ھەر بىر رەسىمنىڭ ئۆزىگە خاس ئىجازەتنامىسى بار.",
     "under an open license free of charge" : "ئوچۇق ئىجازەتنامىدە ھەقسىز",
     "These images are provided %1%s by %2%s." : "بۇ رەسىملەر%2% s تەرىپىدىن%1% s بىلەن تەمىنلەنگەن.",
     "under the terms of service" : "مۇلازىمەت شەرتى ئاستىدا",
@@ -29,7 +29,7 @@
     "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "قانۇنىي سەۋەبلەر ئۈچۈن يۇقىرى كۆرۈنۈش ھالىتىنى قوزغىتالايسىز. بۇ كىرىش ئېكرانىدىكى مەخپىيەتلىك ۋە سانلىق مەلۇمات قوغداش ئۇلانمىلىرىنى گەۋدىلەندۈرىدۇ.",
     "Enable High-Visibility Mode" : "يۇقىرى كۆرۈنۈشچان ھالەتنى قوزغىتىڭ",
     "Random Background Images" : "ئىختىيارى تەگلىك رەسىملىرى",
-    "%s is customized with random background images." : "% s ئىختىيارى تەگلىك رەسىملەر بىلەن خاسلاشتۇرۇلغان.",
+    "%s is customized with random background images." : "%s ئىختىيارى تەگلىك رەسىملەر بىلەن خاسلاشتۇرۇلغان.",
     "The images will be displayed as the background if you choose \"Default Image\" as your background." : "ئەگەر «سۈكۈتتىكى رەسىم» نى تەگلىك قىلىپ تاللىسىڭىز ، رەسىملەر تەگلىك سۈپىتىدە كۆرسىتىلىدۇ."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
