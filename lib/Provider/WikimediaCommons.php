@@ -22,7 +22,6 @@
 
 namespace OCA\Unsplash\Provider;
 
-use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
 
 class WikimediaCommons extends Provider
@@ -63,10 +62,10 @@ class WikimediaCommons extends Provider
         $url .= '&iiprop=url';
         $url .= '&format=json';
 
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($curl);
-        $json = json_decode($response, true);
+        $client = $this->clientService->newClient();
+        $response = $client->get($url);
+        $body = $response->getBody();
+        $json = json_decode($body, true);
 
         try {
             $images = $json['query']['pages'][array_rand($json['query']['pages'])];
@@ -75,7 +74,7 @@ class WikimediaCommons extends Provider
             $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, $this->clientService, "Nextcloud"))->getRandomImageUrl($size);
     }
 
     public function getCachedImageURL(): string

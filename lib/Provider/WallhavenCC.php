@@ -22,7 +22,6 @@
 
 namespace OCA\Unsplash\Provider;
 
-use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
 
 class WallhavenCC extends Provider
@@ -66,11 +65,10 @@ class WallhavenCC extends Provider
                 break;
         }
 
-
-        $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&resolutions=' . $resolution . '&q=' . $search);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($curl);
-        $json = json_decode($response, true);
+        $client = $this->clientService->newClient();
+        $response = $client->get('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&resolutions=' . $resolution . '&q=' . $search);
+        $body = $response->getBody();
+        $json = json_decode($body, true);
 
         try {
             $images = $json['data'][array_rand($json['data'])];
@@ -79,7 +77,7 @@ class WallhavenCC extends Provider
             $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, $this->clientService, "Nextcloud"))->getRandomImageUrl($size);
     }
 
     public function getCachedImageURL(): string
