@@ -111,6 +111,10 @@ class AdminSettingsController extends Controller
      */
     public function getCustomization(string $providername): JSONResponse
     {
+        $validProviders = $this->settings->getAllImageProvider();
+        if (!in_array($providername, $validProviders, true)) {
+            return new JSONResponse(['status' => 'error', 'message' => 'Unknown provider'], Http::STATUS_BAD_REQUEST);
+        }
         $provider = $this->settings->getImageProvider($providername);
         return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
     }
