@@ -11,9 +11,7 @@ test.describe('Login page background', () => {
 
 		// The BeforeTemplateRenderedEventListener injects a <link> pointing to
 		// the unsplash CSS endpoint when the login style is enabled (default).
-		const link = page.locator('link[rel="stylesheet"]').filter({
-			has: page.locator('[href*="/apps/unsplash/api/login.css"]'),
-		})
+		const link = page.locator('link[rel="stylesheet"][href*="/apps/unsplash/api/login.css"]')
 		await expect(link).toHaveCount(1)
 	})
 
