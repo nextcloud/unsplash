@@ -9,29 +9,11 @@ import {
 	stopNextcloud,
 	waitOnNextcloud,
 } from '@nextcloud/e2e-test-server/docker'
-import { readFileSync } from 'fs'
-import { execSync } from 'node:child_process'
-
-async function resolveNextcloudBranch() {
-	const appinfo = readFileSync('appinfo/info.xml').toString()
-	const match = appinfo.match(/<nextcloud min-version="(\d+)" max-version="(\d+)"/)
-	const minVersion = match?.[1]
-	const maxVersion = match?.[2]
-
-	// NC_VERSION_TYPE=min uses the minimum supported version; anything else (default) uses max.
-	const versionType = process.env.NC_VERSION_TYPE ?? 'max'
-	const version = versionType === 'min' ? minVersion : maxVersion
-
-	if (!version) {
-		return 'master'
-	}
-
-	const refs = execSync('git ls-remote --refs https://github.com/nextcloud/server.git').toString('utf-8')
-	return refs.includes(`refs/heads/stable${version}`) ? `stable${version}` : 'master'
-}
 
 async function start() {
-	const branch = await resolveNextcloudBranch()
+	// NC_SERVER_BRANCH is set by the CI matrix via icewind1991/nextcloud-version-matrix.
+	// Fall back to 'master' for local runs.
+	const branch = process.env.NC_SERVER_BRANCH ?? 'master'
 	process.stdout.write(`Starting Nextcloud on branch: ${branch}\n`)
 
 	return await startNextcloud(branch, true, {
