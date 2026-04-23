@@ -12,19 +12,27 @@ import {
 import { readFileSync } from 'fs'
 import { execSync } from 'node:child_process'
 
-async function start() {
+async function resolveNextcloudBranch() {
 	const appinfo = readFileSync('appinfo/info.xml').toString()
-	const maxVersion = appinfo.match(
-		/<nextcloud min-version="\d+" max-version="(\d+)" \/>/,
-	)?.[1]
+	const match = appinfo.match(/<nextcloud min-version="(\d+)" max-version="(\d+)"/)
+	const minVersion = match?.[1]
+	const maxVersion = match?.[2]
 
-	let branch = 'master'
-	if (maxVersion) {
-		const refs = execSync('git ls-remote --refs https://github.com/nextcloud/server.git').toString('utf-8')
-		branch = refs.includes(`refs/heads/stable${maxVersion}`)
-			? `stable${maxVersion}`
-			: branch
+	// NC_VERSION_TYPE=min uses the minimum supported version; anything else (default) uses max.
+	const versionType = process.env.NC_VERSION_TYPE ?? 'max'
+	const version = versionType === 'min' ? minVersion : maxVersion
+
+	if (!version) {
+		return 'master'
 	}
+
+	const refs = execSync('git ls-remote --refs https://github.com/nextcloud/server.git').toString('utf-8')
+	return refs.includes(`refs/heads/stable${version}`) ? `stable${version}` : 'master'
+}
+
+async function start() {
+	const branch = await resolveNextcloudBranch()
+	process.stdout.write(`Starting Nextcloud on branch: ${branch}\n`)
 
 	return await startNextcloud(branch, true, {
 		exposePort: 8089,
