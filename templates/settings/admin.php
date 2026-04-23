@@ -27,13 +27,11 @@ style('unsplash', 'settings');
                    type="checkbox" <?= $_['styleLogin'] ? 'checked' : '' ?>>
             <label for="unsplash-style-login"><?php p($l->t('Set random image as login background')); ?></label>
         </div>
-        <?php if ($_['hasDashboard']): ?>
-            <div class="unsplash-checkboxes">
-                <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard"
-                       type="checkbox" <?= $_['styleDashboard'] ? 'checked' : '' ?>>
-                <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
-            </div>
-        <?php endif; ?>
+        <div class="unsplash-checkboxes">
+            <input id="unsplash-style-dashboard" name="unsplash-style-dashboard" data-setting="style/dashboard"
+                   type="checkbox" <?= $_['styleDashboard'] ? 'checked' : '' ?>>
+            <label for="unsplash-style-dashboard"><?php p($l->t('Set random image as dashboard background')); ?></label>
+        </div>
         <div class="unsplash-providerselect">
             <label class="unsplash-label"
                    for="splash-provider-selection"><?php p($l->t('Set the image provider:')); ?></label>

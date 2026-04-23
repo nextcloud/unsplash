@@ -70,10 +70,10 @@ class AdminSettingsController extends Controller
                 $this->settings->setServerStyleDashboardEnabled(0);
             }
         } else if ($key === 'provider/provider') {
-            $this->settings->setImageProviderSanitized(filter_var($value, FILTER_SANITIZE_STRING));
+            $this->settings->setImageProviderSanitized((string)$value);
             return $this->generateProviderResponse($value);
         } else if ($key === 'provider/customization') {
-            $this->settings->setImageProviderCustomization(filter_var($value, FILTER_SANITIZE_STRING));
+            $this->settings->setImageProviderCustomization((string)$value);
         } else if ($key === 'style/tint') {
             if ($value) {
                 $this->settings->setTint(1);
@@ -111,7 +111,11 @@ class AdminSettingsController extends Controller
      */
     public function getCustomization(string $providername): JSONResponse
     {
-        $provider = $this->settings->getImageProvider(filter_var($providername, FILTER_SANITIZE_STRING));
+        $validProviders = $this->settings->getAllImageProvider();
+        if (!in_array($providername, $validProviders, true)) {
+            return new JSONResponse(['status' => 'error', 'message' => 'Unknown provider'], Http::STATUS_BAD_REQUEST);
+        }
+        $provider = $this->settings->getImageProvider($providername);
         return new JSONResponse(['status' => 'ok', 'customization' => $provider->getCustomSearchterms()]);
     }
 

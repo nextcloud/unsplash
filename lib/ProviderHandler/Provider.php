@@ -25,6 +25,7 @@ declare(strict_types=1);
 namespace OCA\Unsplash\ProviderHandler;
 
 use OCP\Files\IAppData;
+use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 use OCP\Files\NotFoundException;
@@ -54,7 +55,9 @@ abstract class Provider
      * @param $appName
      * @param LoggerInterface $logger
      * @param IConfig $config
-     * @param $pName
+     * @param IAppData $appData
+     * @param string $providerName
+     * @param IClientService $clientService
      */
     public function __construct(
         protected string $appName,
@@ -62,6 +65,7 @@ abstract class Provider
         protected IConfig $config,
         protected IAppData $appData,
         protected string $providerName,
+        protected IClientService $clientService,
     )
     {
     }
@@ -209,25 +213,21 @@ abstract class Provider
 
 
     /**
+     * Fetch data from a remote URL using the Nextcloud HTTP client.
      *
-     * This doesnt really belong here. I should create a utils class or something like it
-     * @param $host
-     * @return bool|string
+     * @param string $host
+     * @return string|false Response body, or false on failure
      */
-    protected function getData($host)
+    protected function getData(string $host): string|false
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $host);
-        if ($this->config->getSystemValueBool('debug', false)) {
-            curl_setopt($ch, CURLOPT_VERBOSE, 1);
+        try {
+            $client = $this->clientService->newClient();
+            $response = $client->get($host);
+            return $response->getBody();
+        } catch (\Exception $e) {
+            $this->logger->warning('Failed to fetch data from ' . $host . ': ' . $e->getMessage());
+            return false;
         }
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, false);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
     }
 
 

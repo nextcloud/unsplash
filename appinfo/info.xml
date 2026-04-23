@@ -7,7 +7,7 @@
     <summary lang="de">📸🔀☁️ Zufällige Hintergrundbilder von Unsplash</summary>
     <description>Show a new random featured nature photo in your nextcloud. Now with choosable motives!</description>
     <description lang="de">Zeigt ein zufällig ausgewähltes Naturfoto in ihrer Nextcloud. Jetzt auch mit selbstwählbaren Motiven!</description>
-    <version>3.1.0</version>
+    <version>3.2.0</version>
     <licence>agpl</licence>
     <author homepage="https://jancborchardt.net">Jan C. Borchardt</author>
     <author homepage="https://github.com/marius-wieschollek">Marius Wieschollek</author>
@@ -22,8 +22,8 @@
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/.meta/unsplash.jpg</screenshot>
     <screenshot>https://raw.githubusercontent.com/nextcloud/unsplash/master/.meta/unsplash-header.jpg</screenshot>
     <dependencies>
-        <php min-version="8.0" max-version="8.4"/>
-        <nextcloud min-version="26" max-version="32"/>
+        <php min-version="8.2" max-version="8.5"/>
+        <nextcloud min-version="31" max-version="33"/>
     </dependencies>
     <settings>
         <admin>OCA\Unsplash\Settings\AdminSettings</admin>

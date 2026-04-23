@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace OCA\Unsplash\EventListener;
 
-use OC\Security\CSP\ContentSecurityPolicy;
+use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;

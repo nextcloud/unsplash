@@ -11,7 +11,6 @@ namespace OCA\Unsplash\AppInfo;
 
 use OCA\Unsplash\EventListener\AddContentSecurityPolicyEventListener;
 use OCA\Unsplash\EventListener\BeforeTemplateRenderedEventListener;
-use OCA\Unsplash\Services\LegacyInitialisationService;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
