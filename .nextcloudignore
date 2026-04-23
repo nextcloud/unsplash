@@ -10,3 +10,10 @@
 krankerl.toml
 Makefile
 screenshots
+node_modules
+package.json
+package-lock.json
+playwright
+playwright.config.ts
+test-results
+playwright-report
