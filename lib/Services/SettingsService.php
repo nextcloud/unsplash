@@ -9,6 +9,7 @@ namespace OCA\Unsplash\Services;
 use OCA\Unsplash\ProviderHandler\CachedProvider;
 use OCA\Unsplash\ProviderHandler\Provider;
 use OCA\Unsplash\ProviderHandler\ProviderDefinitions;
+use OCP\Defaults;
 use OCP\Files\IAppData;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
@@ -59,7 +60,7 @@ class SettingsService
     protected $providerDefinitions;
 
     /**
-     * @var \OC_Defaults
+     * @var \OCP\Defaults
      */
     private $defaults;
 
@@ -73,7 +74,7 @@ class SettingsService
      * @param Defaults $defaults
      * @param LoggerInterface $logger
      */
-    public function __construct($userId, $appName, IConfig $config, IAppData $appData, \OC_Defaults $defaults, LoggerInterface $logger)
+    public function __construct($userId, $appName, IConfig $config, IAppData $appData, Defaults $defaults, LoggerInterface $logger)
     {
         $this->config = $config;
         $this->userId = $userId;
@@ -94,30 +95,13 @@ class SettingsService
     public function getUserStyleDashboardEnabled(): bool
     {
         // for magic value see: https://github.com/nextcloud/server/blame/master/apps/theming/lib/Service/BackgroundService.php
-        $themingSettingsKey = "background";
-        if ($this->getNextcloudVersion() > 26) {
-            $themingSettingsKey = "background_image";
-        }
-        $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", $themingSettingsKey, 'default');
+        $themingAppDashboard = $this->config->getUserValue($this->userId, "theming", "background_image", 'default');
 
         // dont add custom css when custom image was selected
         if ($themingAppDashboard == 'default') {
             return $this->getServerStyleDashboardEnabled();
         }
         return false;
-    }
-
-    /**
-     * Todo: refactor this function to a "has dash" function that also checks wether the dashboard is actually enabled.
-     *       and then dont show the entries.
-     * @return int
-     */
-    public function getNextcloudVersion(): int
-    {
-        $version = $this->config->getSystemValue('version', '0.0.0');
-        $parts = explode('.', $version, 2);
-
-        return intval($parts[0]);
     }
 
     /**

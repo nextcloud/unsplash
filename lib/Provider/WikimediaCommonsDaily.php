@@ -22,7 +22,6 @@
 
 namespace OCA\Unsplash\Provider;
 
-use OC\AppFramework\Http\Request;
 use OCA\Unsplash\ProviderHandler\Provider;
 
 class WikimediaCommonsDaily extends Provider
