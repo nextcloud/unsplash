@@ -66,10 +66,8 @@ class WallhavenCC extends Provider
         }
 
 
-        $curl = curl_init('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&resolutions=' . $resolution . '&q=' . $search);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($curl);
-        $json = json_decode($response, true);
+        $response = $this->getData('https://wallhaven.cc/api/v1/search?sorting=random&ratios=16x9,16x10&resolutions=' . $resolution . '&q=' . $search);
+        $json = $response !== false ? json_decode($response, true) : null;
 
         try {
             $images = $json['data'][array_rand($json['data'])];
@@ -78,7 +76,7 @@ class WallhavenCC extends Provider
             $this->logger->alert("Your searchterms likely did not yield results for: ".$this->getName());
         }
 
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud", $this->clientService))->getRandomImageUrl($size);
     }
 
     public function getCachedImageURL(): string

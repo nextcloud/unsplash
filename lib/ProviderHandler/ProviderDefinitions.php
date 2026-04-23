@@ -30,6 +30,7 @@ use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
 use OCA\Unsplash\Provider\WikimediaCommonsDaily;
 use OCP\Files\IAppData;
+use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 
@@ -55,30 +56,35 @@ class ProviderDefinitions
     /** @var LoggerInterface */
     private $logger;
 
+    /** @var IClientService */
+    private $clientService;
+
     /**
      * ProviderDefinitions constructor.
      *
      * @param String $appName
      * @param LoggerInterface $logger
-     * @param IConfig $settings
+     * @param IConfig $config
      * @param IAppData $appData
+     * @param IClientService $clientService
      */
-    function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData)
+    function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData, IClientService $clientService)
     {
 
         $this->appName = $appName;
         $this->config = $config;
         $this->appData = $appData;
         $this->logger = $logger;
+        $this->clientService = $clientService;
 
         $tmp = [];
         //add all provider to this array. The logic takes care of the rest.
-        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
-        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
-        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
-        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day");
-        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
-        $tmp[] = new BingWallpaperDaily($this->appName, $logger, $this->config, $appData, "Bing Wallpaper - Picture of the Day");
+        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI", $clientService);
+        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image", $clientService);
+        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons", $clientService);
+        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day", $clientService);
+        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC", $clientService);
+        $tmp[] = new BingWallpaperDaily($this->appName, $logger, $this->config, $appData, "Bing Wallpaper - Picture of the Day", $clientService);
 
         foreach ($tmp as &$value) {
             $this->definitions[$value->getName()] = $value;
@@ -96,11 +102,11 @@ class ProviderDefinitions
 
         if (!array_key_exists($name, $this->definitions)) {
             $this->logger->warning("Selected provider '{$name}' could not be found. Using Default. Please select an existing provider in the settings!");
-            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day", $this->clientService);
         }
         $provider = $this->definitions[$name];
         if ($provider == null) {
-            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day", $this->clientService);
         }
         return $this->definitions[$name];
     }

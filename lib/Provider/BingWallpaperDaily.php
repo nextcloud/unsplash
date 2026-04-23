@@ -73,7 +73,7 @@ class BingWallpaperDaily extends Provider
     public function getRandomImageUrlBySearchTerm($search, $size)
     {
         // Fetch the daily image JSON from Bing
-        $bing_daily_image_json = file_get_contents('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US');
+        $bing_daily_image_json = $this->getData('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US');
         if ($bing_daily_image_json !== false) {
             $matches = json_decode($bing_daily_image_json);
             if (isset($matches->images[0]->url)) {
@@ -83,6 +83,6 @@ class BingWallpaperDaily extends Provider
         }
 
         // Return default image if no Bing image is found
-        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud"))->getRandomImageUrl($size);
+        return (new NextcloudImage($this->appName, $this->logger, $this->config, $this->appData, "Nextcloud", $this->clientService))->getRandomImageUrl($size);
     }
 }
