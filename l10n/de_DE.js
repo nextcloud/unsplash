@@ -15,7 +15,7 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Verwende ein zufälliges Bild als Hintergrund des Dashboards",
     "Set the image provider:" : "Den Bildanbieter einstellen:",
     "Keywords:" : "Schlüsselwörter:",
-    "Set custom search terms. Separate multiple terms by comma." : "Legen Sie benutzerdefinierte Suchbegriffe fest. Trennen Sie mehrere Begriffe durch Kommata.",
+    "Set custom search terms. Separate multiple terms by comma." : "Benutzerdefinierte Suchbegriffe festlegen. Mehrere Begriffe durch Kommas trennen.",
     "Token:" : "Token:",
     "Set the required token. To get a token, visit:" : "Legen Sie das erforderliche Token fest. Um ein Token zu erhalten, besuchen Sie:",
     "Unsplash: Developer Account Instructions" : "Unsplash: Anweisungen für Entwicklerkonten",
