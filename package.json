@@ -1,0 +1,21 @@
+{
+	"name": "unsplash",
+	"description": "Random background image app for Nextcloud",
+	"homepage": "https://github.com/nextcloud/unsplash",
+	"license": "agpl",
+	"private": true,
+	"scripts": {
+		"start:nextcloud": "node playwright/start-nextcloud-server.mjs",
+		"test:e2e": "playwright test",
+		"test:e2e:ui": "playwright test --ui",
+		"test:e2e:report": "playwright show-report"
+	},
+	"devDependencies": {
+		"@nextcloud/e2e-test-server": "^0.4.0",
+		"@playwright/test": "^1.52.0"
+	},
+	"engines": {
+		"node": "^20.0.0",
+		"npm": "^10.0.0"
+	}
+}
