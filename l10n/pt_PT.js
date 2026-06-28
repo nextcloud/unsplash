@@ -1,7 +1,14 @@
 OC.L10N.register(
     "unsplash",
     {
+    "Splash" : "Splash",
+    "Splash: Random Background Images" : "Splash: Imagens de fundo aleatórias",
     "Saved" : "Guardado",
-    "Failed" : "Falhou"
+    "Failed" : "Falhou",
+    "Set random image as dashboard background" : "Definir imagem aleatória como plano de fundo do painel",
+    "Set the required token. To get a token, visit:" : "Definir o token necessário. Para obter um token, visite:",
+    "Splash: Advanced Theming" : "Splash: Configurações Avançadas de Tema",
+    "Splash: High Visibility" : "Splash: Alta Visibilidade",
+    "Random Background Images" : "Imagens de Fundo Aleatórias"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
