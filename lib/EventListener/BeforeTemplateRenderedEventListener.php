@@ -53,9 +53,6 @@ class BeforeTemplateRenderedEventListener implements IEventListener
         switch ($route) {
             case 'core.TwoFactorChallenge.showChallenge':
             case 'files_sharing.Share.authenticate':
-            // Nextcloud <= 28
-            case 'core.login.showLoginForm':
-            // Nextcloud >= 29
             case 'core.login.showloginform':
             case 'files_sharing.Share.showAuthenticate':
                 if ($serverstyleLogin) {
