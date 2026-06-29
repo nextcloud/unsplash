@@ -30,6 +30,7 @@ use OCA\Unsplash\Provider\WallhavenCC;
 use OCA\Unsplash\Provider\WikimediaCommons;
 use OCA\Unsplash\Provider\WikimediaCommonsDaily;
 use OCP\Files\IAppData;
+use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use Psr\Log\LoggerInterface;
 
@@ -45,15 +46,20 @@ class ProviderDefinitions
      * @var string
      */
     protected $appName;
+
+    /** @var LoggerInterface */
+    private $logger;
+
     /**
      * @var definitions This variable contains all available provider
      */
     protected $definitions = [];
+
     /** @var IAppData */
     private $appData;
 
-    /** @var LoggerInterface */
-    private $logger;
+    /** @var IClientService */
+    private $clientService;
 
     /**
      * ProviderDefinitions constructor.
@@ -62,23 +68,25 @@ class ProviderDefinitions
      * @param LoggerInterface $logger
      * @param IConfig $settings
      * @param IAppData $appData
+     * @param IClientService $clientService
      */
-    function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData)
+    function __construct($appName, LoggerInterface $logger, IConfig $config, IAppData $appData, IClientService $clientService)
     {
 
         $this->appName = $appName;
         $this->config = $config;
         $this->appData = $appData;
         $this->logger = $logger;
+        $this->clientService = $clientService;
 
         $tmp = [];
         //add all provider to this array. The logic takes care of the rest.
-        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, "UnsplashAPI");
-        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, "Nextcloud Image");
-        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, "WikimediaCommons");
-        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, "WikimediaCommons - Picture of the Day");
-        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, "WallhavenCC");
-        $tmp[] = new BingWallpaperDaily($this->appName, $logger, $this->config, $appData, "Bing Wallpaper - Picture of the Day");
+        $tmp[] = new UnsplashAPI($this->appName, $logger, $this->config, $appData, $clientService, "UnsplashAPI");
+        $tmp[] = new NextcloudImage($this->appName, $logger, $this->config, $appData, $clientService, "Nextcloud Image");
+        $tmp[] = new WikimediaCommons($this->appName, $logger, $this->config, $appData, $clientService, "WikimediaCommons");
+        $tmp[] = new WikimediaCommonsDaily($this->appName, $logger, $this->config, $appData, $clientService, "WikimediaCommons - Picture of the Day");
+        $tmp[] = new WallhavenCC($this->appName, $logger, $this->config, $appData, $clientService, "WallhavenCC");
+        $tmp[] = new BingWallpaperDaily($this->appName, $logger, $this->config, $appData, $clientService, "Bing Wallpaper - Picture of the Day");
 
         foreach ($tmp as &$value) {
             $this->definitions[$value->getName()] = $value;
@@ -96,11 +104,11 @@ class ProviderDefinitions
 
         if (!array_key_exists($name, $this->definitions)) {
             $this->logger->warning("Selected provider '{$name}' could not be found. Using Default. Please select an existing provider in the settings!");
-            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, $this->clientService, "WikimediaCommons - Picture of the Day");
         }
         $provider = $this->definitions[$name];
         if ($provider == null) {
-            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, "WikimediaCommons - Picture of the Day");
+            return new WikimediaCommonsDaily($this->appName, $this->logger, $this->config, $this->appData, $this->clientService, "WikimediaCommons - Picture of the Day");
         }
         return $this->definitions[$name];
     }
