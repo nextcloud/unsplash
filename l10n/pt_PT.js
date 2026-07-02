@@ -5,6 +5,7 @@ OC.L10N.register(
     "These images are provided by %s. Each image has it's own license." : "Estas imagens são fornecidas por %s. Cada imagem tem sua própria licença.",
     "under an open license free of charge" : "sob uma licença aberta, livre de cobranças.",
     "These images are provided %1%s by %2%s." : "Estas imagens são fornecidas %1%s por %2%s.",
+    "under the terms of service" : "sob os termos de serviço",
     "Splash: Random Background Images" : "Splash: Imagens de fundo aleatórias",
     "Saved" : "Guardado",
     "Failed" : "Falhou",
@@ -13,6 +14,7 @@ OC.L10N.register(
     "Set random image as dashboard background" : "Definir imagem aleatória como plano de fundo do painel",
     "Set the image provider:" : "Definir o provedor de imagens:",
     "Set custom search terms. Separate multiple terms by comma." : "Definir termos de pesquisa personalizados. Separe vários termos por vírgula.",
+    "Token:" : "Token:",
     "Set the required token. To get a token, visit:" : "Definir o token necessário. Para obter um token, visite:",
     "Unsplash: Developer Account Instructions" : "Unsplash: Instruções para Conta de Desenvolvedor",
     "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "Na página de instruções vinculada, registre um aplicativo. Você não deve precisar se inscrever para produção. Use o token deles aqui.",
@@ -24,6 +26,7 @@ OC.L10N.register(
     "You can enable a High Visibility Mode for Legal Reasons. This will highlight the Privacy and Data Protection links on the login screen." : "Você pode ativar um Modo de Alta Visibilidade por motivos legais. Isso destacará os links de Privacidade e Proteção de Dados na tela de login.",
     "Enable High-Visibility Mode" : "Ativar Modo de Alta Visibilidade",
     "Random Background Images" : "Imagens de Fundo Aleatórias",
-    "%s is customized with random background images." : "%s está customizado com imagens de fundo aleatórias."
+    "%s is customized with random background images." : "%s está customizado com imagens de fundo aleatórias.",
+    "The images will be displayed as the background if you choose \"Default Image\" as your background." : "As imagens serão exibidas como plano de fundo se você escolher \"Imagem Padrão\" como plano de fundo."
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
