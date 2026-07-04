@@ -21,6 +21,7 @@ OC.L10N.register(
     "Unsplash: Developer Account Instructions" : "Unsplash: Instruções para Conta de Desenvolvedor",
     "On the linked instruction page, register an application. You should not need to apply for production. Use their token here." : "Na página de instruções vinculada, registre um aplicativo. Você não deve precisar se inscrever para produção. Use o token deles aqui.",
     "Preview:" : "Visualização:",
+    "Refresh Cached Image" : "Atualizar Imagem em Cache",
     "Splash: Advanced Theming" : "Splash: Configurações Avançadas de Tema",
     "Enable Tint" : "Ativar Matiz",
     "Set the vibrancy of the color" : "Definir a vibração da cor",
