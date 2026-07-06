@@ -5,6 +5,7 @@ OC.L10N.register(
     "Failed" : "Mislukt",
     "Set random image as dashboard background" : "Willekeurige afbeelding instellen als dashboardachtergrond",
     "Keywords:" : "Sleutelwoorden:",
+    "Preview:" : "Voorbeeld:",
     "Set the blur of the image" : "Selecteer de vervaging van de afbeelding",
     "Random Background Images" : "Willekeurige achtergrondafbeelding"
 },
