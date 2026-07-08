@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace OCA\Unsplash\Settings;
 
-use OC_Defaults;
 use OCA\Unsplash\Services\SettingsService;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\Defaults;
 use OCP\Settings\ISettings;
 
 /**
@@ -26,11 +26,11 @@ class PersonalSettings implements ISettings
      * PersonalSection constructor.
      *
      * @param SettingsService $settings
-     * @param OC_Defaults $theming
+     * @param Defaults $theming
      */
     public function __construct(
         private SettingsService $settings,
-        private OC_Defaults $theming,
+        private Defaults $theming,
     )
     {
     }

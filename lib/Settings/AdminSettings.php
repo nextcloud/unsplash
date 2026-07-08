@@ -48,7 +48,8 @@ class AdminSettings implements ISettings
                 ),
             'styleLogin' => $this->settings->getServerStyleLoginEnabled(),
             'styleDashboard' => $this->settings->getServerStyleDashboardEnabled(),
-            'hasDashboard' => $this->settings->getNextcloudVersion() > 19,
+            // Dashboard was introduced in NC20; always available in supported range NC31+
+            'hasDashboard' => true,
             'availableProvider' => $this->settings->getAllImageProvider(),
             'selectedProvider' => $this->settings->getImageProviderName(),
             'availableCustomizations' => $this->settings->getAllCustomizableImageProvider(),
