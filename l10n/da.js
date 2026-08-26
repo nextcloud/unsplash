@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saved" : "Gemt",
     "Failed" : "Mislykkede",
-    "Token:" : "Token:"
+    "Token:" : "Token:",
+    "Preview:" : "Forhåndsvisning:"
 },
 "nplurals=2; plural=(n != 1);");
